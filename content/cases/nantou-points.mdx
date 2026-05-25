@@ -1,0 +1,116 @@
+export const meta = {
+  slug: 'nantou-points',
+  title: '南投數位生活點數平台',
+  subtitle: 'Designing a county-scale rewards system for 500K+ residents across 7 service modules',
+  featured: true,
+  order: 1,
+  role: 'Lead UX Designer',
+  team: '2 designers + 4 engineers',
+  timeline: '6 months · 2024',
+  stage: 'Shipped to 500K+ users',
+  domain: 'Civic Tech',
+  year: 2024,
+  cardColor: 'peach',
+}
+
+## Overview
+
+為 500,000 名南投居民設計整合 7 個服務模組的縣級數位點數平台:註冊、領點、用點、縣政訊息訂閱、商家好康地圖、每日輪盤、任務系統。
+
+**The challenge in one sentence.** How do we make a government rewards app feel useful enough that residents open it weekly, not once?
+
+<div className="placeholder-card">
+  <strong>TODO · 精煉 one-liner</strong>
+  Add a punchier elevator pitch. What did you ship, for whom, with what outcome?
+</div>
+
+## Context
+
+<div className="placeholder-card">
+  <strong>TODO · Stakeholders + constraints</strong>
+  Stakeholders (南投縣政府、承辦員、居民、商家、廠商), constraints (政府採購規範、舊系統相容、無障礙標準、隱私法規), why it matters.
+</div>
+
+## Discovery
+
+<div className="placeholder-card">
+  <strong>TODO · Research artifacts (placeholder, will fill later)</strong>
+  - User interview highlights (N=?)
+  - Persona / Journey map
+  - Heuristic eval / competitor analysis
+  - 3-5 個 key insights
+
+  目前用 placeholder card 占位,有 research 後直接填入這個區塊。
+</div>
+
+## IA
+
+<div className="placeholder-card">
+  <strong>TODO · App map / system map</strong>
+  放編號 1.1.1 / 1.2.1 / 4.1.1 的全圖 (從 Figma 匯出 PNG/SVG,放進 public/work/nantou-points/)
+</div>
+
+### Naming convention
+
+Every screen is numbered `X.Y.Z`:
+
+- `X` = Module (1=帳號, 2=首頁, 3=縣政消息, 4=賺點任務)
+- `Y` = Sub-flow (1.1=登入, 1.2=註冊, 1.4=忘記密碼)
+- `Z` = State (1.2.1=手機號碼認證, 1.2.5=驗證碼錯誤)
+
+### Why this matters
+
+PM、工程、設計三方可以無歧義 reference 任何畫面 ── 1.2.5 = 帳號模組 · 註冊子流程 · 驗證碼錯誤 state。This convention reduced spec clarification meetings by approximately 40%.
+
+## Flow
+
+### Sub-flow 5.1 — 登入 / 註冊 (decision tree)
+
+<div className="placeholder-card">
+  <strong>TODO · 1.1-1.5 系列 flow 圖</strong>
+  含「是否登入?」decision diamond + 1.2.5 驗證碼錯誤 / 1.4.1 忘記密碼 / 1.5.1 重設密碼 各 state
+</div>
+
+**Key decisions to write up:**
+
+- 為什麼分「訪客模式」?
+- 為什麼「無法使用功能」用 popup 而不是 inline disable?
+- 為什麼分「立即驗證」跟「未收到驗證碼」兩個 state?
+
+### Sub-flow 5.2 — 賺點任務 (5 種任務類型)
+
+<div className="placeholder-card">
+  <strong>TODO · 4.1 / 4.2 / 4.3 / 4.4 / 4.5 任務 flow 圖</strong>
+  有獎問答 / 問卷調查 / 看影片 / 集章任務 / 專屬任務 ── 每種的進入點 / 完成條件 / 領點時機
+</div>
+
+### Sub-flow 5.3 — 縣政消息訂閱
+
+<div className="placeholder-card">
+  <strong>TODO · 3.0.1 / 3.0.2 / 3.0.3 / 3.0.4 flow 圖</strong>
+  我的訂閱 / 訂閱設定 / 縣政消息 / 公告詳情 ── 訂閱主題分類 (觀光、交通、原民資訊等)
+</div>
+
+## Iteration
+
+<div className="placeholder-card">
+  <strong>TODO · Lo-fi → Mid-fi → Hi-fi 演進</strong>
+  2-3 個關鍵畫面的演進過程,1-2 個 before/after 設計決策。例:首頁 Banner ratio 從 1:1 改 16:9 的 reason。
+</div>
+
+## Solution
+
+<div className="placeholder-card">
+  <strong>TODO · 3-5 個 hero screen + 1-2 個 micro-interaction GIF + design system token snapshot</strong>
+  這是整個 case study 唯一放完成 UI 的地方,占約 30% 篇幅。前面所有章節都在拆解過程,這裡才呈現結果。
+</div>
+
+## Impact
+
+<div className="placeholder-card">
+  <strong>TODO · Quantitative + Qualitative outcomes</strong>
+
+  - 量化: DAU / 註冊率 / 任務完成率 / 留存
+  - 質化: stakeholder quote, user feedback
+  - 反思: What I'd do differently next time
+</div>
