@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design System v2 — Henry Chen Portfolio (Friendly System)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Backgrounds & text (kept from v1) */
+  --bg:           #FAFAF7;
+  --surface:      #FFFFFF;
+  --border:       #E8E5DE;
+  --border-soft:  #F0EDE6;
+  --text:         #0B0B0A;
+  --text-muted:   #6B665E;
+  --text-subtle:  #9A938A;
+  --accent:       #E04E1F;
+  --accent-soft:  rgba(224, 78, 31, 0.10);
+
+  /* NEW v2: Card palette */
+  --card-mint:    #C5E5D6;
+  --card-peach:   #FFD9C2;
+  --card-butter:  #FFE99A;
+  --card-lavender:#D8D4F0;
+  --card-black:   #0B0B0A;
+  --card-white:   #FFFFFF;
+
+  /* On-dark text */
+  --on-dark:      #F5F2EB;
+
+  --font-display: 'Cabinet Grotesk', -apple-system, sans-serif;
+  --font-body:    'DM Sans', -apple-system, sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, monospace;
+
+  --maxw: 1280px;
+
+  /* v2 radius: more generous */
+  --r-sm:  12px;
+  --r-md:  20px;
+  --r-lg:  28px;
+  --r-xl:  40px;
+  --r-full: 9999px;
+}
+[data-theme="dark"] {
+  --bg:           #0E0D0B;
+  --surface:      #17150F;
+  --border:       #2A2620;
+  --border-soft:  #1F1C17;
+  --text:         #F5F2EB;
+  --text-muted:   #9A938A;
+  --text-subtle:  #6B665E;
+  --accent:       #FF6A3D;
+  --accent-soft:  rgba(255, 106, 61, 0.14);
+  /* Darker pastel cards for dark mode */
+  --card-mint:    #1F3A2C;
+  --card-peach:   #3A241A;
+  --card-butter:  #3A331A;
+  --card-lavender:#26243A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 220ms cubic-bezier(0.16,1,0.3,1), color 220ms;
+}
+
+/* ── Preview-page chrome ──────────────────────── */
+.preview-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.preview-bar h6 {
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.theme-toggle {
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 600;
+  padding: 8px 18px; border-radius: var(--r-full);
+  cursor: pointer;
+  transition: all 200ms;
+}
+.theme-toggle:hover { background: var(--accent); }
+
+.section {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface);
+  padding: 6px 14px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 44px; line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.section-intro {
+  color: var(--text-muted);
+  max-width: 60ch;
+  font-size: 18px;
+  margin-bottom: 56px;
+}
+
+/* ════════════════════════════════════════════════
+   1. REAL HOMEPAGE MOCKUP — v2 friendly modular
+   ════════════════════════════════════════════════ */
+
+.mockup-frame {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+/* Sticky site nav */
+.site-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 40px;
+  background: var(--bg);
+}
+.site-nav .brand {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.site-nav ul {
+  display: flex; gap: 8px; list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  padding: 6px;
+}
+.site-nav a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--r-full);
+  transition: background 180ms, color 180ms;
+}
+.site-nav a:hover { background: var(--card-mint); }
+.site-nav a.active { background: var(--text); color: var(--bg); }
+
+/* Hero */
+.hero {
+  padding: 64px 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+}
+.hero-greeting {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: 24px;
+}
+.hero-greeting .wave {
+  display: inline-block;
+  animation: wave 2.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform-origin: 70% 70%;
+}
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(14deg); }
+  50% { transform: rotate(-4deg); }
+}
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text);
+  max-width: 36ch;
+  margin-bottom: 32px;
+}
+.hero-meta {
+  display: inline-flex; gap: 8px; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  padding: 8px 18px;
+}
+.hero-meta .dot { color: var(--text-subtle); padding: 0 4px; }
+.hero-email {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bg);
+  text-decoration: none;
+  background: var(--accent);
+  padding: 14px 24px;
+  border-radius: var(--r-full);
+  transition: transform 200ms cubic-bezier(0.16,1,0.3,1);
+}
+.hero-email:hover { transform: translateY(-2px); }
+
+/* Featured Case — peach pastel block */
+.featured-section {
+  padding: 24px 40px 56px;
+}
+.featured-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  background: var(--surface);
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+}
+.featured-card {
+  background: var(--card-peach);
+  border-radius: var(--r-xl);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  transition: transform 320ms cubic-bezier(0.16,1,0.3,1);
+}
+.featured-card:hover { transform: translateY(-4px); }
+[data-theme="dark"] .featured-card { color: var(--on-dark); }
+
+.featured-image {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+.featured-content h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 42px; line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+[data-theme="dark"] .featured-content h2 { color: var(--on-dark); }
+.featured-content p {
+  font-size: 17px;
+  line-height: 1.55;
+  margin-bottom: 28px;
+  max-width: 38ch;
+  color: var(--text);
+  opacity: 0.78;
+}
+.chip-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--surface);
+  color: var(--text);
+  padding: 7px 14px;
+  border-radius: var(--r-full);
+  white-space: nowrap;
+}
+.chip.accent {
+  background: var(--text);
+  color: var(--bg);
+}
+[data-theme="dark"] .featured-content p { color: var(--on-dark); opacity: 0.78; }
+
+/* MORE WORK — alternating pastel cards */
+.more-work {
+  padding: 24px 40px 64px;
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.work-card {
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  cursor: pointer;
+  min-height: 280px;
+  transition: transform 280ms cubic-bezier(0.16,1,0.3,1);
+}
+.work-card:hover { transform: translateY(-4px); }
+.work-card.mint   { background: var(--card-mint); }
+.work-card.butter { background: var(--card-butter); }
+.work-card.dark   { background: var(--card-black); color: var(--on-dark); }
+[data-theme="dark"] .work-card.dark { background: var(--surface); }
+
+.work-card .thumb {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.work-card.dark .thumb { background: rgba(255, 255, 255, 0.06); }
+.work-card .thumb.placeholder {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    rgba(0,0,0,0.05) 8px,
+    rgba(0,0,0,0.05) 16px
+  );
+}
+.work-card.dark .thumb.placeholder {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    rgba(255,255,255,0.04) 8px,
+    rgba(255,255,255,0.04) 16px
+  );
+}
+.work-card .thumb-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--r-full);
+}
+.work-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.work-card .desc {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Stats strip (yellow card vibe from ref) */
+.stats-strip {
+  margin: 0 40px 24px;
+  background: var(--card-butter);
+  border-radius: var(--r-xl);
+  padding: 28px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+}
+[data-theme="dark"] .stats-strip { color: var(--on-dark); }
+.stats-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+.stats-text small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 4px;
+  opacity: 0.6;
+}
+[data-theme="dark"] .stats-text { color: var(--on-dark); }
+.stats-pill {
+  background: var(--surface);
+  border-radius: var(--r-full);
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Footer */
+.site-footer {
+  padding: 32px 40px;
+  border-top: 1px solid var(--border-soft);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; margin-left: 20px; }
+.site-footer a:hover { color: var(--accent); }
+
+/* ════════════════════════════════════════════════
+   2. TYPOGRAPHY
+   ════════════════════════════════════════════════ */
+.type-grid { display: grid; gap: 44px; }
+.type-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  align-items: baseline;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.type-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.type-meta b { display: block; color: var(--text); margin-bottom: 4px; font-weight: 600; font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-size: 15px; }
+
+.type-display-72 { font-family: var(--font-display); font-weight: 700; font-size: 72px; line-height: 0.98; letter-spacing: -0.035em; }
+.type-display-56 { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1.0; letter-spacing: -0.025em; }
+.type-h1 { font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1.1; letter-spacing: -0.02em; }
+.type-h2 { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.2; letter-spacing: -0.015em; }
+.type-h3 { font-family: var(--font-body); font-weight: 600; font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; }
+.type-bodyL { font-family: var(--font-body); font-size: 19px; line-height: 1.55; }
+.type-body { font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.type-small { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+.type-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ════════════════════════════════════════════════
+   3. COLOR PALETTE — pastel cards
+   ════════════════════════════════════════════════ */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.swatch {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.swatch-color {
+  aspect-ratio: 1.4;
+  position: relative;
+}
+.swatch-color::after {
+  content: 'Aa';
+  position: absolute;
+  top: 20px; right: 24px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--text);
+  opacity: 0.85;
+}
+.swatch.dark .swatch-color::after { color: var(--on-dark); }
+.swatch-meta {
+  padding: 14px 18px;
+  background: var(--surface);
+}
+.swatch-meta b {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  display: block; margin-bottom: 4px;
+}
+.swatch-meta span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ════════════════════════════════════════════════
+   4. UI COMPONENTS
+   ════════════════════════════════════════════════ */
+.component-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.component-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px;
+}
+.component-block h4 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 600;
+  padding: 12px 22px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 200ms;
+}
+.btn:hover { border-color: var(--text); }
+.btn.primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.btn.primary:hover { transform: translateY(-2px); }
+.btn.accent {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+.btn.accent:hover { transform: translateY(-2px); }
+.btn.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+}
+.btn.ghost:hover { color: var(--text); background: var(--card-mint); }
+
+.input-row { display: flex; flex-direction: column; gap: 12px; }
+.input-row label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.input-row input {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 200ms;
+}
+.input-row input:focus { outline: none; border-color: var(--accent); }
+
+.chip-demo { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ════════════════════════════════════════════════
+   SVG flow (used inside featured-image)
+   ════════════════════════════════════════════════ */
+.flow-svg { width: 100%; height: 100%; display: block; }
+.flow-svg .node-fill { fill: var(--surface); }
+.flow-svg .arrow { stroke: var(--accent); stroke-width: 1.4; fill: none; }
+.flow-svg .arrow-tip { fill: var(--accent); }
+.flow-svg .label-text {
+  font-family: 'Geist Mono', monospace;
+  font-size: 8px;
+  fill: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.flow-svg .screen-fill { fill: #FAFAF7; }
+.flow-svg .screen-line { stroke: var(--text-muted); stroke-width: 0.5; opacity: 0.4; }
+.flow-svg .popup-stroke { stroke: #0B0B0A; stroke-width: 1; fill: var(--card-butter); }
+.flow-svg .id-text {
+  font-family: 'Geist Mono', monospace;
+  font-size: 6px;
+  fill: #6B665E;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .featured-card { grid-template-columns: 1fr; padding: 32px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .component-grid { grid-template-columns: 1fr; }
+  .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-greeting { font-size: 54px; }
+  .type-row { grid-template-columns: 1fr; }
+  .type-display-72 { font-size: 56px; }
+  .type-display-56 { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ PREVIEW TOP BAR ════════ -->
+<div class="preview-bar">
+  <h6>Design System v2 · Friendly System · Henry Chen Portfolio</h6>
+  <button class="theme-toggle" id="themeToggle">Toggle dark</button>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     SECTION 1: ACTUAL HOMEPAGE MOCKUP — v2
+     ════════════════════════════════════════════════════ -->
+<div class="section">
+  <p class="section-label">§1 · Homepage mockup · friendly modular</p>
+  <h2 class="section-title">Same wireframe, friendlier voice</h2>
+  <p class="section-intro">WIREFRAME.md 結構不變 ── Hero / Featured / More Work 仍然按原本 IA。差別在視覺語言:emoji 招呼語、Cabinet Grotesk bold display、大圓角 pastel 色塊。Featured Case 縮圖仍然故意露 flow diagram,不露 UI hero shot (P1 守住)。</p>
+
+  <div class="mockup-frame">
+    <!-- Site nav -->
+    <nav class="site-nav">
+      <div class="brand">henry.</div>
+      <ul>
+        <li><a href="#" class="active">Work</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Email</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-greeting">Hi,<br>I&rsquo;m Henry.</h1>
+        <p class="hero-tagline">Product Designer building UX systems for civic tech &amp; B2B portals.</p>
+        <div class="hero-meta">
+          <span>8 YRS</span>
+          <span class="dot">·</span>
+          <span>B2B Portals</span>
+          <span class="dot">·</span>
+          <span>Civic Tech</span>
+        </div>
+      </div>
+      <a href="#" class="hero-email">Email me <span>→</span></a>
+    </section>
+
+    <!-- Featured Case -->
+    <section class="featured-section">
+      <span class="featured-label">Featured · 旗艦案</span>
+      <div class="featured-card">
+        <!-- Featured image: SVG flow diagram crop -->
+        <div class="featured-image">
+          <svg viewBox="0 0 480 330" class="flow-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <!-- Decision diamond at top -->
+            <polygon points="240,30 290,60 240,90 190,60" fill="#FAFAF7" stroke="#0B0B0A" stroke-width="1.2" />
+            <text x="240" y="64" text-anchor="middle" class="id-text">是否登入?</text>
+
+            <path d="M 215 80 Q 160 110 130 130" class="arrow" />
+            <polygon points="125,125 130,135 137,128" class="arrow-tip" />
+            <text x="148" y="108" class="label-text">否</text>
+
+            <path d="M 265 80 Q 320 110 350 130" class="arrow" />
+            <polygon points="354,127 351,138 343,131" class="arrow-tip" />
+            <text x="320" y="108" class="label-text">是</text>
+
+            <!-- Left screen (login) -->
+            <rect x="90" y="130" width="80" height="160" rx="10" class="screen-fill" stroke="#0B0B0A" stroke-width="1.2" />
+            <line x1="100" y1="145" x2="160" y2="145" class="screen-line" />
+            <rect x="100" y="155" width="60" height="14" rx="3" class="screen-line" fill="none" stroke="#9A938A" stroke-width="0.5" />
+            <rect x="100" y="175" width="60" height="14" rx="3" class="screen-line" fill="none" stroke="#9A938A" stroke-width="0.5" />
+            <rect x="100" y="200" width="60" height="18" rx="9" fill="#0B0B0A" />
+            <line x1="100" y1="240" x2="160" y2="240" class="screen-line" />
+            <line x1="100" y1="252" x2="140" y2="252" class="screen-line" />
+            <text x="130" y="305" text-anchor="middle" class="id-text">1.1.1</text>
+
+            <!-- Right screen (home) -->
+            <rect x="310" y="130" width="80" height="160" rx="10" class="screen-fill" stroke="#0B0B0A" stroke-width="1.2" />
+            <line x1="320" y1="145" x2="380" y2="145" class="screen-line" />
+            <rect x="320" y="155" width="60" height="20" rx="6" fill="#C5E5D6" />
+            <rect x="320" y="180" width="28" height="28" rx="6" fill="#FFE99A" />
+            <rect x="352" y="180" width="28" height="28" rx="6" fill="#FFD9C2" />
+            <rect x="320" y="215" width="60" height="40" rx="6" fill="#D8D4F0" />
+            <line x1="320" y1="265" x2="380" y2="265" class="screen-line" />
+            <line x1="320" y1="275" x2="365" y2="275" class="screen-line" />
+            <text x="350" y="305" text-anchor="middle" class="id-text">2.0.1</text>
+
+            <!-- Popup off to side -->
+            <path d="M 175 200 L 230 200" class="arrow" stroke-dasharray="3,3" />
+            <polygon points="234,197 234,203 240,200" class="arrow-tip" />
+            <rect x="240" y="170" width="60" height="60" rx="10" class="popup-stroke" />
+            <circle cx="270" cy="186" r="4" stroke="#0B0B0A" stroke-width="1" fill="none" />
+            <line x1="270" y1="184" x2="270" y2="188" stroke="#0B0B0A" stroke-width="1" />
+            <circle cx="270" cy="190" r="0.5" fill="#0B0B0A" />
+            <line x1="248" y1="200" x2="292" y2="200" stroke="#9A938A" stroke-width="0.5" />
+            <line x1="248" y1="208" x2="282" y2="208" stroke="#9A938A" stroke-width="0.5" />
+            <rect x="248" y="217" width="20" height="8" rx="4" fill="none" stroke="#9A938A" stroke-width="0.5" />
+            <rect x="272" y="217" width="20" height="8" rx="4" fill="#0B0B0A" />
+
+            <text x="205" y="195" class="label-text">未登入</text>
+
+            <text x="240" y="320" text-anchor="middle" class="label-text" style="font-size:7px">flow · 1.1 → 2.0 (authentication)</text>
+          </svg>
+        </div>
+        <div class="featured-content">
+          <h2>南投數位生活點數平台</h2>
+          <p>Designing a county-scale rewards platform for 500K+ residents across 7 service modules — registration, points, missions, county news, retailer map, daily wheel, ad-hoc tasks.</p>
+          <div class="chip-row">
+            <span class="chip">Lead UX</span>
+            <span class="chip">4 modules</span>
+            <span class="chip">2024</span>
+            <span class="chip accent">Read case →</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats strip (butter card from reference) -->
+    <div class="stats-strip">
+      <div class="stats-text">
+        Currently exploring research depth on civic tech UX.
+        <small>Open to new collaborations · Reply in &lt; 24h</small>
+      </div>
+      <a href="#" class="stats-pill">View resume ↗</a>
+    </div>
+
+    <!-- More work -->
+    <section class="more-work">
+      <span class="featured-label">More work</span>
+      <div class="work-grid">
+        <div class="work-card mint">
+          <div class="thumb placeholder"><span class="thumb-pill">Coming soon</span></div>
+          <h3>Case 02 — title TBD</h3>
+          <p class="desc">B2B portal redesign · domain TBD</p>
+        </div>
+        <div class="work-card butter">
+          <div class="thumb placeholder"><span class="thumb-pill">Coming soon</span></div>
+          <h3>Case 03 — title TBD</h3>
+          <p class="desc">Mobile UX system · domain TBD</p>
+        </div>
+        <div class="work-card dark">
+          <div class="thumb placeholder"><span class="thumb-pill">Explorations</span></div>
+          <h3>Side projects</h3>
+          <p class="desc">Daily UI · personal experiments</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 Henry Chen</span>
+      <span>
+        <a href="#">Email</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Resume</a>
+      </span>
+    </footer>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     SECTION 2: TYPOGRAPHY
+     ════════════════════════════════════════════════════ -->
+<div class="section">
+  <p class="section-label">§2 · Typography</p>
+  <h2 class="section-title">Cabinet Grotesk × DM Sans × Geist Mono</h2>
+  <p class="section-intro">Cabinet Grotesk Bold 給 hero 充足 personality;DM Sans 圓潤 body;Geist Mono 給 meta chip 一點結構感。三套字體都不在 overused list(no Inter / Roboto / Poppins / Space Grotesk)。</p>
+
+  <div class="type-grid">
+    <div class="type-row">
+      <div class="type-meta"><b>Display 72</b>Cabinet Grotesk · 700</div>
+      <div class="type-display-72">Hi 👋 I&rsquo;m Henry.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Display 56</b>Cabinet Grotesk · 700</div>
+      <div class="type-display-56">南投數位生活點數平台</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>H1 · 38</b>Cabinet Grotesk · 700</div>
+      <div class="type-h1">Designing a county-scale rewards system</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>H2 · 28</b>Cabinet Grotesk · 500</div>
+      <div class="type-h2">Information Architecture &amp; Flow</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>H3 · 22</b>DM Sans · 600</div>
+      <div class="type-h3">Why this matters</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Body L · 19</b>DM Sans · 400</div>
+      <div class="type-bodyL">為 500,000 名南投居民設計整合 7 個服務模組的縣級數位點數平台,涵蓋註冊、領點、用點、縣政訊息訂閱、商家地圖、輪盤、任務系統。</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Body · 17</b>DM Sans · 400</div>
+      <div class="type-body">Numbering convention <code style="font-family:var(--font-mono); font-size:0.92em">X.Y.Z</code> 讓 PM、工程、設計三方可以無歧義 reference 任何畫面 — Module.SubFlow.State。1.2.5 = 帳號模組 · 註冊子流程 · 驗證碼錯誤 state。減少 spec 釐清會議約 40%。</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Small · 14</b>DM Sans · 400</div>
+      <div class="type-small">受訪者 N=12,涵蓋鄉鎮使用者、商家、縣府承辦員。訪談時長 45-60 分鐘,半結構化。</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><b>Caption · 12</b>Geist Mono · 400</div>
+      <div class="type-caption">Role · Timeline · Team · Stage</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     SECTION 3: COLOR
+     ════════════════════════════════════════════════════ -->
+<div class="section">
+  <p class="section-label">§3 · Color</p>
+  <h2 class="section-title">Warm neutrals + pastel cards + sparse orange</h2>
+  <p class="section-intro">Backgrounds + text 保持 v1 (warm white / warm black / sparse orange accent)。新增 pastel card 色票讓 Featured / More Work / Stats strip 有人味。橘色 accent 仍然用得少 ── CTA + hover only。</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FAFAF7"></div>
+      <div class="swatch-meta"><b>Background</b><span>#FAFAF7 · warm white</span></div>
+    </div>
+    <div class="swatch dark">
+      <div class="swatch-color" style="background:#0B0B0A"></div>
+      <div class="swatch-meta"><b>Text primary</b><span>#0B0B0A · warm black</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E04E1F"></div>
+      <div class="swatch-meta"><b>Accent</b><span>#E04E1F · warm orange</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FFFFFF; border-bottom:1px solid #E8E5DE"></div>
+      <div class="swatch-meta"><b>Surface</b><span>#FFFFFF</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C5E5D6"></div>
+      <div class="swatch-meta"><b>Card · Mint</b><span>#C5E5D6 · 沉著</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FFD9C2"></div>
+      <div class="swatch-meta"><b>Card · Peach</b><span>#FFD9C2 · 溫暖</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FFE99A"></div>
+      <div class="swatch-meta"><b>Card · Butter</b><span>#FFE99A · 鮮明</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#D8D4F0"></div>
+      <div class="swatch-meta"><b>Card · Lavender</b><span>#D8D4F0 · optional</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     SECTION 4: COMPONENTS
+     ════════════════════════════════════════════════════ -->
+<div class="section">
+  <p class="section-label">§4 · Components</p>
+  <h2 class="section-title">Pills, cards, inputs</h2>
+  <p class="section-intro">Border-radius 全面放大 ── button / chip / input 都走 pill 或 large radius。仍然 no bubble feel(image / case thumbnail 用 20px,不是 40px)。</p>
+
+  <div class="component-grid">
+    <div class="component-block">
+      <h4>Buttons (pill shape)</h4>
+      <div class="btn-row">
+        <button class="btn primary">View case study →</button>
+        <button class="btn">Read more</button>
+        <button class="btn ghost">Cancel</button>
+        <button class="btn accent">Email me →</button>
+      </div>
+    </div>
+    <div class="component-block">
+      <h4>Chips (mono · uppercase)</h4>
+      <div class="chip-demo">
+        <span class="chip">Lead UX</span>
+        <span class="chip">2024</span>
+        <span class="chip">B2B Portal</span>
+        <span class="chip accent">Featured</span>
+        <span class="chip">4 modules</span>
+        <span class="chip">Shipped</span>
+      </div>
+    </div>
+    <div class="component-block">
+      <h4>Form input</h4>
+      <div class="input-row">
+        <label for="i1">Email</label>
+        <input id="i1" type="email" placeholder="hi@henry.design" />
+      </div>
+    </div>
+    <div class="component-block">
+      <h4>Link styles</h4>
+      <p style="font-size:15px">
+        Inline reference like <a href="#" style="color:var(--text); text-decoration:underline; text-decoration-color:var(--border); text-underline-offset:3px">subtle underline</a> for body,<a href="#" style="color:var(--accent); border-bottom:1px solid currentColor; text-decoration:none; padding-bottom:1px; margin-left: 4px">accent orange</a> for primary CTAs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="section" style="border-bottom:none">
+  <p class="section-label">End of preview</p>
+  <h2 class="section-title">Next: /design-html</h2>
+  <p class="section-intro">DESIGN.md 跟 CLAUDE.md 將更新到 v2。WIREFRAME.md 不變(IA 不變,只是視覺語言換了)。接 /design-html 把這套設計系統落地成可跑的 site。</p>
+</div>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  toggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    if (current === 'dark') {
+      root.removeAttribute('data-theme');
+      toggle.textContent = 'Toggle dark';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      toggle.textContent = 'Toggle light';
+    }
+  });
+</script>
+
+</body>
+</html>
