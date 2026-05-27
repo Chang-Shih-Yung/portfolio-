@@ -2,39 +2,61 @@
 
 import { useEffect, useState } from 'react'
 
+// Case Study 5 章節核心模板 (2026-05-26: 從 8 章節精簡至 5,Context/Iteration/Impact 移除)
+// tag 不用 §符號 (silcrow 對中文讀者陌生),只用純數字
 const sections = [
-  { id: 'overview', label: 'Overview', tag: '§1' },
-  { id: 'context', label: 'Context', tag: '§2' },
-  { id: 'discovery', label: 'Discovery', tag: '§3' },
-  { id: 'ia', label: 'IA', tag: '§4' },
-  { id: 'flow', label: 'Flow', tag: '§5' },
-  { id: 'iteration', label: 'Iteration', tag: '§6' },
-  { id: 'solution', label: 'Solution', tag: '§7' },
-  { id: 'impact', label: 'Impact', tag: '§8' },
+  { id: 'overview', label: 'Overview', tag: '1' },
+  { id: 'discovery', label: 'Discovery', tag: '2' },
+  { id: 'ia', label: 'IA', tag: '3' },
+  { id: 'flow', label: 'Flow', tag: '4' },
+  { id: 'solution', label: 'Solution', tag: '5' },
 ]
 
+/**
+ * Scroll-driven active section detection.
+ *
+ * Why not IntersectionObserver:
+ * - Short sections (e.g. Discovery with only 6 insights) can fall below the
+ *   observer's effective detection window, causing the active state to skip.
+ * - Scroll-driven logic picks "the last heading whose top is above the
+ *   active line", which is stable regardless of section height.
+ *
+ * The active line = viewport top + offset (matches sticky SiteNav height + buffer).
+ */
 export default function CaseStudySideNav() {
   const [active, setActive] = useState<string | null>(null)
 
   useEffect(() => {
     const headings = sections
-      .map((s) => document.getElementById(s.id))
-      .filter((el): el is HTMLElement => el !== null)
+      .map((s) => ({ id: s.id, el: document.getElementById(s.id) }))
+      .filter((h): h is { id: string; el: HTMLElement } => h.el !== null)
 
     if (headings.length === 0) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]) setActive(visible[0].target.id)
-      },
-      { rootMargin: '-100px 0px -60% 0px', threshold: 0 }
-    )
+    let frame = 0
+    const update = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        // active line = top of viewport + offset (site-nav height + visual buffer)
+        const offset = 160
+        let current = headings[0].id
+        for (const h of headings) {
+          const top = h.el.getBoundingClientRect().top
+          if (top <= offset) current = h.id
+          else break
+        }
+        setActive(current)
+      })
+    }
 
-    for (const h of headings) observer.observe(h)
-    return () => observer.disconnect()
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [])
 
   return (
@@ -56,7 +78,7 @@ export default function CaseStudySideNav() {
       </nav>
 
       <style>{`
-        .case-sidenav { position: sticky; top: 88px; align-self: start; height: fit-content; }
+        .case-sidenav { position: sticky; top: calc(var(--site-nav-h) + 12px); align-self: start; height: fit-content; }
         .case-sidenav ul { display: flex; flex-direction: column; gap: 4px; }
         .sidenav-link {
           display: flex;

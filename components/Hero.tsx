@@ -3,10 +3,10 @@ export default function Hero() {
     <section className="hero">
       <div>
         <h1 className="display-xl hero-greeting">
-          Hi,<br />I&rsquo;m Henry.
+          嗨,<br />我是 Henry。
         </h1>
         <p className="hero-tagline">
-          Product Designer building UX systems for civic tech &amp; B2B portals.
+          產品設計師 · 為公共服務與 B2B 平台打造可規模化的 UX 系統。
         </p>
         <div className="hero-meta">
           <span>8 YRS</span>
@@ -16,8 +16,8 @@ export default function Hero() {
           <span>Civic Tech</span>
         </div>
       </div>
-      <a href="mailto:hi@henry.design" className="hero-email">
-        Email me <span aria-hidden>→</span>
+      <a href="/skills" className="hero-cta">
+        看我的技能 <span aria-hidden>→</span>
       </a>
 
       <style>{`
@@ -50,7 +50,7 @@ export default function Hero() {
           padding: 8px 18px;
         }
         .hero-meta .dot { color: var(--text-subtle); padding: 0 4px; }
-        .hero-email {
+        .hero-cta {
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -63,7 +63,7 @@ export default function Hero() {
           transition: transform 200ms var(--ease-out);
           white-space: nowrap;
         }
-        .hero-email:hover { transform: translateY(-2px); }
+        .hero-cta:hover { transform: translateY(-2px); }
         @media (max-width: 768px) {
           .hero { grid-template-columns: 1fr; padding: 48px 0 40px; }
           .hero-tagline { font-size: 19px; }

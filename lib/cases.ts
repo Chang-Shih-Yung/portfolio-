@@ -14,6 +14,8 @@ export interface CaseMeta {
   domain: string
   year: number
   cardColor: 'mint' | 'peach' | 'butter' | 'lavender' | 'dark'
+  /** Hero cover image (public path), shown between hero meta and case body */
+  cover?: string
 }
 
 export interface CaseRecord extends CaseMeta {
@@ -30,23 +32,13 @@ export interface CaseRecord extends CaseMeta {
 
 const cases: CaseRecord[] = [
   {
-    ...(nantouMeta as CaseMeta),
+    ...(nantouMeta as unknown as CaseMeta),
     Content: NantouContent,
   },
 ]
 
 export function getAllCases(): CaseRecord[] {
   return [...cases].sort((a, b) => a.order - b.order)
-}
-
-export function getFeaturedCase(): CaseRecord | undefined {
-  return cases.find((c) => c.featured)
-}
-
-export function getMoreCases(): CaseRecord[] {
-  return cases
-    .filter((c) => !c.featured)
-    .sort((a, b) => a.order - b.order)
 }
 
 export function getCase(slug: string): CaseRecord | undefined {

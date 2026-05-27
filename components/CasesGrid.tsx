@@ -19,9 +19,10 @@ const placeholderColors: Array<NonNullable<CaseRecord['cardColor']>> = [
 
 /**
  * Unified bento grid ── 所有 case 共處一個 grid。
- * 旗艦(featured: true)自動放第一格,大占 col-span 8 / row-span 2。
+ * 旗艦 (featured: true) 自動放第一格,大占 col-span 8 / row-span 2。
  * 其他 cases 各占 col-span 4。
  * 視覺 hierarchy 全由「尺寸」做,沒有 "Featured / More Work" 標題分區。
+ * Placeholder cards 補滿到 6 格,給「未來會擴充」的視覺暗示。
  */
 export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
   // 旗艦永遠排第一,其他按 order asc
@@ -66,7 +67,7 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
                 <div className="chip-row">
                   <span className="chip">{c.role}</span>
                   <span className="chip">{c.year}</span>
-                  <span className="chip chip-accent">Read case →</span>
+                  <span className="chip chip-accent">閱讀案例 →</span>
                 </div>
               )}
             </div>
@@ -85,11 +86,11 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
             aria-hidden
           >
             <div className="thumb placeholder-thumb">
-              <span className="thumb-pill">Coming soon</span>
+              <span className="thumb-pill">案例準備中</span>
             </div>
             <div className="card-content">
-              <h2 className="card-title">Case — title TBD</h2>
-              <p className="card-subtitle">One-line context appears here.</p>
+              <h2 className="card-title">案例 — 標題待補</h2>
+              <p className="card-subtitle">案例描述一行字將顯示於此。</p>
             </div>
           </div>
         )

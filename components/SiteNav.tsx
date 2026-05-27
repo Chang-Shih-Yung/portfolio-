@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 import ThemeToggle from './ThemeToggle'
 
 const links = [
-  { href: '/', label: 'Work' },
-  { href: '/about', label: 'About' },
-  { href: 'mailto:hi@henry.design', label: 'Email', external: true },
+  { href: '/', label: '作品' },
+  { href: '/about', label: '關於' },
+  { href: '/skills', label: '技能' },
 ]
 
 export default function SiteNav() {
@@ -24,22 +24,16 @@ export default function SiteNav() {
         <Link href="/" className="brand">henry.</Link>
 
         <ul className="nav-pill">
-          {links.map((link) =>
-            link.external ? (
-              <li key={link.href}>
-                <a href={link.href} className="nav-link">{link.label}</a>
-              </li>
-            ) : (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`nav-link${isActive(link.href) ? ' active' : ''}`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            )
-          )}
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`nav-link${isActive(link.href) ? ' active' : ''}`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
           <li><ThemeToggle /></li>
         </ul>
       </div>
@@ -58,8 +52,9 @@ export default function SiteNav() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-top: 16px;
-          padding-bottom: 16px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          min-height: var(--site-nav-h);
         }
         .brand {
           font-family: var(--font-display);

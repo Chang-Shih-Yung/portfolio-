@@ -4,7 +4,7 @@ export default function SiteFooter() {
       <div className="container site-footer-inner">
         <span>© 2026 Henry Chen</span>
         <span className="site-footer-links">
-          <a href="mailto:hi@henry.design">Email</a>
+          <a href="/colophon">Colophon</a>
           <a href="#">LinkedIn</a>
           <a href="#">Resume</a>
         </span>

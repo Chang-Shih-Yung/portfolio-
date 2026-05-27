@@ -12,7 +12,7 @@ export default function CaseStudyLayout({
   return (
     <div className="case-study">
       <div className="case-back container">
-        <Link href="/" className="case-back-link">← Back to home</Link>
+        <Link href="/" className="case-back-link">← 返回首頁</Link>
       </div>
 
       <header className="case-hero container">
@@ -21,12 +21,19 @@ export default function CaseStudyLayout({
         <p className="case-subtitle">{meta.subtitle}</p>
 
         <dl className="case-meta">
-          <div><dt>Role</dt><dd>{meta.role}</dd></div>
-          <div><dt>Team</dt><dd>{meta.team}</dd></div>
-          <div><dt>Timeline</dt><dd>{meta.timeline}</dd></div>
-          <div><dt>Stage</dt><dd>{meta.stage}</dd></div>
+          <div><dt>角色</dt><dd>{meta.role}</dd></div>
+          <div><dt>團隊</dt><dd>{meta.team}</dd></div>
+          <div><dt>期程</dt><dd>{meta.timeline}</dd></div>
+          <div><dt>階段</dt><dd>{meta.stage}</dd></div>
         </dl>
       </header>
+
+      {meta.cover && (
+        <div className="case-cover container">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={meta.cover} alt={`${meta.title} — cover`} />
+        </div>
+      )}
 
       <div className="case-body container">
         <CaseStudySideNav />
@@ -36,11 +43,11 @@ export default function CaseStudyLayout({
       </div>
 
       <div className="case-next container">
-        <p className="case-next-label">Next</p>
-        <p className="case-next-title">More cases coming soon.</p>
+        <p className="case-next-label">下一步</p>
+        <p className="case-next-title">更多案例陸續上架中。</p>
         <div className="case-next-cta">
-          <a href="mailto:hi@henry.design" className="cta-accent">Email me →</a>
-          <Link href="/" className="cta-secondary">View all work</Link>
+          <Link href="/skills" className="cta-accent">看我的技能 →</Link>
+          <Link href="/" className="cta-secondary">查看所有作品</Link>
         </div>
       </div>
 
@@ -57,7 +64,7 @@ export default function CaseStudyLayout({
         }
         .case-back-link:hover { color: var(--text); }
 
-        .case-hero { padding-top: 32px; padding-bottom: 56px; }
+        .case-hero { padding-top: 32px; padding-bottom: 40px; }
         .case-title { margin: 16px 0 24px; }
         .case-subtitle {
           font-size: 22px;
@@ -84,6 +91,19 @@ export default function CaseStudyLayout({
           color: var(--text-muted);
         }
         .case-meta dd { font-size: 15px; font-weight: 500; }
+
+        .case-cover {
+          padding-top: 32px;
+          padding-bottom: 16px;
+        }
+        .case-cover img {
+          width: 100%;
+          height: auto;
+          display: block;
+          border-radius: var(--r-xl);
+          border: 1px solid var(--border);
+          background: var(--surface);
+        }
 
         .case-body {
           display: grid;
@@ -135,6 +155,8 @@ export default function CaseStudyLayout({
         @media (max-width: 900px) {
           .case-meta { grid-template-columns: repeat(2, 1fr); }
           .case-body { grid-template-columns: 1fr; gap: 32px; }
+          .case-cover { padding-top: 24px; }
+          .case-cover img { border-radius: var(--r-lg); }
         }
       `}</style>
     </div>

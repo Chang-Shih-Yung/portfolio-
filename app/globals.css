@@ -57,6 +57,14 @@
   --dur-long:    480ms;
 
   --maxw: 1280px;
+
+  /* Layout chrome — referenced by sticky elements to avoid overlap with SiteNav */
+  --site-nav-h: 64px;
+  --sticky-offset: calc(var(--site-nav-h) + 4px);
+}
+
+@media (max-width: 768px) {
+  :root { --site-nav-h: 60px; }
 }
 
 [data-theme="dark"] {
@@ -271,6 +279,117 @@ main { min-height: 100vh; }
   border: none;
   border-top: 1px solid var(--border-soft);
   margin: var(--space-2xl) 0;
+}
+
+/* Tables inside MDX */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.prose thead { background: color-mix(in srgb, var(--border-soft) 60%, var(--surface)); }
+.prose th,
+.prose td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  line-height: 1.55;
+}
+.prose th {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.prose tbody tr:last-child td { border-bottom: none; }
+.prose tbody tr:hover { background: color-mix(in srgb, var(--border-soft) 30%, transparent); }
+
+/* Context grid — used in case study §2 Context, sections separated by hairlines */
+.prose .context-grid {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+.prose .context-card {
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid var(--border-soft);
+}
+.prose .context-card:last-child { border-bottom: none; }
+.prose .context-card > h3:first-child,
+.prose .context-card > h2:first-child {
+  margin-top: 0;
+}
+.prose .context-card > :last-child { margin-bottom: 0; }
+.prose .context-card table {
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+  border-radius: var(--r-sm);
+}
+@media (max-width: 768px) {
+  .prose .context-card { padding: var(--space-md) var(--space-lg); }
+}
+
+/* Insight cards — used in case study §Discovery,structured key insights */
+.prose .insights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: var(--space-lg) 0;
+}
+.prose .insight {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.prose .insight:hover { border-color: var(--text); transform: translateY(-2px); }
+.prose .insight-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  padding-top: 4px;
+}
+.prose .insight-body { min-width: 0; }
+.prose .insight-body h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  margin: 0 0 var(--space-xs);
+  color: var(--text);
+}
+.prose .insight-body p {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: none;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .prose .insight {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+  }
+  .prose .insight-num { padding-top: 0; }
 }
 
 /* Placeholder cards inside MDX */
