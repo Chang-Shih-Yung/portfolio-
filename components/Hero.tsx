@@ -3,10 +3,10 @@ export default function Hero() {
     <section className="hero">
       <div>
         <h1 className="display-xl hero-greeting">
-          嗨,<br />我是 Henry。
+          嗨,<br />我是 Giselle。
         </h1>
         <p className="hero-tagline">
-          產品設計師 · 為公共服務與 B2B 平台打造可規模化的 UX 系統。
+          APP UI/UX 設計師 · 為公共服務與 B2B 平台打造可規模化的 UX 系統。
         </p>
         <div className="hero-meta">
           <span>8 YRS</span>

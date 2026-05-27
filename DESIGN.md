@@ -1,4 +1,4 @@
-# Design System — Henry Chen Portfolio
+# Design System — Giselle Lai Portfolio
 
 > Source of truth for all visual decisions on this site.
 > Created by `/design-consultation` · 2026-05-25
@@ -8,7 +8,7 @@
 
 ## Product Context
 
-- **What this is:** Henry Chen 的個人作品集網站 (UX-led)
+- **What this is:** Giselle Lai 的個人作品集網站 (UX-led)
 - **Who it's for:** Hiring Manager / Recruiter (求職市場)
 - **Space/industry:** UI/UX Design · Product Design · Civic Tech · B2B SaaS
 - **Project type:** Personal portfolio (multi-page · single-page-scroll homepage · dedicated case study pages)
@@ -312,7 +312,7 @@ Radius: pill
 | 2026-05-25 | DM Sans 取代 Geist | DM Sans 更圓潤,跟 friendly vibe 一致。Geist Mono 仍 keep 做 meta。 |
 | 2026-05-25 | 加 pastel card palette (mint / peach / butter / lavender) | Reference 圖核心特徵是色塊化 modular cards。pastel 帶人味但仍中性,不會跟 case study 截圖打架。 |
 | 2026-05-25 | Border radius 全面放大 (4→12 / 8→20 / 12→28 / +40 / +pill) | Friendly signal。Image inside card 仍小一級,維持層次。 |
-| 2026-05-25 | Hero greeting "Hi, I'm Henry." 取代 formal name | Approachable signal,跟 memorable thing v2 "human enough to work with" 一致。**No emoji** (見下一行)。 |
+| 2026-05-25 | Hero greeting "Hi, I'm Giselle." 取代 formal name | Approachable signal,跟 memorable thing v2 "human enough to work with" 一致。**No emoji** (見下一行)。 |
 | 2026-05-25 | **整個 design system 移除 emoji** | User explicit 決定 — Y2K vibe 對 senior product designer 是扣分項。Friendly signal 已由 pastel cards + 大圓角 + DM Sans 圓潤字體 carry,emoji 多餘。 |
 | 2026-05-25 | Memorable thing 加 "human enough to work with" | 從 lone editorial thinker → approachable system designer,對應 civic tech / B2B portal domain 更貼。 |
 | 2026-05-25 | 仍保留 warm orange `#E04E1F` accent | 仍是 differentiator vs 藍/紫 majority。但 v2 用得更克制(避免跟 peach 打架)。 |

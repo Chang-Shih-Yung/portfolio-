@@ -1,8 +1,8 @@
-# Henry Chen Portfolio — Project Instructions
+# Giselle Lai Portfolio — Project Instructions
 
 ## Project context
 
-這是 Henry Chen 的個人作品集網站 (UI/UX 設計師,著重 UX + Product)。
+這是 Giselle Lai 的個人作品集網站 (UI/UX 設計師,著重 UX + Product)。
 
 - **目標受眾:** Hiring Manager / 求職市場
 - **旗艦案:** 南投數位生活點數平台 (`/work/nantou-points`)
@@ -72,7 +72,7 @@ When the user's request matches an available skill, invoke it via the Skill tool
 - 全部 card 用同一 radius (image inside card 要比 outer 小一級)
 - Pastel + orange 同時大面積出現 (orange 仍要 sparse)
 - 用 parallax / scroll-jacking / decorative blob animation
-- "Hi, I'm [name], passionate designer..." 開頭的 essay hero (我們用「Hi, I'm Henry.」短招呼)
+- "Hi, I'm [name], passionate designer..." 開頭的 essay hero (我們用「Hi, I'm Giselle.」短招呼)
 - 3-column feature grid with icons in colored circles
 - 3D illustrated mascots / 卡通 hero
 - Featured Case 縮圖放漂亮 UI hero shot (**必須露 flow / IA / system map**)

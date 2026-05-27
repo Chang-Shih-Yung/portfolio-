@@ -8,7 +8,7 @@ import {
 } from '@/components/DesignTokens'
 
 export const metadata: Metadata = {
-  title: 'Colophon · 裝幀說明 — Henry Chen',
+  title: 'Colophon · 裝幀說明 — Giselle Lai',
   description: '這個 portfolio 的設計筆記、UI system、token 視覺化。',
 }
 

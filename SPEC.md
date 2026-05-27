@@ -1,4 +1,4 @@
-# Spec — Henry Chen Portfolio
+# Spec — Giselle Lai Portfolio
 
 > The governance layer. 把 DESIGN.md (視覺) + WIREFRAME.md (IA) 串成一個系統,定下開發模式跟內容架構的不可違反規則。
 > 任何貢獻者 (人或 agent) 開工前讀完這份 + DESIGN.md + WIREFRAME.md = ready。

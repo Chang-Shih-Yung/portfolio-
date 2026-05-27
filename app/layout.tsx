@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Henry Chen — Product Designer',
-  description: 'Product Designer building UX systems for civic tech and B2B portals.',
+  title: 'Giselle Lai — APP UI/UX Designer',
+  description: 'APP UI/UX Designer building UX systems for civic tech and B2B portals.',
 }
 
 const themeInitScript = `

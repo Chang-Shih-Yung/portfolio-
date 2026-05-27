@@ -16,7 +16,7 @@ export async function generateMetadata({
   const c = getCase(slug)
   if (!c) return {}
   return {
-    title: `${c.title} — Henry Chen`,
+    title: `${c.title} — Giselle Lai`,
     description: c.subtitle,
   }
 }

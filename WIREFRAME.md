@@ -1,4 +1,4 @@
-# Wireframe v1.0 — Henry Chen Portfolio
+# Wireframe v1.0 — Giselle Lai Portfolio
 
 > Site structure, IA, user flow, page anatomy.
 > Created via `/product-management:brainstorm` discussion · 2026-05-25
@@ -139,12 +139,12 @@
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
-║  [Henry 左]                              [Work][About][Email]║  ← Nav · sticky
+║  [Giselle 左]                              [Work][About][Email]║  ← Nav · sticky
 ║                                                              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                              ║
-║   Henry Chen                                                 ║  ← Display 72 (Fraunces)
-║   Product Designer focused on UX systems & flows.            ║  ← Body L 19 (Geist)
+║   Giselle Lai                                                 ║  ← Display 72 (Fraunces)
+║   APP UI/UX Designer focused on UX systems & flows.            ║  ← Body L 19 (Geist)
 ║                                                              ║
 ║   8 YRS · B2B PORTALS · CIVIC TECH              [Email →]    ║  ← Caption (Geist Mono)
 ║                                                              ║
@@ -175,7 +175,7 @@
 ║                                                              ║
 ╠══════════════════════════════════════════════════════════════╣
 ║   Footer                                                     ║
-║   © 2026 Henry Chen          Email · LinkedIn · Resume       ║
+║   © 2026 Giselle Lai          Email · LinkedIn · Resume       ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 

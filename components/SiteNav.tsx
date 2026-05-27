@@ -21,7 +21,7 @@ export default function SiteNav() {
   return (
     <nav className="site-nav-wrapper">
       <div className="site-nav container">
-        <Link href="/" className="brand">henry.</Link>
+        <Link href="/" className="brand">giselle.</Link>
 
         <ul className="nav-pill">
           {links.map((link) => (

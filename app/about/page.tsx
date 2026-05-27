@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '關於 — Henry Chen',
-  description: '產品設計師,專注於 UX 系統與資訊架構。',
+  title: '關於 — Giselle Lai',
+  description: 'APP UI/UX 設計師,專注於 UX 系統與資訊架構。',
 }
 
 // ─── Stats (overview snapshot) ─────────────────────────────
@@ -102,7 +102,7 @@ export default function AboutPage() {
 
       <div className="about-body">
         <p>
-          我是 Henry Chen,擁有 8 年產品設計經驗,專注於公共服務與 B2B 平台的 UX 系統建構。
+          我是 Giselle Lai,APP UI/UX 設計師,擁有 8 年產品設計經驗,專注於公共服務與 B2B 平台的 UX 系統建構。
           最近一個案子是主導一個縣級點數平台的設計,服務 50 萬+ 居民、橫跨 7 個服務模組。
         </p>
         <p>

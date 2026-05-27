@@ -6,7 +6,7 @@
 
 // ─── §Typography ─────────────────────────────────────────────
 const typeRows = [
-  { label: 'Display XL · 76', meta: 'Cabinet Grotesk · 700', sample: '嗨,我是 Henry。', className: 'display-xl' },
+  { label: 'Display XL · 76', meta: 'Cabinet Grotesk · 700', sample: '嗨,我是 Giselle。', className: 'display-xl' },
   { label: 'Display L · 56', meta: 'Cabinet Grotesk · 700', sample: '南投數位生活點數平台', className: 'display-l' },
   { label: 'H1 · 38', meta: 'Cabinet Grotesk · 700', sample: 'Information Architecture', className: 'h1' },
   { label: 'H2 · 28', meta: 'Cabinet Grotesk · 500', sample: '為什麼這樣做', className: 'h2' },
@@ -191,7 +191,7 @@ export function ComponentDemo() {
         <h4>Input</h4>
         <div className="input-row">
           <label htmlFor="demo-input">Email</label>
-          <input id="demo-input" type="email" placeholder="hi@henry.design" />
+          <input id="demo-input" type="email" placeholder="hi@giselle.design" />
         </div>
       </div>
 

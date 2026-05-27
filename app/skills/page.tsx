@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '技能 — Henry Chen',
+  title: '技能 — Giselle Lai',
   description: '產品設計師的能力範圍:研究、IA、UI 系統、原型、協作。',
 }
 

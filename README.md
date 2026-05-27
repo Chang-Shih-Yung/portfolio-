@@ -1,4 +1,4 @@
-# Henry Chen Portfolio
+# Giselle Lai Portfolio
 
 UX-led 個人作品集網站,以南投數位生活點數平台為旗艦案。
 

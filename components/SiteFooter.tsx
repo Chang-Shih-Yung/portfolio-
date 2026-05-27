@@ -2,7 +2,7 @@ export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="container site-footer-inner">
-        <span>© 2026 Henry Chen</span>
+        <span>© 2026 Giselle Lai</span>
         <span className="site-footer-links">
           <a href="/colophon">Colophon</a>
           <a href="#">LinkedIn</a>
