@@ -904,14 +904,11 @@
   left: 0;
   max-width: 1500px;
   margin: 0 auto;
-  height: 760px;
+  height: 700px;
   /* clean cartoon-cloud layer (all white). NOTE: do NOT use 813a385b here —
      that asset has real people composited into some of the clouds. */
   background-image: url(/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png);
-  /* 'contain' renders this wide image at 100% box-width; 130% = ~1.3× bigger
-     clouds. They now bleed slightly past the side edges (natural, not clipped
-     mid-body). */
-  background-size: 130% auto;
+  background-size: contain; /* whole clouds, symmetric — never clipped at the edges */
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
