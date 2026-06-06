@@ -6,7 +6,8 @@
  *   - 同步 measure/render 字體有 known issue
  *   - 對單一靜態 system map,hand-rolled SVG 給更好的視覺控制
  *
- * 所有顏色 / 字型 / 邊距走 design token (var(--card-*) / var(--text) / var(--space-*))。
+ * 所有顏色 / 字型 / 邊距走 wireframe design token (grayscale only:
+ * var(--surface) / var(--border) / var(--border-strong) / var(--text) / var(--space-*))。
  * 純 server component ── 無 state、無 effect。
  */
 
@@ -139,7 +140,7 @@ export default function SystemMap() {
                   y={e.label.y - 10}
                   width={measureWidth(e.label.text) + 16}
                   height={20}
-                  rx={10}
+                  rx={2}
                 />
                 <text x={e.label.x} y={e.label.y + 4} textAnchor="middle">
                   {e.label.text}
@@ -162,7 +163,7 @@ export default function SystemMap() {
         {/* Page rectangles */}
         {PAGES.map((p) => (
           <g key={p.id} className={`node node-${p.variant}`}>
-            <rect x={p.x} y={p.y} width={NODE_W} height={NODE_H} rx={12} />
+            <rect x={p.x} y={p.y} width={NODE_W} height={NODE_H} rx={0} />
             <text x={p.x + NODE_W / 2} y={p.y + NODE_H / 2 + 5} textAnchor="middle">
               {p.label}
             </text>
@@ -178,51 +179,51 @@ export default function SystemMap() {
           margin: var(--space-lg) 0;
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--r-lg);
+          border-radius: 0;
           padding: var(--space-lg);
         }
         .system-map-svg {
           width: 100%;
           height: auto;
           display: block;
-          font-family: var(--font-body), "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+          font-family: var(--font-sans), "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
         }
 
-        /* ─── Nodes ─── */
+        /* ─── Nodes — uniform grayscale, differentiate by border only ─── */
         .node circle,
         .node rect {
-          stroke: var(--text);
+          stroke: var(--border-strong);
           stroke-width: 1.2;
         }
-        .node-role circle { fill: var(--card-peach); }
-        .node-page rect { fill: var(--card-mint); }
-        .node-merchant rect { fill: var(--card-lavender); }
+        .node-role circle { fill: var(--bg); }
+        .node-page rect { fill: var(--surface); }
+        .node-merchant rect { fill: var(--surface); stroke-dasharray: 4 3; }
         .node text {
           fill: var(--text);
           font-size: 15px;
-          font-weight: 500;
+          font-weight: 600;
         }
 
-        /* ─── Edges ─── */
+        /* ─── Edges — grayscale ─── */
         .edge path {
           fill: none;
-          stroke: var(--text-muted);
+          stroke: var(--border-strong);
           stroke-width: 1.5;
         }
         .edge-dashed path { stroke-dasharray: 4 4; }
         .arrow-head {
-          fill: var(--text-muted);
+          fill: var(--border-strong);
           stroke: none;
         }
 
-        /* Edge labels — pill background + mono uppercase text */
+        /* Edge labels — near-rectangular background + mono annotation text */
         .edge-label rect {
           fill: var(--bg);
           stroke: var(--border);
           stroke-width: 1;
         }
         .edge-label text {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack), ui-monospace, monospace;
           font-size: 11px;
           fill: var(--text-muted);
           letter-spacing: 0.04em;
@@ -232,7 +233,7 @@ export default function SystemMap() {
         .system-map-caption {
           margin-top: var(--space-md);
           text-align: center;
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack), ui-monospace, monospace;
           font-size: 12px;
           letter-spacing: 0.06em;
           text-transform: uppercase;

@@ -1,19 +1,27 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Geist_Mono } from 'next/font/google'
+import { Geist_Mono, Noto_Sans_TC } from 'next/font/google'
 import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
+import StyledJsxRegistry from '@/components/StyledJsxRegistry'
 import './globals.css'
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-body',
-})
-
+/* Wireframe pass: custom display/body fonts removed.
+   Body text = neutral system sans (see --font-body override below + globals.css).
+   Mono kept ONLY for meta/annotation labels (chips, captions, section-label). */
 const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono',
+})
+
+/* Cover hero display/body face — heavy CJK webfont.
+   Exposes --font-noto-tc, consumed by --cv-font-display / --cv-font-body in
+   globals.css so the cover heading renders Traditional Chinese at weight 900. */
+const notoSansTC = Noto_Sans_TC({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  display: 'swap',
+  variable: '--font-noto-tc',
 })
 
 export const metadata: Metadata = {
@@ -33,21 +41,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${geistMono.variable}`}
+      className={`${geistMono.variable} ${notoSansTC.variable}`}
+      style={{
+        // Body text resolves to the neutral system sans (wireframe).
+        ['--font-body' as string]:
+          '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
+      }}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://api.fontshare.com" />
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap"
-          rel="stylesheet"
-        />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body>
-        <SiteNav />
-        <main>{children}</main>
-        <SiteFooter />
+        <StyledJsxRegistry>
+          <SiteNav />
+          <main>{children}</main>
+          <SiteFooter />
+        </StyledJsxRegistry>
       </body>
     </html>
   )

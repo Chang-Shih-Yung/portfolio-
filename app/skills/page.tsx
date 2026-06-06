@@ -167,16 +167,16 @@ export default function SkillsPage() {
           padding: 40px;
           border-radius: var(--r-lg);
           border: 1px solid var(--border);
-          transition: transform 320ms var(--ease-out);
+          transition: border-color 120ms linear;
         }
-        .skill-card:hover { transform: translateY(-4px); }
+        .skill-card:hover { border-color: var(--border-strong); }
         .skill-card--mint     { background: var(--card-mint); }
         .skill-card--peach    { background: var(--card-peach); }
         .skill-card--butter   { background: var(--card-butter); }
         .skill-card--lavender { background: var(--card-lavender); }
 
         .skill-card-label {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           font-weight: 500;
           letter-spacing: 0.06em;
@@ -220,7 +220,7 @@ export default function SkillsPage() {
           gap: 10px;
         }
         .tool-chip {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -229,11 +229,10 @@ export default function SkillsPage() {
           border: 1px solid var(--border);
           padding: 10px 18px;
           border-radius: var(--r-full);
-          transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+          transition: border-color 120ms linear;
         }
         .tool-chip:hover {
-          border-color: var(--text);
-          transform: translateY(-2px);
+          border-color: var(--border-strong);
         }
 
         @media (max-width: 900px) {

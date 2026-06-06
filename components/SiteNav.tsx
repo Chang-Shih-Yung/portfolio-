@@ -13,6 +13,10 @@ const links = [
 export default function SiteNav() {
   const pathname = usePathname()
 
+  // The homepage cover (CoverHero) ships its own nav + cityscape chrome and is
+  // full-bleed, so the global SiteNav must not render on "/".
+  if (pathname === '/') return null
+
   function isActive(href: string) {
     if (href === '/') return pathname === '/' || pathname.startsWith('/work')
     return pathname === href
@@ -43,10 +47,8 @@ export default function SiteNav() {
           position: sticky;
           top: 0;
           z-index: 50;
-          background: color-mix(in srgb, var(--bg) 80%, transparent);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border-bottom: 1px solid var(--border-soft);
+          background: var(--bg);
+          border-bottom: 1px solid var(--border);
         }
         .site-nav {
           display: flex;
@@ -57,10 +59,10 @@ export default function SiteNav() {
           min-height: var(--site-nav-h);
         }
         .brand {
-          font-family: var(--font-display);
+          font-family: var(--font-sans);
           font-weight: 700;
           font-size: 22px;
-          letter-spacing: -0.02em;
+          letter-spacing: 0;
         }
         .nav-pill {
           display: flex;
@@ -77,9 +79,9 @@ export default function SiteNav() {
           font-weight: 500;
           padding: 8px 16px;
           border-radius: var(--r-full);
-          transition: background 180ms var(--ease-out), color 180ms var(--ease-out);
+          transition: background 120ms linear, color 120ms linear;
         }
-        .nav-link:hover { background: var(--card-mint); }
+        .nav-link:hover { background: var(--skeleton); }
         .nav-link.active { background: var(--text); color: var(--bg); }
       `}</style>
     </nav>

@@ -134,9 +134,7 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
           z-index: 20;
           margin: 0 calc(var(--space-md) * -1) var(--space-xl);
           padding: 6px var(--space-md);
-          background: color-mix(in srgb, var(--bg) 88%, transparent);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: var(--bg);
           border-bottom: 1px solid var(--border-soft);
         }
         .flows-nav-scroll {
@@ -158,15 +156,16 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
           border: 1px solid var(--border);
           background: var(--surface);
           color: var(--text-muted);
+          font-family: var(--font-mono-stack);
           font-size: 12.5px;
           font-weight: 500;
           scroll-snap-align: start;
-          transition: all 200ms var(--ease-out);
+          transition: border-color 120ms linear, color 120ms linear;
           cursor: pointer;
         }
         .flow-chip:hover {
           color: var(--text);
-          border-color: var(--text);
+          border-color: var(--border-strong);
         }
         .flow-chip.is-active {
           background: var(--text);
@@ -174,7 +173,7 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
           border-color: var(--text);
         }
         .flow-chip-num {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 11px;
           letter-spacing: 0.04em;
         }
@@ -187,7 +186,7 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
 
         .flow-card {
           padding: var(--space-xl);
-          border-radius: var(--r-xl);
+          border-radius: 0;
           border: 1px solid var(--border);
           scroll-margin-top: 140px;
         }
@@ -199,24 +198,25 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
         .flow-card-head { margin-bottom: var(--space-lg); max-width: 60ch; }
         .flow-card-num {
           display: inline-block;
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: var(--text);
           opacity: 0.7;
-          background: color-mix(in srgb, var(--bg) 60%, transparent);
+          background: var(--bg);
+          border: 1px solid var(--border);
           padding: 6px 12px;
           border-radius: var(--r-full);
           margin-bottom: var(--space-sm);
         }
         .flow-card-title {
-          font-family: var(--font-display);
+          font-family: var(--font-sans);
           font-weight: 700;
           font-size: 30px;
           line-height: 1.15;
-          letter-spacing: -0.018em;
+          letter-spacing: 0;
           margin-bottom: var(--space-sm);
           color: var(--text);
         }
@@ -230,9 +230,12 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
         .flow-card-embed { margin-bottom: var(--space-lg); }
 
         .flow-card-placeholder {
-          background: color-mix(in srgb, var(--bg) 70%, transparent);
-          border: 1px dashed var(--border);
-          border-radius: var(--r-lg);
+          background:
+            linear-gradient(to top right, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+            linear-gradient(to top left, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+            var(--placeholder-fill);
+          border: 1px solid var(--placeholder-border);
+          border-radius: 0;
           padding: var(--space-lg);
           color: var(--text-muted);
           font-size: 14px;
@@ -242,19 +245,20 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
           display: block;
           color: var(--text);
           margin-bottom: var(--space-xs);
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
         }
 
         .flow-card-decisions {
-          background: color-mix(in srgb, var(--bg) 55%, transparent);
-          border-radius: var(--r-md);
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: 0;
           padding: var(--space-md) var(--space-lg);
         }
         .flow-card-decisions-label {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.08em;
@@ -283,13 +287,13 @@ export default function FlowsShowcase({ flows }: { flows: Flow[] }) {
           top: 9px;
           width: 6px;
           height: 6px;
-          border-radius: var(--r-full);
+          border-radius: 0;
           background: var(--text);
           opacity: 0.6;
         }
 
         @media (max-width: 900px) {
-          .flow-card { padding: var(--space-lg); border-radius: var(--r-lg); }
+          .flow-card { padding: var(--space-lg); border-radius: 0; }
           .flow-card-title { font-size: 24px; }
         }
       `}</style>

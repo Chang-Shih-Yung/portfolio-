@@ -1,14 +1,45 @@
-import Hero from '@/components/Hero'
-import CasesGrid from '@/components/CasesGrid'
-import { getAllCases } from '@/lib/cases'
+import '@/app/cover-clone.css'
 
+import CoverNav from '@/components/cover/CoverNav'
+import CoverHero from '@/components/cover/CoverHero'
+import NewsSection from '@/components/cover/sections/NewsSection'
+import LiveSection from '@/components/cover/sections/LiveSection'
+import LifestyleSection from '@/components/cover/sections/LifestyleSection'
+import WorkstyleSection from '@/components/cover/sections/WorkstyleSection'
+import FacilitiesSection from '@/components/cover/sections/FacilitiesSection'
+import ConciergeSection from '@/components/cover/sections/ConciergeSection'
+import AboutSection from '@/components/cover/sections/AboutSection'
+import CorpSection from '@/components/cover/sections/CorpSection'
+import CoverFooter from '@/components/cover/sections/CoverFooter'
+
+/**
+ * HomePage — the portfolio COVER hero followed by a faithful clone of the
+ * koyama-sendai.org homepage sections (NEWS → FOOTER). The hero owns its own
+ * nav + warm palette; the sections below live inside the `.kyc` namespace and
+ * are styled entirely by app/cover-clone.css (ported 1:1 from the reference).
+ *
+ * Content is Traditional-Chinese placeholder + reference image placeholders
+ * (under /public/cover/ref) — swap section copy and images with your own later.
+ * The global <SiteNav/> + <SiteFooter/> (app/layout.tsx) hide themselves on "/".
+ */
 export default function HomePage() {
-  const cases = getAllCases()
-
   return (
-    <div className="container">
-      <Hero />
-      <CasesGrid cases={cases} />
-    </div>
+    <>
+      {/* fixed header — rendered at the page root (NOT inside the isolated
+          .cv-hero) so its z-index wins over every scrolling section below */}
+      <CoverNav />
+      <CoverHero />
+      <div className="kyc">
+        <NewsSection />
+        <LiveSection />
+        <LifestyleSection />
+        <WorkstyleSection />
+        <FacilitiesSection />
+        <ConciergeSection />
+        <AboutSection />
+        <CorpSection />
+        <CoverFooter />
+      </div>
+    </>
   )
 }

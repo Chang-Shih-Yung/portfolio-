@@ -42,3 +42,10 @@ next-env.d.ts
 # editor
 .vscode/
 .idea/
+.gstack/
+.claude/
+
+# local-only reference placeholders downloaded from koyama-sendai.org
+# (third-party copyrighted photos/logos/illustrations — kept out of the public
+# repo; swap in your own licensed images, then remove this rule to commit them)
+/public/cover/

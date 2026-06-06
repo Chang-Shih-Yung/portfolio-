@@ -31,7 +31,9 @@ export default function CaseStudyLayout({
       {meta.cover && (
         <div className="case-cover container">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={meta.cover} alt={`${meta.title} — cover`} />
+          <div className="case-cover-placeholder wf-placeholder" role="img" aria-label={`${meta.title} — cover`}>
+            <span className="wf-label">COVER</span>
+          </div>
         </div>
       )}
 
@@ -55,12 +57,12 @@ export default function CaseStudyLayout({
         .case-study { padding-top: 32px; padding-bottom: 96px; }
         .case-back { padding-top: 24px; padding-bottom: 24px; }
         .case-back-link {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
           color: var(--text-muted);
-          transition: color 180ms var(--ease-out);
+          transition: color 120ms linear;
         }
         .case-back-link:hover { color: var(--text); }
 
@@ -84,7 +86,7 @@ export default function CaseStudyLayout({
         }
         .case-meta div { display: flex; flex-direction: column; gap: 6px; }
         .case-meta dt {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 11px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -96,13 +98,27 @@ export default function CaseStudyLayout({
           padding-top: 32px;
           padding-bottom: 16px;
         }
-        .case-cover img {
+        .case-cover-placeholder {
           width: 100%;
-          height: auto;
-          display: block;
-          border-radius: var(--r-xl);
-          border: 1px solid var(--border);
-          background: var(--surface);
+          aspect-ratio: 16 / 7;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: var(--r-md);
+          border: 1px solid var(--placeholder-border);
+          background-color: var(--placeholder-fill);
+          background-image:
+            linear-gradient(to top right, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+            linear-gradient(to top left, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+        }
+        .case-cover-placeholder .wf-label {
+          font-family: var(--font-mono-stack);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          background: var(--placeholder-fill);
+          padding: 4px 8px;
         }
 
         .case-body {
@@ -120,7 +136,7 @@ export default function CaseStudyLayout({
           border-top: 1px solid var(--border-soft);
         }
         .case-next-label {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -131,7 +147,7 @@ export default function CaseStudyLayout({
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 28px;
-          letter-spacing: -0.015em;
+          letter-spacing: 0;
           margin-bottom: 32px;
         }
         .case-next-cta { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -140,7 +156,7 @@ export default function CaseStudyLayout({
           font-weight: 600;
           padding: 12px 22px;
           border-radius: var(--r-full);
-          transition: transform 200ms var(--ease-out);
+          transition: border-color 120ms linear, color 120ms linear;
         }
         .cta-accent {
           background: var(--accent);
@@ -150,13 +166,13 @@ export default function CaseStudyLayout({
           border: 1px solid var(--border);
           color: var(--text);
         }
-        .cta-accent:hover, .cta-secondary:hover { transform: translateY(-2px); }
+        .cta-secondary:hover { border-color: var(--border-strong); }
 
         @media (max-width: 900px) {
           .case-meta { grid-template-columns: repeat(2, 1fr); }
           .case-body { grid-template-columns: 1fr; gap: 32px; }
           .case-cover { padding-top: 24px; }
-          .case-cover img { border-radius: var(--r-lg); }
+          .case-cover-placeholder { border-radius: var(--r-md); }
         }
       `}</style>
     </div>

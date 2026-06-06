@@ -13,7 +13,7 @@ export default function FlowDiagram() {
       style={{ width: '100%', height: '100%', display: 'block' }}
     >
       {/* Decision diamond */}
-      <polygon points="240,30 290,60 240,90 190,60" fill="var(--surface)" stroke="var(--text)" strokeWidth="1.2" />
+      <polygon points="240,30 290,60 240,90 190,60" fill="var(--surface)" stroke="var(--border-strong)" strokeWidth="1.2" />
       <text x="240" y="64" textAnchor="middle" className="flow-id-text">是否登入?</text>
 
       {/* Arrows */}
@@ -26,22 +26,22 @@ export default function FlowDiagram() {
       <text x="320" y="108" className="flow-label-text">是</text>
 
       {/* Left screen — login */}
-      <rect x="90" y="130" width="80" height="160" rx="10" fill="var(--bg)" stroke="var(--text)" strokeWidth="1.2" />
+      <rect x="90" y="130" width="80" height="160" fill="var(--bg)" stroke="var(--border-strong)" strokeWidth="1.2" />
       <line x1="100" y1="145" x2="160" y2="145" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.4" />
-      <rect x="100" y="155" width="60" height="14" rx="3" fill="none" stroke="var(--text-subtle)" strokeWidth="0.5" />
-      <rect x="100" y="175" width="60" height="14" rx="3" fill="none" stroke="var(--text-subtle)" strokeWidth="0.5" />
-      <rect x="100" y="200" width="60" height="18" rx="9" fill="var(--text)" />
+      <rect x="100" y="155" width="60" height="14" fill="none" stroke="var(--text-subtle)" strokeWidth="0.5" />
+      <rect x="100" y="175" width="60" height="14" fill="none" stroke="var(--text-subtle)" strokeWidth="0.5" />
+      <rect x="100" y="200" width="60" height="18" fill="var(--text)" />
       <line x1="100" y1="240" x2="160" y2="240" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.4" />
       <line x1="100" y1="252" x2="140" y2="252" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.4" />
       <text x="130" y="305" textAnchor="middle" className="flow-id-text">1.1.1</text>
 
-      {/* Right screen — home (with mini pastel cards) */}
-      <rect x="310" y="130" width="80" height="160" rx="10" fill="var(--bg)" stroke="var(--text)" strokeWidth="1.2" />
+      {/* Right screen — home (mini skeleton blocks) */}
+      <rect x="310" y="130" width="80" height="160" fill="var(--bg)" stroke="var(--border-strong)" strokeWidth="1.2" />
       <line x1="320" y1="145" x2="380" y2="145" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.4" />
-      <rect x="320" y="155" width="60" height="20" rx="6" fill="var(--card-mint)" />
-      <rect x="320" y="180" width="28" height="28" rx="6" fill="var(--card-butter)" />
-      <rect x="352" y="180" width="28" height="28" rx="6" fill="var(--card-peach)" />
-      <rect x="320" y="215" width="60" height="40" rx="6" fill="var(--card-lavender)" />
+      <rect x="320" y="155" width="60" height="20" fill="var(--skeleton)" stroke="var(--border)" strokeWidth="0.5" />
+      <rect x="320" y="180" width="28" height="28" fill="var(--skeleton)" stroke="var(--border)" strokeWidth="0.5" />
+      <rect x="352" y="180" width="28" height="28" fill="var(--skeleton)" stroke="var(--border)" strokeWidth="0.5" />
+      <rect x="320" y="215" width="60" height="40" fill="var(--skeleton)" stroke="var(--border)" strokeWidth="0.5" />
       <line x1="320" y1="265" x2="380" y2="265" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.4" />
       <line x1="320" y1="275" x2="365" y2="275" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.4" />
       <text x="350" y="305" textAnchor="middle" className="flow-id-text">2.0.1</text>
@@ -49,14 +49,14 @@ export default function FlowDiagram() {
       {/* Side popup with dotted arrow */}
       <path d="M 175 200 L 230 200" stroke="var(--accent)" strokeWidth="1.4" fill="none" strokeDasharray="3,3" />
       <polygon points="234,197 234,203 240,200" fill="var(--accent)" />
-      <rect x="240" y="170" width="60" height="60" rx="10" fill="var(--card-butter)" stroke="var(--text)" strokeWidth="1" />
+      <rect x="240" y="170" width="60" height="60" fill="var(--surface)" stroke="var(--border-strong)" strokeWidth="1" />
       <circle cx="270" cy="186" r="4" stroke="var(--text)" strokeWidth="1" fill="none" />
       <line x1="270" y1="184" x2="270" y2="188" stroke="var(--text)" strokeWidth="1" />
       <circle cx="270" cy="190" r="0.5" fill="var(--text)" />
       <line x1="248" y1="200" x2="292" y2="200" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.5" />
       <line x1="248" y1="208" x2="282" y2="208" stroke="var(--text-muted)" strokeWidth="0.5" opacity="0.5" />
-      <rect x="248" y="217" width="20" height="8" rx="4" fill="none" stroke="var(--text-subtle)" strokeWidth="0.5" />
-      <rect x="272" y="217" width="20" height="8" rx="4" fill="var(--text)" />
+      <rect x="248" y="217" width="20" height="8" fill="none" stroke="var(--text-subtle)" strokeWidth="0.5" />
+      <rect x="272" y="217" width="20" height="8" fill="var(--text)" />
       <text x="205" y="195" className="flow-label-text">未登入</text>
 
       {/* Footer label */}
@@ -66,13 +66,13 @@ export default function FlowDiagram() {
 
       <style>{`
         .flow-id-text {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack), ui-monospace, monospace;
           font-size: 6px;
           fill: var(--text-muted);
           letter-spacing: 0.05em;
         }
         .flow-label-text {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack), ui-monospace, monospace;
           font-size: 8px;
           fill: var(--accent);
           letter-spacing: 0.04em;

@@ -85,19 +85,19 @@ export default function CaseStudySideNav() {
           align-items: baseline;
           gap: 12px;
           padding: 8px 14px;
-          border-radius: var(--r-sm);
+          border-radius: var(--r-full);
           font-size: 14px;
           color: var(--text-muted);
-          transition: color 180ms var(--ease-out), background 180ms var(--ease-out);
+          transition: color 120ms linear, background 120ms linear;
         }
         .sidenav-link:hover { color: var(--text); }
         .sidenav-link.is-active {
           color: var(--text);
-          background: var(--card-mint);
+          background: var(--surface);
           font-weight: 500;
         }
         .sidenav-tag {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack), ui-monospace, monospace;
           font-size: 11px;
           letter-spacing: 0.04em;
           color: var(--text-subtle);

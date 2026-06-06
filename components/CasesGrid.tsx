@@ -2,12 +2,13 @@ import Link from 'next/link'
 import FlowDiagram from './FlowDiagram'
 import type { CaseRecord } from '@/lib/cases'
 
+// Wireframe: uniform grayscale surface for every card — no per-color hue.
 const cardBgVar: Record<NonNullable<CaseRecord['cardColor']>, string> = {
-  mint: 'var(--card-mint)',
-  peach: 'var(--card-peach)',
-  butter: 'var(--card-butter)',
-  lavender: 'var(--card-lavender)',
-  dark: 'var(--card-black)',
+  mint: 'var(--surface)',
+  peach: 'var(--surface)',
+  butter: 'var(--surface)',
+  lavender: 'var(--surface)',
+  dark: 'var(--surface)',
 }
 
 // 預留擴充 slot 的色彩輪替
@@ -110,10 +111,11 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
           flex-direction: column;
           gap: 20px;
           overflow: hidden;
-          transition: transform 280ms var(--ease-out);
+          border: 1px solid var(--border);
+          transition: border-color 120ms linear;
         }
-        .case-card.is-dark { color: var(--on-dark); }
-        .case-card:not(.placeholder):hover { transform: translateY(-4px); }
+        .case-card.is-dark { color: var(--text); }
+        .case-card:not(.placeholder):hover { border-color: var(--border-strong); }
         .case-card.placeholder { cursor: default; }
 
         /* HERO ── 旗艦案 (col 1-8, row 1-2) */
@@ -132,7 +134,7 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
         .case-card[data-size="hero"] .card-title {
           font-size: 36px;
           line-height: 1.05;
-          letter-spacing: -0.025em;
+          letter-spacing: 0;
         }
         .case-card[data-size="hero"] .card-subtitle {
           font-size: 17px;
@@ -149,50 +151,37 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
         .case-card[data-size="small"] .card-title {
           font-size: 22px;
           line-height: 1.15;
-          letter-spacing: -0.02em;
+          letter-spacing: 0;
         }
         .case-card[data-size="small"] .card-subtitle {
           font-size: 14px;
           line-height: 1.5;
         }
 
-        /* THUMB ── 縮圖容器 */
+        /* THUMB ── 縮圖容器 (wireframe placeholder box) */
         .thumb {
           flex: 1;
-          background: rgba(255, 255, 255, 0.5);
-          border-radius: var(--r-md);
+          background-color: var(--placeholder-fill);
+          background-image:
+            linear-gradient(to top right, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+            linear-gradient(to top left, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+          border: 1px solid var(--placeholder-border);
+          border-radius: 0;
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
         }
-        .case-card.is-dark .thumb { background: rgba(255, 255, 255, 0.06); }
-        .placeholder-thumb {
-          background-image: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 8px,
-            rgba(0,0,0,0.05) 8px,
-            rgba(0,0,0,0.05) 16px
-          );
-        }
-        .case-card.is-dark .placeholder-thumb {
-          background-image: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 8px,
-            rgba(255,255,255,0.04) 8px,
-            rgba(255,255,255,0.04) 16px
-          );
-        }
+        .case-card.is-dark .thumb { background-color: var(--placeholder-fill); }
         .thumb-pill {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 10px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          background: rgba(255, 255, 255, 0.9);
+          background: var(--bg);
           color: var(--text);
           padding: 6px 12px;
+          border: 1px solid var(--border);
           border-radius: var(--r-full);
         }
 
@@ -200,15 +189,15 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
         .card-content { display: flex; flex-direction: column; gap: 12px; }
         .case-card[data-size="hero"] .card-content { gap: 16px; }
         .card-title {
-          font-family: var(--font-display);
+          font-family: var(--font-sans);
           font-weight: 700;
         }
-        .card-subtitle { opacity: 0.72; }
+        .card-subtitle { color: var(--text-muted); }
 
         /* CHIPS (only on hero) */
         .chip-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
         .chip {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.06em;
@@ -216,10 +205,11 @@ export default function CasesGrid({ cases }: { cases: CaseRecord[] }) {
           background: var(--surface);
           color: var(--text);
           padding: 7px 14px;
+          border: 1px solid var(--border);
           border-radius: var(--r-full);
           white-space: nowrap;
         }
-        .chip-accent { background: var(--text); color: var(--bg); }
+        .chip-accent { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
 
         /* TABLET ── 旗艦縮成 col-span 6,失去 row-span 2 */
         @media (max-width: 1024px) {

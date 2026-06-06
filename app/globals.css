@@ -1,34 +1,46 @@
 /* ════════════════════════════════════════════
-   Design tokens — mirror of DESIGN.md (v2 Friendly System)
-   All visual decisions reference these :root variables.
+   Design tokens — LO-FI GRAYSCALE WIREFRAME pass
+   The site cascades into a neutral skeleton/wireframe.
+   ZERO hue. All visual decisions reference these :root variables.
    ════════════════════════════════════════════ */
 
 :root {
-  /* Backgrounds & text */
-  --bg:           #FAFAF7;
-  --surface:      #FFFFFF;
-  --border:       #E8E5DE;
-  --border-soft:  #F0EDE6;
-  --text:         #0B0B0A;
-  --text-muted:   #6B665E;
-  --text-subtle:  #9A938A;
-  --accent:       #E04E1F;
-  --accent-soft:  rgba(224, 78, 31, 0.10);
+  /* Backgrounds & text — grayscale only */
+  --bg:           #FFFFFF;
+  --surface:      #F4F4F4;
+  --skeleton:     #E6E6E6;
+  --border:       #CCCCCC;
+  --border-soft:  #E6E6E6;
+  --border-strong:#999999;
+  --text:         #222222;
+  --text-muted:   #777777;
+  --text-subtle:  #AAAAAA;
+  --accent:       #555555;            /* was orange — now neutral dark gray */
+  --accent-soft:  rgba(85, 85, 85, 0.10);
 
-  /* Card palette */
-  --card-mint:    #C5E5D6;
-  --card-peach:   #FFD9C2;
-  --card-butter:  #FFE99A;
-  --card-lavender:#D8D4F0;
-  --card-black:   #0B0B0A;
+  /* Card palette — ALL collapse to one uniform light gray (no hue) */
+  --card-mint:    #ECECEC;
+  --card-peach:   #ECECEC;
+  --card-butter:  #ECECEC;
+  --card-lavender:#ECECEC;
+  --card-black:   #222222;
   --card-white:   #FFFFFF;
 
-  --on-dark:      #F5F2EB;
+  --on-dark:      #E0E0E0;
 
-  /* Typography (--font-body and --font-mono injected via next/font) */
-  --font-display: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Placeholder box (media skeleton) */
+  --placeholder-fill:   #ECECEC;
+  --placeholder-border: #CCCCCC;
 
-  /* Spacing (4px base) */
+  /* Typography — ONE neutral system sans for ALL text + display.
+     Mono reserved ONLY for meta/annotation labels.
+     --font-body / --font-mono may still be injected via next/font, but
+     the fallback IS the canonical neutral stack and must read correctly. */
+  --font-sans:    -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono-stack: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: var(--font-sans);
+
+  /* Spacing (4px base) — UNCHANGED */
   --space-2xs: 4px;
   --space-xs:  8px;
   --space-sm:  16px;
@@ -39,49 +51,150 @@
   --space-3xl: 80px;
   --space-4xl: 128px;
 
-  /* Radius */
-  --r-sm:   12px;
-  --r-md:   20px;
-  --r-lg:   28px;
-  --r-xl:   40px;
-  --r-full: 9999px;
+  /* Radius — sharp skeleton. Pills become near-rectangular 2px. */
+  --r-sm:   0;
+  --r-md:   0;
+  --r-lg:   0;
+  --r-xl:   0;
+  --r-full: 2px;
 
-  /* Motion */
+  /* Motion — vars kept defined (harmless); base usage is minimal. */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
   --ease-inout:  cubic-bezier(0.65, 0, 0.35, 1);
   --dur-micro:   80ms;
-  --dur-short:   200ms;
-  --dur-medium:  320ms;
-  --dur-long:    480ms;
+  --dur-short:   120ms;
+  --dur-medium:  120ms;
+  --dur-long:    120ms;
 
   --maxw: 1280px;
 
   /* Layout chrome — referenced by sticky elements to avoid overlap with SiteNav */
   --site-nav-h: 64px;
   --sticky-offset: calc(var(--site-nav-h) + 4px);
+
+  /* ════════════════════════════════════════════
+     Cover (--cv-*) tokens — full-color portfolio COVER hero
+     SEPARATE namespace from the grayscale wireframe tokens above.
+     The cover ALWAYS uses this warm palette and is NOT theme-aware:
+     these tokens are intentionally NOT redefined under [data-theme="dark"].
+     Every color / font / radius / z / duration in cover components MUST
+     reference one of these --cv-* vars (no hardcoded style values).
+     ════════════════════════════════════════════ */
+
+  /* surfaces */
+  --cv-bg: #EDE3DA;          /* warm beige page bg — matches reference body bg exactly */
+  --cv-bg-2: #E3DAC9;        /* slightly deeper beige */
+  --cv-ink: #1C1A17;         /* near-black text */
+  --cv-ink-soft: #4A453E;    /* muted text */
+  --cv-paper: #FFFFFF;       /* white (logo pill, phone body) */
+  --cv-line: #D8CFBF;        /* hairline on beige */
+
+  /* tanabata figures */
+  --cv-fig-purple: #6E5FA8;
+  --cv-fig-red: #D14B3C;
+  --cv-fig-blue: #3E8CC0;
+  --cv-leaf: #6FAE4A;
+  --cv-branch: #8A7B5E;
+
+  /* cityscape */
+  --cv-bld-yellow: #F2B23C;
+  --cv-bld-red: #C8483A;
+  --cv-bld-blue: #5AA0CE;
+  --cv-bld-blue-deep: #3F7CA8;
+  --cv-green: #5E9E45;
+  --cv-green-deep: #4C8638;
+  --cv-statue: #6B93AD;
+
+  /* black chip / badge */
+  --cv-pill-bg: #1C1A17;
+  --cv-pill-ink: #FFFFFF;
+
+  /* illustration assets — downloaded from the reference site as PLACEHOLDERS.
+     Swap the PNGs in /public/cover with your own art later. */
+  --cv-illust-top-w: 327px;
+  --cv-illust-top-h: 130px;
+  --cv-illust-bottom-h: 200px;
+
+  /* CAPSULE phone — mirrors the reference: a tall stadium (border-radius:9999px)
+     with a 2px near-black outline, holding a vertical app screenshot clipped to
+     the capsule. NOT a photoreal device (no notch / home indicator). */
+  --cv-phone-w: 312px;
+  --cv-phone-h: 580px;
+  --cv-phone-gap: 56px;             /* space between adjacent capsules */
+  --cv-phone-edge: #171717;         /* the 2px black device outline */
+  --cv-phone-screen: #E9E0D0;       /* placeholder screen tint (top) — warm, never white */
+  --cv-phone-screen-2: #DCD0BC;     /* placeholder screen tint (bottom) */
+
+  /* typography
+     --cv-font-display / --cv-font-body lead with Noto Sans TC, which is
+     loaded as a heavy CJK display webfont (weights 400/700/900) by
+     app/layout.tsx via next/font/google. The next/font family name
+     ('Noto Sans TC') matches the first stack entry so display renders at 900. */
+  --cv-font-display: var(--font-noto-tc), 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif; /* heavy 900 */
+  --cv-font-body: var(--font-noto-tc), 'Noto Sans TC', 'PingFang TC', system-ui, sans-serif;
+  --cv-font-mono: ui-monospace, 'Geist Mono', 'SF Mono', Menlo, monospace;
+  --cv-display-1: clamp(30px, 3.1vw, 44px);   /* the two medium heading lines */
+  --cv-display-2: clamp(52px, 6vw, 84px);     /* the emphasized last word */
+
+  /* radius */
+  --cv-r-pill: 9999px;
+  --cv-r-logo: 9999px;
+
+  /* key-visual (kv) layout — mirrors reference koyama-sendai.org hero */
+  --cv-kv-h: 580px;                /* stage height (= capsule height) */
+  --cv-kv-data-w: 420px;           /* text card width */
+  --cv-kv-data-left: 15.44vw;      /* text card left offset */
+  --cv-kv-data-pad: 48px;          /* text card inner padding */
+  --cv-kv-scrim: var(--cv-bg);     /* opaque block hiding the phones behind the text */
+
+  /* z-index layers — phones < scrim < illustration < text < nav */
+  --cv-z-slide: 1;
+  --cv-z-scrim: 5;
+  --cv-z-illust: 10;
+  --cv-z-detail: 15;
+  --cv-z-nav: 40;
+
+  /* motion */
+  --cv-marquee-dur: 40s;
+  --cv-dur-fast: 160ms;   /* nav link hover */
+  --cv-dur-base: 320ms;   /* logo-pill lift */
+
+  /* layout + elevation */
+  --cv-maxw: 1280px;
+  --cv-nav-h: 88px;
+  --cv-tabbar-h: 58px;                     /* mobile bottom fixed tab bar */
+  --cv-shadow-pill: 0 2px 12px rgba(28,26,23,0.08);
 }
 
 @media (max-width: 768px) {
   :root { --site-nav-h: 60px; }
 }
 
+/* DARK grayscale skeleton — still zero hue */
 [data-theme="dark"] {
-  --bg:           #0E0D0B;
-  --surface:      #17150F;
-  --border:       #2A2620;
-  --border-soft:  #1F1C17;
-  --text:         #F5F2EB;
-  --text-muted:   #9A938A;
-  --text-subtle:  #6B665E;
-  --accent:       #FF6A3D;
-  --accent-soft:  rgba(255, 106, 61, 0.14);
+  --bg:           #1A1A1A;
+  --surface:      #262626;
+  --skeleton:     #2E2E2E;
+  --border:       #3A3A3A;
+  --border-soft:  #2E2E2E;
+  --border-strong:#5A5A5A;
+  --text:         #E0E0E0;
+  --text-muted:   #9A9A9A;
+  --text-subtle:  #6A6A6A;
+  --accent:       #AAAAAA;
+  --accent-soft:  rgba(170, 170, 170, 0.12);
 
-  --card-mint:    #1F3A2C;
-  --card-peach:   #3A241A;
-  --card-butter:  #3A331A;
-  --card-lavender:#26243A;
+  --card-mint:    #2E2E2E;
+  --card-peach:   #2E2E2E;
+  --card-butter:  #2E2E2E;
+  --card-lavender:#2E2E2E;
+  --card-black:   #E0E0E0;
+  --card-white:   #262626;
+
+  --placeholder-fill:   #2E2E2E;
+  --placeholder-border: #3A3A3A;
 }
 
 /* ════════════════════════════════════════════
@@ -93,12 +206,12 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body), var(--font-sans);
   font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 220ms var(--ease-out), color 220ms var(--ease-out);
+  transition: background 120ms linear, color 120ms linear;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -107,6 +220,45 @@ ul { list-style: none; }
 img, svg { display: block; max-width: 100%; }
 
 main { min-height: 100vh; }
+
+/* ════════════════════════════════════════════
+   Media placeholder — shared wireframe skeleton box
+   Use for any real <img>, iframe/Figma embed, cover, screenshot, thumbnail.
+   Keep host box dimensions/aspect-ratio so layout does not shift.
+   Centered MONO UPPERCASE label + diagonal cross hairlines.
+   ════════════════════════════════════════════ */
+
+.wf-placeholder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--placeholder-fill);
+  background-image:
+    linear-gradient(to top right,
+      transparent calc(50% - 0.5px), var(--placeholder-border) 50%,
+      transparent calc(50% + 0.5px)),
+    linear-gradient(to top left,
+      transparent calc(50% - 0.5px), var(--placeholder-border) 50%,
+      transparent calc(50% + 0.5px));
+  border: 1px solid var(--placeholder-border);
+  border-radius: 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  min-height: 64px;
+}
+.wf-placeholder > span,
+.wf-placeholder > .wf-label {
+  position: relative;
+  z-index: 1;
+  background: var(--placeholder-fill);
+  padding: 4px 10px;
+  border: 1px solid var(--placeholder-border);
+}
 
 /* ════════════════════════════════════════════
    Container
@@ -122,48 +274,49 @@ main { min-height: 100vh; }
 }
 
 /* ════════════════════════════════════════════
-   Typography helpers
+   Typography helpers — neutral sans, near-zero tracking,
+   size hierarchy preserved.
    ════════════════════════════════════════════ */
 
 .display-xl {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 76px;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  line-height: 1.02;
+  letter-spacing: 0;
 }
 .display-l {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 56px;
-  line-height: 1.0;
-  letter-spacing: -0.025em;
+  line-height: 1.04;
+  letter-spacing: 0;
 }
 .h1 {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 38px;
   line-height: 1.1;
-  letter-spacing: -0.020em;
+  letter-spacing: 0;
 }
 .h2 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 28px;
   line-height: 1.2;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
 }
 .h3 {
   font-weight: 600;
   font-size: 22px;
   line-height: 1.3;
-  letter-spacing: -0.010em;
+  letter-spacing: 0;
 }
 .body-l { font-size: 19px; line-height: 1.55; }
 .body   { font-size: 17px; line-height: 1.60; }
 .small  { font-size: 14px; line-height: 1.50; color: var(--text-muted); }
 .caption {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono-stack);
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -178,12 +331,12 @@ main { min-height: 100vh; }
 }
 
 /* ════════════════════════════════════════════
-   Section label pill (used in homepage)
+   Section label pill (used in homepage) — mono annotation
    ════════════════════════════════════════════ */
 
 .section-label {
   display: inline-block;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono-stack);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -196,7 +349,7 @@ main { min-height: 100vh; }
 }
 
 /* ════════════════════════════════════════════
-   MDX prose styles (case study body)
+   MDX prose styles (case study body) — grayscale
    ════════════════════════════════════════════ */
 
 .prose h2 {
@@ -204,7 +357,7 @@ main { min-height: 100vh; }
   font-weight: 700;
   font-size: 32px;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   margin-top: var(--space-3xl);
   margin-bottom: var(--space-md);
   scroll-margin-top: 100px;
@@ -214,7 +367,7 @@ main { min-height: 100vh; }
   font-weight: 600;
   font-size: 22px;
   line-height: 1.3;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-sm);
 }
@@ -238,24 +391,24 @@ main { min-height: 100vh; }
 }
 .prose ol li { list-style: decimal; }
 .prose blockquote {
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--border-strong);
   padding-left: var(--space-md);
   margin: var(--space-lg) 0;
   font-style: italic;
   color: var(--text-muted);
 }
 .prose code {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono-stack);
   font-size: 0.92em;
   background: var(--surface);
   border: 1px solid var(--border);
   padding: 2px 8px;
-  border-radius: var(--r-sm);
+  border-radius: 0;
 }
 .prose pre {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--r-md);
+  border-radius: 0;
   padding: var(--space-md);
   margin: var(--space-md) 0;
   overflow-x: auto;
@@ -267,13 +420,24 @@ main { min-height: 100vh; }
 }
 .prose strong { font-weight: 600; }
 .prose a {
-  color: var(--accent);
+  color: var(--text);
   border-bottom: 1px solid currentColor;
   padding-bottom: 1px;
 }
+/* Real images in prose become wireframe placeholder boxes */
 .prose img {
-  border-radius: var(--r-md);
+  border: 1px solid var(--placeholder-border);
+  border-radius: 0;
   margin: var(--space-lg) 0;
+  background-color: var(--placeholder-fill);
+  background-image:
+    linear-gradient(to top right,
+      transparent calc(50% - 0.5px), var(--placeholder-border) 50%,
+      transparent calc(50% + 0.5px)),
+    linear-gradient(to top left,
+      transparent calc(50% - 0.5px), var(--placeholder-border) 50%,
+      transparent calc(50% + 0.5px));
+  min-height: 120px;
 }
 .prose hr {
   border: none;
@@ -289,10 +453,10 @@ main { min-height: 100vh; }
   font-size: 15px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--r-md);
+  border-radius: 0;
   overflow: hidden;
 }
-.prose thead { background: color-mix(in srgb, var(--border-soft) 60%, var(--surface)); }
+.prose thead { background: var(--skeleton); }
 .prose th,
 .prose td {
   padding: 12px 16px;
@@ -301,7 +465,7 @@ main { min-height: 100vh; }
   line-height: 1.55;
 }
 .prose th {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono-stack);
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -309,7 +473,7 @@ main { min-height: 100vh; }
   font-weight: 500;
 }
 .prose tbody tr:last-child td { border-bottom: none; }
-.prose tbody tr:hover { background: color-mix(in srgb, var(--border-soft) 30%, transparent); }
+.prose tbody tr:hover { background: var(--border-soft); }
 
 /* Context grid — used in case study §2 Context, sections separated by hairlines */
 .prose .context-grid {
@@ -317,7 +481,7 @@ main { min-height: 100vh; }
   flex-direction: column;
   margin: var(--space-lg) 0;
   border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  border-radius: 0;
   overflow: hidden;
   background: var(--surface);
 }
@@ -334,13 +498,13 @@ main { min-height: 100vh; }
 .prose .context-card table {
   margin-top: var(--space-sm);
   margin-bottom: 0;
-  border-radius: var(--r-sm);
+  border-radius: 0;
 }
 @media (max-width: 768px) {
   .prose .context-card { padding: var(--space-md) var(--space-lg); }
 }
 
-/* Insight cards — used in case study §Discovery,structured key insights */
+/* Insight cards — used in case study §Discovery, structured key insights */
 .prose .insights {
   display: flex;
   flex-direction: column;
@@ -354,16 +518,16 @@ main { min-height: 100vh; }
   padding: var(--space-md) var(--space-lg);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+  border-radius: 0;
+  transition: border-color 120ms linear;
 }
-.prose .insight:hover { border-color: var(--text); transform: translateY(-2px); }
+.prose .insight:hover { border-color: var(--border-strong); }
 .prose .insight-num {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono-stack);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--text-muted);
   padding-top: 4px;
 }
 .prose .insight-body { min-width: 0; }
@@ -372,7 +536,7 @@ main { min-height: 100vh; }
   font-weight: 700;
   font-size: 18px;
   line-height: 1.3;
-  letter-spacing: -0.012em;
+  letter-spacing: 0;
   margin: 0 0 var(--space-xs);
   color: var(--text);
 }
@@ -396,7 +560,7 @@ main { min-height: 100vh; }
 .prose .placeholder-card {
   background: var(--surface);
   border: 1px dashed var(--border);
-  border-radius: var(--r-lg);
+  border-radius: 0;
   padding: var(--space-lg);
   margin: var(--space-lg) 0;
   color: var(--text-muted);
@@ -405,7 +569,7 @@ main { min-height: 100vh; }
   display: block;
   color: var(--text);
   margin-bottom: var(--space-xs);
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-mono-stack);
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;

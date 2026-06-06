@@ -6,15 +6,15 @@
 
 // ─── §Typography ─────────────────────────────────────────────
 const typeRows = [
-  { label: 'Display XL · 76', meta: 'Cabinet Grotesk · 700', sample: '嗨,我是 Giselle。', className: 'display-xl' },
-  { label: 'Display L · 56', meta: 'Cabinet Grotesk · 700', sample: '南投數位生活點數平台', className: 'display-l' },
-  { label: 'H1 · 38', meta: 'Cabinet Grotesk · 700', sample: 'Information Architecture', className: 'h1' },
-  { label: 'H2 · 28', meta: 'Cabinet Grotesk · 500', sample: '為什麼這樣做', className: 'h2' },
-  { label: 'H3 · 22', meta: 'DM Sans · 600', sample: 'Key decisions', className: 'h3' },
-  { label: 'Body L · 19', meta: 'DM Sans · 400', sample: '為 50 萬名南投居民設計整合 7 個服務模組的縣級數位點數平台。', className: 'body-l' },
-  { label: 'Body · 17', meta: 'DM Sans · 400', sample: 'Numbering convention X.Y.Z 讓 PM / 工程 / 設計三方無歧義 reference 任何畫面。', className: 'body' },
-  { label: 'Small · 14', meta: 'DM Sans · 400', sample: '受訪者 N=15,跨年齡 cohort。', className: 'small' },
-  { label: 'Caption · 12', meta: 'Geist Mono · 400 · uppercase', sample: 'ROLE · TIMELINE · TEAM · STAGE', className: 'caption' },
+  { label: 'Display XL · 54', meta: 'System Sans · 700', sample: '嗨,我是 Giselle。', className: 'display-xl' },
+  { label: 'Display L · 40', meta: 'System Sans · 700', sample: '南投數位生活點數平台', className: 'display-l' },
+  { label: 'H1 · 28', meta: 'System Sans · 700', sample: 'Information Architecture', className: 'h1' },
+  { label: 'H2 · 22', meta: 'System Sans · 500', sample: '為什麼這樣做', className: 'h2' },
+  { label: 'H3 · 22', meta: 'System Sans · 600', sample: 'Key decisions', className: 'h3' },
+  { label: 'Body L · 19', meta: 'System Sans · 400', sample: '為 50 萬名南投居民設計整合 7 個服務模組的縣級數位點數平台。', className: 'body-l' },
+  { label: 'Body · 17', meta: 'System Sans · 400', sample: 'Numbering convention X.Y.Z 讓 PM / 工程 / 設計三方無歧義 reference 任何畫面。', className: 'body' },
+  { label: 'Small · 14', meta: 'System Sans · 400', sample: '受訪者 N=15,跨年齡 cohort。', className: 'small' },
+  { label: 'Caption · 12', meta: 'System Mono · 400 · uppercase', sample: 'ROLE · TIMELINE · TEAM · STAGE', className: 'caption' },
 ]
 
 export function TypeRamp() {
@@ -34,7 +34,7 @@ export function TypeRamp() {
           display: flex;
           flex-direction: column;
           border: 1px solid var(--border);
-          border-radius: var(--r-lg);
+          border-radius: 0;
           overflow: hidden;
           background: var(--surface);
         }
@@ -48,7 +48,7 @@ export function TypeRamp() {
         }
         .type-row:last-child { border-bottom: none; }
         .type-meta {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           letter-spacing: 0.04em;
           text-transform: uppercase;
@@ -61,7 +61,11 @@ export function TypeRamp() {
           font-weight: 500;
           margin-bottom: 2px;
         }
-        .type-sample { color: var(--text); }
+        .type-sample {
+          color: var(--text);
+          font-family: var(--font-sans);
+          letter-spacing: 0;
+        }
         .type-sample.body-l { font-size: 19px; line-height: 1.55; }
         .type-sample.body   { font-size: 17px; line-height: 1.6; }
         .type-sample.small  { font-size: 14px; line-height: 1.5; color: var(--text-muted); }
@@ -84,16 +88,16 @@ export function TypeRamp() {
 type Swatch = { name: string; cssVar: string; hex: string; usage: string; onDark?: boolean }
 
 const swatches: Swatch[] = [
-  { name: 'Background', cssVar: '--bg', hex: '#FAFAF7', usage: 'Warm white · 主要背景' },
-  { name: 'Surface', cssVar: '--surface', hex: '#FFFFFF', usage: 'Card / sheet 上層' },
-  { name: 'Text', cssVar: '--text', hex: '#0B0B0A', usage: 'Warm black · 主文字', onDark: true },
-  { name: 'Text muted', cssVar: '--text-muted', hex: '#6B665E', usage: '次要文字 / blurb' },
-  { name: 'Accent', cssVar: '--accent', hex: '#E04E1F', usage: 'Warm orange · CTA only', onDark: true },
-  { name: 'Border', cssVar: '--border', hex: '#E8E5DE', usage: '分隔線 / card border' },
-  { name: 'Card · Mint', cssVar: '--card-mint', hex: '#C5E5D6', usage: '沉著 · 推薦 case grid' },
-  { name: 'Card · Peach', cssVar: '--card-peach', hex: '#FFD9C2', usage: '溫暖 · 旗艦案' },
-  { name: 'Card · Butter', cssVar: '--card-butter', hex: '#FFE99A', usage: '鮮明 · stats' },
-  { name: 'Card · Lavender', cssVar: '--card-lavender', hex: '#D8D4F0', usage: 'Optional · misc' },
+  { name: 'Background', cssVar: '--bg', hex: '#FFFFFF', usage: 'Wireframe page bg · 主要背景' },
+  { name: 'Surface', cssVar: '--surface', hex: '#F4F4F4', usage: 'Card / sheet 上層' },
+  { name: 'Text', cssVar: '--text', hex: '#222222', usage: 'Neutral · 主文字', onDark: true },
+  { name: 'Text muted', cssVar: '--text-muted', hex: '#777777', usage: '次要文字 / blurb' },
+  { name: 'Accent', cssVar: '--accent', hex: '#555555', usage: 'Neutral gray · CTA only', onDark: true },
+  { name: 'Border', cssVar: '--border', hex: '#CCCCCC', usage: '分隔線 / card border' },
+  { name: 'Card · Mint', cssVar: '--card-mint', hex: '#ECECEC', usage: '沉著 · 推薦 case grid' },
+  { name: 'Card · Peach', cssVar: '--card-peach', hex: '#ECECEC', usage: '溫暖 · 旗艦案' },
+  { name: 'Card · Butter', cssVar: '--card-butter', hex: '#ECECEC', usage: '鮮明 · stats' },
+  { name: 'Card · Lavender', cssVar: '--card-lavender', hex: '#ECECEC', usage: 'Optional · misc' },
 ]
 
 export function ColorTokens({ compact = false }: { compact?: boolean }) {
@@ -102,7 +106,7 @@ export function ColorTokens({ compact = false }: { compact?: boolean }) {
     <div className={`swatch-grid${compact ? ' is-compact' : ''}`}>
       {list.map((s) => (
         <div key={s.name} className="swatch">
-          <div className={`swatch-color${s.onDark ? ' on-dark' : ''}`} style={{ background: `var(${s.cssVar})` }}>
+          <div className={`swatch-color${s.onDark ? ' on-dark' : ''}`}>
             <span className="swatch-hex">{s.hex}</span>
           </div>
           <div className="swatch-meta">
@@ -119,7 +123,7 @@ export function ColorTokens({ compact = false }: { compact?: boolean }) {
         }
         .swatch-grid.is-compact { grid-template-columns: repeat(4, 1fr); }
         .swatch {
-          border-radius: var(--r-md);
+          border-radius: 0;
           overflow: hidden;
           border: 1px solid var(--border);
           background: var(--surface);
@@ -130,20 +134,24 @@ export function ColorTokens({ compact = false }: { compact?: boolean }) {
           align-items: flex-end;
           justify-content: flex-start;
           padding: var(--space-sm);
+          background: var(--placeholder-fill, #ECECEC);
+          border-bottom: 1px solid var(--border);
         }
         .swatch-hex {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           color: var(--text);
-          background: color-mix(in srgb, var(--bg) 80%, transparent);
+          background: var(--surface);
+          border: 1px solid var(--border);
           padding: 3px 8px;
-          border-radius: var(--r-sm);
+          border-radius: 0;
         }
-        .swatch-color.on-dark .swatch-hex { color: var(--on-dark); background: color-mix(in srgb, var(--text) 80%, transparent); }
+        .swatch-color.on-dark .swatch-hex { color: var(--text); background: var(--surface); }
         .swatch-meta {
           padding: var(--space-sm) var(--space-md);
           font-size: 13px;
           line-height: 1.4;
+          font-family: var(--font-sans);
         }
         .swatch-meta b { display: block; font-weight: 600; font-size: 13px; margin-bottom: 2px; }
         .swatch-meta span { color: var(--text-muted); font-size: 12px; }
@@ -167,7 +175,7 @@ export function ComponentDemo() {
       </div>
 
       <div className="component-block">
-        <h4>Chips · Geist Mono uppercase</h4>
+        <h4>Chips · System Mono uppercase</h4>
         <div className="row">
           <span className="chip">Lead UX</span>
           <span className="chip">2024</span>
@@ -178,7 +186,7 @@ export function ComponentDemo() {
       </div>
 
       <div className="component-block">
-        <h4>Cards · pastel cycle</h4>
+        <h4>Cards · uniform gray</h4>
         <div className="row card-row">
           <div className="mini-card" style={{ background: 'var(--card-mint)' }}>Mint</div>
           <div className="mini-card" style={{ background: 'var(--card-peach)' }}>Peach</div>
@@ -205,10 +213,10 @@ export function ComponentDemo() {
           padding: var(--space-lg);
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--r-lg);
+          border-radius: 0;
         }
         .component-block h4 {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.06em;
@@ -218,7 +226,7 @@ export function ComponentDemo() {
         }
         .row { display: flex; flex-wrap: wrap; gap: var(--space-xs); align-items: center; }
         .btn {
-          font-family: var(--font-body), -apple-system, sans-serif;
+          font-family: var(--font-sans);
           font-size: 14px;
           font-weight: 600;
           padding: 10px 20px;
@@ -227,14 +235,14 @@ export function ComponentDemo() {
           background: var(--surface);
           color: var(--text);
           cursor: pointer;
-          transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out);
+          transition: border-color 120ms linear;
         }
-        .btn:hover { transform: translateY(-2px); border-color: var(--text); }
+        .btn:hover { border-color: var(--border-strong); }
         .btn-accent { background: var(--accent); color: var(--bg); border-color: var(--accent); }
         .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
         .btn-ghost { background: transparent; }
         .chip {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -250,8 +258,9 @@ export function ComponentDemo() {
           flex: 1;
           min-width: 80px;
           padding: var(--space-md);
-          border-radius: var(--r-md);
-          font-family: var(--font-mono), ui-monospace, monospace;
+          border-radius: 0;
+          border: 1px solid var(--border);
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -260,7 +269,7 @@ export function ComponentDemo() {
         }
         .input-row { display: flex; flex-direction: column; gap: var(--space-xs); }
         .input-row label {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -269,10 +278,10 @@ export function ComponentDemo() {
         .input-row input {
           padding: 12px 16px;
           border: 1px solid var(--border);
-          border-radius: var(--r-md);
+          border-radius: 0;
           background: var(--bg);
           color: var(--text);
-          font-family: var(--font-body), sans-serif;
+          font-family: var(--font-sans);
           font-size: 15px;
         }
         .input-row input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -296,11 +305,11 @@ const spacingScale = [
 ]
 
 const radiusScale = [
-  { name: 'sm', cssVar: '--r-sm', value: 12 },
-  { name: 'md', cssVar: '--r-md', value: 20 },
-  { name: 'lg', cssVar: '--r-lg', value: 28 },
-  { name: 'xl', cssVar: '--r-xl', value: 40 },
-  { name: 'full', cssVar: '--r-full', value: 9999 },
+  { name: 'sm', cssVar: '--r-sm', value: 0 },
+  { name: 'md', cssVar: '--r-md', value: 0 },
+  { name: 'lg', cssVar: '--r-lg', value: 0 },
+  { name: 'xl', cssVar: '--r-xl', value: 0 },
+  { name: 'full', cssVar: '--r-full', value: 2 },
 ]
 
 export function SpacingScale() {
@@ -323,7 +332,7 @@ export function SpacingScale() {
           padding: var(--space-lg);
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--r-lg);
+          border-radius: 0;
         }
         .spacing-row {
           display: grid;
@@ -332,7 +341,7 @@ export function SpacingScale() {
           gap: var(--space-md);
         }
         .spacing-meta {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           letter-spacing: 0.04em;
           color: var(--text-muted);
@@ -340,9 +349,9 @@ export function SpacingScale() {
         .spacing-meta b { color: var(--text); font-weight: 500; margin-right: 8px; text-transform: uppercase; }
         .spacing-bar {
           height: 16px;
-          background: var(--accent);
-          border-radius: var(--r-sm);
-          opacity: 0.85;
+          background: var(--skeleton);
+          border: 1px solid var(--border);
+          border-radius: 0;
         }
       `}</style>
     </div>
@@ -357,7 +366,7 @@ export function RadiusScale() {
           <div className="radius-box" style={{ borderRadius: `var(${r.cssVar})` }} />
           <div className="radius-meta">
             <b>{r.name}</b>
-            <span>{r.value === 9999 ? 'pill' : `${r.value}px`}</span>
+            <span>{r.name === 'full' ? 'pill' : `${r.value}px`}</span>
           </div>
         </div>
       ))}
@@ -371,17 +380,18 @@ export function RadiusScale() {
           padding: var(--space-md);
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--r-md);
+          border-radius: 0;
           text-align: center;
         }
         .radius-box {
           width: 100%;
           aspect-ratio: 1;
-          background: var(--card-mint);
+          background: var(--skeleton);
+          border: 1px solid var(--border);
           margin-bottom: var(--space-sm);
         }
         .radius-meta {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack, ui-monospace), "SF Mono", Menlo, monospace;
           font-size: 11px;
           letter-spacing: 0.04em;
           text-transform: uppercase;

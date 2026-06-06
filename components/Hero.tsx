@@ -39,7 +39,7 @@ export default function Hero() {
           display: inline-flex;
           gap: 8px;
           align-items: center;
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -58,12 +58,13 @@ export default function Hero() {
           font-weight: 600;
           color: var(--bg);
           background: var(--accent);
+          border: 1px solid var(--border);
           padding: 14px 24px;
           border-radius: var(--r-full);
-          transition: transform 200ms var(--ease-out);
+          transition: opacity 120ms linear;
           white-space: nowrap;
         }
-        .hero-cta:hover { transform: translateY(-2px); }
+        .hero-cta:hover { opacity: 0.85; }
         @media (max-width: 768px) {
           .hero { grid-template-columns: 1fr; padding: 48px 0 40px; }
           .hero-tagline { font-size: 19px; }

@@ -59,13 +59,15 @@ export default function ThemeToggle() {
           justify-content: center;
           width: 34px;
           height: 34px;
+          border: 1px solid var(--border);
           border-radius: var(--r-full);
+          background: var(--surface);
           color: var(--text-muted);
-          transition: color 180ms var(--ease-out), background 180ms var(--ease-out);
+          transition: color 120ms linear, border-color 120ms linear;
         }
         .theme-toggle:hover {
           color: var(--text);
-          background: var(--card-mint);
+          border-color: var(--border-strong);
         }
       `}</style>
     </>

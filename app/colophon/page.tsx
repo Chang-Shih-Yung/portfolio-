@@ -209,14 +209,14 @@ export default function ColophonPage() {
           grid-template-columns: 80px 1fr;
           gap: var(--space-md);
           padding: var(--space-lg);
-          border-radius: var(--r-lg);
+          border-radius: 0;
           border: 1px solid var(--border);
           background: var(--surface);
-          transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+          transition: border-color 120ms linear;
         }
-        .note:hover { border-color: var(--text); transform: translateY(-2px); }
+        .note:hover { border-color: var(--border-strong); }
         .note-num {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 12px;
           font-weight: 500;
           letter-spacing: 0.08em;
@@ -225,11 +225,11 @@ export default function ColophonPage() {
         }
         .note-body { min-width: 0; }
         .note-title {
-          font-family: var(--font-display);
+          font-family: var(--font-sans);
           font-weight: 700;
           font-size: 20px;
           line-height: 1.3;
-          letter-spacing: -0.012em;
+          letter-spacing: 0;
           margin-bottom: var(--space-xs);
           color: var(--text);
         }
@@ -253,9 +253,9 @@ export default function ColophonPage() {
           padding: 12px 22px;
           border-radius: var(--r-full);
           border: 1px solid var(--border);
-          transition: all 200ms var(--ease-out);
+          transition: border-color 120ms linear, opacity 120ms linear;
         }
-        .colophon-cta:hover { border-color: var(--text); transform: translateY(-2px); }
+        .colophon-cta:hover { border-color: var(--border-strong); }
         .colophon-cta-accent {
           background: var(--accent);
           color: var(--bg);

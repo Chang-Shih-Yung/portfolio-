@@ -189,12 +189,12 @@ export default function AboutPage() {
         .about-body { display: flex; flex-direction: column; gap: 24px; max-width: 60ch; margin-bottom: 48px; }
         .about-body p { font-size: 19px; line-height: 1.7; }
         .about-body code {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 0.9em;
           background: var(--surface);
           border: 1px solid var(--border);
           padding: 2px 8px;
-          border-radius: var(--r-sm);
+          border-radius: 0;
         }
         .about-cta { display: flex; gap: 12px; flex-wrap: wrap; }
         .about-cta-link {
@@ -203,9 +203,9 @@ export default function AboutPage() {
           padding: 12px 22px;
           border-radius: var(--r-full);
           border: 1px solid var(--border);
-          transition: all 200ms var(--ease-out);
+          transition: border-color 120ms linear;
         }
-        .about-cta-link:hover { border-color: var(--text); transform: translateY(-2px); }
+        .about-cta-link:hover { border-color: var(--text); }
         .about-cta-accent {
           background: var(--accent);
           color: var(--bg);
@@ -222,27 +222,27 @@ export default function AboutPage() {
         }
         .stat-card {
           padding: 28px 24px;
-          border-radius: var(--r-lg);
+          border-radius: 0;
           border: 1px solid var(--border);
           background: var(--surface);
-          transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out);
+          transition: border-color 120ms linear;
         }
-        .stat-card:hover { transform: translateY(-3px); border-color: var(--text); }
-        .stat-card:nth-child(1) { background: var(--card-mint); border-color: transparent; }
-        .stat-card:nth-child(2) { background: var(--card-peach); border-color: transparent; }
-        .stat-card:nth-child(3) { background: var(--card-butter); border-color: transparent; }
-        .stat-card:nth-child(4) { background: var(--card-lavender); border-color: transparent; }
+        .stat-card:hover { border-color: var(--text); }
+        .stat-card:nth-child(1) { background: var(--surface); border-color: var(--border); }
+        .stat-card:nth-child(2) { background: var(--surface); border-color: var(--border); }
+        .stat-card:nth-child(3) { background: var(--surface); border-color: var(--border); }
+        .stat-card:nth-child(4) { background: var(--surface); border-color: var(--border); }
         .stat-value { display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px; }
         .stat-num {
-          font-family: var(--font-display);
+          font-family: var(--font-sans);
           font-weight: 700;
           font-size: 44px;
           line-height: 1;
-          letter-spacing: -0.03em;
+          letter-spacing: 0;
           color: var(--text);
         }
         .stat-unit {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 13px;
           color: var(--text);
           opacity: 0.7;
@@ -273,14 +273,9 @@ export default function AboutPage() {
           left: 40px;
           top: 18px;
           bottom: 18px;
-          width: 2px;
+          width: 1px;
           transform: translateX(-50%);
-          background: linear-gradient(
-            to bottom,
-            var(--border) 0%,
-            var(--border) 92%,
-            transparent 100%
-          );
+          background: var(--border);
         }
         .timeline-item {
           display: grid;
@@ -307,10 +302,9 @@ export default function AboutPage() {
           position: relative;
           z-index: 2;
           flex-shrink: 0;
-          box-shadow: 0 0 0 4px var(--bg);
         }
         .timeline-year {
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 13px;
           font-weight: 500;
           letter-spacing: 0.04em;
@@ -318,21 +312,21 @@ export default function AboutPage() {
         }
         .timeline-item--role     .timeline-dot { background: var(--accent); border-color: var(--accent); }
         .timeline-item--project  .timeline-dot { background: var(--text); border-color: var(--text); }
-        .timeline-item--skill    .timeline-dot { background: var(--card-mint); border-color: var(--text); }
-        .timeline-item--milestone .timeline-dot { background: var(--card-peach); border-color: var(--text); }
+        .timeline-item--skill    .timeline-dot { background: var(--surface); border-color: var(--text); }
+        .timeline-item--milestone .timeline-dot { background: var(--bg); border-color: var(--text); }
 
         .timeline-content {
           padding: 20px 24px;
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: var(--r-lg);
-          transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out);
+          border-radius: 0;
+          transition: border-color 120ms linear;
         }
-        .timeline-content:hover { transform: translateY(-2px); border-color: var(--text); }
+        .timeline-content:hover { border-color: var(--text); }
 
         .timeline-chip {
           display: inline-block;
-          font-family: var(--font-mono), ui-monospace, monospace;
+          font-family: var(--font-mono-stack);
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.06em;
@@ -342,15 +336,15 @@ export default function AboutPage() {
         }
         .timeline-chip--role     { background: var(--accent); color: var(--bg); }
         .timeline-chip--project  { background: var(--text); color: var(--bg); }
-        .timeline-chip--skill    { background: var(--card-mint); color: var(--text); }
-        .timeline-chip--milestone { background: var(--card-peach); color: var(--text); }
+        .timeline-chip--skill    { background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); }
+        .timeline-chip--milestone { background: var(--bg); color: var(--text); border: 1px solid var(--border-strong); }
 
         .timeline-title {
-          font-family: var(--font-display);
+          font-family: var(--font-sans);
           font-weight: 700;
           font-size: 20px;
           line-height: 1.3;
-          letter-spacing: -0.012em;
+          letter-spacing: 0;
           margin-bottom: 8px;
           color: var(--text);
         }
@@ -364,8 +358,9 @@ export default function AboutPage() {
         .colophon-banner {
           margin-top: var(--space-4xl);
           padding: var(--space-2xl);
-          background: var(--card-lavender);
-          border-radius: var(--r-xl);
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 0;
           display: grid;
           grid-template-columns: 1fr auto;
           align-items: end;
@@ -390,9 +385,9 @@ export default function AboutPage() {
           padding: 14px 24px;
           border-radius: var(--r-full);
           white-space: nowrap;
-          transition: transform 200ms var(--ease-out);
+          transition: opacity 120ms linear;
         }
-        .colophon-banner-cta:hover { transform: translateY(-2px); }
+        .colophon-banner-cta:hover { opacity: 0.85; }
 
         @media (max-width: 768px) {
           .about-page { padding-top: 64px; }
