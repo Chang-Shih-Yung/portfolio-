@@ -16,7 +16,18 @@
 .kyc p { margin: 0; }
 .kyc ul,.kyc li { list-style: none; margin: 0; padding: 0; }
 .kyc a { color: #000; text-decoration: none; }
-.kyc img { max-width: 100%; height: auto; vertical-align: bottom; }
+.kyc img { max-width: 100%; height: auto; vertical-align: bottom; position: relative; }
+/* graceful fallback: when an <img> fails to load (placeholder not provided yet)
+   paint a soft tint instead of the browser broken-image chrome (gray line +
+   broken icon). A successfully loaded image replaces this automatically — the
+   ::before is only painted on a broken <img>. */
+.kyc img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ded3c2;
+  border-radius: inherit;
+}
 .kyc .page-content-width { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-content-width-wide { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-max-width { position: relative; width: 100%; margin: 0 auto; }
