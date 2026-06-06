@@ -83,13 +83,42 @@
      reference one of these --cv-* vars (no hardcoded style values).
      ════════════════════════════════════════════ */
 
-  /* surfaces */
-  --cv-bg: #EDE3DA;          /* warm beige page bg — matches reference body bg exactly */
-  --cv-bg-2: #E3DAC9;        /* slightly deeper beige */
-  --cv-ink: #1C1A17;         /* near-black text */
-  --cv-ink-soft: #4A453E;    /* muted text */
+  /* ════════════════════════════════════════════════════════════════════════
+     COVER PALETTE — single source of truth for the whole homepage.
+     Retune the site here: every section + the .kyc clone read these vars, so
+     changing a value below recolours everything at once (no hunting hardcoded
+     hex). First pass = LOW saturation, slightly COOL "tech" cast on a light
+     off-white base, so high-chroma project images pop against it later.
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /* surfaces / neutrals */
+  --cv-bg: #ECE7DE;          /* light off-white / cream — the dominant base */
+  --cv-bg-2: #E3DCCE;        /* slightly deeper cream */
+  --cv-ink: #1B1C1F;         /* cool near-black — text + 2px outlines */
+  --cv-ink-2: #3B3C41;       /* secondary dark (was #333) */
+  --cv-ink-soft: #5C5D64;    /* muted text (was #6f6f6f / #666) */
+  --cv-ink-mute: #9A9BA1;    /* faint text / meta (was #999) */
+  --cv-line: #D7D0C3;        /* hairline */
   --cv-paper: #FFFFFF;       /* white (logo pill, phone body) */
-  --cv-line: #D8CFBF;        /* hairline on beige */
+  --cv-card: #FFFFFF;        /* card / chip surface (tweak for off-white cards) */
+
+  /* the big tinted SECTION blocks (workstyle / about / corp) — desaturated cool */
+  --cv-sky: #DDE6EA;         /* was bright #C4E9FB → muted cool gray-blue */
+
+  /* accent SHAPES (facility frames, cloud accent) — muted but still distinct */
+  --cv-shape-blue:  #C6D5DB; /* was #b1e1ed */
+  --cv-shape-green: #C8CFC1; /* was #a7d3a6 */
+  --cv-shape-coral: #D69E91; /* was #f36c56 — the single warm accent */
+  --cv-accent:      #6FA3A8; /* desaturated teal (was #7dcdc3) */
+  --cv-accent-2:    #8DB2BC; /* was #8bd2f2 */
+  --cv-accent-warm: #D69E91; /* was #f89286 */
+
+  /* RefImg placeholder box */
+  --cv-ph-fill: #E6DFD3;     /* warm fill (≈ bg, hides chrome) */
+  --cv-ph-line: #BCAE99;     /* dashed frame */
+
+  /* ABOUT background marquee watermark (kept faint, tone-on-tone) */
+  --cv-marquee: rgba(110, 130, 142, 0.20);
 
   /* tanabata figures */
   --cv-fig-purple: #6E5FA8;
