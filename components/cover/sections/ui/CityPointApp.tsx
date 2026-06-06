@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
+import ArrowButton from '@/components/cover/sections/ui/ArrowButton'
 
 /**
  * CityPointApp — the interactive heart of the "CITY POINT APP" section.
@@ -70,10 +71,35 @@ export default function CityPointApp() {
 
   const city = cities[index]
 
-  const go = (delta: number) => {
-    setIndex((p) => (p + delta + cities.length) % cities.length)
+  const reset = () => {
     setOverShape(false)
     alphaRef.current = null // rebuilt when the next map loads
+  }
+  const go = (delta: number) => {
+    setIndex((p) => (p + delta + cities.length) % cities.length)
+    reset()
+  }
+  const select = (i: number) => {
+    setIndex(i)
+    reset()
+  }
+
+  // pointer / touch SWIPE to change city (drag the map left/right)
+  const dragX = useRef<number | null>(null)
+  const onDown = (e: React.PointerEvent<HTMLImageElement>) => {
+    dragX.current = e.clientX
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId)
+    } catch {
+      /* capture is best-effort */
+    }
+  }
+  const onUp = (e: React.PointerEvent<HTMLImageElement>) => {
+    const start = dragX.current
+    dragX.current = null
+    if (start == null) return
+    const dx = e.clientX - start
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1) // swipe left → next
   }
 
   /** draw the (same-origin) PNG to a canvas once and cache its alpha channel */
@@ -123,23 +149,20 @@ export default function CityPointApp() {
           <div className="autoplay-slider"><MarqueeGroup /></div>
         </div>
 
-        {/* manual carousel arrows — pinned to the page's left/right sides */}
-        <button
-          type="button"
+        {/* manual carousel arrows — the SHARED ArrowButton (same as the other
+            sections), pinned to the page's left/right sides via .cpa-arrow */}
+        <ArrowButton
+          dir="prev"
           className="cpa-arrow cpa-arrow--prev"
           onClick={() => go(-1)}
-          aria-label="上一個城市"
-        >
-          <span className="btn-icon" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
+          label="上一個城市"
+        />
+        <ArrowButton
+          dir="next"
           className="cpa-arrow cpa-arrow--next"
           onClick={() => go(1)}
-          aria-label="下一個城市"
-        >
-          <span className="btn-icon" aria-hidden="true" />
-        </button>
+          label="下一個城市"
+        />
 
         <div className={`map cpa-map${overShape ? ' is-over' : ''}`}>
           {/* key → re-mounts on change so each map fades in. Hover (brighten +
@@ -156,7 +179,22 @@ export default function CityPointApp() {
             onLoad={buildAlpha}
             onPointerMove={handleMove}
             onPointerLeave={() => setOverShape(false)}
+            onPointerDown={onDown}
+            onPointerUp={onUp}
           />
+          {/* pagination dots — position indicator + swipe affordance */}
+          <div className="cpa-dots" role="group" aria-label="切換城市">
+            {cities.map((c, i) => (
+              <button
+                key={c.map}
+                type="button"
+                className={`cpa-dot${i === index ? ' is-active' : ''}`}
+                onClick={() => select(i)}
+                aria-label={c.name}
+                aria-current={i === index}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="about-detail">

@@ -2498,13 +2498,42 @@
   grid-column: 2;
   width: clamp(320px, 34vw, 460px);
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
 .tm9_pt9 .cpa-map__img {
   display: block;
   width: 100%;
   height: auto;
+  touch-action: pan-y; /* let vertical scroll through; horizontal = our swipe */
   transition: transform 0.35s ease, filter 0.35s ease;
   animation: cpaFade 0.4s ease both;
+}
+/* pagination dots — current city + a hint that the map is swipeable */
+.tm9_pt9 .cpa-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.tm9_pt9 .cpa-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--cv-line);
+  cursor: pointer;
+  transition: background 0.25s ease, width 0.25s ease;
+}
+.tm9_pt9 .cpa-dot.is-active {
+  width: 24px;
+  background: var(--cv-ink);
+}
+.tm9_pt9 .cpa-dot:focus-visible {
+  outline: 2px solid var(--cv-accent);
+  outline-offset: 2px;
 }
 /* .is-over is toggled by JS only when the cursor is over the map SHAPE (alpha>0),
    not the transparent box — so the brighten + scale fires on the shape only. */
@@ -2557,33 +2586,19 @@
   margin-top: 0.4em;
 }
 
-/* manual carousel arrows — REUSE the shared .btn-icon (black circle + arrow) so
-   the hover (white circle expands, arrow flips dark) matches every other button.
-   The <button> is just a transparent positioner pinned to the page sides; about-
-   main is viewport-centred, so the full-bleed calc lands them at the viewport
-   edges (inset), vertically centred on the map. */
+/* CITY POINT APP arrows = the shared <ArrowButton> (.arr), here only POSITIONED:
+   pinned to the page's left/right sides. about-main is viewport-centred, so the
+   full-bleed calc lands them at the viewport edges (inset), centred on the map.
+   Size via --arr-size (lg on desktop, smaller on mobile below). */
 .tm9_pt9 .cpa-arrow {
   position: absolute;
   top: 50%;
-  z-index: 6;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  line-height: 0;
-  cursor: pointer;
   transform: translateY(-50%);
+  z-index: 6;
+  --arr-size: 56px;
 }
-.tm9_pt9 .cpa-arrow .btn-icon { margin: 0; }
 .tm9_pt9 .cpa-arrow--prev { left: calc(50% - 50vw + clamp(16px, 4vw, 96px)); }
-.tm9_pt9 .cpa-arrow--next { left: calc(50% + 50vw - clamp(16px, 4vw, 96px) - 64px); }
-.tm9_pt9 .cpa-arrow--prev .btn-icon::after { transform: translate(-50%, -50%) rotate(180deg); }
-.tm9_pt9 .cpa-arrow:hover .btn-icon::before { width: 100%; height: 100%; }
-.tm9_pt9 .cpa-arrow:hover .btn-icon::after { filter: none; }
-.tm9_pt9 .cpa-arrow:focus-visible {
-  outline: 3px solid var(--cv-accent);
-  outline-offset: 3px;
-  border-radius: 100%;
-}
+.tm9_pt9 .cpa-arrow--next { left: calc(50% + 50vw - clamp(16px, 4vw, 96px) - var(--arr-size)); }
 
 /* ── TABLET + MOBILE: single column, map centred on top ── */
 @media (max-width: 1023px) {
@@ -2592,16 +2607,22 @@
     justify-items: center;
     text-align: center;
   }
-  .tm9_pt9 .about-main.cpa .about-detail {
-    grid-column: 1;
-    max-width: 480px;
-  }
-  .tm9_pt9 .cpa-map { grid-column: 1; }
-  /* slogan: two horizontal lines, centred, with breathing room from the copy */
+  /* slogan + detail share the SAME centred 480 block, left-aligned text and the
+     same padding-left → the slogan's two lines line up with detail-txt's edge. */
+  .tm9_pt9 .about-main.cpa .about-detail,
   .tm9_pt9 .about-main.cpa .catch {
     grid-column: 1;
+    width: 100%;
+    max-width: 480px;
+    text-align: left;
+    padding: 0 0 0 clamp(16px, 5vw, 24px);
+    box-sizing: border-box;
+  }
+  .tm9_pt9 .cpa-map { grid-column: 1; }
+  /* slogan: two horizontal lines, left-aligned, with breathing room from copy */
+  .tm9_pt9 .about-main.cpa .catch {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 4px;
     /* spacing both from the map above and the heading below */
     margin: clamp(20px, 5vw, 32px) 0;
@@ -2609,7 +2630,7 @@
   .tm9_pt9 .catch .cpa-slogan__lead,
   .tm9_pt9 .catch .cpa-slogan__sub {
     writing-mode: horizontal-tb;
-    text-align: center;
+    text-align: left;
     margin: 0;
   }
   .tm9_pt9 .catch .cpa-slogan__lead { font-size: clamp(28px, 7vw, 40px); }
@@ -2621,10 +2642,9 @@
 }
 @media (max-width: 767px) {
   .tm9_pt9 .cpa-map { width: min(72vw, 360px); }
-  /* arrows flank the map (which is first in the column) */
-  .tm9_pt9 .cpa-arrow { top: calc(min(72vw, 360px) / 2); }
-  .tm9_pt9 .cpa-arrow--prev { left: clamp(8px, 3vw, 16px); }
-  .tm9_pt9 .cpa-arrow--next { left: auto; right: clamp(8px, 3vw, 16px); }
+  /* mobile: no arrows — swipe + dots only (matches the Carousel sections).
+     .cpa-arrow.arr beats the shared `.kyc .arr { display:inline-flex }`. */
+  .tm9_pt9 .cpa-arrow.arr { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2662,4 +2682,48 @@
 @media (max-width: 767px) {
   .tm9_pt9 .cpa-cta-wrap { margin-top: 40px; }
   .tm9_pt9 .cpa-cta { padding: 16px 28px; font-size: 16px; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   ArrowButton — ONE shared circular ←/→ control (Carousel + CITY POINT APP).
+   Size via --arr-size (sm 40 / md 48 / lg 56); consumers can override per
+   breakpoint for RWD. Positioning lives on the consumer's class.
+   ════════════════════════════════════════════════════════════════════════ */
+.kyc .arr {
+  width: var(--arr-size, 48px);
+  height: var(--arr-size, 48px);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--cv-ink);
+  color: var(--cv-paper);
+  font-size: calc(var(--arr-size, 48px) * 0.4);
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.kyc .arr:hover { opacity: 0.82; }
+.kyc .arr:focus-visible { outline: 3px solid var(--cv-accent); outline-offset: 3px; }
+.kyc .arr--sm { --arr-size: 40px; }
+.kyc .arr--md { --arr-size: 48px; }
+.kyc .arr--lg { --arr-size: 56px; }
+
+/* Carousel (LIFESTYLE / FACILITIES) arrow POSITIONING — moved here from the
+   Carousel styled-jsx so it reaches the shared ArrowButton element. */
+.kyc .cz-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+.kyc .cz-arrow--prev { left: calc(50% - 360px); }
+.kyc .cz-arrow--next { right: calc(50% - 360px); }
+@media (max-width: 767px) {
+  .kyc .cz-arrow { top: 34%; }
+  .kyc .cz-arrow--prev { left: 0; }
+  .kyc .cz-arrow--next { right: 0; }
 }

@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react'
 import type { ReactNode, PointerEvent as RPointerEvent } from 'react'
+import ArrowButton from '@/components/cover/sections/ui/ArrowButton'
 
 // layout effect on the client, plain effect on the server (no SSR warning)
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
@@ -24,7 +25,8 @@ const DRAG_THRESHOLD = 8 // px of movement before a press counts as a drag (not 
  *    snaps to the nearest slide on release (slick `draggable`/`swipe`)
  *  - TAP a side slide → it scrolls to centre (slick `focusOnSelect`); the centred
  *    slide keeps its own link
- *  - prev/next arrows (desktop optional via `desktopArrows`; always on mobile)
+ *  - prev/next arrows (desktop only, opt-in via `desktopArrows`); mobile uses
+ *    swipe + dots, no arrows
  *  - dot pagination (mobile only) + autoplay (paused while dragging / reduced-motion)
  *
  * CLONES = 3 keeps the FACILITIES `:nth-of-type(3n+…)` frame-shape cycle aligned.
@@ -201,7 +203,8 @@ export default function Carousel({
     setAnim(true)
     setPos(CLONES + i)
   }
-  const showArrows = isMobile || desktopArrows
+  // mobile relies on swipe + dots only — no arrows. desktop arrows are opt-in.
+  const showArrows = !isMobile && desktopArrows
   const showDots = isMobile
 
   return (
@@ -254,12 +257,8 @@ export default function Carousel({
 
       {showArrows && loop && (
         <>
-          <button type="button" className="cz-arrow cz-arrow--prev" onClick={() => go(-1)} aria-label="上一張">
-            <span aria-hidden="true">←</span>
-          </button>
-          <button type="button" className="cz-arrow cz-arrow--next" onClick={() => go(1)} aria-label="下一張">
-            <span aria-hidden="true">→</span>
-          </button>
+          <ArrowButton dir="prev" size="md" className="cz-arrow cz-arrow--prev" onClick={() => go(-1)} label="上一張" />
+          <ArrowButton dir="next" size="md" className="cz-arrow cz-arrow--next" onClick={() => go(1)} label="下一張" />
         </>
       )}
 
@@ -299,35 +298,8 @@ export default function Carousel({
         .cz-slide {
           flex: 0 0 auto;
         }
-        /* desktop: arrows sit in the gap BETWEEN cards (centre ±336px, like the
-           reference slick-prev/next: left:50%; margin-left:-360px) */
-        .cz-arrow {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 48px;
-          height: 48px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #171717;
-          color: #fff;
-          border-radius: 9999px;
-          font-size: 18px;
-          line-height: 1;
-          cursor: pointer;
-          z-index: 5;
-          transition: opacity 0.2s ease;
-        }
-        .cz-arrow:hover {
-          opacity: 0.82;
-        }
-        .cz-arrow--prev {
-          left: calc(50% - 360px);
-        }
-        .cz-arrow--next {
-          right: calc(50% - 360px);
-        }
+        /* arrow visual + positioning live globally (.arr / .cz-arrow* in
+           cover-clone.css) so the shared <ArrowButton> picks them up. */
         .cz-dots {
           display: flex;
           justify-content: center;
@@ -349,19 +321,6 @@ export default function Carousel({
         @media (max-width: 767px) {
           .cz-slide {
             width: 100%;
-          }
-          /* mobile: arrows back at the edges, over the single inset slide */
-          .cz-arrow {
-            width: 52px;
-            height: 52px;
-            font-size: 18px;
-            top: 34%;
-          }
-          .cz-arrow--prev {
-            left: 0;
-          }
-          .cz-arrow--next {
-            right: 0;
           }
         }
         @media (prefers-reduced-motion: reduce) {
