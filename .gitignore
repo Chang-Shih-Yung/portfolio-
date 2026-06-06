@@ -45,6 +45,10 @@ next-env.d.ts
 .gstack/
 .claude/
 
+# local-only backup of the portrait/logo reference images moved OUT of
+# public/cover so localhost renders the same placeholders as the live site.
+/.cover-local-photos/
+
 # reference placeholders downloaded from koyama-sendai.org.
 # IP boundary: real people's PHOTOS and third-party LOGOS/trademarks stay OUT of
 # the public repo (swap in your own licensed media later). Only the decorative

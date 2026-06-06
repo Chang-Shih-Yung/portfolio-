@@ -43,7 +43,7 @@ export default function AboutSection() {
     <section className="tm9_pt9 parts-section page-max-width">
       <div className="about">
         <div className="about-inner">
-          <SectionTitle ja="關於我" en="ABOUT KOYAMA" />
+          <SectionTitle ja="關於我" en="ABOUT ME" />
           <div className="about-main">
             <p className="catch">
               <span>我相信</span>好設計是能落地的系統

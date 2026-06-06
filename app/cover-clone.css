@@ -40,12 +40,6 @@
 .kyc .tm8_pt8 .facility-img img::before {
   border-color: transparent;
 }
-/* the lifestyle PERSON cut-out is a decorative overlay sitting ON the bordered
-   card — give it no placeholder at all (alt="" already renders nothing when the
-   image is missing) so it never draws a second frame over the card. */
-.kyc .tm5_pt5 .person-img img::before {
-  content: none;
-}
 .kyc .page-content-width { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-content-width-wide { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-max-width { position: relative; width: 100%; margin: 0 auto; }
@@ -689,12 +683,6 @@
   margin: 0 0 0 8px;
   transition: .3s;
 }
-.tm5_pt5 .person-img {
-  position: absolute;
-  bottom: 0;
-  left: 24px;
-  z-index: 5;
-}
 .tm5_pt5 .btn a {
   display: inline-flex;
   align-items: center;
@@ -818,17 +806,6 @@
   }
 .tm5_pt5   .index-detail-name {
     font-size: 20px;
-  }
-.tm5_pt5   .person-img {
-    top: 8.53vw;
-    top: auto;
-    bottom: auto;
-    bottom: 0;
-    left: 0;
-  }
-.tm5_pt5   .person-img img {
-    width: 20.27vw;
-    max-width: 116px;
   }
 .tm5_pt5   .slick-dotted.slick-slider {
     margin-bottom: 24px;
@@ -1765,26 +1742,27 @@
   display: flex;
   align-items: center;
 }
-/* big background ribbon text (Traditional-Chinese portfolio phrases) */
+/* big, nearly-transparent background ribbon text (Traditional-Chinese phrases)
+   — a watermark that sits BEHIND the map/content and slides horizontally */
 .tm9_pt9 .mq-cell {
   display: inline-flex;
   align-items: center;
 }
 .tm9_pt9 .mq-word {
   font-family: var(--cv-font-display, inherit);
-  font-size: clamp(38px, 6.5vw, 84px);
+  font-size: clamp(64px, 11vw, 160px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.42);
   white-space: nowrap;
 }
 .tm9_pt9 .mq-dot {
-  font-size: clamp(38px, 6.5vw, 84px);
+  font-size: clamp(64px, 11vw, 160px);
   font-weight: 700;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.5);
-  padding: 0 clamp(20px, 3vw, 36px);
+  color: rgba(255, 255, 255, 0.28);
+  padding: 0 clamp(28px, 4vw, 56px);
 }
 
 @media screen and (min-width: 768px) {
@@ -2423,15 +2401,19 @@
   z-index: -1;
 }
 
-/* ABOUT marquee: make .row a static, clipped, full-width strip */
+/* ABOUT marquee: a full-width strip centred BEHIND the content (z-index 1 sits
+   under .about-inner's z-index 5), clipped, so the big faint phrases slide along
+   underneath the map — matching the reference's background watermark. */
 .kyc .tm9_pt9 .row {
-  position: relative;
-  top: auto;
-  left: auto;
-  transform: none;
-  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
   width: 100%;
-  margin-top: 40px;
+  transform: translateY(-50%);
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 0;
 }
 
 /* MOBILE: one full-width slide at a time (slidesToShow:1, no peek) */
