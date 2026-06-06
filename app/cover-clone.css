@@ -2646,8 +2646,9 @@
      .cpa-arrow.arr beats the shared `.kyc .arr { display:inline-flex }`. */
   .tm9_pt9 .cpa-arrow.arr { display: none; }
   /* the column is tall (map → slogan → detail), so a 50% centre lands the
-     marquee way down by the copy. Pin it just under the MAP instead. */
-  .kyc .tm9_pt9 .row { top: calc(min(72vw, 360px) + 0.75rem); }
+     marquee way down by the copy. Centre it on the MAP instead so the map sits
+     ON TOP of it (z-index:-2) — the watermark is covered by the map, like desktop. */
+  .kyc .tm9_pt9 .row { top: calc(min(72vw, 360px) / 2); }
 }
 
 @media (prefers-reduced-motion: reduce) {
