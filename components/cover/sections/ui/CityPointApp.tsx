@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Btn from '@/components/cover/sections/ui/Btn'
 
 /**
  * CityPointApp — the interactive heart of the "CITY POINT APP" section.
@@ -61,6 +60,7 @@ export default function CityPointApp() {
     setIndex((p) => (p + delta + cities.length) % cities.length)
 
   return (
+    <>
     <div className="about-main cpa">
       {/* background ribbon marquee — sits BEHIND the map (CSS z-index) */}
       <div className="row" aria-hidden="true">
@@ -109,8 +109,14 @@ export default function CityPointApp() {
           點擊左右箭頭切換城市，探索各地的在地點數方案。這裡先放一段{city.name}
           幣的簡介，之後可依城市替換成實際內容。
         </p>
-        <Btn label={`進入${city.name}幣`} />
       </div>
     </div>
+
+    {/* CTA — long black capsule, centred at the bottom (original related-links
+        position); label follows the selected city */}
+    <div className="cpa-cta-wrap">
+      <a className="cpa-cta" href="#">進入{city.name}幣</a>
+    </div>
+    </>
   )
 }

@@ -2584,3 +2584,35 @@
 @media (prefers-reduced-motion: reduce) {
   .tm9_pt9 .cpa-map__img { animation: none; transition: none; }
 }
+
+/* CITY POINT APP — bottom CTA: the long black capsule (same shape as the old
+   related-links pill), centred below the carousel; label follows the city. */
+.tm9_pt9 .cpa-cta-wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 56px;
+}
+.tm9_pt9 .cpa-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  padding: 16px 48px;
+  border-radius: 9999px;
+  background: var(--cv-ink);
+  color: var(--cv-paper);
+  font-family: var(--cv-font-body, inherit);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.tm9_pt9 .cpa-cta:hover { transform: translateY(-3px); background: var(--cv-ink-2); }
+.tm9_pt9 .cpa-cta:active { transform: translateY(-1px); }
+.tm9_pt9 .cpa-cta:focus-visible { outline: 3px solid var(--cv-accent); outline-offset: 3px; }
+@media (max-width: 767px) {
+  .tm9_pt9 .cpa-cta-wrap { margin-top: 40px; }
+  .tm9_pt9 .cpa-cta { min-width: 200px; padding: 14px 36px; font-size: 16px; }
+}
