@@ -2486,7 +2486,11 @@
 .tm9_pt9 .about-main.cpa .about-detail {
   grid-column: 1;
   width: auto;
-  max-width: 320px;
+  /* max-width caps the line length ("not too wide"); padding-right insets the
+     text from the map ("not too close"). Content can grow tall freely. */
+  max-width: 380px;
+  padding-right: clamp(24px, 4vw, 64px);
+  box-sizing: border-box;
 }
 /* the city map (square 500×500 asset) — page-centred */
 .tm9_pt9 .cpa-map {
@@ -2499,11 +2503,13 @@
   display: block;
   width: 100%;
   height: auto;
-  cursor: pointer;
   transition: transform 0.35s ease, filter 0.35s ease;
   animation: cpaFade 0.4s ease both;
 }
-.tm9_pt9 .cpa-map__img:hover {
+/* .is-over is toggled by JS only when the cursor is over the map SHAPE (alpha>0),
+   not the transparent box — so the brighten + scale fires on the shape only. */
+.tm9_pt9 .cpa-map.is-over { cursor: pointer; }
+.tm9_pt9 .cpa-map.is-over .cpa-map__img {
   transform: scale(1.05);
   filter: brightness(1.08);
 }
