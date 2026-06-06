@@ -92,13 +92,13 @@
      ════════════════════════════════════════════════════════════════════════ */
 
   /* surfaces / neutrals */
-  --cv-bg: #F4F1EB;          /* light off-white / near-white cream — the dominant base */
-  --cv-bg-2: #E3DCCE;        /* slightly deeper cream */
+  --cv-bg: #F2F6FC;          /* cool near-white (~5% blue cast) — the dominant base */
+  --cv-bg-2: #E6EBF2;        /* slightly deeper cool white */
   --cv-ink: #1B1C1F;         /* cool near-black — text + 2px outlines */
   --cv-ink-2: #3B3C41;       /* secondary dark (was #333) */
   --cv-ink-soft: #5C5D64;    /* muted text (was #6f6f6f / #666) */
   --cv-ink-mute: #9A9BA1;    /* faint text / meta (was #999) */
-  --cv-line: #D7D0C3;        /* hairline */
+  --cv-line: #D6DDE5;        /* hairline (cool) */
   --cv-paper: #FFFFFF;       /* white (logo pill, phone body) */
   --cv-card: #FFFFFF;        /* card / chip surface (tweak for off-white cards) */
 
@@ -114,8 +114,8 @@
   --cv-accent-warm: #D69E91; /* was #f89286 */
 
   /* RefImg placeholder box */
-  --cv-ph-fill: #E6DFD3;     /* warm fill (≈ bg, hides chrome) */
-  --cv-ph-line: #BCAE99;     /* dashed frame */
+  --cv-ph-fill: #E7ECF3;     /* cool fill (≈ bg, hides chrome) */
+  --cv-ph-line: #AEB8C3;     /* dashed frame (cool gray) */
 
   /* ABOUT background marquee watermark (kept faint, tone-on-tone) */
   --cv-marquee: rgba(110, 130, 142, 0.20);
