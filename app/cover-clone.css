@@ -2645,6 +2645,9 @@
   /* mobile: no arrows — swipe + dots only (matches the Carousel sections).
      .cpa-arrow.arr beats the shared `.kyc .arr { display:inline-flex }`. */
   .tm9_pt9 .cpa-arrow.arr { display: none; }
+  /* the column is tall (map → slogan → detail), so a 50% centre lands the
+     marquee way down by the copy. Pin it just under the MAP instead. */
+  .kyc .tm9_pt9 .row { top: calc(min(72vw, 360px) + 0.75rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
