@@ -59,7 +59,6 @@ next-env.d.ts
 !/public/cover/illust-bottom.png
 !/public/cover/ref/
 /public/cover/ref/*
-!/public/cover/ref/813a385b365d6b5f411d8ca917240a35.png
 !/public/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png
 !/public/cover/ref/5ac03b6996f8ebf69caf7268be550c4d.png
 !/public/cover/ref/67df0e2f04e8626e7882aeed7ad05f1b.png

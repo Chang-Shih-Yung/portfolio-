@@ -2,6 +2,7 @@ import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
 import IndexLink from '@/components/cover/sections/ui/IndexLink'
 import Carousel from '@/components/cover/sections/ui/Carousel'
+import RefImg from '@/components/cover/sections/ui/RefImg'
 
 /**
  * FacilitiesSection — clone of koyama-sendai.org "FACILITIES" (tm7_pt7).
@@ -33,7 +34,7 @@ function FacilityCard({ item }: { item: FacilityItem }) {
     <article className="facility-slide-item">
       <a href={item.href}>
         <div className="facility-slide-img">
-          <img src={item.img} width={308} height={308} alt="" />
+          <RefImg src={item.img} width={308} height={308} alt="" />
         </div>
         <h3 className="facility-name">{item.name}</h3>
         <div className="facility-cat">

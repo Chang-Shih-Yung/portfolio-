@@ -40,6 +40,24 @@
 .kyc .tm8_pt8 .facility-img img::before {
   border-color: transparent;
 }
+/* RefImg placeholder: a transparent <img> shown (NO network request → no 404)
+   when a reference image isn't shipped yet. It keeps every existing `… img` rule
+   (size, and for FACILITIES the solid border + cloud/circle/leaf shape); this
+   class just adds the warm fill + a dashed frame for the otherwise border-less
+   slots (news / corp / footer). */
+.kyc .ref-ph {
+  background: #ece2d0;
+  border: 2px dashed #b6a588;
+  border-radius: inherit;
+}
+/* inside a container whose own WRAPPER draws the solid frame, drop the dash so
+   there's no double line. (FACILITIES is excluded — its solid border lives on
+   the <img> itself and already wins by specificity.) */
+.kyc .tm4_pt4 .facility-img .ref-ph,
+.kyc .tm5_pt5 .index-img .ref-ph,
+.kyc .tm8_pt8 .facility-img .ref-ph {
+  border-color: transparent;
+}
 .kyc .page-content-width { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-content-width-wide { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-max-width { position: relative; width: 100%; margin: 0 auto; }
@@ -887,8 +905,11 @@
   max-width: 1430px;
   margin: 0 auto;
   height: 600px;
-  background-image: url(/cover/ref/813a385b365d6b5f411d8ca917240a35.png);
-  background-size: cover;
+  /* clean cartoon-cloud layer. NOTE: do NOT use 813a385b here — that asset has
+     real people composited into some of the clouds (portrait rights). */
+  background-image: url(/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: 50% 50%;
 }
 .tm6_pt6 .workstyle-box {
@@ -2401,19 +2422,21 @@
   z-index: -1;
 }
 
-/* ABOUT marquee: a full-width strip centred BEHIND the content (z-index 1 sits
-   under .about-inner's z-index 5), clipped, so the big faint phrases slide along
-   underneath the map — matching the reference's background watermark. */
+/* ABOUT marquee: full-bleed strip centred vertically on .about-main (the row
+   that holds the map) and pushed BEHIND it (z-index:-1, so the map + text paint
+   on top), clipped — the big faint phrases slide right under the map, matching
+   the reference's background watermark. left:50% + translateX(-50%) of 100vw
+   breaks it out of the 1100px container to the full viewport width. */
 .kyc .tm9_pt9 .row {
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  transform: translateY(-50%);
+  left: 50%;
+  right: auto;
+  width: 100vw;
+  transform: translate(-50%, -50%);
   overflow: hidden;
-  z-index: 1;
-  margin-top: 0;
+  z-index: -1;
+  margin: 0;
 }
 
 /* MOBILE: one full-width slide at a time (slidesToShow:1, no peek) */

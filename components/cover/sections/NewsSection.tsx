@@ -1,5 +1,6 @@
 import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
+import RefImg from '@/components/cover/sections/ui/RefImg'
 
 /**
  * NewsSection — clone of koyama-sendai.org "NEWS" (tm3_pt3).
@@ -35,7 +36,7 @@ function NewsRow({ item }: { item: NewsItem }) {
           </div>
         </div>
         <div className="news-img">
-          <img src={item.img} width={80} height={80} alt="" />
+          <RefImg src={item.img} width={80} height={80} alt="" />
         </div>
       </a>
     </article>

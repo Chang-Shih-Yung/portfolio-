@@ -1,4 +1,5 @@
 import type { ReactNode, JSX } from 'react'
+import RefImg from '@/components/cover/sections/ui/RefImg'
 
 /**
  * IndexInfoCard — the reusable `.index-info` card body shared by LIVE (tm4) and
@@ -35,7 +36,7 @@ export default function IndexInfoCard({
         <div className="company">{company}</div>
       </div>
       <div className="facility-img">
-        <img src={img} width={510} height={315} alt="" />
+        <RefImg src={img} width={510} height={315} alt="" />
       </div>
     </a>
   )

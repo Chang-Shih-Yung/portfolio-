@@ -4,6 +4,8 @@
  * `.illust` band is a CSS background). Body is Traditional-Chinese placeholder;
  * banner logos are reference placeholders under /cover/ref.
  */
+import RefImg from '@/components/cover/sections/ui/RefImg'
+
 const ref = (h: string) => `/cover/ref/${h}`
 const banners = [
   { img: ref('4d383a409bee31551999db47e0e86add.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
@@ -25,7 +27,7 @@ export default function CoverFooter() {
                 <li className="footer-banner-item" key={i}>
                   <a href="#" target="_blank" rel="noreferrer">
                     <div className="footer-banner-img">
-                      <img src={b.img} width={245} height={90} alt="" />
+                      <RefImg src={b.img} width={245} height={90} alt="" />
                     </div>
                     <p className="footer-banner-txt">{b.txt}</p>
                   </a>

@@ -1,4 +1,5 @@
 import IndexLink from '@/components/cover/sections/ui/IndexLink'
+import RefImg from '@/components/cover/sections/ui/RefImg'
 
 /**
  * CorpSection — clone of koyama-sendai.org "法人一覧" corporate list (tm10_pt10).
@@ -30,7 +31,7 @@ function CorpCard({ item }: { item: CorpItem }) {
           <IndexLink />
         </div>
         <div className="index-img">
-          <img src={item.img} width={200} height={200} alt="" />
+          <RefImg src={item.img} width={200} height={200} alt="" />
         </div>
       </a>
     </article>

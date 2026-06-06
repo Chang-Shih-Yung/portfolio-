@@ -1,5 +1,6 @@
 import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
+import RefImg from '@/components/cover/sections/ui/RefImg'
 
 /**
  * AboutSection — clone of koyama-sendai.org "ABOUT KOYAMA" (tm9_pt9). The bottom
@@ -45,11 +46,17 @@ export default function AboutSection() {
         <div className="about-inner">
           <SectionTitle ja="關於我" en="ABOUT ME" />
           <div className="about-main">
+            {/* background ribbon marquee — sits BEHIND and is centred on the
+                map (positioned/clipped in CSS); aria-hidden, purely decorative */}
+            <div className="row" aria-hidden="true">
+              <div className="autoplay-slider"><MarqueeGroup /></div>
+              <div className="autoplay-slider"><MarqueeGroup /></div>
+            </div>
             <p className="catch">
               <span>我相信</span>好設計是能落地的系統
             </p>
             <div className="map">
-              <img src={mapImg} width={400} height={448} alt="" />
+              <RefImg src={mapImg} width={400} height={448} alt="" />
             </div>
             <div className="about-detail">
               <p className="detail-catch">這裡放一句你的定位主張，兩行以內最好</p>
@@ -59,10 +66,6 @@ export default function AboutSection() {
               <Btn label="更多關於我" />
             </div>
           </div>
-        </div>
-        <div className="row" aria-hidden="true">
-          <div className="autoplay-slider"><MarqueeGroup /></div>
-          <div className="autoplay-slider"><MarqueeGroup /></div>
         </div>
       </div>
     </section>
