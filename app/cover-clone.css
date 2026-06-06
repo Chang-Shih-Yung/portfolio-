@@ -17,25 +17,34 @@
 .kyc ul,.kyc li { list-style: none; margin: 0; padding: 0; }
 .kyc a { color: #000; text-decoration: none; }
 .kyc img { max-width: 100%; height: auto; vertical-align: bottom; position: relative; }
-/* graceful fallback: when an <img> fails to load (placeholder not provided yet)
-   paint a soft tint instead of the browser broken-image chrome (gray line +
-   broken icon). A successfully loaded image replaces this automatically — the
-   ::before is only painted on a broken <img>. */
+/* graceful fallback for a MISSING image: a CSS ::before on an <img> is painted
+   ONLY when that image is broken — a successfully loaded image replaces it. So
+   this gives every loose image a clean DASHED placeholder box (warm fill hides
+   the browser's broken-image chrome; dashed frame reads as "image goes here")
+   without ever showing on a real image.
+   Containers that ALREADY draw a solid 2px frame override this below to drop the
+   dash (keep only the fill) so you never get a solid + dashed double border. */
 .kyc img::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--cv-bg);
+  background: #ece2d0;
+  border: 2px dashed #b6a588;
   border-radius: inherit;
 }
-/* blend the fallback into each section's own background so a missing image just
-   disappears (no gray line / broken icon / coloured box) */
-.tm6_pt6 img::before,
-.tm7_pt7 img::before {
-  background: #c4e9fb;
+/* solid-framed image containers: keep the fill (covers the broken icon) but
+   hide the dash — their own solid border is the frame (no double line). */
+.kyc .tm4_pt4 .facility-img img::before,
+.kyc .tm5_pt5 .index-img img::before,
+.kyc .tm7_pt7 .facility-slide-img img::before,
+.kyc .tm8_pt8 .facility-img img::before {
+  border-color: transparent;
 }
-.tm11_pt11 img::before {
-  background: #7dcdc3;
+/* the lifestyle PERSON cut-out is a decorative overlay sitting ON the bordered
+   card — give it no placeholder at all (alt="" already renders nothing when the
+   image is missing) so it never draws a second frame over the card. */
+.kyc .tm5_pt5 .person-img img::before {
+  content: none;
 }
 .kyc .page-content-width { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-content-width-wide { position: relative; width: 1100px; margin: 0 auto; }
@@ -160,17 +169,6 @@
   border-radius: 8px;
   overflow: hidden;
   margin: 0 24px 0 0;
-}
-.tm3_pt3 .news-img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border: 1px dashed #171717;
-  border-radius: 8px;
-  z-index: 5; 
 }
 .tm3_pt3 .news-img img {
   width: 100%;
@@ -1759,12 +1757,34 @@
 }
 .tm9_pt9 .autoplay-slider {
   display: flex;
-  justify-content: center;
-  width: calc(5415px * 2);
+  flex: 0 0 auto;
+  width: max-content;
   animation: 120s infinite linear 0.5s both sliderAnimation;
 }
-.tm9_pt9 .bg-item + .bg-item {
-  margin: 0 0 0 40px;
+.tm9_pt9 .bg-item {
+  display: flex;
+  align-items: center;
+}
+/* big background ribbon text (Traditional-Chinese portfolio phrases) */
+.tm9_pt9 .mq-cell {
+  display: inline-flex;
+  align-items: center;
+}
+.tm9_pt9 .mq-word {
+  font-family: var(--cv-font-display, inherit);
+  font-size: clamp(38px, 6.5vw, 84px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #fff;
+  white-space: nowrap;
+}
+.tm9_pt9 .mq-dot {
+  font-size: clamp(38px, 6.5vw, 84px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 clamp(20px, 3vw, 36px);
 }
 
 @media screen and (min-width: 768px) {
@@ -1832,7 +1852,7 @@
     transform: none;
   }
 .tm9_pt9   .autoplay-slider {
-    width: calc(3680px * 2);
+    width: max-content;
   }
 }@keyframes sliderAnimation {
     from {

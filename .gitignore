@@ -45,7 +45,17 @@ next-env.d.ts
 .gstack/
 .claude/
 
-# local-only reference placeholders downloaded from koyama-sendai.org
-# (third-party copyrighted photos/logos/illustrations — kept out of the public
-# repo; swap in your own licensed images, then remove this rule to commit them)
-/public/cover/
+# reference placeholders downloaded from koyama-sendai.org.
+# IP boundary: real people's PHOTOS and third-party LOGOS/trademarks stay OUT of
+# the public repo (swap in your own licensed media later). Only the decorative
+# ILLUSTRATIONS below — no likeness, no trademark — are committed so the cover
+# actually renders on Vercel.
+/public/cover/*
+!/public/cover/illust-top.png
+!/public/cover/illust-bottom.png
+!/public/cover/ref/
+/public/cover/ref/*
+!/public/cover/ref/813a385b365d6b5f411d8ca917240a35.png
+!/public/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png
+!/public/cover/ref/5ac03b6996f8ebf69caf7268be550c4d.png
+!/public/cover/ref/67df0e2f04e8626e7882aeed7ad05f1b.png

@@ -2,13 +2,41 @@ import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
 
 /**
- * AboutSection — clone of koyama-sendai.org "ABOUT KOYAMA" (tm9_pt9), including
- * the bottom logo MARQUEE (two .autoplay-slider tracks animated by the ported
- * `sliderAnimation` keyframe — pure CSS). Title/button from shared UI components.
- * Body is Chinese placeholder; images are reference placeholders.
+ * AboutSection — clone of koyama-sendai.org "ABOUT KOYAMA" (tm9_pt9). The bottom
+ * band is a horizontal TEXT MARQUEE of Traditional-Chinese, portfolio-relevant
+ * phrases (replacing the reference's Japanese image strip): two identical
+ * .autoplay-slider tracks sit side by side and each animates translateX(-100%)
+ * via the ported `sliderAnimation` keyframe, so the loop is seamless (pure CSS).
+ * Title/button from shared UI components; body is Chinese placeholder.
  */
 const mapImg = '/cover/ref/5ac03b6996f8ebf69caf7268be550c4d.png'
-const stripImg = '/cover/ref/fc8d8d3ea2b4faa6df5de8bd807f065f.png'
+
+/* big background phrases that slide across the bottom of the section */
+const marqueePhrases = [
+  '系統化思考',
+  '把複雜，設計得簡單',
+  'UX × PRODUCT',
+  '以使用者為中心',
+  '從研究到落地',
+  '能撐住的設計系統',
+  '介面 · 流程 · 體驗',
+  'DESIGN THAT SCALES',
+]
+
+/* one full copy of the phrase list — duplicated across the two sliders so the
+   translateX(-100%) loop reads as a continuous ribbon with no seam. */
+function MarqueeGroup() {
+  return (
+    <div className="bg-item">
+      {marqueePhrases.map((phrase, i) => (
+        <span className="mq-cell" key={i}>
+          <span className="mq-word">{phrase}</span>
+          <span className="mq-dot" aria-hidden="true">·</span>
+        </span>
+      ))}
+    </div>
+  )
+}
 
 export default function AboutSection() {
   return (
@@ -32,15 +60,9 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="autoplay-slider">
-            <div className="bg-item"><img src={stripImg} width={5335} height={276} alt="" /></div>
-            <div className="bg-item"><img src={stripImg} width={5335} height={276} alt="" /></div>
-          </div>
-          <div className="autoplay-slider">
-            <div className="bg-item"><img src={stripImg} width={5335} height={276} alt="" /></div>
-            <div className="bg-item"><img src={stripImg} width={5335} height={276} alt="" /></div>
-          </div>
+        <div className="row" aria-hidden="true">
+          <div className="autoplay-slider"><MarqueeGroup /></div>
+          <div className="autoplay-slider"><MarqueeGroup /></div>
         </div>
       </div>
     </section>

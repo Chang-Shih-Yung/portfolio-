@@ -1,6 +1,7 @@
 import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
 import Carousel from '@/components/cover/sections/ui/Carousel'
+import DecorativeImg from '@/components/cover/sections/ui/DecorativeImg'
 
 /**
  * LifestyleSection — clone of koyama-sendai.org "LIFESTYLE" (tm5_pt5).
@@ -44,7 +45,7 @@ function LifestyleCard({ slide }: { slide: LifestyleSlide }) {
           </div>
         </div>
         <div className="person-img">
-          <img src={slide.person} width={200} height={417} alt="" />
+          <DecorativeImg src={slide.person} width={200} height={417} alt="" />
         </div>
       </a>
     </div>
