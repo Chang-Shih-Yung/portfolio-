@@ -3,13 +3,11 @@ import '@/app/cover-clone.css'
 import CoverNav from '@/components/cover/CoverNav'
 import CoverHero from '@/components/cover/CoverHero'
 import NewsSection from '@/components/cover/sections/NewsSection'
-import LiveSection from '@/components/cover/sections/LiveSection'
 import LifestyleSection from '@/components/cover/sections/LifestyleSection'
 import WorkstyleSection from '@/components/cover/sections/WorkstyleSection'
 import FacilitiesSection from '@/components/cover/sections/FacilitiesSection'
 import ConciergeSection from '@/components/cover/sections/ConciergeSection'
 import AboutSection from '@/components/cover/sections/AboutSection'
-import CorpSection from '@/components/cover/sections/CorpSection'
 import CoverFooter from '@/components/cover/sections/CoverFooter'
 
 /**
@@ -31,13 +29,11 @@ export default function HomePage() {
       <CoverHero />
       <div className="kyc">
         <NewsSection />
-        <LiveSection />
         <LifestyleSection />
         <WorkstyleSection />
         <FacilitiesSection />
         <ConciergeSection />
         <AboutSection />
-        <CorpSection />
         <CoverFooter />
       </div>
     </>

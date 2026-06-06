@@ -2472,3 +2472,115 @@
 @media (prefers-reduced-motion: reduce) {
   .kyc .autoplay-slider { animation: none !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   CITY POINT APP (tm9_pt9) — manual map carousel
+   ════════════════════════════════════════════════════════════════════════ */
+.tm9_pt9 .about-main.cpa {
+  justify-content: center;
+}
+/* the city map (square 500×500 asset) */
+.tm9_pt9 .cpa-map {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(320px, 34vw, 460px);
+  margin: 0 72px;
+  order: 2;
+}
+.tm9_pt9 .cpa-map__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  animation: cpaFade 0.4s ease both;
+}
+.tm9_pt9 .cpa-map__img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+@keyframes cpaFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* {city}幣 headline (was .detail-catch) */
+.tm9_pt9 .cpa-coin {
+  font-size: clamp(32px, 3vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+/* manual carousel arrows — reuse the black-circle look, pinned to the PAGE
+   sides. .about-main is viewport-centred, so the full-bleed calc lands them at
+   the viewport edges (with an inset), vertically centred on the map. */
+.tm9_pt9 .cpa-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 6;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid var(--cv-ink);
+  border-radius: 100%;
+  background: var(--cv-ink);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.tm9_pt9 .cpa-arrow--prev { left: calc(50% - 50vw + clamp(16px, 4vw, 96px)); }
+.tm9_pt9 .cpa-arrow--next { left: calc(50% + 50vw - clamp(16px, 4vw, 96px) - 64px); }
+.tm9_pt9 .cpa-arrow:hover { transform: translateY(-50%) scale(1.08); }
+.tm9_pt9 .cpa-arrow:active { transform: translateY(-50%) scale(0.95); }
+.tm9_pt9 .cpa-arrow:focus-visible { outline: 3px solid var(--cv-accent); outline-offset: 3px; }
+.tm9_pt9 .cpa-arrow__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDE2IDEyIj4NCiAgPHBhdGggaWQ9ImFycm93X3JpZ2h0X2FsdF9GSUxMMF93Z2h0NDAwX0dSQUQwX29wc3o0OCIgZD0iTTE3MC4wMDksMzQ1bC0xLjA3My0xLjA0OCw0LjE5My00LjE5MUgxNjB2LTEuNWgxMy4xM2wtNC4yMTgtNC4yMTZMMTY5Ljk4NCwzMzMsMTc2LDMzOS4wMTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTYwIC0zMzMpIiBmaWxsPSIjMWIxYzFmIi8+DQo8L3N2Zz4NCg==);
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: brightness(0) invert(1);
+}
+.tm9_pt9 .cpa-arrow--prev .cpa-arrow__icon { transform: translate(-50%, -50%) rotate(180deg); }
+
+/* ── MOBILE ── */
+@media (max-width: 767px) {
+  .tm9_pt9 .about-main.cpa {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tm9_pt9 .cpa-map {
+    width: min(72vw, 360px);
+    margin: 0 auto;
+    order: 1;
+  }
+  .tm9_pt9 .about-main.cpa .about-detail {
+    width: auto;
+    order: 2;
+  }
+  .tm9_pt9 .about-main.cpa .catch {
+    order: 3;
+  }
+  .tm9_pt9 .about-main.cpa .btn {
+    justify-content: center;
+    display: flex;
+  }
+  /* arrows flank the map (which is first in the column) */
+  .tm9_pt9 .cpa-arrow {
+    top: calc(min(72vw, 360px) / 2);
+    width: 52px;
+    height: 52px;
+  }
+  .tm9_pt9 .cpa-arrow--prev { left: clamp(8px, 3vw, 16px); }
+  .tm9_pt9 .cpa-arrow--next { left: auto; right: clamp(8px, 3vw, 16px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm9_pt9 .cpa-map__img { animation: none; transition: none; }
+}
