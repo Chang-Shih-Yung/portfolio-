@@ -75,7 +75,7 @@ export default function CityPointApp() {
         onClick={() => go(-1)}
         aria-label="上一個城市"
       >
-        <span className="cpa-arrow__icon" aria-hidden="true" />
+        <span className="btn-icon" aria-hidden="true" />
       </button>
       <button
         type="button"
@@ -83,12 +83,8 @@ export default function CityPointApp() {
         onClick={() => go(1)}
         aria-label="下一個城市"
       >
-        <span className="cpa-arrow__icon" aria-hidden="true" />
+        <span className="btn-icon" aria-hidden="true" />
       </button>
-
-      <p className="catch">
-        <span>城市幣</span>在地點數 · 一點就通
-      </p>
 
       <div className="map cpa-map">
         {/* key → re-mounts on change so each map fades in; hover = brighten+scale */}
