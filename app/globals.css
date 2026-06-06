@@ -92,7 +92,7 @@
      ════════════════════════════════════════════════════════════════════════ */
 
   /* surfaces / neutrals */
-  --cv-bg: #F7FBFF;          /* brighter cool near-white (~3% blue cast) — the dominant base */
+  --cv-bg: #FAFDFF;          /* near-white, faint cool cast (~2% blue) — the dominant base */
   --cv-bg-2: #E6EBF2;        /* slightly deeper cool white */
   --cv-ink: #1B1C1F;         /* cool near-black — text + 2px outlines */
   --cv-ink-2: #3B3C41;       /* secondary dark (was #333) */
