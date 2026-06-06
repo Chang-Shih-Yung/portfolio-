@@ -22,15 +22,17 @@ export interface City {
   name: string
   /** map asset under /public/cities (500×500 PNG) */
   map: string
+  /** the coin-app slogan beside the map — two lines (lead = big, sub = small) */
+  slogan: { lead: string; sub: string }
 }
 
 const cities: City[] = [
-  { name: '台中', map: '/cities/taichung.png' },
-  { name: '苗栗', map: '/cities/miaoli.png' },
-  { name: '南投', map: '/cities/nantou.png' },
-  { name: '雲林', map: '/cities/yunlin.png' },
-  { name: '台東', map: '/cities/taitung.png' },
-  { name: '花蓮', map: '/cities/hualien.png' },
+  { name: '台中', map: '/cities/taichung.png', slogan: { lead: '大城生活', sub: '一卡通行' } },
+  { name: '苗栗', map: '/cities/miaoli.png', slogan: { lead: '漫遊山城', sub: '在地有禮' } },
+  { name: '南投', map: '/cities/nantou.png', slogan: { lead: '山水之間', sub: '處處有禮' } },
+  { name: '雲林', map: '/cities/yunlin.png', slogan: { lead: '農鄉新意', sub: '點數同行' } },
+  { name: '台東', map: '/cities/taitung.png', slogan: { lead: '慢活東岸', sub: '一點就通' } },
+  { name: '花蓮', map: '/cities/hualien.png', slogan: { lead: '山海之境', sub: '樂遊有禮' } },
 ]
 
 /* background ribbon phrases (city / points themed placeholder) */
@@ -164,6 +166,13 @@ export default function CityPointApp() {
             幣的簡介，之後可依城市替換成實際內容。
           </p>
         </div>
+
+        {/* per-city slogan — two vertical lines on the right (col 3): a big lead
+            + a smaller sub for hierarchy */}
+        <p className="catch cpa-slogan">
+          <span className="cpa-slogan__lead">{city.slogan.lead}</span>
+          <span className="cpa-slogan__sub">{city.slogan.sub}</span>
+        </p>
       </div>
 
       {/* CTA — long black capsule, centred at the bottom (original related-links

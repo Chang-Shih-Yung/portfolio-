@@ -2519,11 +2519,42 @@
 }
 
 /* {city}幣 headline (was .detail-catch) */
+/* {city}幣 headline — deliberately smaller than the slogan (clear hierarchy) */
 .tm9_pt9 .cpa-coin {
-  font-size: clamp(32px, 3vw, 44px);
+  font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 700;
   line-height: 1.1;
   margin: 0 0 20px;
+}
+/* per-city slogan — TWO vertical lines on the right (col 3): a big lead + a
+   smaller sub. flex row-reverse puts the lead on the right (vertical reading);
+   sizes are intentionally != the headline for hierarchy. */
+.tm9_pt9 .about-main.cpa .catch {
+  grid-column: 3;
+  justify-self: center;
+  margin: 0;
+  writing-mode: horizontal-tb;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: clamp(10px, 1.4vw, 22px);
+}
+.tm9_pt9 .catch .cpa-slogan__lead,
+.tm9_pt9 .catch .cpa-slogan__sub {
+  writing-mode: vertical-rl;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+}
+.tm9_pt9 .catch .cpa-slogan__lead {
+  font-size: clamp(40px, 4.8vw, 64px);
+  color: var(--cv-ink);
+}
+.tm9_pt9 .catch .cpa-slogan__sub {
+  font-size: clamp(18px, 1.9vw, 26px);
+  color: var(--cv-ink-soft);
+  margin-top: 0.4em;
 }
 
 /* manual carousel arrows — REUSE the shared .btn-icon (black circle + arrow) so
@@ -2566,6 +2597,27 @@
     max-width: 480px;
   }
   .tm9_pt9 .cpa-map { grid-column: 1; }
+  /* slogan: two horizontal lines, centred, with breathing room from the copy */
+  .tm9_pt9 .about-main.cpa .catch {
+    grid-column: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    /* spacing both from the map above and the heading below */
+    margin: clamp(20px, 5vw, 32px) 0;
+  }
+  .tm9_pt9 .catch .cpa-slogan__lead,
+  .tm9_pt9 .catch .cpa-slogan__sub {
+    writing-mode: horizontal-tb;
+    text-align: center;
+    margin: 0;
+  }
+  .tm9_pt9 .catch .cpa-slogan__lead { font-size: clamp(28px, 7vw, 40px); }
+  .tm9_pt9 .catch .cpa-slogan__sub { font-size: clamp(16px, 4vw, 22px); }
+  /* explicit stack order: map → slogan → coin + desc (slogan above the heading) */
+  .tm9_pt9 .about-main.cpa .cpa-map { order: 1; }
+  .tm9_pt9 .about-main.cpa .catch { order: 2; }
+  .tm9_pt9 .about-main.cpa .about-detail { order: 3; }
 }
 @media (max-width: 767px) {
   .tm9_pt9 .cpa-map { width: min(72vw, 360px); }
