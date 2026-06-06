@@ -25,8 +25,17 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: #ded3c2;
+  background: var(--cv-bg);
   border-radius: inherit;
+}
+/* blend the fallback into each section's own background so a missing image just
+   disappears (no gray line / broken icon / coloured box) */
+.tm6_pt6 img::before,
+.tm7_pt7 img::before {
+  background: #c4e9fb;
+}
+.tm11_pt11 img::before {
+  background: #7dcdc3;
 }
 .kyc .page-content-width { position: relative; width: 1100px; margin: 0 auto; }
 .kyc .page-content-width-wide { position: relative; width: 1100px; margin: 0 auto; }
