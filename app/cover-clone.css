@@ -2594,11 +2594,12 @@
   margin-top: 56px;
 }
 .tm9_pt9 .cpa-cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 240px;
-  padding: 16px 48px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px 48px;
   border-radius: 9999px;
   background: var(--cv-ink);
   color: var(--cv-paper);
@@ -2614,5 +2615,5 @@
 .tm9_pt9 .cpa-cta:focus-visible { outline: 3px solid var(--cv-accent); outline-offset: 3px; }
 @media (max-width: 767px) {
   .tm9_pt9 .cpa-cta-wrap { margin-top: 40px; }
-  .tm9_pt9 .cpa-cta { min-width: 200px; padding: 14px 36px; font-size: 16px; }
+  .tm9_pt9 .cpa-cta { padding: 16px 28px; font-size: 16px; }
 }
