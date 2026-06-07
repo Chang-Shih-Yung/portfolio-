@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ArrowButton from '@/components/cover/sections/ui/ArrowButton'
 
 /**
@@ -70,6 +70,16 @@ export default function CityPointApp() {
   )
 
   const city = cities[index]
+
+  // preload EVERY city map once on mount so switching never waits on the
+  // network. Without this, the first visit shows a blank frame on each new
+  // city until its PNG downloads — looks like a flicker.
+  useEffect(() => {
+    cities.forEach((c) => {
+      const im = new Image()
+      im.src = c.map
+    })
+  }, [])
 
   const reset = () => {
     setOverShape(false)
@@ -170,10 +180,12 @@ export default function CityPointApp() {
         />
 
         <div className={`map cpa-map${overShape ? ' is-over' : ''}`}>
-          {/* key → re-mounts on change so each map fades in. Hover (brighten +
-              scale) only fires over the actual shape — see handleMove. */}
+          {/* ONE persistent <img> reused across cities — we swap `src`, not the
+              element. The old map stays painted until the new src is ready, so
+              switching never blanks (preloaded on mount). `cpaFade` plays once
+              on initial mount. Hover (brighten + scale) only fires over the
+              actual shape — see handleMove. */}
           <img
-            key={city.map}
             ref={imgRef}
             className="cpa-map__img"
             src={city.map}
