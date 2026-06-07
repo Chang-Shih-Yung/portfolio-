@@ -2618,7 +2618,13 @@
     padding: 0 0 0 clamp(16px, 5vw, 24px);
     box-sizing: border-box;
   }
-  .tm9_pt9 .cpa-map { grid-column: 1; }
+  .tm9_pt9 .cpa-map { grid-column: 1; width: min(72vw, 380px); }
+  /* stacked layout (tablet + phone) = NO arrows; swipe + dots only, like the
+     Carousel sections. .cpa-arrow.arr beats `.kyc .arr { display:inline-flex }`. */
+  .tm9_pt9 .cpa-arrow.arr { display: none; }
+  /* tall column → a 50% centre drops the marquee down by the copy. Centre it on
+     the MAP (mapHeight/2) so the map (higher z) covers it, like desktop. */
+  .kyc .tm9_pt9 .row { top: calc(min(72vw, 380px) / 2); }
   /* slogan: two horizontal lines, left-aligned, with breathing room from copy */
   .tm9_pt9 .about-main.cpa .catch {
     flex-direction: column;
@@ -2640,17 +2646,6 @@
   .tm9_pt9 .about-main.cpa .catch { order: 2; }
   .tm9_pt9 .about-main.cpa .about-detail { order: 3; }
 }
-@media (max-width: 767px) {
-  .tm9_pt9 .cpa-map { width: min(72vw, 360px); }
-  /* mobile: no arrows — swipe + dots only (matches the Carousel sections).
-     .cpa-arrow.arr beats the shared `.kyc .arr { display:inline-flex }`. */
-  .tm9_pt9 .cpa-arrow.arr { display: none; }
-  /* the column is tall (map → slogan → detail), so a 50% centre lands the
-     marquee way down by the copy. Centre it on the MAP instead so the map sits
-     ON TOP of it (z-index:-2) — the watermark is covered by the map, like desktop. */
-  .kyc .tm9_pt9 .row { top: calc(min(72vw, 360px) / 2); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .tm9_pt9 .cpa-map__img { animation: none; transition: none; }
 }

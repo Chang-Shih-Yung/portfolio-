@@ -33,7 +33,7 @@ const DRAG_THRESHOLD = 8 // px of movement before a press counts as a drag (not 
  */
 export interface CarouselProps {
   children: ReactNode
-  /** show prev/next arrows on desktop (mobile always shows them) */
+  /** show prev/next arrows on DESKTOP. Mobile never shows arrows (swipe + dots). */
   desktopArrows?: boolean
   /** autoplay interval in ms (0 disables) */
   autoplayMs?: number

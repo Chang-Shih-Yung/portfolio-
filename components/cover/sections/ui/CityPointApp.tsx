@@ -101,6 +101,11 @@ export default function CityPointApp() {
     const dx = e.clientX - start
     if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1) // swipe left → next
   }
+  // a cancelled gesture (touch interrupted / browser takeover) must clear the
+  // pending drag so a later move/up isn't measured from a stale start point.
+  const onCancel = () => {
+    dragX.current = null
+  }
 
   /** draw the (same-origin) PNG to a canvas once and cache its alpha channel */
   const buildAlpha = useCallback(() => {
@@ -181,6 +186,7 @@ export default function CityPointApp() {
             onPointerLeave={() => setOverShape(false)}
             onPointerDown={onDown}
             onPointerUp={onUp}
+            onPointerCancel={onCancel}
           />
           {/* pagination dots — position indicator + swipe affordance */}
           <div className="cpa-dots" role="group" aria-label="切換城市">
