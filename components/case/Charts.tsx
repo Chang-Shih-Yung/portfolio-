@@ -164,6 +164,51 @@ export function BridgeFlow({
   )
 }
 
+/**
+ * FanOut — one-to-many spread diagram (hub → pill cluster), for "expansion"
+ * narratives (e.g. 雲林幣 2.0 → 台東/南投/彰化/台中/嘉義 觀摩縣市).
+ */
+export function FanOut({
+  from,
+  to,
+  via,
+  note,
+}: {
+  from: { title: string; sub?: string }
+  /** the spread targets, rendered as outline pills */
+  to: string[]
+  /** label on the connector, e.g. "跨縣市觀摩" */
+  via?: string
+  note?: string
+}) {
+  return (
+    <div
+      className="fanout"
+      role="img"
+      aria-label={`${from.title}${via ? `透過${via}` : ''}擴散至${to.join('、')}`}
+    >
+      <div className="fanout-row" aria-hidden="true">
+        <span className="fanout-node">
+          <strong>{from.title}</strong>
+          {from.sub && <em>{from.sub}</em>}
+        </span>
+        <span className="fanout-link">
+          {via && <span className="fanout-via">{via}</span>}
+          <span className="fanout-arrow">→</span>
+        </span>
+        <span className="fanout-targets">
+          {to.map((t) => (
+            <span key={t} className="fanout-pill">
+              {t}
+            </span>
+          ))}
+        </span>
+      </div>
+      {note && <p className="chart-note">{note}</p>}
+    </div>
+  )
+}
+
 export interface CompareRowDatum {
   label: string
   /** value label at the end of the bar */

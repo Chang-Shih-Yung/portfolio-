@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import NantouContent, { meta as nantouMeta } from '@/content/cases/nantou-points.mdx'
 import DonganContent, { meta as donganMeta } from '@/content/cases/dongan-food-festival.mdx'
 import HualienContent, { meta as hualienMeta } from '@/content/cases/hualien-digital.mdx'
+import YunlinContent, { meta as yunlinMeta } from '@/content/cases/yunlin-coin.mdx'
 
 export interface CaseSection {
   id: string
@@ -56,6 +57,10 @@ const cases: CaseRecord[] = [
   {
     ...(hualienMeta as unknown as CaseMeta),
     Content: HualienContent,
+  },
+  {
+    ...(yunlinMeta as unknown as CaseMeta),
+    Content: YunlinContent,
   },
 ]
 

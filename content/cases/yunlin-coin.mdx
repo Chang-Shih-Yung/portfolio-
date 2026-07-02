@@ -1,0 +1,174 @@
+import { CaseCarousel } from '@/components/case/CaseCarousel'
+import { StatStrip } from '@/components/case/Stats'
+import { KpiGrid, KpiCard } from '@/components/case/Kpi'
+import { DotMatrix, CompareBar, FanOut } from '@/components/case/Charts'
+import { Badge } from '@/components/ui/badge'
+
+export const meta = {
+  slug: 'yunlin-coin',
+  title: '2024 雲林「智慧雲林幣 2.0」記者會',
+  subtitle: '「雲林幣扭一下 2.0 上線記者會」是雲林縣政府數位縣民平台三年來的重要升級發表，針對「介面」、「功能」、「支付」三大面向全面優化，並攜手悠遊卡公司規劃先消費後回饋的創新合作機制，深化府、商、民三方的數位互動生態圈。',
+  featured: false,
+  order: 4,
+  role: '記者會視覺與行銷素材整合・跨部門協作・升級推廣',
+  team: '雲林縣政府',
+  timeline: '2024',
+  stage: '累積近 9 萬名會員',
+  domain: '活動設計 / 行銷',
+  year: 2024,
+  cardColor: 'lavender',
+  eyebrow: 'Case study · 行銷專案',
+  metaItems: [
+    { label: '我的角色', value: '視覺整合・跨部門協作・升級推廣' },
+    { label: '主辦', value: '雲林縣政府' },
+    { label: '年份', value: '2024' },
+    { label: '規模', value: '累積近 9 萬名會員' },
+  ],
+  sections: [
+    { id: 'overview', label: 'Overview', tag: '1' },
+    { id: 'highlights', label: 'Highlights', tag: '2' },
+    { id: 'strategy', label: 'Strategy', tag: '3' },
+    { id: 'showcase', label: 'Showcase', tag: '4' },
+    { id: 'execution', label: 'Execution', tag: '5' },
+    { id: 'results', label: 'Results', tag: '6' },
+  ],
+}
+
+## Overview
+
+<p className="sec-chip">專案概述</p>
+
+雲林縣政府自 2021 年推出「雲林幣扭一下」數位縣民平台 APP，今年正式推出 **2.0 版本**——記者會現場由縣長張麗善、數位發展部數位產業署主任秘書黃雅萍、悠遊卡公司董事長林志盈等貴賓共同見證上線，宣告雲林幣邁入更加多元、包容的智慧服務新階段。
+
+我在此案中主責三大範疇，系統功能開發與跨機關合作機制則與縣府計畫處及悠遊卡公司協作完成：
+
+- **記者會視覺與行銷素材整合**
+- **跨部門協作與專案執行**
+- **數位城市幣平台升級推廣**
+
+## Highlights
+
+<p className="sec-chip">成果亮點</p>
+
+三年平台的一次全面升級，數據面的三個支點：
+
+<StatStrip
+  items={[
+    { value: '×3 面向', label: '2.0 全面優化', sub: '介面 ／ 功能 ／ 支付' },
+    { value: '近 9 萬', label: '累積會員', sub: '較初代持續穩定成長' },
+    { value: '20 鄉鎮市', label: '合作店家覆蓋', sub: '數位服務遍及全縣' },
+  ]}
+/>
+
+## Strategy
+
+<p className="sec-chip">策略洞察</p>
+
+面對「舊用戶留存」「功能擴充溝通」「跨縣市擴散」三大課題，策略拆解為三個方向：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>用「簡約風介面」降低操作門檻，留住既有近 9 萬名會員</h4>
+      <p>2.0 版本改以簡約風設計並凸顯重點功能，讓長期使用者無痛轉換、新用戶也能快速上手，避免因大幅改版流失既有會員黏著度。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>用「支付整合」把縣民福利工具，變成日常可用的消費入口</h4>
+      <p>從單純折抵消費升級為信用卡、行動支付整合，讓雲林幣不再只是「補助工具」，而是能真正融入民眾日常消費行為的支付選項，帶動特約店家續留意願（近 80 間店家選擇繼續合作）。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>用「記者會跨縣市貴賓陣容」為雲林幣擴散到其他縣市鋪路</h4>
+      <p>邀集台東、南投、彰化、台中、嘉義等縣市代表與會，讓雲林幣 2.0 不只是縣內發表會，更是向外縣市展示合作可能性的舞台，呼應點點全球執行長「擴展至其他生態系」的平台願景。</p>
+    </div>
+  </div>
+</div>
+
+## Showcase
+
+<p className="sec-chip">現場實錄</p>
+
+主視覺與背板實拍、記者會現場與平台功能展示：
+
+<CaseCarousel
+  slides={[
+    { src: '/work/yunlin-coin/carousel/slide-01.png', alt: '智慧雲林幣 2.0 記者會紀實 1' },
+    { src: '/work/yunlin-coin/carousel/slide-02.png', alt: '智慧雲林幣 2.0 記者會紀實 2' },
+    { src: '/work/yunlin-coin/carousel/slide-03.png', alt: '智慧雲林幣 2.0 記者會現場 3' },
+    { src: '/work/yunlin-coin/carousel/slide-04.png', alt: '智慧雲林幣 2.0 記者會現場 4' },
+    { src: '/work/yunlin-coin/carousel/slide-05.png', alt: '智慧雲林幣 2.0 記者會現場 5' },
+  ]}
+  aspect="3 / 2"
+/>
+
+## Execution
+
+<p className="sec-chip">執行落地</p>
+
+三條執行線各自對應一條策略：視覺穩住品牌信任、協作把升級推上台面、推廣讓聲量走出縣界。
+
+### 視覺與行銷素材整合
+
+統籌記者會主視覺、現場輸出物與媒體素材設計，確保雲林幣品牌識別在「**2.0 升級**」的敘事下維持一致調性。
+
+<p className="strategy-ref">→ 呼應策略 01 · 強化會員對品牌升級的信任與辨識度</p>
+
+### 跨部門協作與專案執行
+
+協調縣府計畫處、新聞處與悠遊卡公司等合作夥伴，確保**系統升級進度、記者會流程與媒體溝通**同步到位。
+
+<p className="strategy-ref">→ 呼應策略 02 · 支援支付整合等跨機關合作項目順利對外發布</p>
+
+### 數位平台升級推廣
+
+協助規劃記者會後續的社群與媒體露出，將 2.0 版本新增功能（健康計步、停車繳費、小遊戲等）轉化為**易於傳播的推廣素材**。
+
+<p className="strategy-ref">→ 呼應策略 03 · 延續記者會聲量、擴大平台跨縣市能見度</p>
+
+## Results
+
+<p className="sec-chip">完整成果</p>
+
+從平台升級到跨縣市擴散契機，四個面向的完整成果：
+
+<KpiGrid>
+  <KpiCard figure="2.0 上線" title="推動雲林幣數位升級發表">
+    <p>完成「介面」「功能」「支付」三大面向全面優化，新增功能擴大平台使用範圍與豐富性：</p>
+    <div className="pill-row">
+      <Badge>健康計步</Badge>
+      <Badge>停車繳費</Badge>
+      <Badge>看影片</Badge>
+      <Badge>小遊戲</Badge>
+      <Badge variant="solid">支付整合</Badge>
+    </div>
+  </KpiCard>
+  <KpiCard figure="近 9 萬人" title="穩固既有會員基礎">
+    <p>上線初期已有近 1 萬人完成會員移轉，近 80 間店家選擇繼續合作成為特約店家。</p>
+    <CompareBar
+      rows={[
+        { label: '累積會員', value: '近 9 萬', pct: 100, now: true },
+        { label: '初期移轉', value: '近 1 萬', pct: 11 },
+      ]}
+      note="改版初期即啟動移轉，黏著度未因升級流失"
+    />
+  </KpiCard>
+  <KpiCard figure="20 鄉鎮市" title="串聯全縣合作店家網絡">
+    <p>支付整合開通後，民眾可使用信用卡、行動支付消費，降低現金補差額的使用門檻。</p>
+    <DotMatrix count={20} perRow={10} note="每一點 = 1 個鄉鎮市，20/20 全縣覆蓋" />
+  </KpiCard>
+  <KpiCard figure="5 縣市" title="促成跨機關與跨縣市合作契機">
+    <p>與悠遊卡公司規劃**先消費後回饋**機制，延伸至社會福利、公共自行車回饋等應用場域。</p>
+    <FanOut
+      from={{ title: '雲林幣 2.0', sub: '數位縣民平台' }}
+      to={['台東', '南投', '彰化', '台中', '嘉義']}
+      via="跨縣市觀摩"
+      note="外縣市代表出席，為平台擴散奠定基礎"
+    />
+  </KpiCard>
+</KpiGrid>

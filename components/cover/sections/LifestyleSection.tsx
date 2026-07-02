@@ -23,7 +23,7 @@ export interface LifestyleSlide {
 const slides: LifestyleSlide[] = [
   { loc: '台東縣', name: '第四屆東岸舖食節（TTPush）', year: '2024', img: img('taitung-ttpush.png'), href: '/work/dongan-food-festival' },
   { loc: '花蓮縣', name: '「數位有購力．振興拚經濟」記者會', year: '2024', img: img('hualien-digital.png'), href: '/work/hualien-digital' },
-  { loc: '雲林縣', name: '雲林「智慧雲林幣 2.0」記者會', year: '2024', img: img('yunlin-coin.png') },
+  { loc: '雲林縣', name: '雲林「智慧雲林幣 2.0」記者會', year: '2024', img: img('yunlin-coin.png'), href: '/work/yunlin-coin' },
   { loc: '桃園市', name: '桃園火鍋嘉年華', year: '2023', img: img('taoyuan-hotpot.png') },
 ]
 

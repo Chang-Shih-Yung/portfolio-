@@ -1038,6 +1038,91 @@ main { min-height: 100vh; }
   color: var(--text);
 }
 
+/* FanOut — hub → pill-cluster spread diagram */
+.prose .fanout { margin-top: var(--space-sm); }
+.prose .fanout-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.prose .fanout-node {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2px;
+  padding: var(--space-sm);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+  background: var(--cv-shape-blue);
+  max-width: 45%;
+}
+.prose .fanout-node strong {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15.5px;
+  line-height: 1.25;
+  color: var(--text);
+}
+.prose .fanout-node em {
+  font-style: normal;
+  font-family: var(--font-mono-stack);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  opacity: 0.75;
+}
+.prose .fanout-link {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.prose .fanout-via {
+  font-family: var(--font-mono-stack);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  padding: 3px 10px;
+  border: 1px solid var(--text);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--text);
+}
+.prose .fanout-arrow {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+.prose .fanout-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+.prose .fanout-pill {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border: 1.5px solid var(--text);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* pill-row — Badge cluster inside prose (e.g. new-feature tags) */
+.prose .pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
 /* koyama chrome context for inner pages (SiteFooter reuses CoverFooter):
    provides the .kyc style scope without the cover's page padding/background. */
 .kyc.kyc--chrome {
