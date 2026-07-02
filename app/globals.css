@@ -746,6 +746,91 @@ main { min-height: 100vh; }
   .prose .kpi-grid { grid-template-columns: 1fr; }
 }
 
+/* Chart primitives — case-study data-viz (components/case/Charts.tsx) */
+.prose .chart-note {
+  font-family: var(--font-mono-stack);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: var(--space-xs) 0 0;
+  max-width: none;
+}
+.prose .dotmatrix { margin-top: var(--space-sm); }
+.prose .dotmatrix-grid {
+  display: grid;
+  gap: 6px;
+  max-width: 280px;
+}
+.prose .dotmatrix-dot {
+  aspect-ratio: 1;
+  border-radius: var(--r-full);
+  background: var(--cv-shape-green);
+  border: 1.5px solid var(--text);
+}
+.prose .dotmatrix-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  font-family: var(--font-mono-stack);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1;
+}
+.prose .ratiosplit { margin-top: var(--space-sm); }
+.prose .ratiosplit-pill {
+  display: flex;
+  height: 44px;
+  border: 2px solid var(--text);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+.prose .ratiosplit-left,
+.prose .ratiosplit-right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.prose .ratiosplit-left {
+  background: var(--text);
+  color: var(--bg);
+}
+.prose .ratiosplit-right {
+  background: var(--cv-shape-coral);
+  color: var(--text);
+  border-left: 2px solid var(--text);
+}
+.prose .comparebar { margin-top: var(--space-sm); }
+.prose .comparebar-row {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+.prose .comparebar-label,
+.prose .comparebar-val {
+  font-family: var(--font-mono-stack);
+  font-size: 11.5px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.prose .comparebar-track { display: block; }
+.prose .comparebar-fill {
+  display: block;
+  height: 22px;
+  min-width: 22px;
+  background: var(--skeleton);
+  border: 2px solid var(--text);
+  border-radius: var(--r-full);
+}
+.prose .comparebar-fill.is-now { background: var(--cv-shape-blue); }
+
 /* koyama chrome context for inner pages (SiteFooter reuses CoverFooter):
    provides the .kyc style scope without the cover's page padding/background. */
 .kyc.kyc--chrome {
