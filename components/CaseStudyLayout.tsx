@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import CaseStudySideNav from './CaseStudySideNav'
 import { Button } from '@/components/ui/button'
-import type { CaseMeta } from '@/lib/cases'
+import { MoreCases } from '@/components/case/MoreCases'
+import { getAllCases, type CaseMeta } from '@/lib/cases'
 
 export default function CaseStudyLayout({
   meta,
@@ -50,8 +51,18 @@ export default function CaseStudyLayout({
       </div>
 
       <div className="case-next container">
-        <p className="case-next-label">下一步</p>
-        <p className="case-next-title">更多案例陸續上架中。</p>
+        <p className="case-next-title">更多案例</p>
+        <MoreCases
+          cases={getAllCases()
+            .filter((c) => c.slug !== meta.slug)
+            .map(({ slug, title, domain, year, stage }) => ({
+              slug,
+              title,
+              domain,
+              year,
+              stage,
+            }))}
+        />
         <div className="case-next-cta">
           <Button asChild>
             <Link href="/skills">看我的技能 →</Link>
@@ -145,22 +156,14 @@ export default function CaseStudyLayout({
           padding-bottom: 24px;
           border-top: 1px solid var(--border-soft);
         }
-        .case-next-label {
-          font-family: var(--font-mono-stack);
-          font-size: 12px;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: var(--text-muted);
-          margin-bottom: 12px;
-        }
         .case-next-title {
           font-family: var(--font-display);
-          font-weight: 700;
+          font-weight: 900;
           font-size: 28px;
           letter-spacing: 0;
           margin-bottom: 32px;
         }
-        .case-next-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+        .case-next-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
 
         @media (max-width: 900px) {
           .case-meta { grid-template-columns: repeat(2, 1fr); }

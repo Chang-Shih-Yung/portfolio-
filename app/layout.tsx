@@ -3,6 +3,7 @@ import { Geist_Mono, Noto_Sans_TC } from 'next/font/google'
 import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
 import CoverFooter from '@/components/cover/sections/CoverFooter'
+import BackToTop from '@/components/BackToTop'
 import StyledJsxRegistry from '@/components/StyledJsxRegistry'
 import './globals.css'
 // koyama clone styles are global: the homepage sections use them, and the
@@ -61,6 +62,7 @@ export default function RootLayout({
               <CoverFooter />
             </div>
           </SiteFooter>
+          <BackToTop />
         </StyledJsxRegistry>
       </body>
     </html>

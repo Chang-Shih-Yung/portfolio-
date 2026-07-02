@@ -12,10 +12,18 @@ import { cn } from '@/lib/utils'
  * POSITIONING — the consumer owns where the arrow sits.
  */
 export type ArrowSize = 'sm' | 'md' | 'lg'
+export type ArrowDir = 'prev' | 'next' | 'up'
+
+const GLYPH: Record<ArrowDir, string> = { prev: '←', next: '→', up: '↑' }
+const DEFAULT_LABEL: Record<ArrowDir, string> = {
+  prev: '上一個',
+  next: '下一個',
+  up: '回到頂部',
+}
 
 export interface ArrowButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  dir: 'prev' | 'next'
+  dir: ArrowDir
   /** default circle size; omit to size purely via CSS `--arr-size` */
   size?: ArrowSize
   label?: string
@@ -27,10 +35,10 @@ const ArrowButton = React.forwardRef<HTMLButtonElement, ArrowButtonProps>(
       ref={ref}
       type="button"
       className={cn('arr', size && `arr--${size}`, `arr--${dir}`, className)}
-      aria-label={label ?? (dir === 'prev' ? '上一個' : '下一個')}
+      aria-label={label ?? DEFAULT_LABEL[dir]}
       {...props}
     >
-      <span aria-hidden="true">{dir === 'prev' ? '←' : '→'}</span>
+      <span aria-hidden="true">{GLYPH[dir]}</span>
     </button>
   ),
 )
