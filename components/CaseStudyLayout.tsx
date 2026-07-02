@@ -76,7 +76,7 @@ export default function CaseStudyLayout({
         .case-back-link:hover { color: var(--text); }
 
         .case-hero { padding-top: 32px; padding-bottom: 40px; }
-        .case-title { margin: 16px 0 24px; }
+        .case-title { margin: 16px 0 24px; font-weight: 900; }
         .case-subtitle {
           font-size: 22px;
           line-height: 1.5;
@@ -90,8 +90,9 @@ export default function CaseStudyLayout({
           gap: 24px;
           padding: 24px;
           background: var(--surface);
-          border: 1px solid var(--border);
+          border: 2px solid var(--text);
           border-radius: var(--r-lg);
+          box-shadow: 8px 8px 0 var(--cv-sky);
         }
         .case-meta div { display: flex; flex-direction: column; gap: 6px; }
         .case-meta dt {
