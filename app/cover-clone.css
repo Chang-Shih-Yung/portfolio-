@@ -5,7 +5,6 @@
    helpers below are global. Body copy is Chinese placeholder; images are
    reference placeholders under /cover/ref (swap with your own later).
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Ultra&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
 
 /* ---- shared base (from page-common.css / layout.css, namespaced safe) ---- */
 .kyc { font-family: 'Noto Sans TC', sans-serif; color: var(--cv-ink); font-size: 14px; font-weight: 500; line-height: 1.8; background: var(--cv-bg); padding-top: 120px; }
@@ -100,7 +99,7 @@
   padding: 0 16px;
 }
 .tm4_pt4 .ttl-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 56px;
   line-height: 1.2;
 }
@@ -383,7 +382,7 @@
   padding: 0 16px;
 }
 .tm5_pt5 .ttl-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 56px;
   line-height: 1.2;
 }
@@ -729,7 +728,7 @@
   padding: 0 16px;
 }
 .tm6_pt6 .ttl-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 56px;
   line-height: 1.2;
   margin: 0 0 16px;
@@ -885,7 +884,7 @@
   padding: 0 16px;
 }
 .tm7_pt7 .ttl-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 56px;
   line-height: 1.2;
 }
@@ -1204,7 +1203,7 @@
   padding: 0 16px;
 }
 .tm8_pt8 .ttl-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 56px;
   line-height: 1.2;
 }
@@ -1452,7 +1451,7 @@
   padding: 0 16px;
 }
 .tm9_pt9 .ttl-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 56px;
   line-height: 1.2;
   margin: 0 0 16px;
@@ -1850,7 +1849,7 @@
   transition: background .3s;
 }
 .tm11_pt11 .copyright small {
-  font-family: 'Ultra', serif;
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 14px;
   color: var(--cv-paper);
 }
@@ -2082,7 +2081,7 @@
   padding: 16px 20px;
 }
 .tm11_pt12 .sp-hbg-menu-en {
-  font-family: 'Ultra';
+  font-family: var(--font-ultra), 'Ultra', serif;
   font-size: 28px;
   line-height: 1.286;
 }

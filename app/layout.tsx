@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist_Mono, Noto_Sans_TC } from 'next/font/google'
+import { Geist_Mono, Noto_Sans_TC, Ultra } from 'next/font/google'
 import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
 import CoverFooter from '@/components/cover/sections/CoverFooter'
@@ -25,9 +25,20 @@ const geistMono = Geist_Mono({
    globals.css so the cover heading renders Traditional Chinese at weight 900. */
 const notoSansTC = Noto_Sans_TC({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['400', '500', '700', '900'],
   display: 'swap',
   variable: '--font-noto-tc',
+})
+
+/* Cover display slab (the big EN section titles: WORKSTYLE / CITY POINT APP…).
+   Was loaded via an @import inside cover-clone.css — that broke when the file
+   went global (bundled mid-sheet, browsers ignore non-leading @import).
+   next/font self-hosts it instead; cover-clone.css reads var(--font-ultra). */
+const ultra = Ultra({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-ultra',
 })
 
 export const metadata: Metadata = {
@@ -43,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistMono.variable} ${notoSansTC.variable}`}
+      className={`${geistMono.variable} ${notoSansTC.variable} ${ultra.variable}`}
       style={{
         // Body text = the same CJK face as the homepage cover (Noto Sans TC).
         ['--font-body' as string]:

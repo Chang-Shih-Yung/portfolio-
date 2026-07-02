@@ -2,7 +2,6 @@ import CoverNav from '@/components/cover/CoverNav'
 import CoverHero from '@/components/cover/CoverHero'
 import LifestyleSection from '@/components/cover/sections/LifestyleSection'
 import WorkstyleSection from '@/components/cover/sections/WorkstyleSection'
-import FacilitiesSection from '@/components/cover/sections/FacilitiesSection'
 import ConciergeSection from '@/components/cover/sections/ConciergeSection'
 import AboutSection from '@/components/cover/sections/AboutSection'
 import CoverFooter from '@/components/cover/sections/CoverFooter'
@@ -27,7 +26,6 @@ export default function HomePage() {
       <div className="kyc">
         <LifestyleSection />
         <WorkstyleSection />
-        <FacilitiesSection />
         <ConciergeSection />
         <AboutSection />
         <CoverFooter />
