@@ -39,9 +39,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistMono.variable} ${notoSansTC.variable}`}
       style={{
-        // Body text resolves to the neutral system sans (wireframe).
+        // Body text = the same CJK face as the homepage cover (Noto Sans TC).
         ['--font-body' as string]:
-          '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
+          'var(--font-noto-tc), "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif',
       }}
     >
       <body>

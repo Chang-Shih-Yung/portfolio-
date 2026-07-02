@@ -156,3 +156,6 @@ When the user's request matches an available skill, invoke it via the Skill tool
 | 2026-05-26 | **SideNav tag 移除 `§` 符號**:`§1` → `1` | silcrow 對中文讀者陌生 (像「奇怪 s」),改純數字 |
 | 2026-05-26 | **Mermaid font measure / render 同步修正** | CJK 字體 stack 放最前面,CSS 不再 `!important` override font-family,避免 measure / render 用不同字體導致 label 被切 |
 | 2026-05-26 | **Mermaid label 拿掉 `N · ` prefix** | 縮短 label,降低被切風險;number 隱含在 graph 結構順序 |
+| 2026-07-02 | **內頁 retheme 成首頁 koyama 配色** (:root token 值直接鏡射 --cv-*) | 使用者要求內頁跟首頁一致;wireframe 灰階階段結束。字體改 Noto Sans TC + Geist Mono,radius 16px/pill |
+| 2026-07-02 | **導入 shadcn-pattern 元件庫** (components/ui/*: Button CVA+Slot / Badge / Card / Carousel=Embla compound API) | 使用者要求全站元件化、參考 shadcn 作法;**不裝 Tailwind**(維持 token CSS,CLAUDE.md tech stack 不變),樣式走 globals §UI PRIMITIVES |
+| 2026-07-02 | **東岸舖食節內頁改版 v3**:6 節 (Overview/Highlights/Strategy/Showcase/Execution/Results) | 圖片統一進頁中 CaseCarousel 輪播(6 張實照);量化內容 dashboard 化 (StatCard YoY bars + KpiCard);移除 Gallery/佔位圖 |

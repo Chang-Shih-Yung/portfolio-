@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import CaseStudySideNav from './CaseStudySideNav'
+import { Button } from '@/components/ui/button'
 import type { CaseMeta } from '@/lib/cases'
 
 export default function CaseStudyLayout({
@@ -52,8 +53,12 @@ export default function CaseStudyLayout({
         <p className="case-next-label">下一步</p>
         <p className="case-next-title">更多案例陸續上架中。</p>
         <div className="case-next-cta">
-          <Link href="/skills" className="cta-accent">看我的技能 →</Link>
-          <Link href="/" className="cta-secondary">查看所有作品</Link>
+          <Button asChild>
+            <Link href="/skills">看我的技能 →</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/">查看所有作品</Link>
+          </Button>
         </div>
       </div>
 
@@ -155,22 +160,6 @@ export default function CaseStudyLayout({
           margin-bottom: 32px;
         }
         .case-next-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-        .cta-accent, .cta-secondary {
-          font-size: 15px;
-          font-weight: 600;
-          padding: 12px 22px;
-          border-radius: var(--r-full);
-          transition: border-color 120ms linear, color 120ms linear;
-        }
-        .cta-accent {
-          background: var(--accent);
-          color: var(--bg);
-        }
-        .cta-secondary {
-          border: 1px solid var(--border);
-          color: var(--text);
-        }
-        .cta-secondary:hover { border-color: var(--border-strong); }
 
         @media (max-width: 900px) {
           .case-meta { grid-template-columns: repeat(2, 1fr); }
