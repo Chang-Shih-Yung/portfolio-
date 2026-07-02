@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist_Mono, Noto_Sans_TC } from 'next/font/google'
 import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
+import CoverFooter from '@/components/cover/sections/CoverFooter'
 import StyledJsxRegistry from '@/components/StyledJsxRegistry'
 import './globals.css'
 // koyama clone styles are global: the homepage sections use them, and the
@@ -52,7 +53,14 @@ export default function RootLayout({
         <StyledJsxRegistry>
           <SiteNav />
           <main>{children}</main>
-          <SiteFooter />
+          {/* inner pages close on the homepage koyama footer; CoverFooter
+              stays a SERVER component (RefImg/fs) — SiteFooter only gates
+              the route on the client. */}
+          <SiteFooter>
+            <div className="kyc kyc--chrome">
+              <CoverFooter />
+            </div>
+          </SiteFooter>
         </StyledJsxRegistry>
       </body>
     </html>

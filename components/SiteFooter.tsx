@@ -1,22 +1,16 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import CoverFooter from '@/components/cover/sections/CoverFooter'
 
 /**
- * SiteFooter — inner pages reuse the homepage koyama footer (CoverFooter:
- * the lake-green block + banner row + bottom cityscape illustration) so the
- * whole site closes on the same chrome. Wrapped in `.kyc kyc--chrome` for
- * the koyama style context without the cover's page padding. Hidden on "/"
- * (the cover already renders CoverFooter itself).
+ * SiteFooter — client-side route gate for the shared footer chrome. The
+ * actual footer (CoverFooter, a SERVER component — RefImg uses node:fs) is
+ * passed in as children from app/layout.tsx, so importing it here would drag
+ * server-only code into the client bundle. Hidden on "/" (the cover already
+ * renders CoverFooter itself).
  */
-export default function SiteFooter() {
+export default function SiteFooter({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   if (pathname === '/') return null
-
-  return (
-    <div className="kyc kyc--chrome">
-      <CoverFooter />
-    </div>
-  )
+  return <>{children}</>
 }
