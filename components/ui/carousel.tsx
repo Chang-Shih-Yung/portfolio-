@@ -5,7 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import ArrowButton, { type ArrowButtonProps } from '@/components/ui/arrow-button'
 
 /**
  * Carousel — the shadcn/ui carousel (Embla-based compound component),
@@ -211,44 +211,40 @@ CarouselItem.displayName = 'CarouselItem'
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  Omit<ArrowButtonProps, 'dir'>
+>(({ className, size = 'md', ...props }, ref) => {
   const { scrollPrev, canScrollPrev } = useCarousel()
   return (
-    <Button
+    <ArrowButton
       ref={ref}
-      variant={variant}
+      dir="prev"
       size={size}
       className={cn('ui-carousel-prev', className)}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      aria-label="上一張"
+      label="上一張"
       {...props}
-    >
-      <span aria-hidden="true">←</span>
-    </Button>
+    />
   )
 })
 CarouselPrevious.displayName = 'CarouselPrevious'
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
+  Omit<ArrowButtonProps, 'dir'>
+>(({ className, size = 'md', ...props }, ref) => {
   const { scrollNext, canScrollNext } = useCarousel()
   return (
-    <Button
+    <ArrowButton
       ref={ref}
-      variant={variant}
+      dir="next"
       size={size}
       className={cn('ui-carousel-next', className)}
       disabled={!canScrollNext}
       onClick={scrollNext}
-      aria-label="下一張"
+      label="下一張"
       {...props}
-    >
-      <span aria-hidden="true">→</span>
-    </Button>
+    />
   )
 })
 CarouselNext.displayName = 'CarouselNext'

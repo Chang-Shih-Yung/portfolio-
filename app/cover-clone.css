@@ -2474,33 +2474,9 @@
   .tm9_pt9 .cpa-cta { padding: 16px 28px; font-size: 16px; }
 }
 
-/* ════════════════════════════════════════════════════════════════════════
-   ArrowButton — ONE shared circular ←/→ control (Carousel + CITY POINT APP).
-   Size via --arr-size (sm 40 / md 48 / lg 56); consumers can override per
-   breakpoint for RWD. Positioning lives on the consumer's class.
-   ════════════════════════════════════════════════════════════════════════ */
-.kyc .arr {
-  width: var(--arr-size, 48px);
-  height: var(--arr-size, 48px);
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 0;
-  border-radius: 9999px;
-  background: var(--cv-ink);
-  color: var(--cv-paper);
-  font-size: calc(var(--arr-size, 48px) * 0.4);
-  line-height: 1;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-.kyc .arr:hover { opacity: 0.82; }
-.kyc .arr:focus-visible { outline: 3px solid var(--cv-accent); outline-offset: 3px; }
-.kyc .arr--sm { --arr-size: 40px; }
-.kyc .arr--md { --arr-size: 48px; }
-.kyc .arr--lg { --arr-size: 56px; }
+/* ArrowButton visual (.arr) is GLOBAL now — defined in app/globals.css
+   (§UI PRIMITIVES) so the cover carousels and the case-study carousel share
+   literally the same control. Positioning classes stay here (cover-scoped). */
 
 /* Carousel (LIFESTYLE / FACILITIES) arrow POSITIONING — moved here from the
    Carousel styled-jsx so it reaches the shared ArrowButton element. */

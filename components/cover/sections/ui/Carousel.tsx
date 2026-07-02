@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react'
 import type { ReactNode, PointerEvent as RPointerEvent, TransitionEvent as RTransitionEvent } from 'react'
-import ArrowButton from '@/components/cover/sections/ui/ArrowButton'
+import ArrowButton from '@/components/ui/arrow-button'
 
 // layout effect on the client, plain effect on the server (no SSR warning)
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect

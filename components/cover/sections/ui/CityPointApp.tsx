@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import ArrowButton from '@/components/cover/sections/ui/ArrowButton'
+import ArrowButton from '@/components/ui/arrow-button'
 
 /**
  * CityPointApp — the interactive heart of the "CITY POINT APP" section.

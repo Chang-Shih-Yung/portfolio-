@@ -766,6 +766,33 @@ main { min-height: 100vh; }
 }
 .ui-btn--ghost:hover { color: var(--text); }
 
+/* ArrowButton (components/ui/arrow-button.tsx) — THE circular ←/→ control,
+   shared by the cover carousels, CITY POINT APP and the case-study carousel.
+   Ink circle, paper glyph, opacity hover. Size via --arr-size (sm/md/lg). */
+.arr {
+  width: var(--arr-size, 48px);
+  height: var(--arr-size, 48px);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-full);
+  background: var(--cv-ink);
+  color: var(--cv-paper);
+  font-size: calc(var(--arr-size, 48px) * 0.4);
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.arr:hover { opacity: 0.82; }
+.arr:focus-visible { outline: 3px solid var(--cv-accent); outline-offset: 3px; }
+.arr:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+.arr--sm { --arr-size: 40px; }
+.arr--md { --arr-size: 48px; }
+.arr--lg { --arr-size: 56px; }
+
 /* Badge (components/ui/badge.tsx) — mono uppercase chip */
 .ui-badge {
   display: inline-flex;
@@ -830,8 +857,6 @@ main { min-height: 100vh; }
   transform: translateY(-50%);
   z-index: 2;
 }
-.ui-carousel-prev:hover,
-.ui-carousel-next:hover { transform: translateY(calc(-50% - 2px)); }
 .ui-carousel-prev { left: calc(var(--space-md) * -1); }
 .ui-carousel-next { right: calc(var(--space-md) * -1); }
 .ui-carousel-dots {
