@@ -587,10 +587,15 @@ main { min-height: 100vh; }
 }
 .prose .stat-card {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 2px solid var(--text);
   border-radius: var(--r-md);
   padding: var(--space-md) var(--space-lg);
+  box-shadow: 8px 8px 0 var(--stat-accent);
 }
+/* per-card accent rotates through the koyama shape palette */
+.prose .stats-grid > .stat-card:nth-child(3n + 1) { --stat-accent: var(--cv-shape-blue); }
+.prose .stats-grid > .stat-card:nth-child(3n + 2) { --stat-accent: var(--cv-shape-green); }
+.prose .stats-grid > .stat-card:nth-child(3n + 3) { --stat-accent: var(--cv-shape-coral); }
 .prose .stat-label {
   font-family: var(--font-mono-stack);
   font-size: 12px;
@@ -600,14 +605,32 @@ main { min-height: 100vh; }
   margin: 0 0 var(--space-xs);
   max-width: none;
 }
+.prose .stat-headline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
 .prose .stat-num {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 900;
   font-size: 38px;
   line-height: 1.05;
   color: var(--text);
   margin: 0 0 var(--space-2xs);
   max-width: none;
+}
+/* the "×3.5" sticker — small coral pill, slightly tilted for play */
+.prose .stat-chip {
+  font-family: var(--font-mono-stack);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border: 2px solid var(--text);
+  border-radius: var(--r-full);
+  background: var(--cv-shape-coral);
+  color: var(--text);
+  transform: rotate(-3deg);
 }
 .prose .stat-delta {
   font-size: 13.5px;
@@ -616,33 +639,57 @@ main { min-height: 100vh; }
   margin: 0 0 var(--space-sm);
   max-width: none;
 }
-.prose .stat-bars {
+/* two-column YoY chart: pastel fill + ink outline, grows up on load */
+.prose .stat-cols {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-xl);
+  height: 148px;
+  padding-top: var(--space-md);
+  border-bottom: 2px solid var(--text);
+}
+.prose .stat-col {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-}
-.prose .stat-bar {
-  display: grid;
-  grid-template-columns: 36px 1fr auto;
   align-items: center;
-  gap: var(--space-xs);
+  justify-content: flex-end;
+  gap: 4px;
+  height: 100%;
+}
+.prose .stat-col-val {
+  font-family: var(--font-mono-stack);
+  font-size: 11.5px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.prose .stat-col-bar {
+  display: block;
+  width: 52px;
+  min-height: 10px;
+  background: var(--skeleton);
+  border: 2px solid var(--text);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  transform-origin: bottom;
+  animation: stat-grow 0.7s var(--ease-out) both;
+}
+.prose .stat-col-bar.is-now { background: var(--stat-accent); }
+.prose .stat-col-year {
+  position: absolute;
+  top: calc(100% + 8px);
   font-family: var(--font-mono-stack);
   font-size: 11px;
-  color: var(--text-subtle);
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
 }
-.prose .stat-bar-track {
-  display: block;
-  height: 8px;
-  background: var(--skeleton);
-  overflow: hidden;
+@keyframes stat-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
 }
-.prose .stat-bar-fill {
-  display: block;
-  height: 100%;
-  background: var(--border-strong);
-}
-.prose .stat-bar.is-now { color: var(--text-muted); }
-.prose .stat-bar.is-now .stat-bar-fill { background: var(--text); }
+.prose .stat-cols { margin-bottom: 36px; }
 @media (max-width: 900px) {
   .prose .stats-grid { grid-template-columns: 1fr; }
 }
