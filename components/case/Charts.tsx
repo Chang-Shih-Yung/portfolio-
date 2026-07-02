@@ -66,6 +66,104 @@ export function RatioSplit({
   )
 }
 
+/**
+ * DonutSplit — part-to-whole donut (conic-gradient + ink ring) with a big
+ * centre figure and a swatch legend (e.g. 700+ stores = 臺東 630 / 花蓮 100).
+ */
+export function DonutSplit({
+  center,
+  centerLabel,
+  segments,
+  note,
+}: {
+  /** big figure in the donut hole, e.g. "700+" */
+  center: string
+  /** small label under the centre figure */
+  centerLabel?: string
+  /** slices in draw order; pct must sum to ~100 */
+  segments: { label: string; value: string; pct: number; color: string }[]
+  note?: string
+}) {
+  let acc = 0
+  const stops = segments
+    .map((s) => {
+      const from = acc
+      acc += s.pct
+      return `${s.color} ${from}% ${acc}%`
+    })
+    .join(', ')
+  const aria =
+    note ?? segments.map((s) => `${s.label} ${s.value}`).join('，')
+  return (
+    <div className="donutsplit" role="img" aria-label={`${center}：${aria}`}>
+      <div
+        className="donutsplit-ring"
+        style={{ background: `conic-gradient(${stops})` }}
+        aria-hidden="true"
+      >
+        <span className="donutsplit-center">
+          <strong>{center}</strong>
+          {centerLabel && <em>{centerLabel}</em>}
+        </span>
+      </div>
+      <div className="donutsplit-legend" aria-hidden="true">
+        {segments.map((s) => (
+          <p key={s.label} className="donutsplit-key">
+            <span
+              className="donutsplit-swatch"
+              style={{ background: s.color }}
+            />
+            {s.label} <strong>{s.value}</strong>
+          </p>
+        ))}
+        {note && <p className="chart-note">{note}</p>}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * BridgeFlow — a two-node interop diagram (A →互通→ B). Flow language on
+ * purpose: this portfolio sells systems thinking, so even the marketing
+ * dashboards speak in flows.
+ */
+export function BridgeFlow({
+  from,
+  to,
+  via,
+  note,
+}: {
+  from: { title: string; sub?: string }
+  to: { title: string; sub?: string }
+  /** label on the connector, e.g. "城市幣互通" */
+  via: string
+  note?: string
+}) {
+  return (
+    <div
+      className="bridgeflow"
+      role="img"
+      aria-label={`${from.title}（${from.sub ?? ''}）透過${via}連到${to.title}（${to.sub ?? ''}）`}
+    >
+      <div className="bridgeflow-row" aria-hidden="true">
+        <span className="bridgeflow-node">
+          <strong>{from.title}</strong>
+          {from.sub && <em>{from.sub}</em>}
+        </span>
+        <span className="bridgeflow-link">
+          <span className="bridgeflow-via">{via}</span>
+          <span className="bridgeflow-arrow">→</span>
+        </span>
+        <span className="bridgeflow-node is-to">
+          <strong>{to.title}</strong>
+          {to.sub && <em>{to.sub}</em>}
+        </span>
+      </div>
+      {note && <p className="chart-note">{note}</p>}
+    </div>
+  )
+}
+
 export interface CompareRowDatum {
   label: string
   /** value label at the end of the bar */

@@ -22,6 +22,29 @@ export function StatsGrid({ children }: { children: React.ReactNode }) {
   return <div className="stats-grid">{children}</div>
 }
 
+/**
+ * StatStrip — one horizontal big-number band (§Highlights variant for cases
+ * without YoY data): N cells separated by hairlines inside a single koyama
+ * card. Acts as the visual rest-stop between Overview and the body.
+ */
+export function StatStrip({
+  items,
+}: {
+  items: { value: string; label: string; sub?: string }[]
+}) {
+  return (
+    <div className="stat-strip">
+      {items.map((it) => (
+        <div key={it.label} className="stat-strip-cell">
+          <p className="stat-strip-value">{it.value}</p>
+          <p className="stat-strip-label">{it.label}</p>
+          {it.sub && <p className="stat-strip-sub">{it.sub}</p>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export function StatCard({
   label,
   value,
