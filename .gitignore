@@ -57,6 +57,9 @@ next-env.d.ts
 /public/cover/*
 !/public/cover/illust-top.png
 !/public/cover/illust-bottom.png
+# Marketing Project case visuals — the portfolio owner's own design work,
+# cleared to publish (client logos are incidental to the shown deliverable).
+!/public/cover/marketing/
 !/public/cover/ref/
 /public/cover/ref/*
 !/public/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png

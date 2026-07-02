@@ -29,10 +29,6 @@ export const metadata: Metadata = {
   description: 'APP UI/UX Designer building UX systems for civic tech and B2B portals.',
 }
 
-const themeInitScript = `
-(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
-`
-
 export default function RootLayout({
   children,
 }: {
@@ -47,11 +43,7 @@ export default function RootLayout({
         ['--font-body' as string]:
           '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
       }}
-      suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
       <body>
         <StyledJsxRegistry>
           <SiteNav />

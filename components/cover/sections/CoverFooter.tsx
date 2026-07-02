@@ -14,7 +14,7 @@ const banners = [
   { img: ref('c90b8d74019b22ef48c190d4aac24f93.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
   { img: ref('3850638259baa13d1a3753d64ae06d24.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
 ]
-const bottomNav = ['最新消息', '聯絡我', '隱私權政策', '網站地圖']
+const bottomNav = ['聯絡我', '隱私權政策', '網站地圖']
 
 export default function CoverFooter() {
   return (

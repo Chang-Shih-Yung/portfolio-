@@ -77,8 +77,8 @@
   /* ════════════════════════════════════════════
      Cover (--cv-*) tokens — full-color portfolio COVER hero
      SEPARATE namespace from the grayscale wireframe tokens above.
-     The cover ALWAYS uses this warm palette and is NOT theme-aware:
-     these tokens are intentionally NOT redefined under [data-theme="dark"].
+     The cover ALWAYS uses this warm palette. The whole site is light-mode
+     only (the dark-mode toggle was removed), so these are never overridden.
      Every color / font / radius / z / duration in cover components MUST
      reference one of these --cv-* vars (no hardcoded style values).
      ════════════════════════════════════════════ */
@@ -199,31 +199,6 @@
 
 @media (max-width: 768px) {
   :root { --site-nav-h: 60px; }
-}
-
-/* DARK grayscale skeleton — still zero hue */
-[data-theme="dark"] {
-  --bg:           #1A1A1A;
-  --surface:      #262626;
-  --skeleton:     #2E2E2E;
-  --border:       #3A3A3A;
-  --border-soft:  #2E2E2E;
-  --border-strong:#5A5A5A;
-  --text:         #E0E0E0;
-  --text-muted:   #9A9A9A;
-  --text-subtle:  #6A6A6A;
-  --accent:       #AAAAAA;
-  --accent-soft:  rgba(170, 170, 170, 0.12);
-
-  --card-mint:    #2E2E2E;
-  --card-peach:   #2E2E2E;
-  --card-butter:  #2E2E2E;
-  --card-lavender:#2E2E2E;
-  --card-black:   #E0E0E0;
-  --card-white:   #262626;
-
-  --placeholder-fill:   #2E2E2E;
-  --placeholder-border: #3A3A3A;
 }
 
 /* ════════════════════════════════════════════

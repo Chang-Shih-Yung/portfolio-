@@ -2,19 +2,17 @@ import '@/app/cover-clone.css'
 
 import CoverNav from '@/components/cover/CoverNav'
 import CoverHero from '@/components/cover/CoverHero'
-import NewsSection from '@/components/cover/sections/NewsSection'
 import LifestyleSection from '@/components/cover/sections/LifestyleSection'
 import WorkstyleSection from '@/components/cover/sections/WorkstyleSection'
 import FacilitiesSection from '@/components/cover/sections/FacilitiesSection'
-import ConciergeSection from '@/components/cover/sections/ConciergeSection'
 import AboutSection from '@/components/cover/sections/AboutSection'
 import CoverFooter from '@/components/cover/sections/CoverFooter'
 
 /**
- * HomePage — the portfolio COVER hero followed by a faithful clone of the
- * koyama-sendai.org homepage sections (NEWS → FOOTER). The hero owns its own
- * nav + warm palette; the sections below live inside the `.kyc` namespace and
- * are styled entirely by app/cover-clone.css (ported 1:1 from the reference).
+ * HomePage — the portfolio COVER hero followed by a clone of the
+ * koyama-sendai.org homepage sections (LIFESTYLE → FOOTER). The hero owns its
+ * own nav + warm palette; the sections below live inside the `.kyc` namespace
+ * and are styled entirely by app/cover-clone.css (ported 1:1 from the reference).
  *
  * Content is Traditional-Chinese placeholder + reference image placeholders
  * (under /public/cover/ref) — swap section copy and images with your own later.
@@ -28,11 +26,9 @@ export default function HomePage() {
       <CoverNav />
       <CoverHero />
       <div className="kyc">
-        <NewsSection />
         <LifestyleSection />
         <WorkstyleSection />
         <FacilitiesSection />
-        <ConciergeSection />
         <AboutSection />
         <CoverFooter />
       </div>

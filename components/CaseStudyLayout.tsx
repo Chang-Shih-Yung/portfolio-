@@ -16,15 +16,19 @@ export default function CaseStudyLayout({
       </div>
 
       <header className="case-hero container">
-        <p className="section-label">Case study · 旗艦案</p>
+        <p className="section-label">{meta.eyebrow ?? (meta.featured ? 'Case study · 旗艦案' : 'Case study')}</p>
         <h1 className="display-l case-title">{meta.title}</h1>
         <p className="case-subtitle">{meta.subtitle}</p>
 
         <dl className="case-meta">
-          <div><dt>角色</dt><dd>{meta.role}</dd></div>
-          <div><dt>團隊</dt><dd>{meta.team}</dd></div>
-          <div><dt>期程</dt><dd>{meta.timeline}</dd></div>
-          <div><dt>階段</dt><dd>{meta.stage}</dd></div>
+          {(meta.metaItems ?? [
+            { label: '角色', value: meta.role },
+            { label: '團隊', value: meta.team },
+            { label: '期程', value: meta.timeline },
+            { label: '階段', value: meta.stage },
+          ]).map((m) => (
+            <div key={m.label}><dt>{m.label}</dt><dd>{m.value}</dd></div>
+          ))}
         </dl>
       </header>
 
@@ -38,7 +42,7 @@ export default function CaseStudyLayout({
       )}
 
       <div className="case-body container">
-        <CaseStudySideNav />
+        <CaseStudySideNav sections={meta.sections} />
         <article className="prose case-content">
           {children}
         </article>

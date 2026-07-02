@@ -8,13 +8,16 @@ import {
   useRef,
   useState,
 } from 'react'
-import type { ReactNode, PointerEvent as RPointerEvent } from 'react'
+import type { ReactNode, PointerEvent as RPointerEvent, TransitionEvent as RTransitionEvent } from 'react'
 import ArrowButton from '@/components/cover/sections/ui/ArrowButton'
 
 // layout effect on the client, plain effect on the server (no SSR warning)
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 const DRAG_THRESHOLD = 8 // px of movement before a press counts as a drag (not a tap)
+const SETTLE_MS = 620 // safety fallback if `transitionend` is ever missed (bg tab, interrupted)
+
+const mod = (n: number, m: number) => ((n % m) + m) % m
 
 /**
  * Carousel — React reimplementation of the reference slick carousels
@@ -30,6 +33,17 @@ const DRAG_THRESHOLD = 8 // px of movement before a press counts as a drag (not 
  *  - dot pagination (mobile only) + autoplay (paused while dragging / reduced-motion)
  *
  * CLONES = 3 keeps the FACILITIES `:nth-of-type(3n+…)` frame-shape cycle aligned.
+ *
+ * ── Robust infinite loop ──────────────────────────────────────────────────
+ * The seamless wrap is bulletproofed against the ways a clone carousel usually
+ * breaks (and looks like it "stops looping"):
+ *  1. `transitionend` is FILTERED to the track's own `transform` — child hover
+ *     transitions bubble up and must not trigger a seam jump.
+ *  2. On settle we NORMALISE `pos` back into the real range with a modulo, so a
+ *     move that crosses several slides at once (fast swipe, focus-on-select onto
+ *     a clone) always lands cleanly instead of stranding on the clone buffer.
+ *  3. An in-flight lock (`animating`) + a safety timeout stop a second move from
+ *     pushing `pos` past the clone buffer (which would blank the track).
  */
 export interface CarouselProps {
   children: ReactNode
@@ -44,7 +58,7 @@ export interface CarouselProps {
 export default function Carousel({
   children,
   desktopArrows = true,
-  autoplayMs = 4000,
+  autoplayMs = 3000,
   className,
 }: CarouselProps) {
   const slides = Children.toArray(children)
@@ -64,10 +78,22 @@ export default function Carousel({
   const viewportRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
-  const drag = useRef({ active: false, startX: 0, startOffset: 0, curOffset: 0, moved: 0 })
+  const drag = useRef({ active: false, startX: 0, startOffset: 0, curOffset: 0, moved: 0, pointerId: -1, captured: false })
   const suppressClick = useRef(false)
+  const animating = useRef(false) // a programmatic move is in flight (arrow / autoplay / dot / drag-snap)
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const posRef = useRef(pos) // always-fresh pos for the settle timeout closure
 
-  const realIndex = loop ? (((pos - CLONES) % count) + count) % count : pos
+  useEffect(() => {
+    posRef.current = pos
+  }, [pos])
+
+  // map any display index (incl. a clone) to the canonical real-slide index
+  const canonical = useCallback(
+    (p: number) => (loop ? CLONES + mod(p - CLONES, count) : p),
+    [loop, CLONES, count],
+  )
+  const realIndex = loop ? mod(pos - CLONES, count) : pos
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767px)')
@@ -77,17 +103,19 @@ export default function Carousel({
     return () => mq.removeEventListener('change', sync)
   }, [])
 
-  // translate the track so the current slide is centred in the viewport
+  // translate the track so the current slide is centred in the viewport.
+  // Defensive: if `pos` momentarily points past the clone buffer, centre its
+  // canonical equivalent instead of bailing (which would freeze the offset).
   const recompute = useCallback(() => {
     const vp = viewportRef.current
     const tr = trackRef.current
     if (!vp || !tr) return
-    const el = tr.children[pos] as HTMLElement | undefined
+    const el = (tr.children[pos] ?? tr.children[canonical(pos)]) as HTMLElement | undefined
     if (!el) return
     const o = vp.clientWidth / 2 - (el.offsetLeft + el.clientWidth / 2)
     offsetRef.current = o
     setOffset(o)
-  }, [pos])
+  }, [pos, canonical])
 
   useIsoLayoutEffect(() => {
     if (!drag.current.active) recompute()
@@ -96,30 +124,56 @@ export default function Carousel({
   useEffect(() => {
     const onResize = () => recompute()
     window.addEventListener('resize', onResize)
-    const t = setTimeout(recompute, 300) // re-centre after images load
-    return () => {
-      window.removeEventListener('resize', onResize)
-      clearTimeout(t)
-    }
+    return () => window.removeEventListener('resize', onResize)
   }, [recompute])
 
-  // when a move lands on a clone, jump (without animation) to the real slide
-  const onTransitionEnd = () => {
-    if (!loop || drag.current.active) return
-    if (pos >= count + CLONES) {
-      setAnim(false)
-      setPos((p) => p - count)
-    } else if (pos < CLONES) {
-      setAnim(false)
-      setPos((p) => p + count)
+  // ── settle: run once a move finishes. Normalise a clone landing back into the
+  // real range WITHOUT animation (identical content → invisible), and release
+  // the in-flight lock. Called by the filtered transitionend + a safety timeout.
+  const finishMove = useCallback(() => {
+    if (settleTimer.current) {
+      clearTimeout(settleTimer.current)
+      settleTimer.current = null
     }
-  }
+    if (!loop) {
+      animating.current = false
+      return
+    }
+    const p = posRef.current
+    const norm = canonical(p)
+    if (norm !== p) {
+      // invisible rebase; the [anim] effect re-enables the transition + unlocks
+      setAnim(false)
+      setPos(norm)
+    } else {
+      animating.current = false
+    }
+  }, [loop, canonical])
 
-  // re-enable the transition after a no-animation jump
+  // start a programmatic, animated move to a display index (locked while running)
+  const animate = useCallback(
+    (target: number) => {
+      if (animating.current || drag.current.active) return
+      animating.current = true
+      setAnim(true)
+      setPos(target)
+      if (settleTimer.current) clearTimeout(settleTimer.current)
+      settleTimer.current = setTimeout(finishMove, SETTLE_MS)
+    },
+    [finishMove],
+  )
+
+  // when a settle set anim=false (invisible rebase), re-enable the transition on
+  // the next frame and release the lock — one place owns both.
   useEffect(() => {
     if (anim) return
     if (drag.current.active) return
-    const id = requestAnimationFrame(() => requestAnimationFrame(() => setAnim(true)))
+    const id = requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        setAnim(true)
+        animating.current = false
+      }),
+    )
     return () => cancelAnimationFrame(id)
   }, [anim])
 
@@ -127,31 +181,74 @@ export default function Carousel({
     if (!autoplayMs || !loop) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const t = setInterval(() => {
-      if (drag.current.active) return // paused while dragging
-      setAnim(true)
-      setPos((p) => p + 1)
+      if (drag.current.active || animating.current) return // paused while busy
+      animate(posRef.current + 1)
     }, autoplayMs)
     return () => clearInterval(t)
-  }, [autoplayMs, loop])
+  }, [autoplayMs, loop, animate])
+
+  useEffect(
+    () => () => {
+      if (settleTimer.current) clearTimeout(settleTimer.current)
+    },
+    [],
+  )
+
+  const onTransitionEnd = (e: RTransitionEvent<HTMLDivElement>) => {
+    // ignore transitions bubbling up from slide contents (card hover, etc.)
+    if (e.target !== e.currentTarget || e.propertyName !== 'transform') return
+    if (drag.current.active) return
+    finishMove()
+  }
+
+  // If a move is grabbed mid-flight while `pos` sits on a clone, snap `pos` to
+  // its canonical twin RIGHT NOW without any visual change — the two indices
+  // hold identical content, so shifting the offset by their track-gap is a
+  // no-op on screen. This keeps every drag starting from the safe real range,
+  // so repeated fast swipes can never compound their way onto an edge clone
+  // (which would leave a blank peek on one side).
+  const rebaseToCanonical = useCallback(() => {
+    if (!loop) return
+    const tr = trackRef.current
+    const p = posRef.current
+    const norm = canonical(p)
+    if (norm === p || !tr) return
+    const cur = tr.children[p] as HTMLElement | undefined
+    const dst = tr.children[norm] as HTMLElement | undefined
+    if (!cur || !dst) return
+    offsetRef.current += cur.offsetLeft - dst.offsetLeft
+    setOffset(offsetRef.current)
+    posRef.current = norm
+    setPos(norm)
+  }, [loop, canonical])
 
   // ── drag / swipe ──────────────────────────────────────────────────────────
   const onPointerDown = (e: RPointerEvent<HTMLDivElement>) => {
     if (!loop) return
     if (e.pointerType === 'mouse' && e.button !== 0) return
+    // grabbing takes over from any in-flight programmatic move
+    if (settleTimer.current) {
+      clearTimeout(settleTimer.current)
+      settleTimer.current = null
+    }
+    animating.current = false
+    setAnim(false)
+    rebaseToCanonical() // start the gesture from a safe, canonical position
     drag.current = {
       active: true,
       startX: e.clientX,
       startOffset: offsetRef.current,
       curOffset: offsetRef.current,
       moved: 0,
+      pointerId: e.pointerId,
+      captured: false,
     }
     setGrabbing(true)
-    setAnim(false)
-    try {
-      e.currentTarget.setPointerCapture(e.pointerId)
-    } catch {
-      /* noop */
-    }
+    // NOTE: do NOT capture the pointer on press. Capturing on every press makes
+    // the browser retarget the follow-up `click` to the capture element (the
+    // viewport) on desktop, so a plain click never reaches the card's <a> — the
+    // linked card looks dead. We capture only once a real DRAG begins (see
+    // onPointerMove); a clean tap keeps its native click → the card navigates.
   }
 
   const onPointerMove = (e: RPointerEvent<HTMLDivElement>) => {
@@ -159,6 +256,16 @@ export default function Carousel({
     if (!d.active) return
     const dx = e.clientX - d.startX
     d.moved = Math.max(d.moved, Math.abs(dx))
+    // capture the pointer only once a real drag crosses the threshold, so a
+    // stationary tap never captures (and its click reaches the card's link).
+    if (!d.captured && d.moved > DRAG_THRESHOLD) {
+      d.captured = true
+      try {
+        e.currentTarget.setPointerCapture(d.pointerId)
+      } catch {
+        /* noop */
+      }
+    }
     d.curOffset = d.startOffset + dx
     offsetRef.current = d.curOffset
     setOffset(d.curOffset)
@@ -185,9 +292,20 @@ export default function Carousel({
             best = k
           }
         }
+        // keep the landing inside the range where both peeks stay filled — a
+        // single hard flick can't strand us on an edge clone (blank peek).
+        best = Math.min(Math.max(best, CLONES - 1), tr.children.length - CLONES)
         setAnim(true)
-        if (best === pos) recompute()
-        else setPos(best)
+        if (best === pos) {
+          recompute() // no index change: just snap the offset back to centre
+        } else {
+          // animate to the nearest slide, then normalise on settle (may be a clone)
+          animating.current = true
+          posRef.current = best
+          setPos(best)
+          if (settleTimer.current) clearTimeout(settleTimer.current)
+          settleTimer.current = setTimeout(finishMove, SETTLE_MS)
+        }
       }
     } else {
       setAnim(true)
@@ -195,14 +313,8 @@ export default function Carousel({
     }
   }
 
-  const go = (dir: number) => {
-    setAnim(true)
-    setPos((p) => p + dir)
-  }
-  const toReal = (i: number) => {
-    setAnim(true)
-    setPos(CLONES + i)
-  }
+  const go = (dir: number) => animate(posRef.current + dir)
+  const toReal = (i: number) => animate(CLONES + i)
   // mobile relies on swipe + dots only — no arrows. desktop arrows are opt-in.
   const showArrows = !isMobile && desktopArrows
   const showDots = isMobile
@@ -241,11 +353,17 @@ export default function Carousel({
                 }
               }}
               onClick={(e) => {
-                // focusOnSelect: tap a side slide → scroll it to centre.
+                // A click on a REAL link (href other than "#") navigates normally —
+                // a linked card should open its page from any position, not just
+                // when it's centred. Placeholder cards (href="#") keep the
+                // focusOnSelect behaviour: tapping a side slide scrolls it to centre.
+                const href = (e.target as HTMLElement)
+                  .closest('a')
+                  ?.getAttribute('href')
+                if (href && href !== '#') return
                 if (i !== pos) {
                   e.preventDefault()
-                  setAnim(true)
-                  setPos(i)
+                  animate(i)
                 }
               }}
             >
@@ -303,7 +421,7 @@ export default function Carousel({
         .cz-dots {
           display: flex;
           justify-content: center;
-          gap: 10px;
+          gap: 8px;
           margin-top: 24px;
         }
         .cz-dot {

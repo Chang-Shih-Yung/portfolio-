@@ -1,5 +1,12 @@
 import type { ComponentType } from 'react'
 import NantouContent, { meta as nantouMeta } from '@/content/cases/nantou-points.mdx'
+import DonganContent, { meta as donganMeta } from '@/content/cases/dongan-food-festival.mdx'
+
+export interface CaseSection {
+  id: string
+  label: string
+  tag: string
+}
 
 export interface CaseMeta {
   slug: string
@@ -16,6 +23,12 @@ export interface CaseMeta {
   cardColor: 'mint' | 'peach' | 'butter' | 'lavender' | 'dark'
   /** Hero cover image (public path), shown between hero meta and case body */
   cover?: string
+  /** Hero eyebrow label; defaults from `featured` when omitted */
+  eyebrow?: string
+  /** Hero meta rows; overrides the default 角色/團隊/期程/階段 when present */
+  metaItems?: { label: string; value: string }[]
+  /** Side-nav sections; defaults to the 5-chapter template when omitted */
+  sections?: CaseSection[]
 }
 
 export interface CaseRecord extends CaseMeta {
@@ -34,6 +47,10 @@ const cases: CaseRecord[] = [
   {
     ...(nantouMeta as unknown as CaseMeta),
     Content: NantouContent,
+  },
+  {
+    ...(donganMeta as unknown as CaseMeta),
+    Content: DonganContent,
   },
 ]
 

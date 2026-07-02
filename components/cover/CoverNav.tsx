@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { BRAND, NAV_LINKS } from '@/lib/brand'
 
 /* NOTE: cover nav uses plain <a>, not next/link <Link>. styled-jsx only attaches
    its scope class to lowercase host elements — a capitalized <Link> renders an
@@ -19,21 +20,13 @@ import { useEffect, useState } from 'react'
  *   reference site (koyama-sendai.org).
  */
 
-const mainLinks: Array<{ href: string; label: string }> = [
-  { href: '/', label: '首頁' },
-  { href: '#work', label: '作品' },
-  { href: '/about', label: '關於' },
-  { href: '/skills', label: '技能' },
-  { href: '/colophon', label: '設計系統' },
-]
-
-const tabLinks: Array<{ href: string; label: string }> = [
-  { href: '/', label: '首頁' },
-  { href: '#work', label: '作品' },
-  { href: '/about', label: '關於' },
-  { href: '/skills', label: '技能' },
-  { href: '/colophon', label: '更多' },
-]
+// Main nav = shared brand config (single source of truth with SiteNav). The
+// mobile tab bar reuses it with the last item relabelled 更多 (matches the
+// koyama reference's bottom-tab convention).
+const mainLinks = NAV_LINKS
+const tabLinks = NAV_LINKS.map((link, i) =>
+  i === NAV_LINKS.length - 1 ? { ...link, label: '更多' } : link,
+)
 
 export default function CoverNav() {
   // sticky header: transparent + borderless over the hero, gains a solid beige
@@ -52,8 +45,8 @@ export default function CoverNav() {
         <div className="cv-nav__row">
           {/* brand lockup */}
           <a href="/" className="cv-brand" aria-label="Giselle Lai — 回到首頁">
-            <span className="cv-brand__name">Giselle Lai</span>
-            <span className="cv-brand__role">APP UI/UX DESIGNER · UX + PRODUCT</span>
+            <span className="cv-brand__name">{BRAND.name}</span>
+            <span className="cv-brand__role">{BRAND.role}</span>
           </a>
 
           {/* right cluster — hidden on mobile */}
@@ -88,7 +81,7 @@ export default function CoverNav() {
                   </text>
                 </svg>
               </span>
-              <span className="cv-logo__text">Giselle Lai</span>
+              <span className="cv-logo__text">{BRAND.name}</span>
             </a>
           </div>
         </div>

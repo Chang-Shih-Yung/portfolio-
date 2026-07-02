@@ -2,9 +2,15 @@
 
 import { useEffect, useState } from 'react'
 
-// Case Study 5 章節核心模板 (2026-05-26: 從 8 章節精簡至 5,Context/Iteration/Impact 移除)
-// tag 不用 §符號 (silcrow 對中文讀者陌生),只用純數字
-const sections = [
+export interface SideNavSection {
+  id: string
+  label: string
+  tag: string
+}
+
+// Default = 南投旗艦案 5 章節核心模板 (2026-05-26: 從 8 章節精簡至 5)。
+// 其他案例可透過 meta.sections 傳入自己的章節。tag 只用純數字 (silcrow 對中文讀者陌生)。
+const DEFAULT_SECTIONS: SideNavSection[] = [
   { id: 'overview', label: 'Overview', tag: '1' },
   { id: 'discovery', label: 'Discovery', tag: '2' },
   { id: 'ia', label: 'IA', tag: '3' },
@@ -23,7 +29,11 @@ const sections = [
  *
  * The active line = viewport top + offset (matches sticky SiteNav height + buffer).
  */
-export default function CaseStudySideNav() {
+export default function CaseStudySideNav({
+  sections = DEFAULT_SECTIONS,
+}: {
+  sections?: SideNavSection[]
+}) {
   const [active, setActive] = useState<string | null>(null)
 
   useEffect(() => {
@@ -57,7 +67,7 @@ export default function CaseStudySideNav() {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [])
+  }, [sections])
 
   return (
     <aside className="case-sidenav">
