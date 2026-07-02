@@ -1,0 +1,178 @@
+import { CaseCarousel } from '@/components/case/CaseCarousel'
+import { StatStrip } from '@/components/case/Stats'
+import { KpiGrid, KpiCard } from '@/components/case/Kpi'
+import { BridgeFlow } from '@/components/case/Charts'
+import { Badge } from '@/components/ui/badge'
+
+export const meta = {
+  slug: 'taoyuan-hotpot',
+  title: '2024 桃園火鍋嘉年華',
+  subtitle: '桃園火鍋嘉年華是桃園市政府衛生局年度指標性行銷活動，以「火鍋食趣．溫暖有力」為主題，結合 3 章 1Q 標章農產品、食安闖關遊戲與雙疫苗接種站，打造寓教於樂的冬季城市盛典，同步推廣「桃食安心資訊平台」，深化市民對食品溯源與食安管理的認識。',
+  featured: false,
+  order: 5,
+  role: '行銷專案執行・跨部門協調・視覺與輸出物審核',
+  team: '桃園市政府衛生局',
+  timeline: '2024',
+  stage: '美食券串聯 470 家店家',
+  domain: '活動設計 / 行銷',
+  year: 2024,
+  cardColor: 'peach',
+  eyebrow: 'Case study · 行銷專案',
+  metaItems: [
+    { label: '我的角色', value: '專案執行・跨部門協調・視覺審核' },
+    { label: '主辦', value: '桃園市政府衛生局' },
+    { label: '年份', value: '2024' },
+    { label: '規模', value: '美食券串聯 470 家店家' },
+  ],
+  sections: [
+    { id: 'overview', label: 'Overview', tag: '1' },
+    { id: 'highlights', label: 'Highlights', tag: '2' },
+    { id: 'strategy', label: 'Strategy', tag: '3' },
+    { id: 'showcase', label: 'Showcase', tag: '4' },
+    { id: 'execution', label: 'Execution', tag: '5' },
+    { id: 'results', label: 'Results', tag: '6' },
+  ],
+}
+
+## Overview
+
+<p className="sec-chip">專案概述</p>
+
+2024 桃園火鍋嘉年華於**桃園藝文特區藝文廣場**舉行，以「**火鍋食趣．溫暖有力**」為主題，結合農業局 3 章 1Q 標章蔬菜、茶葉、畜產等農產品，搭配益智闖關遊戲與美食市集，打造結合食安教育與親子同樂的冬季嘉年華。
+
+我在此案中主責四大範疇，現場執行與美食券兌換機制則與衛生局、農業局及合作廠商團隊協作完成：
+
+- **大型行銷活動流程規劃與跨部門協調**
+- **行銷外包與設計溝通窗口**，控管專案進度與交付品質
+- **活動主視覺、社群素材與現場輸出物之規劃與審核**
+- **整合行銷資源，推廣「桃食安心平台」**
+
+## Highlights
+
+<p className="sec-chip">成果亮點</p>
+
+一場冬季嘉年華，把單日人潮變成月度消費與百萬曝光：
+
+<StatStrip
+  items={[
+    { value: '470 家', label: '美食券合作店家', sub: '使用期限延伸至隔年 1/31' },
+    { value: '30+ 攤', label: '現場美食市集', sub: '特色店家 ／ 連鎖品牌 ／ 食品大廠' },
+    { value: '100 萬+', label: '平台瀏覽人次', sub: '桃食安心資訊平台' },
+  ]}
+/>
+
+## Strategy
+
+<p className="sec-chip">策略洞察</p>
+
+面對「提升食安教育觸及」「帶動實體消費轉換」「擴大活動參與誘因」三大目標，策略拆解為三個方向：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>用「火鍋」的溫暖意象降低政令宣導感，拉近與市民的距離</h4>
+      <p>以「食趣．溫暖」取代生硬的衛教語彙，將食安宣導包裝成冬季暖心體驗，降低民眾對政府活動的防備心，提高自發到場與參與意願。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>用「闖關遊戲」把抽象的食安知識變成可帶走的體驗</h4>
+      <p>益智闖關遊戲串接 3 章 1Q 標章與「桃食安心資訊平台」，讓民眾在遊戲互動中自然吸收溯源知識，並以精美禮品、美食券作為誘因，將知識轉化為日後的消費行為。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>用「美食券延伸使用期」把單日活動效益拉長為月度消費循環</h4>
+      <p>470 家合作店家、長達一個月的美食券使用期限，使單日活動人潮延續為後續實體消費，同時持續帶動桃食安心平台的複訪與使用。</p>
+    </div>
+  </div>
+</div>
+
+## Showcase
+
+<p className="sec-chip">現場實錄</p>
+
+主視覺延伸應用、現場動線與執行成果：
+
+<CaseCarousel
+  slides={[
+    { src: '/work/taoyuan-hotpot/carousel/slide-01.png', alt: '桃園火鍋嘉年華紀實 1' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-02.png', alt: '桃園火鍋嘉年華紀實 2' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-03.png', alt: '桃園火鍋嘉年華紀實 3' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-04.png', alt: '桃園火鍋嘉年華紀實 4' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-05.png', alt: '桃園火鍋嘉年華紀實 5' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-06.png', alt: '桃園火鍋嘉年華紀實 6' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-07.png', alt: '桃園火鍋嘉年華紀實 7' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-08.png', alt: '桃園火鍋嘉年華紀實 8' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-09.png', alt: '桃園火鍋嘉年華紀實 9' },
+    { src: '/work/taoyuan-hotpot/carousel/slide-10.png', alt: '桃園火鍋嘉年華紀實 10' },
+  ]}
+  aspect="3 / 2"
+/>
+
+## Execution
+
+<p className="sec-chip">執行落地</p>
+
+三條執行線各自對應一條策略：視覺降低宣導感、協調讓體驗落地、資源整合放大綜效。
+
+### 視覺與行銷素材審核
+
+規劃並審核活動主視覺延伸應用，統籌社群貼文、海報與現場輸出物之設計品質，確保**線上宣傳與現場視覺調性一致**。
+
+<p className="strategy-ref">→ 呼應策略 01 · 降低宣導感、提高自發參與與分享意願</p>
+
+### 流程規劃與跨部門協調
+
+統籌衛生局、農業局與外包廠商間的溝通與時程，確保**闖關遊戲、美食市集、疫苗接種站**等多個動線區塊如期整合上線。
+
+<p className="strategy-ref">→ 呼應策略 02 · 確保食安教育體驗完整落地</p>
+
+### 行銷資源整合
+
+串聯美食券機制、雙疫苗接種誘因與桃食安心平台曝光，將分散的行銷資源**整合為單一活動敘事**，放大宣傳綜效。
+
+<p className="strategy-ref">→ 呼應策略 03 · 延長活動效益、擴大平台使用率</p>
+
+## Results
+
+<p className="sec-chip">完整成果</p>
+
+從單日嘉年華到月度消費循環，四個面向的完整成果：
+
+<KpiGrid>
+  <KpiCard figure="100 萬+" title="擴大食安教育觸及">
+    <p>「桃食安心資訊平台」累積瀏覽人次突破 100 萬，有效提升食安議題曝光與民眾主動查詢使用率。</p>
+  </KpiCard>
+  <KpiCard figure="470 家" title="深化實體消費轉換">
+    <p>消費滿額即贈美食券，店家反映「熱烈搶購」；使用期限延伸至隔年 1 月 31 日。</p>
+    <BridgeFlow
+      from={{ title: '單日嘉年華', sub: '活動現場人潮' }}
+      to={{ title: '月度消費循環', sub: '使用期至隔年 1/31' }}
+      via="美食券 × 470 家"
+      note="單日人潮轉化為長尾實體消費"
+    />
+  </KpiCard>
+  <KpiCard figure="雙疫苗站" title="結合防疫與食安雙重宣導">
+    <p>符合資格接種可獲最高 200 元美食券；65 歲以上長者另有加碼，提升防疫覆蓋率與活動附加價值。</p>
+    <div className="pill-row">
+      <Badge>莫德納 ＋ 流感</Badge>
+      <Badge variant="solid">最高 200 元美食券</Badge>
+      <Badge>65 歲+ 加碼 500 元禮券</Badge>
+      <Badge>快篩 10 劑</Badge>
+    </div>
+  </KpiCard>
+  <KpiCard figure="壓軸抽獎" title="提升活動聲量與參與誘因">
+    <p>人氣卡司接力演出帶動現場人潮，壓軸抽獎強化話題擴散與社群分享動能。</p>
+    <div className="pill-row">
+      <Badge>Funky Girls</Badge>
+      <Badge>MOMO 家族泡芙姊姊</Badge>
+      <Badge>原子邦妮</Badge>
+      <Badge variant="solid">Gogoro</Badge>
+      <Badge variant="solid">iPhone 15</Badge>
+    </div>
+  </KpiCard>
+</KpiGrid>

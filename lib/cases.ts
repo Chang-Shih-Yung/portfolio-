@@ -3,6 +3,7 @@ import NantouContent, { meta as nantouMeta } from '@/content/cases/nantou-points
 import DonganContent, { meta as donganMeta } from '@/content/cases/dongan-food-festival.mdx'
 import HualienContent, { meta as hualienMeta } from '@/content/cases/hualien-digital.mdx'
 import YunlinContent, { meta as yunlinMeta } from '@/content/cases/yunlin-coin.mdx'
+import TaoyuanContent, { meta as taoyuanMeta } from '@/content/cases/taoyuan-hotpot.mdx'
 
 export interface CaseSection {
   id: string
@@ -61,6 +62,10 @@ const cases: CaseRecord[] = [
   {
     ...(yunlinMeta as unknown as CaseMeta),
     Content: YunlinContent,
+  },
+  {
+    ...(taoyuanMeta as unknown as CaseMeta),
+    Content: TaoyuanContent,
   },
 ]
 
