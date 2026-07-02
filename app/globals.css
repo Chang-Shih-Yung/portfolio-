@@ -699,6 +699,14 @@ main { min-height: 100vh; }
   .prose .kpi-grid { grid-template-columns: 1fr; }
 }
 
+/* koyama chrome context for inner pages (SiteFooter reuses CoverFooter):
+   provides the .kyc style scope without the cover's page padding/background. */
+.kyc.kyc--chrome {
+  padding-top: 0;
+  background: transparent;
+  margin-top: var(--space-3xl);
+}
+
 /* ════════════════════════════════════════════
    UI PRIMITIVES — shadcn-pattern components (components/ui/*)
    Buttons / badges / cards / carousel. All values are design tokens;

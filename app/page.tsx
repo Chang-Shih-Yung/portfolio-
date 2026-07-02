@@ -1,5 +1,3 @@
-import '@/app/cover-clone.css'
-
 import CoverNav from '@/components/cover/CoverNav'
 import CoverHero from '@/components/cover/CoverHero'
 import LifestyleSection from '@/components/cover/sections/LifestyleSection'

@@ -4,6 +4,10 @@ import SiteNav from '@/components/SiteNav'
 import SiteFooter from '@/components/SiteFooter'
 import StyledJsxRegistry from '@/components/StyledJsxRegistry'
 import './globals.css'
+// koyama clone styles are global: the homepage sections use them, and the
+// inner pages reuse the cover chrome (CoverFooter via SiteFooter). All rules
+// are scoped under .kyc / .tmX / .cv-* so nothing leaks into inner styles.
+import './cover-clone.css'
 
 /* Wireframe pass: custom display/body fonts removed.
    Body text = neutral system sans (see --font-body override below + globals.css).
