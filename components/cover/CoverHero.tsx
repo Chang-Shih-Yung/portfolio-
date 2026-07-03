@@ -171,11 +171,14 @@ export default function CoverHero() {
           left: 0;
           right: 0;
           bottom: 0;
-          height: var(--cv-illust-bottom-h);
+          /* ONE banner at full width — height follows the image's 2000:667
+             ratio instead of tiling (its white sky blends into the hero bg) */
+          aspect-ratio: 2000 / 667;
+          height: auto;
           background-image: url("/cover/web-banner.png");
-          background-size: auto var(--cv-illust-bottom-h);
+          background-size: 100% auto;
           background-position: center bottom;
-          background-repeat: repeat-x;
+          background-repeat: no-repeat;
           z-index: var(--cv-z-illust);
           pointer-events: none;
         }

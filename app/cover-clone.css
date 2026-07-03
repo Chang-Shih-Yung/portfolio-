@@ -1781,7 +1781,8 @@
 .tm11_pt11 .footer {
   position: relative;
   background: var(--cv-accent);
-  padding: 122px 0 200px;
+  /* bottom inset tracks the full-width banner height (100vw × 667/2000) */
+  padding: 122px 0 calc(100vw * 0.3335);
 }
 .tm11_pt11 .footer::before {
   content: "";
@@ -1866,11 +1867,13 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: 200px;
+  /* ONE banner at full width — height follows the image's 2000:667 ratio */
+  aspect-ratio: 2000 / 667;
+  height: auto;
   background-image: url(/cover/web-banner.png);
-  background-size: auto 200px;
-  background-position: 50%;
-  background-repeat: repeat-x;
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
 }
 
 
