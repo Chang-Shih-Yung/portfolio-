@@ -34,7 +34,7 @@
 /* solid-framed image containers: keep the fill (covers the broken icon) but
    hide the dash — their own solid border is the frame (no double line). */
 .kyc .tm4_pt4 .facility-img img::before,
-.kyc .tm5_pt5 .index-img img::before,
+.kyc .proj-card .index-img img::before,
 .kyc .tm7_pt7 .facility-slide-img img::before,
 .kyc .tm8_pt8 .facility-img img::before {
   border-color: transparent;
@@ -53,7 +53,7 @@
    there's no double line. (FACILITIES is excluded — its solid border lives on
    the <img> itself and already wins by specificity.) */
 .kyc .tm4_pt4 .facility-img .ref-ph,
-.kyc .tm5_pt5 .index-img .ref-ph,
+.kyc .proj-card .index-img .ref-ph,
 .kyc .tm8_pt8 .facility-img .ref-ph {
   border-color: transparent;
 }
@@ -443,33 +443,41 @@
   position: relative;
   display: block;
 }
-.tm5_pt5 .index-img {
+/* ProjectCard — THE shared project card (homepage Marketing Project carousel
+   AND the case pages' 更多案例 carousel). One visual + hover source. */
+.proj-card {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.proj-card .index-img {
   border: 2px solid var(--cv-ink);
   border-radius: 16px;
   overflow: hidden;
   margin: 0 0 24px;
 }
-.tm5_pt5 .index-detail {
+.proj-card .index-detail {
   display: flex;
   justify-content: center;
 }
-.tm5_pt5 .index-detail-box {
+.proj-card .index-detail-box {
   width: 100%;
   text-align: center;
 }
-.tm5_pt5 .index-detail-location {
+.proj-card .index-detail-location {
   margin: 0 0 4px;
 }
-.tm5_pt5 .index-detail-name {
+.proj-card .index-detail-name {
   font-size: 24px;
   line-height: 1.33;
   margin: 0 0 4px;
   white-space: nowrap; /* desktop: title stays on one line (mobile resets below) */
 }
-.tm5_pt5 .index-detail-year {
+.proj-card .index-detail-year {
   margin: 0 0 24px;
 }
-.tm5_pt5 .index-btn {
+.proj-card .index-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -479,7 +487,7 @@
   padding: 8px 32px;
   transition: .3s;
 }
-.tm5_pt5 .index-btn::after {
+.proj-card .index-btn::after {
   content: "";
   display: inline-block;
   width: 11px;
@@ -551,11 +559,11 @@
 .tm5_pt5   .slick-arrow:hover:after {
     filter: none;
   }
-.tm5_pt5   .lifestyle-slide-item a:hover .index-btn {
+.proj-card:hover .index-btn {
     color: var(--cv-paper);
     background: var(--cv-ink);
   }
-.tm5_pt5   .lifestyle-slide-item a:hover .index-btn::after {
+.proj-card:hover .index-btn::after {
     filter: brightness(0) invert(1);
   }
 .tm5_pt5   .btn a:hover .btn-txt {
@@ -601,17 +609,17 @@
 .tm5_pt5   .slick-slide {
     margin: 0 38px;
   }
-.tm5_pt5   .index-img {
+.proj-card .index-img {
     margin: 0 0 20px;
   }
-.tm5_pt5   .index-img img {
+.proj-card .index-img img {
     width: 100%;
   }
-.tm5_pt5   .index-detail-box {
+.proj-card .index-detail-box {
     width: auto;
     width: 70%;
   }
-.tm5_pt5   .index-detail-name {
+.proj-card .index-detail-name {
     font-size: 20px;
     white-space: normal; /* mobile: allow the title to wrap */
   }
@@ -1859,7 +1867,7 @@
   bottom: 0;
   left: 0;
   height: 200px;
-  background-image: url(/cover/ref/67df0e2f04e8626e7882aeed7ad05f1b.png);
+  background-image: url(/cover/web-banner.png);
   background-size: auto 200px;
   background-position: 50%;
   background-repeat: repeat-x;
@@ -2251,7 +2259,7 @@
   .tm5_pt5 .lifestyle-slide-item {
     width: 100%;
   }
-  .tm5_pt5 .index-img img {
+  .proj-card .index-img img {
     width: 100%;
   }
   .tm7_pt7 .facility-slide-item {

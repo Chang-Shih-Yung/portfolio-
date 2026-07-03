@@ -55,12 +55,12 @@ export default function CaseStudyLayout({
         <MoreCases
           cases={getAllCases()
             .filter((c) => c.slug !== meta.slug)
-            .map(({ slug, title, domain, year, stage }) => ({
+            .map(({ slug, title, domain, year, thumb }) => ({
               slug,
               title,
               domain,
               year,
-              stage,
+              thumb,
             }))}
         />
         <div className="case-next-cta">

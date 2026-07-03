@@ -1123,60 +1123,67 @@ main { min-height: 100vh; }
   margin-top: var(--space-sm);
 }
 
-/* MoreCases — the bottom "更多案例" carousel on every case page */
-.more-cases { position: relative; }
-.more-case-card {
+/* Image row — side-by-side framed figures in the case body (ImageRow) */
+.prose .img-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0 var(--space-lg);
+}
+.prose .img-row img {
   display: block;
-  background: var(--surface);
+  width: 100%;
+  margin: 0;
   border: 2px solid var(--text);
   border-radius: var(--r-md);
-  padding: var(--space-lg) var(--space-xl);
-  box-shadow: 8px 8px 0 var(--mc-accent, var(--cv-shape-blue));
-  transition: transform var(--dur-medium) var(--ease-out);
+  background: none;
 }
-.more-case-card:hover { transform: translateY(-3px); }
-.more-cases .ui-carousel-item:nth-child(4n + 1) .more-case-card { --mc-accent: var(--cv-shape-blue); }
-.more-cases .ui-carousel-item:nth-child(4n + 2) .more-case-card { --mc-accent: var(--cv-shape-green); }
-.more-cases .ui-carousel-item:nth-child(4n + 3) .more-case-card { --mc-accent: var(--cv-shape-coral); }
-.more-cases .ui-carousel-item:nth-child(4n + 4) .more-case-card { --mc-accent: var(--card-butter); }
-/* room for the offset shadow inside the overflow-hidden viewport */
-.more-cases .ui-carousel-item { padding: 0 10px 10px 2px; }
-.more-case-eyebrow {
-  font-family: var(--font-mono-stack);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+@media (max-width: 600px) {
+  .prose .img-row { grid-template-columns: 1fr; }
+}
+
+/* MoreCases — the bottom "更多案例" carousel: four ProjectCards per view
+   (the homepage card at ~75% scale, no 查看詳情 pill) */
+.more-cases { position: relative; }
+.more-cases .ui-carousel-item {
+  flex: 0 0 25%;
+  min-width: 0;
+  padding: 0 8px;
+}
+/* square thumbs — sources vary, so crop to the homepage's 1:1 look */
+.more-cases .index-img { margin: 0 0 16px; }
+.more-cases .index-img img,
+.more-cases .proj-thumb-ph {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.more-cases .proj-thumb-ph { background: var(--placeholder-fill); }
+/* ~75% type scale vs the homepage card */
+.more-cases .index-detail-location {
+  font-size: 12px;
   color: var(--text-muted);
-  margin: 0 0 var(--space-xs);
 }
-.more-case-title {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 1.25;
-  color: var(--text);
-  margin: 0 0 var(--space-2xs);
+.more-cases .index-detail-name {
+  font-size: 17px;
+  white-space: normal;
+  line-height: 1.35;
 }
-.more-case-stage {
-  font-size: 14.5px;
+.more-cases .index-detail-year {
+  font-size: 12.5px;
   color: var(--text-muted);
-  margin: 0 0 var(--space-sm);
+  margin: 0;
 }
-.more-case-cta {
-  display: inline-block;
-  font-size: 13.5px;
-  font-weight: 700;
-  padding: 8px 20px;
-  border: 1.5px solid var(--text);
-  border-radius: var(--r-full);
-  background: var(--surface);
-  color: var(--text);
+@media (max-width: 1023px) {
+  .more-cases .ui-carousel-item { flex-basis: 50%; }
+}
+@media (max-width: 600px) {
+  .more-cases .ui-carousel-item { flex-basis: 100%; }
 }
 @media (max-width: 767px) {
   .more-cases .ui-carousel-prev,
   .more-cases .ui-carousel-next { display: none; }
-  .more-case-card { padding: var(--space-md) var(--space-lg); }
-  .more-case-title { font-size: 20px; }
 }
 
 /* BackToTop — fixed ↑ (shared ArrowButton), inner pages only. Sits above

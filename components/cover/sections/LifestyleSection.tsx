@@ -2,6 +2,7 @@ import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
 import Carousel from '@/components/cover/sections/ui/Carousel'
 import RefImg from '@/components/cover/sections/ui/RefImg'
+import { ProjectCard } from '@/components/ProjectCard'
 
 /**
  * LifestyleSection — the homepage "Marketing Project / 行銷專案" carousel.
@@ -30,19 +31,14 @@ const slides: LifestyleSlide[] = [
 function LifestyleCard({ slide }: { slide: LifestyleSlide }) {
   return (
     <div className="lifestyle-slide-item">
-      <a href={slide.href ?? '#'}>
-        <div className="index-img">
-          <RefImg src={slide.img} width={530} height={530} alt={slide.name} />
-        </div>
-        <div className="index-detail">
-          <div className="index-detail-box">
-            <p className="index-detail-location">{slide.loc}</p>
-            <p className="index-detail-name">{slide.name}</p>
-            <p className="index-detail-year">{slide.year}</p>
-            <div className="index-btn">查看詳情</div>
-          </div>
-        </div>
-      </a>
+      <ProjectCard
+        href={slide.href ?? '#'}
+        loc={slide.loc}
+        name={slide.name}
+        year={slide.year}
+        cta="查看詳情"
+        image={<RefImg src={slide.img} width={530} height={530} alt={slide.name} />}
+      />
     </div>
   )
 }

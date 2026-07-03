@@ -172,7 +172,7 @@ export default function CoverHero() {
           right: 0;
           bottom: 0;
           height: var(--cv-illust-bottom-h);
-          background-image: url("/cover/illust-bottom.png");
+          background-image: url("/cover/web-banner.png");
           background-size: auto var(--cv-illust-bottom-h);
           background-position: center bottom;
           background-repeat: repeat-x;

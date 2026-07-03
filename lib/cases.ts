@@ -26,6 +26,8 @@ export interface CaseMeta {
   cardColor: 'mint' | 'peach' | 'butter' | 'lavender' | 'dark'
   /** Hero cover image (public path), shown between hero meta and case body */
   cover?: string
+  /** square thumbnail (public path) for project-card grids/carousels */
+  thumb?: string
   /** Hero eyebrow label; defaults from `featured` when omitted */
   eyebrow?: string
   /** Hero meta rows; overrides the default 角色/團隊/期程/階段 when present */

@@ -1,4 +1,5 @@
 import { CaseCarousel } from '@/components/case/CaseCarousel'
+import { ImageRow } from '@/components/case/CaseImages'
 import { StatStrip } from '@/components/case/Stats'
 import { KpiGrid, KpiCard } from '@/components/case/Kpi'
 import { BridgeFlow } from '@/components/case/Charts'
@@ -17,6 +18,7 @@ export const meta = {
   domain: '活動設計 / 行銷',
   year: 2024,
   cardColor: 'peach',
+  thumb: '/cover/marketing/taoyuan-hotpot.png',
   eyebrow: 'Case study · 行銷專案',
   metaItems: [
     { label: '我的角色', value: '專案執行・跨部門協調・視覺審核' },
@@ -58,6 +60,13 @@ export const meta = {
     { value: '470 家', label: '美食券合作店家', sub: '使用期限延伸至隔年 1/31' },
     { value: '30+ 攤', label: '現場美食市集', sub: '特色店家 ／ 連鎖品牌 ／ 食品大廠' },
     { value: '100 萬+', label: '平台瀏覽人次', sub: '桃食安心資訊平台' },
+  ]}
+/>
+
+<ImageRow
+  images={[
+    { src: '/work/taoyuan-hotpot/highlight/hl-01.png', alt: '美食券公告主視覺 1' },
+    { src: '/work/taoyuan-hotpot/highlight/hl-02.png', alt: '美食券公告主視覺 2' },
   ]}
 />
 
@@ -136,6 +145,15 @@ export const meta = {
 串聯美食券機制、雙疫苗接種誘因與桃食安心平台曝光，將分散的行銷資源**整合為單一活動敘事**，放大宣傳綜效。
 
 <p className="strategy-ref">→ 呼應策略 03 · 延長活動效益、擴大平台使用率</p>
+
+<CaseCarousel
+  slides={[
+    { src: '/work/taoyuan-hotpot/execution/ex-01.png', alt: '執行紀實 1' },
+    { src: '/work/taoyuan-hotpot/execution/ex-02.png', alt: '執行紀實 2' },
+    { src: '/work/taoyuan-hotpot/execution/ex-03.png', alt: '執行紀實 3' },
+  ]}
+  aspect="3 / 2"
+/>
 
 ## Results
 

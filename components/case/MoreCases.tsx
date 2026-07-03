@@ -1,8 +1,8 @@
 'use client'
 
 import * as React from 'react'
-import Link from 'next/link'
 import Autoplay from 'embla-carousel-autoplay'
+import { ProjectCard } from '@/components/ProjectCard'
 import {
   Carousel,
   CarouselContent,
@@ -13,18 +13,19 @@ import {
 } from '@/components/ui/carousel'
 
 /**
- * MoreCases — the "更多案例" carousel at the bottom of every case study.
- * Data-driven from lib/cases (the current case is excluded upstream), so new
- * cases appear automatically. Built on the shared shadcn Carousel: loop +
- * 5s autoplay (stops on interaction / reduced-motion), arrows on desktop,
- * dots + swipe on mobile. Cards rotate the koyama pastel offset shadows.
+ * MoreCases — the "更多案例" carousel at the bottom of every case study:
+ * four square ProjectCards per view (the homepage Marketing Project card at
+ * ~75% scale, minus the 查看詳情 pill), data-driven from lib/cases so future
+ * projects (app cases included) appear automatically. Shared shadcn Carousel:
+ * loop + 5s autoplay (stops on interaction / reduced-motion), arrows on
+ * desktop, dots + swipe on mobile.
  */
 export interface MoreCaseItem {
   slug: string
   title: string
   domain: string
   year: number
-  stage: string
+  thumb?: string
 }
 
 export function MoreCases({
@@ -49,22 +50,28 @@ export function MoreCases({
 
   return (
     <div className="more-cases">
-      <Carousel opts={{ loop: cases.length > 1 }} plugins={plugins}>
+      <Carousel opts={{ loop: cases.length > 4, align: 'start' }} plugins={plugins}>
         <CarouselContent>
           {cases.map((c) => (
             <CarouselItem key={c.slug}>
-              <Link href={`/work/${c.slug}`} className="more-case-card">
-                <p className="more-case-eyebrow">
-                  {c.domain} · {c.year}
-                </p>
-                <p className="more-case-title">{c.title}</p>
-                <p className="more-case-stage">{c.stage}</p>
-                <span className="more-case-cta">查看案例 →</span>
-              </Link>
+              <ProjectCard
+                href={`/work/${c.slug}`}
+                loc={c.domain}
+                name={c.title}
+                year={String(c.year)}
+                image={
+                  c.thumb ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={c.thumb} alt="" loading="lazy" draggable={false} />
+                  ) : (
+                    <span className="proj-thumb-ph" aria-hidden="true" />
+                  )
+                }
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
-        {cases.length > 1 && (
+        {cases.length > 4 && (
           <>
             <CarouselPrevious />
             <CarouselNext />
