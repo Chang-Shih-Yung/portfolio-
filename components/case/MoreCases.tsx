@@ -13,12 +13,13 @@ import {
 } from '@/components/ui/carousel'
 
 /**
- * MoreCases — the "更多案例" carousel at the bottom of every case study:
+ * MoreCases — the "更多案例" rail at the bottom of every case study: the full
+ * project set (every case in lib/cases, so new ones appear automatically),
  * four square ProjectCards per view (the homepage Marketing Project card at
- * ~75% scale, minus the 查看詳情 pill), data-driven from lib/cases so future
- * projects (app cases included) appear automatically. Shared shadcn Carousel:
- * loop + 5s autoplay (stops on interaction / reduced-motion), arrows on
- * desktop, dots + swipe on mobile.
+ * ~75% scale, minus the 查看詳情 pill). Shared shadcn Carousel: loop + 5s
+ * autoplay (stops on interaction / reduced-motion), arrows on desktop, dots +
+ * swipe on mobile. `activeSlug` (the case being viewed) just sets the opening
+ * scroll position to the NEXT project, so the rail leads with the "more" ones.
  */
 export interface MoreCaseItem {
   slug: string
@@ -30,9 +31,11 @@ export interface MoreCaseItem {
 
 export function MoreCases({
   cases,
+  activeSlug,
   autoplayMs = 5000,
 }: {
   cases: MoreCaseItem[]
+  activeSlug?: string
   autoplayMs?: number
 }) {
   const plugins = React.useMemo(() => {
@@ -48,9 +51,12 @@ export function MoreCases({
 
   if (cases.length === 0) return null
 
+  const activeIdx = activeSlug ? cases.findIndex((c) => c.slug === activeSlug) : -1
+  const startIndex = activeIdx >= 0 ? (activeIdx + 1) % cases.length : 0
+
   return (
     <div className="more-cases">
-      <Carousel opts={{ loop: cases.length > 4, align: 'start' }} plugins={plugins}>
+      <Carousel opts={{ loop: cases.length > 4, align: 'start', startIndex }} plugins={plugins}>
         <CarouselContent>
           {cases.map((c) => (
             <CarouselItem key={c.slug}>

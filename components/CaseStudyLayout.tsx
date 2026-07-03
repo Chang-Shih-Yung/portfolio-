@@ -51,15 +51,14 @@ export default function CaseStudyLayout({
       <div className="case-next container">
         <p className="case-next-title">更多案例</p>
         <MoreCases
-          cases={getAllCases()
-            .filter((c) => c.slug !== meta.slug)
-            .map(({ slug, title, domain, year, thumb }) => ({
-              slug,
-              title,
-              domain,
-              year,
-              thumb,
-            }))}
+          activeSlug={meta.slug}
+          cases={getAllCases().map(({ slug, title, domain, year, thumb }) => ({
+            slug,
+            title,
+            domain,
+            year,
+            thumb,
+          }))}
         />
         <div className="case-next-cta">
           <Button asChild>
