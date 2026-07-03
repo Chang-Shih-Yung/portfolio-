@@ -171,9 +171,9 @@ export default function CoverHero() {
           left: 0;
           right: 0;
           bottom: 0;
-          /* ONE banner at full width — height follows the image's 2000:667
+          /* ONE banner at full width — height follows the image's 2048:768
              ratio instead of tiling (its white sky blends into the hero bg) */
-          aspect-ratio: 2000 / 667;
+          aspect-ratio: 2048 / 768;
           height: auto;
           background-image: url("/cover/web-banner.png");
           background-size: 100% auto;
