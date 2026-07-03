@@ -1160,18 +1160,23 @@ main { min-height: 100vh; }
   object-fit: cover;
 }
 .more-cases .proj-thumb-ph { background: var(--placeholder-fill); }
-/* ~75% type scale vs the homepage card */
-.more-cases .index-detail-location {
+/* ~75% type scale vs the homepage card — 3-class specificity so these beat
+   the .proj-card base rules that cover-clone.css loads AFTER globals.css
+   (equal-specificity source order was letting nowrap + 24px win → overlap) */
+.more-cases .proj-card .index-detail-location {
   font-size: 12px;
   color: var(--text-muted);
+  margin: 0 0 2px;
 }
-.more-cases .index-detail-name {
-  font-size: 17px;
+.more-cases .proj-card .index-detail-name {
+  font-size: 15px;
+  font-weight: 900;
   white-space: normal;
   line-height: 1.35;
+  margin: 0 0 4px;
 }
-.more-cases .index-detail-year {
-  font-size: 12.5px;
+.more-cases .proj-card .index-detail-year {
+  font-size: 12px;
   color: var(--text-muted);
   margin: 0;
 }

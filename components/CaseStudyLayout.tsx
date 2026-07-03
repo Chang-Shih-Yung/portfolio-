@@ -37,9 +37,7 @@ export default function CaseStudyLayout({
       {meta.cover && (
         <div className="case-cover container">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <div className="case-cover-placeholder wf-placeholder" role="img" aria-label={`${meta.title} — cover`}>
-            <span className="wf-label">COVER</span>
-          </div>
+          <img className="case-cover-img" src={meta.cover} alt={`${meta.title} — 活動主視覺`} />
         </div>
       )}
 
@@ -119,27 +117,15 @@ export default function CaseStudyLayout({
           padding-top: 32px;
           padding-bottom: 16px;
         }
-        .case-cover-placeholder {
+        /* real banner at its natural ratio (designed pieces — never crop),
+           framed in the koyama sticker language shared across inner pages */
+        .case-cover-img {
+          display: block;
           width: 100%;
-          aspect-ratio: 16 / 7;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: var(--r-md);
-          border: 1px solid var(--placeholder-border);
-          background-color: var(--placeholder-fill);
-          background-image:
-            linear-gradient(to top right, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
-            linear-gradient(to top left, transparent calc(50% - 0.5px), var(--placeholder-border) calc(50% - 0.5px), var(--placeholder-border) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-        }
-        .case-cover-placeholder .wf-label {
-          font-family: var(--font-mono-stack);
-          font-size: 12px;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--text-muted);
-          background: var(--placeholder-fill);
-          padding: 4px 8px;
+          height: auto;
+          border: 2px solid var(--text);
+          border-radius: var(--r-lg);
+          box-shadow: 8px 8px 0 var(--cv-sky);
         }
 
         .case-body {
