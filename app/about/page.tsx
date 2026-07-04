@@ -3,15 +3,43 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '關於 — Giselle Lai',
-  description: '資深行銷人員 · 政府數位行銷與活動統籌，用 UX 方法把聲量變成留存。',
+  description: '資深數位行銷 · 從活動聲量到商機轉換，懂店家痛點、能把企劃推到上線的行銷人。',
 }
 
 // ─── Stats (overview snapshot) — 全部來自九個專案的真實數字 ─────
 const stats = [
-  { value: '7', unit: '縣市', label: '政府行銷與數位平台專案落地縣市' },
-  { value: '9', unit: '個', label: '完整專案 — 4 場大型行銷活動 + 5 座城市數位平台' },
-  { value: '1,200+', unit: '家', label: '各案累計串聯的特約店家' },
+  { value: '7', unit: '縣市', label: '跑過的縣市 — 行銷活動與數位平台都落了地' },
+  { value: '9', unit: '個', label: '從頭做到尾的專案 — 4 場大型活動 + 5 座城市平台' },
+  { value: '1,200+', unit: '家', label: '串聯過的在地店家 — 核銷、請款、來客都設計過' },
   { value: '×3.5', unit: '倍', label: '單場活動人次成長（東岸舖食節 14,148 人次）' },
+]
+
+// ─── Skills — 對照數位行銷職務的核心能力 ────────────────────
+const skills = [
+  {
+    title: '整合行銷策略',
+    body: '活動、內容、平台排成同一條漏斗 — 曝光、參與、轉換、回訪，聲量跟商機一起長，不是各做各的。',
+  },
+  {
+    title: '成效與數據思維',
+    body: '人次、店家數、瀏覽量、轉換 — 每檔活動都拉數字複盤，成效說話，策略跟資源再跟著調。',
+  },
+  {
+    title: '內容與品牌敘事',
+    body: '官網、活動頁、社群素材、記者會敘事一手統籌，把政策和產品的價值講成一般人聽得懂的話。',
+  },
+  {
+    title: '跨部門溝通協作',
+    body: '政府跨局處、三方單位、PM 跟工程 — 多方窗口的節奏我拿得住，事情能往前推才算溝通。',
+  },
+  {
+    title: '中小企業場景理解',
+    body: '1,200+ 家街邊店家的串聯經驗 — 老闆在想什麼、卡在哪裡，我是實際設計過流程，不是用猜的。',
+  },
+  {
+    title: 'UX × 產品落地',
+    body: '研究、資訊架構、服務藍圖到設計系統 — 行銷企劃到我手上，可以一路推進成上線且能營運的產品。',
+  },
 ]
 
 // ─── Project track record (portfolio-backed) ───────────────
@@ -30,63 +58,63 @@ const timeline: TimelineItem[] = [
     year: '01',
     kind: 'project',
     title: '南投縣數位生活點數平台 2.0',
-    body: '從真實使用者回饋重新優化民眾、商家與後台三端流程。行銷把人導進來之後,靠體驗把流失點一個一個補掉 — Research → Insights → Strategy 的完整轉換。',
+    body: '平台上線一年後,回頭聽使用者真實的聲音,把民眾、商家、後台三端的流失點一個一個補掉 — 行銷把人帶進來,體驗負責讓人留下來。',
     href: '/work/nantou-points',
   },
   {
     year: '02',
     kind: 'project',
     title: '花蓮永續生活數位服務平台',
-    body: '用行銷人的漏斗思維(Awareness → Retention)設計產品:活動參與 → 點數累積 → 商家使用的行為閉環,讓政策活動變成會自己轉的循環。',
+    body: '用行銷人的漏斗腦做產品:活動參與 → 點數累積 → 商家使用,接成一個會自己轉的循環 — 政策活動不再辦一次算一次。',
     href: '/work/hualien-sustainable',
   },
   {
     year: '03',
     kind: 'project',
     title: '雲林數位縣民平台(雲林幣 2.0)',
-    body: '品牌語言 + 設計系統,讓縣政服務在同一個品牌體驗下持續擴充 — 品牌一致性,就是最長期的行銷資產。',
+    body: '幫縣政服務建立一套品牌語言和設計系統,之後不管加什麼新服務,長出來都是同一個樣子 — 品牌一致性,就是最耐用的行銷資產。',
     href: '/work/yunlin-platform',
   },
   {
     year: '04',
     kind: 'project',
     title: '苗栗縣數位點數平台',
-    body: 'Service Blueprint 串起民眾、店家、政府三端 — 行銷不只做前台聲量,把核銷、請款、營運流程一起設計進去,合作店家才留得住。',
+    body: '用 Service Blueprint 把民眾、店家、政府三端串在一起 — 行銷不能只做前台的熱鬧,核銷、請款、營運流程一起設計好,店家才會留下來。',
     href: '/work/miaoli-points',
   },
   {
     year: '05',
     kind: 'project',
     title: '台中減碳存摺平台',
-    body: '把減碳政策轉譯成日常行為循環:低碳行為 → 數位資產 → 回饋兌換。政策推廣從單次宣導,變成長期的習慣養成。',
+    body: '把減碳政策翻譯成日常的行為循環:搭車、走路、回收都能存進「減碳存摺」換回饋 — 政策推廣從一次性宣導,變成每天都在發生的習慣。',
     href: '/work/taichung-carbon',
   },
   {
     year: '06',
     kind: 'role',
     title: '2024 第四屆東岸舖食節',
-    body: '主視覺、場地動線、輔銷物一手統籌 — 14,148 人次、較上屆成長 ×3.5,約 580 萬枚臺東金幣在場內流動,沉睡點數被活動喚醒。',
+    body: '主視覺、場地動線、輔銷物一手統籌 — 14,148 人次進場、比上一屆多 3.5 倍,將近 580 萬枚金幣在場內流動,連沉睡的點數都被活動叫醒。',
     href: '/work/dongan-food-festival',
   },
   {
     year: '07',
     kind: 'role',
     title: '2024 花蓮「數位有購力・振興拚經濟」記者會',
-    body: '花蓮縣府 × 臺東縣府 × TTPush 三方溝通窗口 — 700+ 特約店家、首波 2,000 萬枚城市幣、民間加碼 200 萬元,震後觀光的振興敘事。',
+    body: '花蓮縣府、臺東縣府、TTPush 三邊的溝通窗口都是我 — 700+ 特約店家、首波 2,000 萬枚城市幣,還拉到民間加碼 200 萬,把震後振興的故事說出去。',
     href: '/work/hualien-digital',
   },
   {
     year: '08',
     kind: 'role',
     title: '2024 雲林「智慧雲林幣 2.0」記者會',
-    body: '平台升級的發表行銷:視覺統籌 + 媒體溝通,近 9 萬會員的平台升級發表,台東、南投、彰化、台中、嘉義五縣市代表到場觀摩。',
+    body: '平台升級的發表行銷:視覺統籌加媒體溝通,近 9 萬會員的平台 2.0 上線,台東、南投、彰化、台中、嘉義五個縣市都派人來觀摩。',
     href: '/work/yunlin-coin',
   },
   {
     year: '09',
     kind: 'role',
     title: '2024 桃園火鍋嘉年華',
-    body: '衛生局年度指標活動:470 家美食券店家把單日人潮拉成月度消費循環,「桃食安心資訊平台」累積 100 萬+ 瀏覽 — 活動效益不是辦完就歸零。',
+    body: '衛生局的年度指標活動:470 家美食券店家把單日人潮拉成一整個月的消費,「桃食安心資訊平台」衝破 100 萬瀏覽 — 活動效益不是辦完就歸零。',
     href: '/work/taoyuan-hotpot',
   },
 ]
@@ -103,22 +131,24 @@ export default function AboutPage() {
     <div className="container about-page">
       <p className="section-label about-section-label">About · 關於</p>
       <h1 className="display-l about-headline">
-        我做的不只是活動聲量,<br />是能持續轉換的行為循環。
+        把人帶進來只是開始,<br />留得下來才是行銷。
       </h1>
 
       <div className="about-body">
         <p>
-          我是 Giselle Lai,資深行銷人員,深耕政府與地方數位行銷。7 個縣市、9 個完整專案:一手操盤記者會、城市嘉年華等大型活動 —
-          從行銷策略、主視覺統籌、跨部門協調到現場執行;一手打造承接活動流量的城市數位點數平台,讓每一波聲量都有地方沉澱。
+          嗨,我是 Giselle。這幾年我跑了 7 個縣市、做完 9 個專案:政府的大型活動我從頭包到尾 —
+          行銷策略、主視覺統籌、跨部門協調,到活動當天站在現場盯流程;活動結束後,人流交給我做的城市點數平台接住,
+          讓每一波聲量都有地方沉澱,變成回得來的客人。
         </p>
         <p>
-          我的差異點,是用 UX 的方法做行銷。活動不是辦完就結束 — 我用漏斗與行為循環設計參與旅程(Awareness → Retention),
-          用點數機制把單日人潮變成月度消費(桃園 470 家美食券、使用期延伸一整個月),用使用者研究讓政策訊息說人話。
-          聲量是起點,轉換與留存才是我交付的東西。
+          我看行銷比較像在顧一條漏斗:曝光、參與、轉換、回訪,每一段都要有數字可以檢核。
+          像桃園的美食券,讓 470 家店把單日人潮拉成整整一個月的來客;花蓮的平台,更是直接把 Awareness 到 Retention
+          的參與旅程做成產品。對我來說,曝光只是漏斗的第一格 — 名單的品質、轉換的成本、留存的長度,才是我真正在盯的指標。
         </p>
         <p>
-          因為同時具備 App UI/UX 的實作能力,我能把行銷企劃直接落成產品:資訊架構、服務藍圖、設計系統 —
-          活動導進來的每一個人,都有一個留得住他們的地方。這讓我在行銷團隊裡,是那個能把「企劃案」推進到「上線且能營運」的人。
+          另一個武器,是 App UI/UX 的實作能力。五座城市平台,我從 0 到 1 參與打造,也做過 2.0 的規模化優化,
+          前後串聯超過 1,200 家街邊店家 — 店家怎麼核銷、怎麼請款、怎麼看成效,都是我實際設計過的流程。
+          所以中小企業的老闆在想什麼、卡在哪裡,我不是用猜的。行銷企劃到我手上,可以一路推到上線、能營運、能長大。
         </p>
       </div>
 
@@ -144,6 +174,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── Skills — 對照數位行銷職務的六個核心能力 ─── */}
+      <section className="about-skills">
+        <p className="section-label">Skills · 我拿手的事</p>
+        <div className="skills-grid">
+          {skills.map((s) => (
+            <div key={s.title} className="skill-card">
+              <h3 className="skill-title">{s.title}</h3>
+              <p className="skill-body">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ─── Career timeline ─── */}
       <section className="about-timeline-section">
         <div className="about-timeline-head">
@@ -152,7 +195,7 @@ export default function AboutPage() {
             行銷把人帶進來,<br />體驗把人留下來。
           </h2>
           <p className="about-timeline-intro">
-            4 場政府大型行銷活動 + 5 座城市數位平台 — 同一套邏輯貫穿:先用活動與敘事創造聲量,再用點數機制與體驗設計,把聲量沉澱成可持續的轉換與留存。每一張卡片都能點進完整 case study。
+            4 場政府大型活動 + 5 座城市平台,玩法其實是同一套:先用活動和故事把聲量做起來,再用點數機制和體驗設計把人留下來。每一張卡片都可以點進去看完整的 case study。
           </p>
         </div>
 
@@ -180,22 +223,6 @@ export default function AboutPage() {
             </li>
           ))}
         </ol>
-      </section>
-
-      {/* ─── Colophon CTA banner (replaces inline site notes) ─── */}
-      <section className="colophon-banner">
-        <div className="colophon-banner-body">
-          <p className="section-label">Colophon · 裝幀說明</p>
-          <h2 className="h1 colophon-banner-headline">
-            想看這個 portfolio<br />是怎麼蓋起來的?
-          </h2>
-          <p className="colophon-banner-intro">
-            10 條設計筆記 + 完整 UI system token 視覺化 — 字型 / 色彩 / 元件 / spacing / radius 都拆給你看。
-          </p>
-        </div>
-        <a href="/colophon" className="colophon-banner-cta">
-          看設計筆記 <span aria-hidden>→</span>
-        </a>
       </section>
 
       <style>{`
@@ -372,40 +399,33 @@ export default function AboutPage() {
           color: var(--text-muted);
         }
 
-        /* ─── Colophon banner ─── */
-        .colophon-banner {
-          margin-top: var(--space-4xl);
-          padding: var(--space-2xl);
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 0;
+        /* ─── Skills grid ─── */
+        .about-skills { margin-top: 96px; }
+        .skills-grid {
           display: grid;
-          grid-template-columns: 1fr auto;
-          align-items: end;
-          gap: var(--space-lg);
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          margin-top: 24px;
         }
-        .colophon-banner-body { max-width: 50ch; }
-        .colophon-banner-headline { margin: var(--space-sm) 0 var(--space-md); }
-        .colophon-banner-intro {
-          font-size: 16px;
-          line-height: 1.6;
+        .skill-card {
+          padding: 24px;
+          border: 1px solid var(--border);
+          background: var(--surface);
+          transition: border-color 120ms linear;
+        }
+        .skill-card:hover { border-color: var(--text); }
+        .skill-title {
+          font-family: var(--font-sans);
+          font-weight: 700;
+          font-size: 17px;
+          margin-bottom: 10px;
           color: var(--text);
-          opacity: 0.78;
         }
-        .colophon-banner-cta {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 15px;
-          font-weight: 600;
-          color: var(--bg);
-          background: var(--text);
-          padding: 14px 24px;
-          border-radius: var(--r-full);
-          white-space: nowrap;
-          transition: opacity 120ms linear;
+        .skill-body {
+          font-size: 14px;
+          line-height: 1.65;
+          color: var(--text-muted);
         }
-        .colophon-banner-cta:hover { opacity: 0.85; }
 
         @media (max-width: 768px) {
           .about-page { padding-top: 64px; }
@@ -421,12 +441,7 @@ export default function AboutPage() {
           }
           .timeline-marker { width: 44px; gap: 6px; padding-top: 8px; }
           .timeline-year { font-size: 11px; }
-          .colophon-banner {
-            grid-template-columns: 1fr;
-            padding: var(--space-xl);
-            margin-top: var(--space-3xl);
-          }
-          .colophon-banner-cta { justify-self: start; }
+          .skills-grid { grid-template-columns: 1fr; }
         }
       `}</style>
     </div>
