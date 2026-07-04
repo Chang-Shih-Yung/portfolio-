@@ -6,7 +6,7 @@ import { BRAND, NAV_LINKS } from '@/lib/brand'
 
 /**
  * SiteNav — global header for the inner pages (case study / about / skills /
- * colophon). Carries the same koyama brand identity as the homepage CoverNav
+ * work). Carries the same koyama brand identity as the homepage CoverNav
  * (Giselle Lai lockup + G logo pill + main links) but as a SOLID sticky bar,
  * since inner pages scroll and have no hero to overlay. Brand + link set come
  * from the shared lib/brand config so the two navs never drift. Uses the global

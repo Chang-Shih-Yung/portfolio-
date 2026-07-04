@@ -20,5 +20,4 @@ export const NAV_LINKS: NavLink[] = [
   { href: '/work', label: '專案' },
   { href: '/about', label: '關於' },
   { href: '/skills', label: '技能' },
-  { href: '/colophon', label: '設計系統' },
 ]
