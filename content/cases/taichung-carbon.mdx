@@ -1,0 +1,295 @@
+import { BridgeFlow, FanOut } from '@/components/case/Charts'
+import { BlueprintLanes, CarbonCycle } from '@/components/case/CaseDiagrams'
+import { Badge } from '@/components/ui/badge'
+
+export const meta = {
+  slug: 'taichung-carbon',
+  title: '台中減碳存摺平台',
+  subtitle:
+    '台中市政府推動「減碳存摺平台」，透過數位點數機制整合交通、健康、環保與市政服務——鼓勵市民把日常生活中的低碳行為，轉化為可累積、可兌換的數位資產。本專案的核心不只是點數累積，而是打造「低碳生活 × 數位服務 × 城市治理」的整合平台。',
+  featured: false,
+  order: 5,
+  role: 'UX & UI Designer',
+  team: '台中市政府 · 跨局處協作',
+  timeline: 'Sustainable Service Design',
+  stage: '市民 × 店家 × 政府後台',
+  domain: '公共服務 / Sustainability UX',
+  year: 2024,
+  cardColor: 'mint',
+  cover: '/work/taichung-carbon/sitemap.png',
+  thumb: '/work/taichung-carbon/sitemap.png',
+  eyebrow: 'Case study · Sustainable Service Design',
+  metaItems: [
+    { label: '我的角色', value: 'UX & UI Designer' },
+    { label: '專案類型', value: 'Sustainable Service Platform' },
+    { label: '涵蓋範疇', value: '市民 / 店家 / 政府後台 三端' },
+    { label: '核心命題', value: '低碳生活 × 數位服務 × 城市治理' },
+  ],
+  sections: [
+    { id: 'overview', label: 'Overview', tag: '1' },
+    { id: 'strategy', label: 'Strategy', tag: '2' },
+    { id: 'blueprint', label: 'Blueprint', tag: '3' },
+    { id: 'ia', label: 'IA', tag: '4' },
+    { id: 'system', label: 'System', tag: '5' },
+    { id: 'outcome', label: 'Outcome', tag: '6' },
+  ],
+}
+
+## Overview
+
+<p className="sec-chip">專案概述</p>
+
+台中市政府推動「減碳存摺平台」，打造**以減碳行為為核心的城市永續服務平台**——平台串聯大眾運輸、步行計步、電子書借閱、資源回收與禮物商城等多元服務，建立完整的減碳獎勵循環：市民參與度提升的同時，也落實城市永續發展。
+
+<div className="pill-row">
+  <Badge>交通</Badge>
+  <Badge>健康</Badge>
+  <Badge>環保</Badge>
+  <Badge>市政服務</Badge>
+  <Badge variant="solid">商城兌換</Badge>
+</div>
+
+<p className="strategy-ref">→ 本專案核心不只是點數累積，而是打造「低碳生活 × 數位服務 × 城市治理」的整合平台</p>
+
+## Strategy
+
+<p className="sec-chip">平台策略</p>
+
+**建立城市永續服務的數位生態系。** 以減碳行為為核心重新規劃平台架構——日常行為累積成數位資產、資產換成回饋、回饋再把人帶回日常行為：
+
+<CarbonCycle />
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>Sustainable Service Integration · 永續服務整合</h4>
+      <div className="pill-row">
+        <Badge>會員系統</Badge>
+        <Badge variant="solid">減碳存摺</Badge>
+        <Badge>點數獎勵</Badge>
+        <Badge>交通服務</Badge>
+        <Badge>健康生活</Badge>
+        <Badge>禮物商城</Badge>
+        <Badge>線上申辦</Badge>
+        <Badge>管理後台</Badge>
+      </div>
+      <p>→ 八大核心服務收攏為市民單一入口的低碳生活平台。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>Behavior-driven Experience · 行為驅動設計</h4>
+      <div className="pill-row">
+        <Badge>搭乘大眾運輸</Badge>
+        <Badge>健康步行計步</Badge>
+        <Badge>電子書借閱</Badge>
+        <Badge>廢電池回收</Badge>
+        <Badge>參與政府活動</Badge>
+      </div>
+      <p>→ 讓減碳行為自然融入日常生活——不改變習慣，只讓習慣被看見、被累積。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>Cross-service Ecosystem · 跨服務整合</h4>
+      <div className="pill-row">
+        <Badge>交通</Badge>
+        <Badge>健康</Badge>
+        <Badge>環保</Badge>
+        <Badge>市政服務</Badge>
+        <Badge>商城兌換</Badge>
+      </div>
+      <p>→ 串聯不同生活情境，建立可持續擴充的城市服務生態系。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>Operational Efficiency · 營運效率設計</h4>
+      <div className="pill-row">
+        <Badge>活動快速配置</Badge>
+        <Badge>點數管理效率</Badge>
+        <Badge>後台營運管理</Badge>
+        <Badge>店家核銷流程</Badge>
+        <Badge>數據分析能力</Badge>
+      </div>
+      <p>→ 提升平台長期維運效率與政策推動成效——體驗與營運一起設計。</p>
+    </div>
+  </div>
+</div>
+
+## Blueprint
+
+<p className="sec-chip">服務藍圖</p>
+
+**從減碳行為到獎勵回饋的完整服務流程。** 透過 Service Blueprint 梳理市民、店家與政府三方互動——三條流程，一個平台邊界：
+
+<BlueprintLanes
+  lanes={[
+    { en: 'CITIZEN', zh: '市民端', fill: 'var(--cv-shape-blue)', steps: ['參與', '累積', '紀錄', '兌換', '持續參與'] },
+    { en: 'MERCHANT', zh: '店家端', fill: 'var(--cv-shape-green)', steps: ['加入', '核銷', '結算', '活動合作'] },
+    { en: 'ADMIN', zh: '政府後台', fill: 'var(--card-lavender)', steps: ['配置', '管理', '推廣', '分析'] },
+  ]}
+/>
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>市民減碳旅程 · Citizen Journey</h4>
+      <div className="pill-row">
+        <Badge>註冊會員</Badge>
+        <Badge>完成低碳任務</Badge>
+        <Badge>累積減碳點數</Badge>
+        <Badge>查看減碳紀錄</Badge>
+        <Badge>兌換商品與優惠</Badge>
+      </div>
+      <p>→ 設計重點：降低參與門檻，提升持續使用意願。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>店家合作流程 · Merchant Operation</h4>
+      <div className="pill-row">
+        <Badge>店家加入平台</Badge>
+        <Badge>點數票券核銷</Badge>
+        <Badge>優惠活動管理</Badge>
+        <Badge>交易紀錄管理</Badge>
+      </div>
+      <p>→ 設計重點：快速核銷、降低店家操作成本。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>政府營運流程 · Admin &amp; Governance</h4>
+      <div className="pill-row">
+        <Badge>活動配置</Badge>
+        <Badge>點數發放</Badge>
+        <Badge>市民管理</Badge>
+        <Badge>商家管理</Badge>
+        <Badge>成效分析</Badge>
+      </div>
+      <p>→ 設計重點：提升政策推廣效率與營運管理能力。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>Cross-system Integration · 跨系統整合</h4>
+      <div className="pill-row">
+        <Badge>大眾運輸資料串接</Badge>
+        <Badge>計步資料整合</Badge>
+        <Badge>點數同步機制</Badge>
+        <Badge>商城兌換流程</Badge>
+        <Badge>市政服務 API</Badge>
+      </div>
+      <p>→ 建立可持續擴充的服務架構——行為資料從哪裡來，就從哪裡接。</p>
+    </div>
+  </div>
+</div>
+
+## IA
+
+<p className="sec-chip">平台資訊架構</p>
+
+**建立模組化的城市減碳服務架構。** 平台資訊架構整合為六大核心模組——各模組可獨立擴充，同時共享一致的資料架構與服務流程（完整結構見頁首 system map）：
+
+<FanOut
+  from={{ title: '一致資料架構', sub: 'Modular IA' }}
+  to={['Member 會員', 'Carbon 減碳紀錄', 'Point 點數', 'Transport 交通', 'Mall 商城', 'Admin 管理']}
+  via="模組化"
+  note="行為資料、點數與兌換共用同一套結構 — 新的減碳情境接上來就能用"
+/>
+
+## System
+
+<p className="sec-chip">設計系統</p>
+
+**建立一致性的城市數位服務設計系統**，以跨平台一致的 UI 規範支撐所有服務情境：
+
+<div className="pill-row">
+  <Badge>Color / Typography</Badge>
+  <Badge>Grid System</Badge>
+  <Badge>Component Library</Badge>
+  <Badge>Navigation Pattern</Badge>
+  <Badge>Status System</Badge>
+  <Badge variant="solid">Design Token</Badge>
+</div>
+
+<p className="strategy-ref">→ 提升設計一致性，降低開發與維運成本——服務會一直長，規範讓它長得整齊</p>
+
+## Outcome
+
+<p className="sec-chip">成果與反思</p>
+
+**建立市民、政府與商家共創的減碳服務平台** ——本專案最核心的價值轉變：
+
+<BridgeFlow
+  from={{ title: '單一功能服務', sub: '個別的點數工具' }}
+  to={{ title: '城市永續治理的數位基礎', sub: '跨服務的減碳生態系' }}
+  via="永續平台化"
+  note="低碳行為 × 數位服務 × 城市治理，收在同一個循環裡"
+/>
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>建立完整減碳服務流程</h4>
+      <p>從行為發生到回饋兌換，每一段旅程都有明確的設計與狀態。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>整合交通、健康與環保服務</h4>
+      <p>跨局處的服務資料接進同一本存摺，市民只需要一個入口。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>建立點數獎勵循環機制</h4>
+      <p>行為 → 資產 → 回饋 → 再參與——循環自己會轉，不靠單次活動撐。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>建立政府營運管理平台</h4>
+      <p>活動配置、點數發放與成效分析集中管理，政策推動有了儀表板。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">05</span>
+    <div className="insight-body">
+      <h4>支援跨系統資料整合</h4>
+      <p>運輸、計步、回收等外部資料源以一致介面接入，擴充是常態。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">06</span>
+    <div className="insight-body">
+      <h4>提升市民參與及政策推廣效率</h4>
+      <p>參與門檻降低、回饋有感，永續政策從宣導變成日常。</p>
+    </div>
+  </div>
+</div>
+
+### Reflection
+
+**從數位服務設計走向永續城市體驗。**
+
+本專案最大的挑戰，在於把不同生活情境整合為一致的使用體驗。設計不只是讓市民完成任務，而是持續思考：
+
+<div className="pill-row">
+  <Badge>如何降低減碳參與門檻</Badge>
+  <Badge>如何建立持續累積的回饋機制</Badge>
+  <Badge>如何串聯跨局處與跨服務資源</Badge>
+  <Badge>如何兼顧使用體驗與政府營運效率</Badge>
+</div>

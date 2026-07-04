@@ -1425,6 +1425,84 @@ main { min-height: 100vh; }
   .prose .bplanes { padding: var(--space-sm); }
 }
 
+/* CarbonCycle — behaviors fan-in → account → rewards, looped (CaseDiagrams) */
+.prose .ccycle {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+}
+.prose .ccycle svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans), 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+.prose .ccycle-edge {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.prose .ccycle-edge.is-in { stroke: var(--text-muted); stroke-width: 1.6; }
+.prose .ccycle-edge.is-return {
+  stroke: var(--text-muted);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 5;
+}
+.prose .ccycle-arrowhead { fill: var(--text); }
+.prose .ccycle-col {
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  fill: var(--text-muted);
+}
+.prose .ccycle-behavior rect { fill: var(--surface); stroke: var(--text); stroke-width: 2; }
+.prose .ccycle-behavior circle { fill: var(--cv-shape-green); stroke: var(--text); stroke-width: 2; }
+.prose .ccycle-idx {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text);
+}
+.prose .ccycle-label { font-size: 16.5px; font-weight: 700; fill: var(--text); }
+.prose .ccycle-account-shadow { fill: var(--cv-shape-green); }
+.prose .ccycle-account-card { fill: var(--surface); stroke: var(--text); stroke-width: 2.5; }
+.prose .ccycle-en {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  fill: var(--text);
+  opacity: 0.75;
+}
+.prose .ccycle-zh { font-size: 24px; font-weight: 900; fill: var(--text); }
+.prose .ccycle-zh-sm { font-size: 20px; font-weight: 900; fill: var(--text); }
+.prose .ccycle-sub { font-size: 12.5px; fill: var(--text); opacity: 0.7; }
+.prose .ccycle-node rect { stroke: var(--text); stroke-width: 2; }
+.prose .ccycle-return-label rect {
+  fill: var(--bg);
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+}
+.prose .ccycle-return-label text {
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  fill: var(--text-muted);
+}
+.prose .ccycle-caption {
+  margin-top: var(--space-sm);
+  text-align: center;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .prose .ccycle { padding: var(--space-sm); }
+}
+
 /* FlowCompare — before/after flow-shape lanes (CaseDiagrams) */
 .prose .flowcompare {
   display: grid;

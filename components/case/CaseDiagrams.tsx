@@ -410,12 +410,14 @@ export function SystemStack() {
    boundary (API sync) — the visual claim that the three flows are ONE
    platform, not three products. Fixed content on purpose. */
 
-const BP_LANES: {
+export interface BlueprintLane {
   en: string
   zh: string
   fill: string
   steps: string[]
-}[] = [
+}
+
+const BP_LANES: BlueprintLane[] = [
   { en: 'CITIZEN', zh: '民眾端', fill: 'var(--cv-shape-blue)', steps: ['觸發', '參與', '累積', '使用', '回饋'] },
   { en: 'MERCHANT', zh: '店家端', fill: 'var(--cv-shape-green)', steps: ['接入', '核銷', '管理', '結算'] },
   { en: 'ADMIN', zh: '政府後台', fill: 'var(--card-lavender)', steps: ['配置', '管理', '監控', '分析'] },
@@ -429,14 +431,14 @@ const BP_STEP_H = 56
 const BP_STEP_GAP = 32
 const BP_RAIL_X = 1108
 
-export function BlueprintLanes() {
+export function BlueprintLanes({ lanes = BP_LANES }: { lanes?: BlueprintLane[] }) {
   return (
     <figure className="bplanes">
       <svg
         viewBox="0 0 1180 520"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label={`三端服務藍圖：${BP_LANES.map((l) => `${l.zh}（${l.steps.join('→')}）`).join('；')}，右側虛線為跨系統 API 串接邊界`}
+        aria-label={`三端服務藍圖：${lanes.map((l) => `${l.zh}（${l.steps.join('→')}）`).join('；')}，右側虛線為跨系統 API 串接邊界`}
       >
         <defs>
           <marker
@@ -465,7 +467,7 @@ export function BlueprintLanes() {
           跨系統串接 · API SYNC
         </text>
 
-        {BP_LANES.map((lane, li) => {
+        {lanes.map((lane, li) => {
           const laneY = BP_LANE_YS[li]
           const cy = laneY + BP_LANE_H / 2
           const stepY = laneY + (BP_LANE_H - BP_STEP_H) / 2
@@ -516,6 +518,138 @@ export function BlueprintLanes() {
       </svg>
       <figcaption className="bplanes-caption">
         Service Blueprint · 三端流程，一個平台邊界
+      </figcaption>
+    </figure>
+  )
+}
+
+/* ── CarbonCycle ─────────────────────────────────────────────────────────
+   The taichung-carbon signature: five everyday low-carbon behaviors fan IN
+   to the carbon account sticker, convert into reward points, get redeemed
+   at the mall — and a dashed arc loops the redemption back to daily
+   behavior. Fan-in + chain + loop: behavior becomes a renewable asset.
+   Fixed content on purpose. */
+
+const CC_BEHAVIORS = ['搭乘大眾運輸', '健康步行計步', '電子書借閱', '廢電池回收', '參與政府活動']
+
+const CC_PILL = { x: 30, w: 230, h: 56 }
+const CC_PILL_YS = [100, 200, 300, 400, 500]
+const CC_CY = 328
+const CC_ACCOUNT = { x: 400, y: 263, w: 230, h: 130 }
+const CC_POINT = { x: 720, y: 280, w: 190, h: 96 }
+const CC_MALL = { x: 970, y: 280, w: 190, h: 96 }
+
+export function CarbonCycle() {
+  const inYs = [CC_CY - 40, CC_CY - 20, CC_CY, CC_CY + 20, CC_CY + 40]
+  return (
+    <figure className="ccycle">
+      <svg
+        viewBox="0 0 1180 600"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label={`減碳獎勵循環：${CC_BEHAVIORS.join('、')}等日常行為累積進減碳存摺，轉為點數獎勵、於商城兌換，再回到日常行為持續參與`}
+      >
+        <defs>
+          <marker
+            id="cc-arrow"
+            viewBox="0 0 10 10"
+            refX="8.5"
+            refY="5"
+            markerWidth="7"
+            markerHeight="7"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" className="ccycle-arrowhead" />
+          </marker>
+        </defs>
+
+        {/* fan-in: behaviors → carbon account */}
+        {CC_PILL_YS.map((y, i) => (
+          <path
+            key={`in-${i}`}
+            className="ccycle-edge is-in"
+            d={`M ${CC_PILL.x + CC_PILL.w},${y + CC_PILL.h / 2} C ${CC_PILL.x + CC_PILL.w + 70},${y + CC_PILL.h / 2} ${CC_ACCOUNT.x - 70},${inYs[i]} ${CC_ACCOUNT.x - 4},${inYs[i]}`}
+            markerEnd="url(#cc-arrow)"
+          />
+        ))}
+
+        {/* chain: account → points → mall */}
+        <path
+          className="ccycle-edge"
+          d={`M ${CC_ACCOUNT.x + CC_ACCOUNT.w + 2},${CC_CY} L ${CC_POINT.x - 6},${CC_CY}`}
+          markerEnd="url(#cc-arrow)"
+        />
+        <path
+          className="ccycle-edge"
+          d={`M ${CC_POINT.x + CC_POINT.w + 2},${CC_CY} L ${CC_MALL.x - 6},${CC_CY}`}
+          markerEnd="url(#cc-arrow)"
+        />
+
+        {/* return arc: redemption → back to daily behavior */}
+        <path
+          className="ccycle-edge is-return"
+          d={`M ${CC_MALL.x + CC_MALL.w / 2},${CC_MALL.y - 6} C ${CC_MALL.x + CC_MALL.w / 2},40 ${CC_PILL.x + CC_PILL.w / 2},40 ${CC_PILL.x + CC_PILL.w / 2},${CC_PILL_YS[0] - 10}`}
+          markerEnd="url(#cc-arrow)"
+        />
+        <g className="ccycle-return-label">
+          <rect x={490} y={24} width={210} height={30} rx={15} />
+          <text x={595} y={44} textAnchor="middle">
+            持續參與 · 回到日常行為
+          </text>
+        </g>
+
+        {/* column caption */}
+        <text x={CC_PILL.x + CC_PILL.w / 2} y={82} textAnchor="middle" className="ccycle-col">
+          日常低碳行為
+        </text>
+
+        {/* behavior pills */}
+        {CC_BEHAVIORS.map((b, i) => (
+          <g key={b} className="ccycle-behavior">
+            <rect x={CC_PILL.x} y={CC_PILL_YS[i]} width={CC_PILL.w} height={CC_PILL.h} rx={16} />
+            <circle cx={CC_PILL.x + 32} cy={CC_PILL_YS[i] + CC_PILL.h / 2} r={13} />
+            <text x={CC_PILL.x + 32} y={CC_PILL_YS[i] + CC_PILL.h / 2 + 4.5} textAnchor="middle" className="ccycle-idx">
+              {String(i + 1).padStart(2, '0')}
+            </text>
+            <text x={CC_PILL.x + 58} y={CC_PILL_YS[i] + CC_PILL.h / 2 + 5.5} className="ccycle-label">
+              {b}
+            </text>
+          </g>
+        ))}
+
+        {/* carbon account — the sticker hub */}
+        <g className="ccycle-account">
+          <rect x={CC_ACCOUNT.x + 7} y={CC_ACCOUNT.y + 7} width={CC_ACCOUNT.w} height={CC_ACCOUNT.h} rx={16} className="ccycle-account-shadow" />
+          <rect x={CC_ACCOUNT.x} y={CC_ACCOUNT.y} width={CC_ACCOUNT.w} height={CC_ACCOUNT.h} rx={16} className="ccycle-account-card" />
+          <text x={CC_ACCOUNT.x + CC_ACCOUNT.w / 2} y={CC_ACCOUNT.y + 42} textAnchor="middle" className="ccycle-en">
+            CARBON ACCOUNT
+          </text>
+          <text x={CC_ACCOUNT.x + CC_ACCOUNT.w / 2} y={CC_ACCOUNT.y + 78} textAnchor="middle" className="ccycle-zh">
+            減碳存摺
+          </text>
+          <text x={CC_ACCOUNT.x + CC_ACCOUNT.w / 2} y={CC_ACCOUNT.y + 106} textAnchor="middle" className="ccycle-sub">
+            可累積的數位資產
+          </text>
+        </g>
+
+        {/* points + mall nodes */}
+        {[
+          { ...CC_POINT, en: 'REWARD POINT', zh: '點數獎勵', fill: 'var(--card-butter)' },
+          { ...CC_MALL, en: 'REWARD MALL', zh: '商城兌換', fill: 'var(--card-peach)' },
+        ].map((n) => (
+          <g key={n.en} className="ccycle-node">
+            <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={16} style={{ fill: n.fill }} />
+            <text x={n.x + n.w / 2} y={n.y + 40} textAnchor="middle" className="ccycle-en">
+              {n.en}
+            </text>
+            <text x={n.x + n.w / 2} y={n.y + 72} textAnchor="middle" className="ccycle-zh-sm">
+              {n.zh}
+            </text>
+          </g>
+        ))}
+      </svg>
+      <figcaption className="ccycle-caption">
+        Behavior loop · 低碳行為 → 數位資產 → 回饋，再回到行為
       </figcaption>
     </figure>
   )

@@ -3,6 +3,7 @@ import NantouContent, { meta as nantouMeta } from '@/content/cases/nantou-points
 import HualienSustainableContent, { meta as hualienSustainableMeta } from '@/content/cases/hualien-sustainable.mdx'
 import YunlinPlatformContent, { meta as yunlinPlatformMeta } from '@/content/cases/yunlin-platform.mdx'
 import MiaoliContent, { meta as miaoliMeta } from '@/content/cases/miaoli-points.mdx'
+import TaichungContent, { meta as taichungMeta } from '@/content/cases/taichung-carbon.mdx'
 import DonganContent, { meta as donganMeta } from '@/content/cases/dongan-food-festival.mdx'
 import HualienContent, { meta as hualienMeta } from '@/content/cases/hualien-digital.mdx'
 import YunlinContent, { meta as yunlinMeta } from '@/content/cases/yunlin-coin.mdx'
@@ -67,6 +68,10 @@ const cases: CaseRecord[] = [
   {
     ...(miaoliMeta as unknown as CaseMeta),
     Content: MiaoliContent,
+  },
+  {
+    ...(taichungMeta as unknown as CaseMeta),
+    Content: TaichungContent,
   },
   {
     ...(donganMeta as unknown as CaseMeta),
