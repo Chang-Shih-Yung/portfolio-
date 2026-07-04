@@ -1,107 +1,357 @@
-import { flows } from './nantou-points.flows'
+import { FanOut, StepFlow } from '@/components/case/Charts'
+import { ConvergenceMap, FlowCompare } from '@/components/case/CaseDiagrams'
+import { Badge } from '@/components/ui/badge'
 
 export const meta = {
   slug: 'nantou-points',
-  title: '南投數位生活點數平台',
-  subtitle: '為 50 萬南投居民設計、橫跨 7 個服務模組的縣級數位點數系統',
+  title: '南投縣數位生活點數平台 2.0',
+  subtitle:
+    '平台上線一年後，累積了大量真實使用者回饋。本專案透過 UX Research 與易用性測試，重新檢視民眾端、商家端與後台三端流程，針對五大核心任務進行體驗優化——讓既有平台「變得更好用」。',
   featured: true,
   order: 1,
-  role: '主導 UX 設計師',
-  team: '2 位設計師 + 4 位工程師',
-  timeline: '6 個月 · 2024',
-  stage: '已上線,服務 50 萬+ 使用者',
+  role: 'UI/UX Designer',
+  team: '跨局處 · PM · 工程協作',
+  timeline: 'UX Optimization & Flow Redesign',
+  stage: '民眾 / 商家 / 後台 三端',
   domain: '公共服務 / Civic Tech',
   year: 2024,
   cardColor: 'peach',
-  cover: '/work/nantou-points/cover.png',
+  cover: '/work/nantou-points/sitemap.png',
   thumb: '/work/nantou-points/cover.png',
+  eyebrow: 'Case study · UX Optimization',
+  metaItems: [
+    { label: '我的角色', value: 'UI/UX Designer' },
+    { label: '專案類型', value: '平台體驗優化 · Flow Redesign' },
+    { label: '涵蓋範疇', value: '民眾 / 商家 / 後台 三端' },
+    { label: '核心方法', value: 'Research → Insights → Strategy' },
+  ],
+  sections: [
+    { id: 'overview', label: 'Overview', tag: '1' },
+    { id: 'context', label: 'Context', tag: '2' },
+    { id: 'role', label: 'My Role', tag: '3' },
+    { id: 'research', label: 'Research', tag: '4' },
+    { id: 'insights', label: 'Insights', tag: '5' },
+    { id: 'strategy', label: 'Strategy', tag: '6' },
+    { id: 'redesign', label: 'Flow & IA', tag: '7' },
+    { id: 'design', label: 'UI System', tag: '8' },
+    { id: 'outcome', label: 'Outcome', tag: '9' },
+  ],
 }
 
 ## Overview
 
-為 50 萬名南投居民設計整合 **7 個服務模組** 的縣級數位點數平台。從註冊、領點、用點,到縣政訊息訂閱、好康地圖、賺點任務、特店申請,**8 條 user flow (page 0-7)** 覆蓋訪客體驗 + 全部 logged-in service + B2B 商家後台。
+<p className="sec-chip">專案概述</p>
 
-**一句話總結 challenge.** 一個政府點數 app,要怎麼讓居民每週主動打開,而不是裝了就放著?
+南投縣政府為推動數位生活點數平台，以點數機制串聯縣政活動、在地商家與民眾消費體驗——用數位點數取代傳統紙本宣導與一次性活動系統，提升行政效率，同時促進在地商圈發展。
 
-**The shape of the system.**
+平台上線一年後開始累積大量真實回饋。本專案不是從零開始，而是**從既有平台的實際使用行為出發**，透過 UX Research 與易用性測試重新檢視三端流程，針對核心任務進行體驗優化。
 
-- **7 個 service module** × **訪客 / 居民 / 商家三種角色** = 涵蓋面遠超過一般 consumer rewards app
-- **50 萬+ 跨年齡 user base** — 從青壯年、原民居民、到 65+ 長者,device 操作習慣差異極大
-- **政府採購 timeline** — 從 spec 鎖定到驗收 6 個月,沒有「v2 再說」這件事
+本次優化聚焦五大核心任務：
 
-## Discovery
+<div className="pill-row">
+  <Badge>登入流程</Badge>
+  <Badge>任務參與</Badge>
+  <Badge>點數使用</Badge>
+  <Badge>商家核銷</Badge>
+  <Badge>後台管理</Badge>
+</div>
 
-Discovery 階段 surface 出來、後續所有設計決策都回扣的 6 條洞察。每一條都對應到 §Flow 章節中至少一個明確的 decision。
+整個專案沿一條清楚的方法鏈推進——每一步的產出都是下一步的輸入：
+
+<StepFlow
+  steps={['Research', 'Insights', 'UX Strategy', 'Flow & IA', 'UI / System', 'Prototype 驗證']}
+  note="本案方法論 — 從研究到驗證的完整轉換鏈"
+/>
+
+## Context
+
+<p className="sec-chip">專案背景</p>
+
+平台完成基礎建置、進入實際營運後，在真實使用情境中開始出現明顯的體驗落差：
 
 <div className="insights">
   <div className="insight">
     <span className="insight-num">01</span>
     <div className="insight-body">
-      <h4>每日領點是真正的 hook</h4>
-      <p>使用者開 app 主要不是為了瀏覽,而是「領今天的點」。每日輪盤 + 簽到必須 1-tap 可達,放在 fold 內,不能埋在 module 深處。</p>
+      <h4>流程步驟過多</h4>
+      <p>過長的操作路徑讓新用戶在完成核心任務前就中途放棄，導致註冊與啟用階段流失。</p>
     </div>
   </div>
   <div className="insight">
     <span className="insight-num">02</span>
     <div className="insight-body">
-      <h4>「我為什麼還沒收到點」= #1 客訴</h4>
-      <p>領點時機要 explicit:即時 vs 延遲、預期金額 vs 實際金額、出錯時的 recovery path。點數紀錄頁要有完整 audit trail。</p>
+      <h4>任務資訊不足</h4>
+      <p>民眾無法快速判斷任務的價值與門檻，降低了主動參與的意願。</p>
     </div>
   </div>
   <div className="insight">
     <span className="insight-num">03</span>
     <div className="insight-body">
-      <h4>長者不操作 map</h4>
-      <p>好康地圖預設視圖必須是「列表 + 距離排序」,map 是次要切換,不是首選。這個 insight 反轉了原本「地圖優先」的 first instinct 設計。</p>
+      <h4>商家端流程不透明</h4>
+      <p>缺乏請款與核銷的進度回饋，商家不確定自己的操作是否成功、款項何時到位。</p>
     </div>
   </div>
   <div className="insight">
     <span className="insight-num">04</span>
     <div className="insight-body">
-      <h4>通知 spam = #1 uninstall reason</h4>
-      <p>訂閱必須 opt-in、不能預設全選,要提供 granular control (公告 / reward / 系統訊息分軌)。一鍵全開 = 一鍵刪 app。</p>
+      <h4>後台操作成本高</h4>
+      <p>重複設定與低效率的維護流程，讓承辦端花費大量時間在例行操作上。</p>
+    </div>
+  </div>
+</div>
+
+<p className="strategy-ref">→ 這些落差促成專案進入第二階段：UX Optimization &amp; Flow Redesign</p>
+
+## Role
+
+<p className="sec-chip">角色與範疇</p>
+
+身為本專案的 **UI/UX Designer**，我負責從研究到設計的完整流程，並與 PM、工程團隊與政府窗口協作，對齊需求與交付：
+
+<div className="pill-row">
+  <Badge>User Research &amp; Interview</Badge>
+  <Badge>Information Architecture</Badge>
+  <Badge>User Flow Design</Badge>
+  <Badge>Wireframe / UI Design</Badge>
+  <Badge>Prototype (Figma)</Badge>
+  <Badge variant="solid">Design System</Badge>
+</div>
+
+## Research
+
+<p className="sec-chip">使用者研究</p>
+
+**從真實使用行為中找問題，而不是假設問題。** 透過跨角色研究建立完整的使用情境：
+
+<div className="pill-row">
+  <Badge>政府端跨局處訪談</Badge>
+  <Badge>商家與商圈訪談</Badge>
+  <Badge>民眾使用情境訪談</Badge>
+  <Badge>五大流程易用性測試</Badge>
+</div>
+
+易用性測試鎖定平台最關鍵的一條端到端旅程，逐段檢視每一步的認知與操作成本：
+
+<StepFlow
+  steps={['登入', '任務參與', '點數折抵', '查詢', '店家核銷']}
+  note="五大核心流程易用性測試 — 一條跨越民眾端與商家端的端到端旅程"
+/>
+
+## Insights
+
+<p className="sec-chip">核心洞察</p>
+
+**問題不在功能，而在「流程與資訊不夠清楚」。** 研究整理出五大關鍵問題：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>登入流程過於複雜</h4>
+      <p>新用戶往往在驗證階段就流失——這是整條旅程最前段、也最致命的斷點。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>任務資訊不足</h4>
+      <p>資訊呈現無法讓人一眼判斷任務價值，決策成本過高，參與率因此受限。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>商家流程不透明</h4>
+      <p>缺乏請款與核銷進度回饋，商家對自己的操作結果沒有把握。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>通知機制薄弱</h4>
+      <p>點數與任務提醒不夠即時，錯過了把使用者拉回平台的關鍵時機。</p>
     </div>
   </div>
   <div className="insight">
     <span className="insight-num">05</span>
     <div className="insight-body">
-      <h4>訪客模式的價值被低估</h4>
-      <p>「裝了不註冊」的用戶比預期多。訪客體驗如果做得夠 hook,可以轉註冊;做不好就只是擺好看的裝飾。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">06</span>
-    <div className="insight-body">
-      <h4>商家側的設計被低估</h4>
-      <p>沒有商家加入,點數無處可用。B2B 後台不能套用 B2C 介面,必須獨立 IA — 老闆心智模型 (管店) 跟居民 (領點) 完全不同。</p>
+      <h4>後台操作成本高</h4>
+      <p>重複設定與低效率維護，讓承辦端難以規模化營運。</p>
     </div>
   </div>
 </div>
 
-## IA
+<p className="strategy-ref">→ Insight 結論：整體問題來自「資訊透明度不足 ＋ 流程缺乏回饋」</p>
 
-### System map
+## Strategy
 
-整個平台拆成 **8 個 page** (Figma page 0-7),每個 page 是一個獨立服務模組 + 對應的所有 sub-flow + state。下圖是 8 個 page 跨 3 種角色 (訪客 / 居民 / 商家) 的進入路徑:
+<p className="sec-chip">設計策略</p>
 
-<SystemMap />
+以「**降低操作成本**」為核心，把散落的問題收斂為三條可執行的設計方向。五個症狀、一個診斷、三步棋：
 
-## Flow
+<ConvergenceMap />
 
-每個服務模組都有獨立的 user flow,在 Figma 用編號 X.Y.Z 系統 reference。下面的 chip nav 是這個 case 所有 flow 的入口 — 點任一個跳到對應 frame,scroll 時 active state 自動高亮。
+三條策略各自的具體動作：
 
-<FlowsShowcase flows={flows} />
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>Flow Simplification · 流程簡化</h4>
+      <div className="pill-row">
+        <Badge>簡化登入與驗證</Badge>
+        <Badge>減少不必要步驟</Badge>
+        <Badge>強化新手引導</Badge>
+      </div>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>Information Clarity · 資訊透明</h4>
+      <div className="pill-row">
+        <Badge>任務卡片補強關鍵資訊</Badge>
+        <Badge>商家流程加入狀態追蹤</Badge>
+        <Badge>即時點數與通知回饋</Badge>
+      </div>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>System Consistency · 系統一致性</h4>
+      <div className="pill-row">
+        <Badge>建立 Design System</Badge>
+        <Badge>統一三端操作邏輯</Badge>
+        <Badge>降低學習成本</Badge>
+      </div>
+    </div>
+  </div>
+</div>
 
-## Solution
+## Redesign
 
-### Design system snapshot
+<p className="sec-chip">流程與架構</p>
 
-整個專案的 component library / token system 統一管理 — 是工程交付的 single source of truth。Token (顏色 / 字體 / 間距 / 圓角) 從 Figma variable 一路同步到 codebase,不維護兩份。
+### User Flow Redesign
 
-<FigmaEmbed
-  fileKey="BjJENYyLv9zQKLsxZhVKrl"
-  nodeId="5-9777"
-  fileName="Portfolio-Lai"
-  title="南投數位生活點數平台 — Design system overview"
-  ratio={0.56}
+重新設計四條核心使用旅程，原則一致：**減少步驟 ＋ 增加回饋**。
+
+<FlowCompare
+  beforeSteps={6}
+  afterSteps={3}
+  note="同一個任務的流程形狀對比 — 新流程更短，且每一步都回報狀態"
 />
+
+<div className="pill-row">
+  <Badge>Login Flow · 登入簡化</Badge>
+  <Badge>Task Flow · 決策加速</Badge>
+  <Badge>Redemption Flow · 使用清楚化</Badge>
+  <Badge>Merchant Flow · 核銷可視化</Badge>
+</div>
+
+### Information Architecture
+
+重新整理平台結構，降低資訊尋找成本，並讓**民眾 / 商家 / 後台三端的操作邏輯一致**（完整結構見頁首 sitemap）：
+
+<FanOut
+  from={{ title: '平台架構', sub: '一致的資訊邏輯' }}
+  to={['民眾端', '商家端', '管理後台']}
+  via="三端一致"
+  note="同一套 IA 原則貫穿三種角色，降低跨端的學習與溝通成本"
+/>
+
+各區塊的重整方向：
+
+- **首頁** — 高頻功能集中，讓使用者一進站就能直達核心任務
+- **任務** — 分類 ＋ 資訊強化，降低判斷成本
+- **店家** — 狀態導向流程，每一步都有明確進度
+- **會員中心** — 點數整合，統一查詢與使用入口
+- **通知** — 即時化資訊流，在對的時機把人拉回平台
+
+## Design
+
+<p className="sec-chip">UI 與設計系統</p>
+
+### UI Design
+
+**讓複雜流程變得直覺可理解。** 介面設計聚焦四個重點，並完整涵蓋民眾端、商家端與管理後台三端：
+
+<div className="pill-row">
+  <Badge>資訊層級清晰</Badge>
+  <Badge>任務卡片化</Badge>
+  <Badge>操作回饋狀態</Badge>
+  <Badge>統一互動語言</Badge>
+</div>
+
+### Design System
+
+建立可延展的政府級設計系統，作為工程交付與長期維運的 single source of truth：
+
+<div className="pill-row">
+  <Badge>Color / Typography / Grid</Badge>
+  <Badge>Component Library</Badge>
+  <Badge>三端一致設計規範</Badge>
+</div>
+
+並定義完整的互動狀態，讓每個元件在各種情境下的行為都一致、可預期：
+
+<div className="pill-row">
+  <Badge>Loading</Badge>
+  <Badge variant="solid">Success</Badge>
+  <Badge>Error</Badge>
+</div>
+
+### Prototype & Testing
+
+以 Figma 高保真互動原型模擬完整使用流程，並作為與政府端進行流程驗證的工具——**用 Prototype 驗證，而不是假設設計。**
+
+## Outcome
+
+<p className="sec-chip">成果與反思</p>
+
+本次優化的核心，是讓既有平台「變得更好用」：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>降低登入與操作流失</h4>
+      <p>精簡最前段的驗證與操作路徑，減少使用者在核心任務前中途離開。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>提升任務理解與完成率</h4>
+      <p>卡片化與資訊強化讓任務價值一眼可辨，決策更快、參與更高。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>增加商家流程透明度</h4>
+      <p>狀態追蹤與進度回饋，讓商家對請款與核銷的每一步都有把握。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>建立一致的設計系統</h4>
+      <p>三端共用同一套規範，降低跨團隊溝通與長期維運成本。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">05</span>
+    <div className="insight-body">
+      <h4>為後續擴充打下基礎</h4>
+      <p>模組化的流程與元件，讓平台之後新增服務時能沿用既有結構。</p>
+    </div>
+  </div>
+</div>
+
+### Reflection
+
+**UX 的價值，是讓系統變得可理解。**
+
+這次專案讓我更清楚：UX 的核心不是重新設計介面，而是讓既有流程變得合理、且可被理解。透過 Research → Insights → Strategy 的轉換，把使用者問題轉譯為可執行的設計決策——這，才是體驗優化真正的槓桿。

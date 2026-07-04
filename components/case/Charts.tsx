@@ -219,6 +219,33 @@ export interface CompareRowDatum {
   now?: boolean
 }
 
+/**
+ * StepFlow — a linear multi-step sequence (A → B → C → …), for task / test
+ * journeys where the ORDER is the point (e.g. 登入 → 任務 → 折抵 → 查詢 → 核銷).
+ * Nodes cycle the koyama pastels; arrows sit between. Wraps on mobile.
+ */
+export function StepFlow({
+  steps,
+  note,
+}: {
+  steps: string[]
+  note?: string
+}) {
+  return (
+    <div className="stepflow" role="img" aria-label={note ?? steps.join(' → ')}>
+      <ol className="stepflow-row" aria-hidden="true">
+        {steps.map((s, i) => (
+          <li key={s} className="stepflow-item">
+            <span className="stepflow-node">{s}</span>
+            {i < steps.length - 1 && <span className="stepflow-arrow">→</span>}
+          </li>
+        ))}
+      </ol>
+      {note && <p className="chart-note">{note}</p>}
+    </div>
+  )
+}
+
 /** CompareBar — horizontal magnitude comparison (e.g. 已消費 vs 待使用). */
 export function CompareBar({
   rows,

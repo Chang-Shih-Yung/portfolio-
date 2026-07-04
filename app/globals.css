@@ -1123,6 +1123,197 @@ main { min-height: 100vh; }
   margin-top: var(--space-sm);
 }
 
+/* StepFlow — linear step sequence (登入 → 任務 → 折抵 → …), koyama pastel pills */
+.prose .stepflow { margin: var(--space-md) 0 var(--space-lg); }
+.prose .stepflow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.prose .stepflow-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.prose .stepflow-node {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-full);
+}
+.prose .stepflow-item:nth-child(5n + 1) .stepflow-node { background: var(--cv-shape-blue); }
+.prose .stepflow-item:nth-child(5n + 2) .stepflow-node { background: var(--cv-shape-green); }
+.prose .stepflow-item:nth-child(5n + 3) .stepflow-node { background: var(--cv-shape-coral); }
+.prose .stepflow-item:nth-child(5n + 4) .stepflow-node { background: var(--card-butter); }
+.prose .stepflow-item:nth-child(5n + 5) .stepflow-node { background: var(--card-lavender); }
+.prose .stepflow-arrow {
+  font-family: var(--font-mono-stack);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* ConvergenceMap — insights → root cause → strategy SVG (CaseDiagrams) */
+.prose .convmap {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+}
+.prose .convmap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans), 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+.prose .convmap-edge {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 1.6;
+}
+.prose .convmap-edge.is-out { stroke: var(--text); stroke-width: 2; }
+.prose .convmap-arrowhead { fill: var(--text-muted); }
+.prose .convmap-col {
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  fill: var(--text-muted);
+}
+.prose .convmap-problem rect {
+  fill: var(--surface);
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.prose .convmap-problem circle { fill: var(--card-peach); stroke: var(--text); stroke-width: 2; }
+.prose .convmap-idx {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text);
+}
+.prose .convmap-label { font-size: 17px; font-weight: 700; fill: var(--text); }
+.prose .convmap-root-shadow { fill: var(--card-peach); }
+.prose .convmap-root-card { fill: var(--surface); stroke: var(--text); stroke-width: 2.5; }
+.prose .convmap-root-line { font-size: 22px; font-weight: 900; fill: var(--text); }
+.prose .convmap-strategy rect { stroke: var(--text); stroke-width: 2; }
+.prose .convmap-strat-en {
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  fill: var(--text);
+  opacity: 0.75;
+}
+.prose .convmap-strat-zh { font-size: 20px; font-weight: 900; fill: var(--text); }
+.prose .convmap-caption {
+  margin-top: var(--space-sm);
+  text-align: center;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .prose .convmap { padding: var(--space-sm); }
+}
+
+/* FlowCompare — before/after flow-shape lanes (CaseDiagrams) */
+.prose .flowcompare {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+.prose .flowcompare-lane {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 18px 22px;
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.prose .flowcompare-lane.is-after { box-shadow: 6px 6px 0 var(--cv-shape-green); }
+.prose .flowcompare-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 148px;
+}
+.prose .flowcompare-tag {
+  font-family: var(--font-mono-stack);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.prose .flowcompare-lane.is-after .flowcompare-tag { color: var(--text); }
+.prose .flowcompare-desc { font-size: 14.5px; font-weight: 700; color: var(--text); }
+.prose .flowcompare-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.prose .flowcompare-step {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--text-muted);
+  border-radius: 10px;
+  background: var(--bg);
+  position: relative;
+}
+/* chain connector between steps */
+.prose .flowcompare-track > * + *::before {
+  content: '→';
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono-stack);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.prose .flowcompare-track > .flowcompare-step { position: relative; }
+.prose .flowcompare-stepwrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.prose .flowcompare-lane.is-after .flowcompare-step {
+  border-color: var(--text);
+  background: var(--cv-shape-blue);
+}
+.prose .flowcompare-lane.is-after .flowcompare-stepwrap:nth-child(2) .flowcompare-step { background: var(--card-butter); }
+.prose .flowcompare-lane.is-after .flowcompare-stepwrap:nth-child(3) .flowcompare-step { background: var(--card-lavender); }
+.prose .flowcompare-tick {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  background: var(--cv-shape-green);
+  border: 1.5px solid var(--text);
+  border-radius: var(--r-full);
+  padding: 2px 7px;
+}
+@media (max-width: 640px) {
+  .prose .flowcompare-lane { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+}
+
 /* Image row — side-by-side framed figures in the case body (ImageRow) */
 .prose .img-row {
   display: grid;
