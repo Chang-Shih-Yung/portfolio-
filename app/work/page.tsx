@@ -17,7 +17,7 @@ export default function WorkPage() {
     <div className="container work-page">
       <p className="section-label">Work · 專案總覽</p>
       <h1 className="display-l work-headline">
-        幫 7 個縣市做行銷,<br />順便蓋了 5 座平台。
+        數位行銷專案
       </h1>
       <p className="work-intro">
         4 場政府大型活動、5 座城市數位平台 — 聲量我來做,留存我也包。每一張卡點進去,都是一個完整的故事。

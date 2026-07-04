@@ -14,7 +14,10 @@ const banners = [
   { img: ref('c90b8d74019b22ef48c190d4aac24f93.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
   { img: ref('3850638259baa13d1a3753d64ae06d24.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
 ]
-const bottomNav = ['聯絡我', '隱私權政策', '網站地圖']
+const bottomNav = [
+  { label: '聯絡我', href: '#' },
+  { label: '專案地圖', href: '/work' },
+]
 
 export default function CoverFooter() {
   return (
@@ -46,9 +49,9 @@ export default function CoverFooter() {
             </div>
             <div className="footer-bottom">
               <ul className="footer-bottom-nav">
-                {bottomNav.map((n, i) => (
-                  <li className="footer-bottom-nav-item" key={i}>
-                    <a href="#"><span>{n}</span></a>
+                {bottomNav.map((n) => (
+                  <li className="footer-bottom-nav-item" key={n.label}>
+                    <a href={n.href}><span>{n.label}</span></a>
                   </li>
                 ))}
               </ul>

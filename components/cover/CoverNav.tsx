@@ -66,7 +66,7 @@ export default function CoverNav() {
               </ul>
             </nav>
 
-            <a href="/" className="cv-logo" aria-label="Giselle Lai">
+            <div className="cv-logo" aria-hidden="true">
               <span className="cv-logo__mark" aria-hidden="true">
                 <svg viewBox="0 0 32 32" width="100%" height="100%" focusable="false">
                   <circle cx="16" cy="16" r="15" className="cv-logo__circle" />
@@ -82,7 +82,7 @@ export default function CoverNav() {
                 </svg>
               </span>
               <span className="cv-logo__text">{BRAND.name}</span>
-            </a>
+            </div>
           </div>
         </div>
       </header>
@@ -205,10 +205,6 @@ export default function CoverNav() {
           box-shadow: var(--cv-shadow-pill);
           text-decoration: none;
           white-space: nowrap;
-          transition: transform var(--cv-dur-base) ease-out;
-        }
-        .cv-logo:hover {
-          transform: translateY(-2px);
         }
         .cv-logo__mark {
           display: inline-flex;

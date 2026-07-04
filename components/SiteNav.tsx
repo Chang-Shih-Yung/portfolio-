@@ -53,7 +53,7 @@ export default function SiteNav() {
             </ul>
           </nav>
 
-          <Link href="/" className="sn-logo" aria-label={BRAND.name}>
+          <div className="sn-logo" aria-hidden="true">
             <span className="sn-logo-mark" aria-hidden="true">
               <svg viewBox="0 0 32 32" width="100%" height="100%" focusable="false">
                 <circle cx="16" cy="16" r="15" className="sn-logo-circle" />
@@ -69,7 +69,7 @@ export default function SiteNav() {
               </svg>
             </span>
             <span className="sn-logo-text">{BRAND.name}</span>
-          </Link>
+          </div>
         </div>
       </div>
 
@@ -162,7 +162,6 @@ export default function SiteNav() {
           white-space: nowrap;
           transition: transform 240ms ease-out;
         }
-        .sn-logo:hover { transform: translateY(-2px); }
         .sn-logo-mark {
           display: inline-flex;
           width: 30px;
