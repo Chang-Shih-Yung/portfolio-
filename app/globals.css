@@ -1367,6 +1367,64 @@ main { min-height: 100vh; }
   .prose .sysstack { padding: var(--space-sm); }
 }
 
+/* BlueprintLanes — three-lane service blueprint + integration rail (CaseDiagrams) */
+.prose .bplanes {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+}
+.prose .bplanes svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans), 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+.prose .bplanes-role-card { fill: var(--surface); stroke: var(--text); stroke-width: 2; }
+.prose .bplanes-role-shadow { stroke: none; }
+.prose .bplanes-en {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  fill: var(--text);
+  opacity: 0.75;
+}
+.prose .bplanes-zh { font-size: 19px; font-weight: 900; fill: var(--text); }
+.prose .bplanes-step rect { stroke: var(--text); stroke-width: 2; }
+.prose .bplanes-step-label { font-size: 15.5px; font-weight: 700; fill: var(--text); }
+.prose .bplanes-edge {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.prose .bplanes-arrowhead { fill: var(--text); }
+.prose .bplanes-stub,
+.prose .bplanes-rail {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 5;
+}
+.prose .bplanes-rail-label {
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  fill: var(--text-muted);
+}
+.prose .bplanes-caption {
+  margin-top: var(--space-sm);
+  text-align: center;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .prose .bplanes { padding: var(--space-sm); }
+}
+
 /* FlowCompare — before/after flow-shape lanes (CaseDiagrams) */
 .prose .flowcompare {
   display: grid;

@@ -1,0 +1,307 @@
+import { BridgeFlow, FanOut } from '@/components/case/Charts'
+import { BlueprintLanes } from '@/components/case/CaseDiagrams'
+import { Badge } from '@/components/ui/badge'
+
+export const meta = {
+  slug: 'miaoli-points',
+  title: '苗栗縣數位點數平台',
+  subtitle:
+    '苗栗縣政府為推動地方數位轉型與在地經濟活絡，建置數位點數平台——整合會員系統、數位點數、特約店家、政府活動與跨系統服務，作為地方數位服務的核心入口。本專案的核心不在單一功能設計，而在「平台架構與長期營運能力建構」。',
+  featured: false,
+  order: 4,
+  role: 'UX & UI Designer',
+  team: '苗栗縣政府 · 跨部門協作',
+  timeline: 'Platform & Service Design',
+  stage: '民眾 × 店家 × 政府後台',
+  domain: '公共服務 / Platform Design',
+  year: 2024,
+  cardColor: 'butter',
+  cover: '/work/miaoli-points/sitemap.png',
+  thumb: '/work/miaoli-points/sitemap.png',
+  eyebrow: 'Case study · Platform & Service Design',
+  metaItems: [
+    { label: '我的角色', value: 'UX & UI Designer' },
+    { label: '專案類型', value: 'Platform & Service Blueprint' },
+    { label: '涵蓋範疇', value: '民眾 / 店家 / 政府後台 三端' },
+    { label: '核心命題', value: '平台架構 × 長期營運能力' },
+  ],
+  sections: [
+    { id: 'overview', label: 'Overview', tag: '1' },
+    { id: 'strategy', label: 'Strategy', tag: '2' },
+    { id: 'blueprint', label: 'Blueprint', tag: '3' },
+    { id: 'ia', label: 'IA', tag: '4' },
+    { id: 'system', label: 'System', tag: '5' },
+    { id: 'outcome', label: 'Outcome', tag: '6' },
+  ],
+}
+
+## Overview
+
+<p className="sec-chip">專案概述</p>
+
+苗栗縣政府建置數位點數平台，作為**地方數位服務的核心入口**——平台不只提供民眾點數累積與使用機制，更進一步串聯政府政策推廣、商圈合作與第三方服務，逐步形成可持續擴充的地方數位生態系。
+
+<div className="pill-row">
+  <Badge>會員系統</Badge>
+  <Badge variant="solid">數位點數</Badge>
+  <Badge>特約店家</Badge>
+  <Badge>政府活動</Badge>
+  <Badge>跨系統服務</Badge>
+</div>
+
+<p className="strategy-ref">→ 本專案核心不在單一功能設計，而在「平台架構與長期營運能力建構」</p>
+
+## Strategy
+
+<p className="sec-chip">平台策略</p>
+
+**從「點數系統」升級為「地方數位服務平台」。** 以平台化思維重新定義系統架構，把原本分散的服務整合為可擴充的數位基礎建設：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>Platform Integration · 平台整合</h4>
+      <div className="pill-row">
+        <Badge>會員系統 Member</Badge>
+        <Badge>點數機制 Point</Badge>
+        <Badge>活動系統 Event</Badge>
+        <Badge>特約店家 Merchant</Badge>
+        <Badge>通知訊息 Notification</Badge>
+        <Badge>管理後台 Admin</Badge>
+      </div>
+      <p>→ 六大核心模組收攏為單一入口的地方數位服務平台。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>Multi-role System Design · 三角色系統設計</h4>
+      <div className="pill-row">
+        <Badge>民眾端 · 參與 / 累積 / 折抵 / 查詢</Badge>
+        <Badge>店家端 · 核銷 / 管理 / 營運數據</Badge>
+        <Badge>政府後台 · 會員 / 活動 / 商家 / 策略</Badge>
+      </div>
+      <p>→ 不同角色，但共享同一套系統邏輯——這是三端能一起長大的前提。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>Scalable Architecture · 可擴充架構</h4>
+      <div className="pill-row">
+        <Badge>功能模組擴充</Badge>
+        <Badge>跨局處服務整合</Badge>
+        <Badge>第三方 API 串接</Badge>
+        <Badge>長期營運維護</Badge>
+      </div>
+      <p>→ 透過模組化設計，降低系統演進的成本——擴充是常態，不是例外。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>Operational Efficiency · 營運效率設計</h4>
+      <div className="pill-row">
+        <Badge>後台管理效率</Badge>
+        <Badge>店家操作成本</Badge>
+        <Badge>跨部門維運流程</Badge>
+        <Badge>一致性維護成本</Badge>
+      </div>
+      <p>→ 設計目標是「讓平台可以長期被營運，而不是只被使用」。</p>
+    </div>
+  </div>
+</div>
+
+## Blueprint
+
+<p className="sec-chip">服務藍圖</p>
+
+**從使用流程到服務系統的完整映射。** 透過 Service Blueprint 把「前台體驗 × 後台系統 × 營運流程」整合設計——平台不只好用，也能被有效營運。三條角色流程，最後都收在同一個跨系統邊界上：
+
+<BlueprintLanes />
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>民眾端服務流程 · Citizen Journey</h4>
+      <div className="pill-row">
+        <Badge>註冊 / 登入</Badge>
+        <Badge>參與活動任務</Badge>
+        <Badge>獲取點數</Badge>
+        <Badge>店家折抵使用</Badge>
+        <Badge>查詢紀錄與回饋</Badge>
+      </div>
+      <p>→ 設計重點：降低參與門檻 ＋ 強化回饋感。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>店家端營運流程 · Merchant Operation</h4>
+      <div className="pill-row">
+        <Badge>店家驗證與綁定</Badge>
+        <Badge>點數核銷操作</Badge>
+        <Badge>活動參與與管理</Badge>
+        <Badge>交易紀錄與請款</Badge>
+      </div>
+      <p>→ 設計重點：降低操作複雜度 ＋ 提升透明度。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>政府後台流程 · Admin &amp; Governance</h4>
+      <div className="pill-row">
+        <Badge>會員與身份管理</Badge>
+        <Badge>活動與點數配置</Badge>
+        <Badge>店家審核與管理</Badge>
+        <Badge>數據監控與營運分析</Badge>
+      </div>
+      <p>→ 設計重點：提升營運效率與決策能力。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>Cross-system Interaction · 跨系統串接</h4>
+      <div className="pill-row">
+        <Badge>API 資料交換流程</Badge>
+        <Badge>點數發放與核銷同步</Badge>
+        <Badge>活動與會員資料整合</Badge>
+        <Badge>第三方服務擴充介面</Badge>
+      </div>
+      <p>→ 建立「可持續擴充的系統邊界」——三端的資料在這裡對齊。</p>
+    </div>
+  </div>
+</div>
+
+## IA
+
+<p className="sec-chip">平台資訊架構</p>
+
+**以模組化思維重構整體系統。** 平台資訊架構重新整理為五大核心模組——每個模組皆可獨立擴充，但共享一致的資料結構與操作邏輯（完整結構見頁首 system map）：
+
+<FanOut
+  from={{ title: '一致資料結構', sub: 'Modular IA' }}
+  to={['Member 會員', 'Point 點數', 'Event 活動', 'Merchant 店家', 'Admin 管理']}
+  via="模組化"
+  note="模組獨立擴充、資料邏輯共享 — 新服務接上來，不用重新發明地基"
+/>
+
+## System
+
+<p className="sec-chip">設計系統</p>
+
+**建立可持續維運的政府級設計系統**，以統一的設計規範支撐三端平台：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>Foundation &amp; Tokens</h4>
+      <div className="pill-row">
+        <Badge>Color</Badge>
+        <Badge>Typography</Badge>
+        <Badge>Grid System</Badge>
+        <Badge variant="solid">Token-based structure</Badge>
+      </div>
+      <p>Token 化的設計基礎——改一處，三端同步。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>Component Library</h4>
+      <div className="pill-row">
+        <Badge>Card</Badge>
+        <Badge>Table</Badge>
+        <Badge>Form</Badge>
+        <Badge>Modal</Badge>
+      </div>
+      <p>後台密集操作場景的核心元件，行為與樣式一次定義。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>Status System &amp; Navigation</h4>
+      <div className="pill-row">
+        <Badge>pending</Badge>
+        <Badge variant="solid">success</Badge>
+        <Badge>failed</Badge>
+        <Badge>三端一致 Navigation Pattern</Badge>
+      </div>
+      <p>交易與核銷的每一種狀態都有明確語言，導覽模式三端相同。</p>
+    </div>
+  </div>
+</div>
+
+<p className="strategy-ref">→ 目標：降低設計與開發溝通成本，提升長期維運效率</p>
+
+## Outcome
+
+<p className="sec-chip">成果與反思</p>
+
+**從產品設計走向平台治理架構** ——本專案最核心的價值轉變：
+
+<BridgeFlow
+  from={{ title: '功能集合', sub: '各自運作的系統' }}
+  to={{ title: '可治理的平台', sub: '三端一致的服務架構' }}
+  via="平台治理"
+  note="Service Blueprint × 平台策略 — 讓系統可以被營運，而不是只被使用"
+/>
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>建立三端一致的服務架構</h4>
+      <p>民眾、店家、政府後台共享同一套系統邏輯與操作語言。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>定義完整點數服務流程</h4>
+      <p>從觸發、累積到核銷結算，每一段流程都有明確的規格與狀態。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>建立可擴充系統模組設計</h4>
+      <p>五大模組獨立擴充、共享資料結構——為下一個服務預留位置。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>串接前台體驗與後台營運邏輯</h4>
+      <p>Service Blueprint 讓好用的前台和能運轉的後台是同一張圖。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">05</span>
+    <div className="insight-body">
+      <h4>降低跨部門協作與維運成本</h4>
+      <p>一致的規範與狀態系統，讓跨局處的溝通有共同的參照。</p>
+    </div>
+  </div>
+</div>
+
+### Reflection
+
+**設計從 UI，走向系統與營運層級。**
+
+本專案最大的轉變，是從「畫面設計」提升為「平台設計」——不只是設計怎麼用，而是：
+
+<div className="pill-row">
+  <Badge>系統如何運作</Badge>
+  <Badge>不同角色如何協作</Badge>
+  <Badge>功能如何持續擴充</Badge>
+  <Badge>平台如何長期被營運</Badge>
+</div>
+
+UX 的價值，在於讓「複雜系統變得可運作且可成長」。

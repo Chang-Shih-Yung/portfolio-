@@ -403,6 +403,124 @@ export function SystemStack() {
   )
 }
 
+/* ── BlueprintLanes ──────────────────────────────────────────────────────
+   The miaoli-points signature: a three-lane service blueprint. Each role
+   (citizen / merchant / admin) runs its own step chain, and a dashed
+   integration rail on the right ties all three lanes to one cross-system
+   boundary (API sync) — the visual claim that the three flows are ONE
+   platform, not three products. Fixed content on purpose. */
+
+const BP_LANES: {
+  en: string
+  zh: string
+  fill: string
+  steps: string[]
+}[] = [
+  { en: 'CITIZEN', zh: '民眾端', fill: 'var(--cv-shape-blue)', steps: ['觸發', '參與', '累積', '使用', '回饋'] },
+  { en: 'MERCHANT', zh: '店家端', fill: 'var(--cv-shape-green)', steps: ['接入', '核銷', '管理', '結算'] },
+  { en: 'ADMIN', zh: '政府後台', fill: 'var(--card-lavender)', steps: ['配置', '管理', '監控', '分析'] },
+]
+
+const BP_LANE_YS = [40, 205, 370]
+const BP_LANE_H = 110
+const BP_STEP_X0 = 210
+const BP_STEP_W = 148
+const BP_STEP_H = 56
+const BP_STEP_GAP = 32
+const BP_RAIL_X = 1108
+
+export function BlueprintLanes() {
+  return (
+    <figure className="bplanes">
+      <svg
+        viewBox="0 0 1180 520"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label={`三端服務藍圖：${BP_LANES.map((l) => `${l.zh}（${l.steps.join('→')}）`).join('；')}，右側虛線為跨系統 API 串接邊界`}
+      >
+        <defs>
+          <marker
+            id="bp-arrow"
+            viewBox="0 0 10 10"
+            refX="8.5"
+            refY="5"
+            markerWidth="6.5"
+            markerHeight="6.5"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" className="bplanes-arrowhead" />
+          </marker>
+        </defs>
+
+        {/* integration rail — one dashed boundary all lanes sync through */}
+        <path
+          className="bplanes-rail"
+          d={`M ${BP_RAIL_X},${BP_LANE_YS[0] + BP_LANE_H / 2} L ${BP_RAIL_X},${BP_LANE_YS[2] + BP_LANE_H / 2}`}
+        />
+        <text
+          className="bplanes-rail-label"
+          transform={`translate(1150 260) rotate(90)`}
+          textAnchor="middle"
+        >
+          跨系統串接 · API SYNC
+        </text>
+
+        {BP_LANES.map((lane, li) => {
+          const laneY = BP_LANE_YS[li]
+          const cy = laneY + BP_LANE_H / 2
+          const stepY = laneY + (BP_LANE_H - BP_STEP_H) / 2
+          const lastRight =
+            BP_STEP_X0 + lane.steps.length * BP_STEP_W + (lane.steps.length - 1) * BP_STEP_GAP
+          return (
+            <g key={lane.en}>
+              {/* role sticker */}
+              <g className="bplanes-role">
+                <rect x={25} y={laneY + 22} width={160} height={76} rx={16} className="bplanes-role-shadow" style={{ fill: lane.fill }} />
+                <rect x={20} y={laneY + 17} width={160} height={76} rx={16} className="bplanes-role-card" />
+                <text x={100} y={laneY + 47} textAnchor="middle" className="bplanes-en">
+                  {String(li + 1).padStart(2, '0')} · {lane.en}
+                </text>
+                <text x={100} y={laneY + 76} textAnchor="middle" className="bplanes-zh">
+                  {lane.zh}
+                </text>
+              </g>
+
+              {/* step chain */}
+              {lane.steps.map((s, i) => {
+                const x = BP_STEP_X0 + i * (BP_STEP_W + BP_STEP_GAP)
+                return (
+                  <g key={s + i} className="bplanes-step">
+                    <rect x={x} y={stepY} width={BP_STEP_W} height={BP_STEP_H} rx={14} style={{ fill: lane.fill }} />
+                    <text x={x + BP_STEP_W / 2} y={cy + 5.5} textAnchor="middle" className="bplanes-step-label">
+                      {s}
+                    </text>
+                    {i < lane.steps.length - 1 && (
+                      <path
+                        className="bplanes-edge"
+                        d={`M ${x + BP_STEP_W + 4},${cy} L ${x + BP_STEP_W + BP_STEP_GAP - 6},${cy}`}
+                        markerEnd="url(#bp-arrow)"
+                      />
+                    )}
+                  </g>
+                )
+              })}
+
+              {/* stub from the lane's last step to the integration rail */}
+              <path
+                className="bplanes-stub"
+                d={`M ${lastRight + 4},${cy} L ${BP_RAIL_X - 2},${cy}`}
+              />
+            </g>
+          )
+        })}
+      </svg>
+      <figcaption className="bplanes-caption">
+        Service Blueprint · 三端流程，一個平台邊界
+      </figcaption>
+    </figure>
+  )
+}
+
 /* ── FlowCompare ─────────────────────────────────────────────────────────
    Before/After flow-shape comparison: the old journey is a long chain of
    mute steps; the new one is shorter and every step answers back. Steps are

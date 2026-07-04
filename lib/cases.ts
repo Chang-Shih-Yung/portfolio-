@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import NantouContent, { meta as nantouMeta } from '@/content/cases/nantou-points.mdx'
 import HualienSustainableContent, { meta as hualienSustainableMeta } from '@/content/cases/hualien-sustainable.mdx'
 import YunlinPlatformContent, { meta as yunlinPlatformMeta } from '@/content/cases/yunlin-platform.mdx'
+import MiaoliContent, { meta as miaoliMeta } from '@/content/cases/miaoli-points.mdx'
 import DonganContent, { meta as donganMeta } from '@/content/cases/dongan-food-festival.mdx'
 import HualienContent, { meta as hualienMeta } from '@/content/cases/hualien-digital.mdx'
 import YunlinContent, { meta as yunlinMeta } from '@/content/cases/yunlin-coin.mdx'
@@ -62,6 +63,10 @@ const cases: CaseRecord[] = [
   {
     ...(yunlinPlatformMeta as unknown as CaseMeta),
     Content: YunlinPlatformContent,
+  },
+  {
+    ...(miaoliMeta as unknown as CaseMeta),
+    Content: MiaoliContent,
   },
   {
     ...(donganMeta as unknown as CaseMeta),
