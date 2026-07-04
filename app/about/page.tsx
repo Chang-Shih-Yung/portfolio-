@@ -1,94 +1,100 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '關於 — Giselle Lai',
-  description: 'APP UI/UX 設計師,專注於 UX 系統與資訊架構。',
+  description: '資深行銷人員 · 政府數位行銷與活動統籌，用 UX 方法把聲量變成留存。',
 }
 
-// ─── Stats (overview snapshot) ─────────────────────────────
+// ─── Stats (overview snapshot) — 全部來自九個專案的真實數字 ─────
 const stats = [
-  { value: '8', unit: '年', label: '產品設計年資' },
-  { value: '50萬+', unit: '人', label: '服務的居民規模' },
-  { value: '7', unit: '個', label: '同步交付的服務模組' },
-  { value: '40%', unit: '↓', label: '減少的 spec 釐清會議' },
+  { value: '7', unit: '縣市', label: '政府行銷與數位平台專案落地縣市' },
+  { value: '9', unit: '個', label: '完整專案 — 4 場大型行銷活動 + 5 座城市數位平台' },
+  { value: '1,200+', unit: '家', label: '各案累計串聯的特約店家' },
+  { value: '×3.5', unit: '倍', label: '單場活動人次成長（東岸舖食節 14,148 人次）' },
 ]
 
-// ─── Career timeline (CV-style) ───────────────────────────
+// ─── Project track record (portfolio-backed) ───────────────
 type TimelineKind = 'role' | 'project' | 'skill' | 'milestone'
 type TimelineItem = {
   year: string
   kind: TimelineKind
   title: string
   body: string
+  href?: string
 }
 
+// 陣列順序 = 編號 01–09;頁面倒序渲染,行銷專案(06–09)排最前
 const timeline: TimelineItem[] = [
   {
-    year: '2017',
+    year: '01',
+    kind: 'project',
+    title: '南投縣數位生活點數平台 2.0',
+    body: '從真實使用者回饋重新優化民眾、商家與後台三端流程。行銷把人導進來之後,靠體驗把流失點一個一個補掉 — Research → Insights → Strategy 的完整轉換。',
+    href: '/work/nantou-points',
+  },
+  {
+    year: '02',
+    kind: 'project',
+    title: '花蓮永續生活數位服務平台',
+    body: '用行銷人的漏斗思維(Awareness → Retention)設計產品:活動參與 → 點數累積 → 商家使用的行為閉環,讓政策活動變成會自己轉的循環。',
+    href: '/work/hualien-sustainable',
+  },
+  {
+    year: '03',
+    kind: 'project',
+    title: '雲林數位縣民平台(雲林幣 2.0)',
+    body: '品牌語言 + 設計系統,讓縣政服務在同一個品牌體驗下持續擴充 — 品牌一致性,就是最長期的行銷資產。',
+    href: '/work/yunlin-platform',
+  },
+  {
+    year: '04',
+    kind: 'project',
+    title: '苗栗縣數位點數平台',
+    body: 'Service Blueprint 串起民眾、店家、政府三端 — 行銷不只做前台聲量,把核銷、請款、營運流程一起設計進去,合作店家才留得住。',
+    href: '/work/miaoli-points',
+  },
+  {
+    year: '05',
+    kind: 'project',
+    title: '台中減碳存摺平台',
+    body: '把減碳政策轉譯成日常行為循環:低碳行為 → 數位資產 → 回饋兌換。政策推廣從單次宣導,變成長期的習慣養成。',
+    href: '/work/taichung-carbon',
+  },
+  {
+    year: '06',
     kind: 'role',
-    title: '進入產品設計',
-    body: '從 UI 視覺起步,在新創團隊負責 App 介面與 marketing site,第一次接觸 design token 跟 component thinking。',
+    title: '2024 第四屆東岸舖食節',
+    body: '主視覺、場地動線、輔銷物一手統籌 — 14,148 人次、較上屆成長 ×3.5,約 580 萬枚臺東金幣在場內流動,沉睡點數被活動喚醒。',
+    href: '/work/dongan-food-festival',
   },
   {
-    year: '2018',
-    kind: 'skill',
-    title: '系統思考的轉折',
-    body: '開始用 Figma component + auto layout 取代散裝畫面;意識到「畫得快」不重要,「畫得能被工程實作」才重要。',
-  },
-  {
-    year: '2019',
-    kind: 'project',
-    title: 'B2B SaaS Dashboard',
-    body: '主導一個 B2B 後台改版,從零建立第一套 design system。學到 dashboard 的真正 UX 不是「漂亮」,是 information density 跟 scan-ability。',
-  },
-  {
-    year: '2020',
-    kind: 'skill',
-    title: '深化 IA 與使用者研究',
-    body: '系統性學 information architecture、tree testing、card sorting。開始把 user interview 跟 heuristic eval 變成日常,而不是 project 起點才做。',
-  },
-  {
-    year: '2021',
-    kind: 'project',
-    title: 'Enterprise portal · UX lead',
-    body: '帶 2 位設計師交付 5 個內部 portal,引入 X.Y.Z 編號系統。發現工程的 spec 釐清會議減少約 40%,從此這個 convention 變成 default。',
-  },
-  {
-    year: '2022',
-    kind: 'milestone',
-    title: '跨團隊協作 framework',
-    body: '不再只是「畫稿子」 — 開始參與 product roadmap、跟 PM 一起做 prioritization、跟工程一起決定技術可行性的 trade-off。',
-  },
-  {
-    year: '2023',
-    kind: 'skill',
-    title: 'Design system as governance',
-    body: '把 design system 從「component 倉庫」升級成「跨團隊治理工具」 — token 同步、component versioning、deprecation flow 都納入。',
-  },
-  {
-    year: '2024',
-    kind: 'project',
-    title: '南投數位生活點數平台',
-    body: '主導 6 個月 UX,8 條 user flow 串連訪客 + 居民 + 商家三種角色,服務 50 萬+ 縣民。是「會想 system」這件事可被驗證的最完整 case。',
-  },
-  {
-    year: '2025',
-    kind: 'milestone',
-    title: '反思與下一步',
-    body: '整理 8 年的 design playbook、寫出 SPEC + DESIGN + WIREFRAME 三份治理檔。從「會做」往「會教會傳承」推一步。',
-  },
-  {
-    year: '2026',
+    year: '07',
     kind: 'role',
-    title: '尋找下一個系統挑戰',
-    body: '對下一個位置的期待:有 system 可以被建,有跨團隊需要被串,有真實使用者規模值得認真設計。',
+    title: '2024 花蓮「數位有購力・振興拚經濟」記者會',
+    body: '花蓮縣府 × 臺東縣府 × TTPush 三方溝通窗口 — 700+ 特約店家、首波 2,000 萬枚城市幣、民間加碼 200 萬元,震後觀光的振興敘事。',
+    href: '/work/hualien-digital',
+  },
+  {
+    year: '08',
+    kind: 'role',
+    title: '2024 雲林「智慧雲林幣 2.0」記者會',
+    body: '平台升級的發表行銷:視覺統籌 + 媒體溝通,近 9 萬會員的平台升級發表,台東、南投、彰化、台中、嘉義五縣市代表到場觀摩。',
+    href: '/work/yunlin-coin',
+  },
+  {
+    year: '09',
+    kind: 'role',
+    title: '2024 桃園火鍋嘉年華',
+    body: '衛生局年度指標活動:470 家美食券店家把單日人潮拉成月度消費循環,「桃食安心資訊平台」累積 100 萬+ 瀏覽 — 活動效益不是辦完就歸零。',
+    href: '/work/taoyuan-hotpot',
   },
 ]
 
 const kindLabel: Record<TimelineKind, string> = {
-  role: '職涯',
-  project: '專案',
-  skill: '技能',
+  role: '行銷專案',
+  project: '數位平台',
+  skill: '方法',
   milestone: '里程碑',
 }
 
@@ -97,20 +103,22 @@ export default function AboutPage() {
     <div className="container about-page">
       <p className="section-label about-section-label">About · 關於</p>
       <h1 className="display-l about-headline">
-        我做的不只是漂亮畫面,<br />是能撐住的系統。
+        我做的不只是活動聲量,<br />是能持續轉換的行為循環。
       </h1>
 
       <div className="about-body">
         <p>
-          我是 Giselle Lai,APP UI/UX 設計師,擁有 8 年產品設計經驗,專注於公共服務與 B2B 平台的 UX 系統建構。
-          最近一個案子是主導一個縣級點數平台的設計,服務 50 萬+ 居民、橫跨 7 個服務模組。
+          我是 Giselle Lai,資深行銷人員,深耕政府與地方數位行銷。7 個縣市、9 個完整專案:一手操盤記者會、城市嘉年華等大型活動 —
+          從行銷策略、主視覺統籌、跨部門協調到現場執行;一手打造承接活動流量的城市數位點數平台,讓每一波聲量都有地方沉澱。
         </p>
         <p>
-          我的工作方式是 system-first。每個畫面都用 <code>X.Y.Z</code> 編號,讓 PM 與工程師可以無歧義 reference 任何 state。
-          我特別在意邊界情境 — 那些大家都覺得「之後再做」的場景,因為那才是使用者真正感受到產品的時刻。
+          我的差異點,是用 UX 的方法做行銷。活動不是辦完就結束 — 我用漏斗與行為循環設計參與旅程(Awareness → Retention),
+          用點數機制把單日人潮變成月度消費(桃園 470 家美食券、使用期延伸一整個月),用使用者研究讓政策訊息說人話。
+          聲量是起點,轉換與留存才是我交付的東西。
         </p>
         <p>
-          工作以外,我在咖啡廳讀非虛構,玩底片相機,還在慢慢試著學廣東話。
+          因為同時具備 App UI/UX 的實作能力,我能把行銷企劃直接落成產品:資訊架構、服務藍圖、設計系統 —
+          活動導進來的每一個人,都有一個留得住他們的地方。這讓我在行銷團隊裡,是那個能把「企劃案」推進到「上線且能營運」的人。
         </p>
       </div>
 
@@ -122,7 +130,7 @@ export default function AboutPage() {
 
       {/* ─── Stats overview ─── */}
       <section className="about-stats">
-        <p className="section-label">Numbers · 數字一覽</p>
+        <p className="section-label">Numbers · 成績單</p>
         <div className="stats-grid">
           {stats.map((s) => (
             <div key={s.label} className="stat-card">
@@ -139,16 +147,16 @@ export default function AboutPage() {
       {/* ─── Career timeline ─── */}
       <section className="about-timeline-section">
         <div className="about-timeline-head">
-          <p className="section-label">Timeline · 職涯與技能</p>
+          <p className="section-label">Projects · 專案軌跡</p>
           <h2 className="h1 about-timeline-headline">
-            這 8 年我做過什麼、<br />學過什麼。
+            行銷把人帶進來,<br />體驗把人留下來。
           </h2>
           <p className="about-timeline-intro">
-            從 UI 視覺起步,到主導跨團隊的系統設計 — 這條時間軸記錄每一年的轉折、每一次學到的東西、每一個能放上 portfolio 的專案。是個人 CV,也是設計師的成長地圖。
+            4 場政府大型行銷活動 + 5 座城市數位平台 — 同一套邏輯貫穿:先用活動與敘事創造聲量,再用點數機制與體驗設計,把聲量沉澱成可持續的轉換與留存。每一張卡片都能點進完整 case study。
           </p>
         </div>
 
-        {/* 倒序顯示 — 最新在最上面,使用者第一眼看到最近的工作 */}
+        {/* 倒序顯示 — 行銷專案(06–09)在最上,對應應徵職位的主軸 */}
         <ol className="timeline">
           {[...timeline].reverse().map((item) => (
             <li key={item.year} className={`timeline-item timeline-item--${item.kind}`}>
@@ -158,7 +166,15 @@ export default function AboutPage() {
               </div>
               <div className="timeline-content">
                 <span className={`timeline-chip timeline-chip--${item.kind}`}>{kindLabel[item.kind]}</span>
-                <h3 className="timeline-title">{item.title}</h3>
+                <h3 className="timeline-title">
+                  {item.href ? (
+                    <Link href={item.href} className="timeline-title-link">
+                      {item.title} <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : (
+                    item.title
+                  )}
+                </h3>
                 <p className="timeline-body">{item.body}</p>
               </div>
             </li>
@@ -348,6 +364,8 @@ export default function AboutPage() {
           margin-bottom: 8px;
           color: var(--text);
         }
+        .timeline-title-link { color: inherit; }
+        .timeline-title-link:hover { text-decoration: underline; text-underline-offset: 4px; }
         .timeline-body {
           font-size: 15px;
           line-height: 1.65;

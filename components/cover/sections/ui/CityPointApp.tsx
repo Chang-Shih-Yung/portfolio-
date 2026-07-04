@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import ArrowButton from '@/components/ui/arrow-button'
 
 /**
@@ -25,15 +26,55 @@ export interface City {
   map: string
   /** the coin-app slogan beside the map — two lines (lead = big, sub = small) */
   slogan: { lead: string; sub: string }
+  /** case-study route the 進入{name}幣 CTA opens */
+  href: string
+  /** one-line intro of the city's real project, shown beside the map */
+  desc: string
 }
 
 const cities: City[] = [
-  { name: '台中', map: '/cities/taichung.png', slogan: { lead: '大城生活', sub: '一卡通行' } },
-  { name: '苗栗', map: '/cities/miaoli.png', slogan: { lead: '漫遊山城', sub: '在地有禮' } },
-  { name: '南投', map: '/cities/nantou.png', slogan: { lead: '山水之間', sub: '處處有禮' } },
-  { name: '雲林', map: '/cities/yunlin.png', slogan: { lead: '農鄉新意', sub: '點數同行' } },
-  { name: '台東', map: '/cities/taitung.png', slogan: { lead: '慢活東岸', sub: '一點就通' } },
-  { name: '花蓮', map: '/cities/hualien.png', slogan: { lead: '山海之境', sub: '樂遊有禮' } },
+  {
+    name: '台中',
+    map: '/cities/taichung.png',
+    slogan: { lead: '大城生活', sub: '一卡通行' },
+    href: '/work/taichung-carbon',
+    desc: '減碳存摺平台——把搭車、走路、回收等日常低碳行為，變成可累積、可兌換的數位資產。',
+  },
+  {
+    name: '苗栗',
+    map: '/cities/miaoli.png',
+    slogan: { lead: '漫遊山城', sub: '在地有禮' },
+    href: '/work/miaoli-points',
+    desc: '苗栗縣數位點數平台——會員、點數、店家與活動的一站式地方數位服務入口。',
+  },
+  {
+    name: '南投',
+    map: '/cities/nantou.png',
+    slogan: { lead: '山水之間', sub: '處處有禮' },
+    href: '/work/nantou-points',
+    desc: '數位生活點數平台 2.0——從真實使用者回饋出發，重新優化民眾、商家與後台三端流程。',
+  },
+  {
+    name: '雲林',
+    map: '/cities/yunlin.png',
+    slogan: { lead: '農鄉新意', sub: '點數同行' },
+    href: '/work/yunlin-platform',
+    desc: '雲林數位縣民平台（雲林幣 2.0）——一致品牌與設計系統之上的縣政服務生態系。',
+  },
+  {
+    name: '台東',
+    map: '/cities/taitung.png',
+    slogan: { lead: '慢活東岸', sub: '一點就通' },
+    href: '/work/dongan-food-festival',
+    desc: '臺東金幣 × 東岸舖食節——用點數機制把城市慶典，變成年度的數位生活儀式。',
+  },
+  {
+    name: '花蓮',
+    map: '/cities/hualien.png',
+    slogan: { lead: '山海之境', sub: '樂遊有禮' },
+    href: '/work/hualien-sustainable',
+    desc: '花蓮永續生活數位服務平台——把活動參與、點數累積與商家使用接成一條行為循環。',
+  },
 ]
 
 /* background ribbon phrases (city / points themed placeholder) */
@@ -217,10 +258,7 @@ export default function CityPointApp() {
 
         <div className="about-detail">
           <p className="detail-catch cpa-coin">{city.name}幣</p>
-          <p className="detail-txt">
-            點擊左右箭頭切換城市，探索各地的在地點數方案。這裡先放一段{city.name}
-            幣的簡介，之後可依城市替換成實際內容。
-          </p>
+          <p className="detail-txt">{city.desc}</p>
         </div>
 
         {/* per-city slogan — two vertical lines on the right (col 3): a big lead
@@ -231,10 +269,10 @@ export default function CityPointApp() {
         </p>
       </div>
 
-      {/* CTA — long black capsule, centred at the bottom (original related-links
-          position); label follows the selected city */}
+      {/* CTA — long black capsule, centred at the bottom; label AND target
+          follow the selected city (each region links to its case study) */}
       <div className="cpa-cta-wrap">
-        <a className="cpa-cta" href="#">進入{city.name}幣</a>
+        <Link className="cpa-cta" href={city.href}>進入{city.name}幣</Link>
       </div>
     </>
   )

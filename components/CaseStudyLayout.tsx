@@ -20,6 +20,13 @@ export default function CaseStudyLayout({
       <header className="case-hero container">
         <p className="section-label">{meta.eyebrow ?? (meta.featured ? 'Case study · 旗艦案' : 'Case study')}</p>
         <h1 className="display-l case-title">{meta.title}</h1>
+        {meta.related && (
+          <Link href={`/work/${meta.related.slug}`} className="case-related">
+            <span className="case-related-chip">關聯專案</span>
+            <span className="case-related-label">{meta.related.label}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        )}
         <p className="case-subtitle">{meta.subtitle}</p>
 
         <dl className="case-meta">
@@ -85,6 +92,35 @@ export default function CaseStudyLayout({
 
         .case-hero { padding-top: 32px; padding-bottom: 40px; }
         .case-title { margin: 16px 0 24px; font-weight: 900; }
+
+        /* related-case jump pill — sibling 平台 ↔ 記者會 quick switch */
+        .case-related {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0 0 24px;
+          padding: 8px 18px 8px 8px;
+          border: 1.5px solid var(--text);
+          border-radius: var(--r-full);
+          background: var(--surface);
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--text);
+          transition: background 120ms linear, color 120ms linear;
+        }
+        .case-related:hover { background: var(--text); color: var(--bg); }
+        .case-related-chip {
+          font-family: var(--font-mono-stack);
+          font-size: 11px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 5px 10px;
+          border-radius: var(--r-full);
+          background: var(--cv-shape-blue);
+          color: var(--text);
+          white-space: nowrap;
+        }
+        .case-related-label { line-height: 1.35; }
         .case-subtitle {
           font-size: 22px;
           line-height: 1.5;

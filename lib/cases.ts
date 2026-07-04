@@ -38,6 +38,8 @@ export interface CaseMeta {
   metaItems?: { label: string; value: string }[]
   /** Side-nav sections; defaults to the 5-chapter template when omitted */
   sections?: CaseSection[]
+  /** sibling case (e.g. 平台 ↔ 記者會) — renders a jump pill beside the hero title */
+  related?: { slug: string; label: string }
 }
 
 export interface CaseRecord extends CaseMeta {
