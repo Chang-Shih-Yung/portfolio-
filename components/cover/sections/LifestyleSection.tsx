@@ -1,5 +1,4 @@
 import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
-import Btn from '@/components/cover/sections/ui/Btn'
 import Carousel from '@/components/cover/sections/ui/Carousel'
 import RefImg from '@/components/cover/sections/ui/RefImg'
 import { ProjectCard } from '@/components/ProjectCard'
@@ -50,7 +49,6 @@ export default function LifestyleSection() {
         <div className="lifestyle-head">
           <div className="lifestyle-head-inner">
             <SectionTitle ja="行銷專案" en="Marketing Project" />
-            <Btn label="查看全部" className="pc-only" />
           </div>
         </div>
         <Carousel className="lifestyle-slide" desktopArrows>
@@ -58,7 +56,6 @@ export default function LifestyleSection() {
             <LifestyleCard key={i} slide={slide} />
           ))}
         </Carousel>
-        <Btn label="查看全部" className="sp-only" />
       </div>
     </section>
   )

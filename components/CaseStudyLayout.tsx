@@ -72,7 +72,7 @@ export default function CaseStudyLayout({
             <Link href="/skills">看我的技能 →</Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href="/">查看所有作品</Link>
+            <Link href="/work">查看所有作品</Link>
           </Button>
         </div>
       </div>
