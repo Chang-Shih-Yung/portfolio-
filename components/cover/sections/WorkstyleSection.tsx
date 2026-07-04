@@ -12,10 +12,10 @@ export default function WorkstyleSection() {
         <div className="workstyle-box">
           <SectionTitle ja="關於工作" en="WORKSTYLE" enSub="IN SENDAI" />
           <p className="txt">
-            這段是區塊的引言，用兩三句話帶出你的工作方式與專長。之後換成你自己的內容，
-            篇幅維持差不多即可，版面會自動撐住。
+            行銷把人帶進來，體驗把人留下來——4 場政府大型活動、5 座城市數位平台，
+            從聲量、轉換到留存都是我的工作範圍。點進來看九個專案的完整過程。
           </p>
-          <Btn label="了解更多" />
+          <Btn label="了解更多" href="/work" />
         </div>
       </div>
     </section>

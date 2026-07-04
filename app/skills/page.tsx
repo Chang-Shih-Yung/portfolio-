@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '技能 — Giselle Lai',
-  description: '產品設計師的能力範圍:研究、IA、UI 系統、原型、協作。',
+  description: '資深數位行銷的能力範圍:策略、活動、內容、數據 — 加上 UX/UI 這兩張外掛。',
 }
 
 type SkillGroup = {
@@ -15,95 +15,94 @@ type SkillGroup = {
 
 const groups: SkillGroup[] = [
   {
-    label: 'Discovery',
-    title: '研究與策略',
+    label: 'Strategy',
+    title: '數位行銷策略',
     blurb:
-      '從問題開始,不從像素開始。先跟使用者談、把系統 audit 過、把限制條件攤開,才動手畫。',
+      '先想清楚人從哪裡來、為什麼留下,再決定預算和渠道怎麼擺 — 付費流量和自有陣地要互相接力,不是各打各的。',
     items: [
-      '使用者訪談 & 脈絡觀察 (Contextual inquiry)',
-      'Heuristic & 競品評估',
-      'Jobs-to-be-done 框架運用',
-      '利害關係人 alignment workshop',
-      '機會評估 & 成效指標設計',
+      '全漏斗行銷規劃(曝光 → 名單 → 轉換 → 回訪)',
+      '付費與自有媒體的整合佈局',
+      '活動檔期、預算與資源配置',
+      '市場與受眾洞察、競品盤點',
+      'B2B 商機開發的節奏設計',
     ],
     color: 'mint',
   },
   {
-    label: 'Architecture',
-    title: '資訊架構 & 流程',
+    label: 'Campaign',
+    title: '活動企劃與執行',
     blurb:
-      'App 的成敗在結構。我用 X.Y.Z 編號每個畫面,讓 PM、工程、QA 三方都能指著同一個 artifact 討論。',
+      '從一頁企劃書到活動當天的現場,中間每個環節我都顧過 — 記者會、城市嘉年華、跨縣市合作案,都辦得起來。',
     items: [
-      '使用者流程 & state diagram',
-      '網站 / App 資訊架構',
-      'Service blueprint',
-      '內容模型 & 分類學',
-      '邊界 & 錯誤狀態 mapping',
+      '大型活動統籌(企劃 / 時程 / 預算 / 現場)',
+      '記者會與媒體溝通操作',
+      '主視覺方向與輸出物審核',
+      '政府跨局處與多方窗口協調',
+      '外包與供應商管理',
     ],
     color: 'peach',
   },
   {
-    label: 'Craft',
-    title: 'UI 與互動設計',
+    label: 'Content',
+    title: '內容與品牌經營',
     blurb:
-      'Native-feeling 的 App 從小細節做起:點擊範圍、轉場、空狀態、micro-feedback。',
+      '把產品價值講成一般人聽得懂、搜尋得到的話 — 官網、活動頁、社群到部落格,內容是會自己長大的資產。',
     items: [
-      'Mobile UI 設計 (iOS HIG / Material 3)',
-      'Responsive 與 adaptive layout',
-      'Motion 與 micro-interaction',
-      '無障礙 (WCAG 2.2 AA)',
-      'Dark mode 與主題系統',
+      '品牌敘事與文案方向',
+      '官網與 Landing Page 內容規劃',
+      '社群素材企劃與調性管理',
+      '搜尋能見度與內容佈局(SEO)',
+      '把政策、產品「翻譯成人話」的能力',
     ],
     color: 'butter',
   },
   {
-    label: 'Systems',
-    title: 'Design System',
+    label: 'Analytics',
+    title: '數據與成效優化',
     blurb:
-      'Design system 是與工程的契約。Token 是 API、Component 是 implementation。',
+      '每檔活動結束都要能回答:錢花去哪、帶回了什麼。用數據複盤,下一次的策略和資源才有依據。',
     items: [
-      'Design token (顏色 / 字體 / 間距 / 圓角)',
-      'Figma 元件庫建構',
-      '文件與使用指南撰寫',
-      '版本控管與 deprecation 流程',
-      'Swift / Kotlin / React handoff 規格',
+      '成效指標設計(名單品質 / 轉換成本 / 留存)',
+      '網站流量與廣告數據判讀',
+      '活動成效複盤與報告',
+      '依成效調整策略與預算配置',
+      '漏斗診斷與轉換率優化',
     ],
     color: 'lavender',
   },
   {
-    label: 'Validation',
-    title: '原型與測試',
+    label: 'Bonus · Research',
+    title: 'UX 研究與服務設計',
     blurb:
-      '便宜的原型可以省下昂貴的爭論。根據要回答的問題,選對應的 fidelity 來做 prototype。',
+      '加分項一:我自己會做研究。訪談、易用性測試、服務藍圖 — 行銷洞察不用等外包,直接從使用者身上長出來。',
     items: [
-      'Figma interactive prototype',
-      'Code prototype (HTML / React)',
-      '有 / 無人主持的可用性測試',
-      'A/B test 設計與埋點',
-      'Analytics 檢視與漏斗診斷',
+      '使用者訪談與易用性測試',
+      'Persona 與旅程地圖',
+      '資訊架構與 User Flow',
+      'Service Blueprint(民眾 / 商家 / 後台三端)',
+      '把研究發現轉譯成行銷策略',
     ],
     color: 'mint',
   },
   {
-    label: 'Collaboration',
-    title: '跨團隊協作',
+    label: 'Bonus · Design',
+    title: 'UI 設計與設計系統',
     blurb:
-      '設計透過人交付。清楚的 spec、早期 review、共同詞彙,勝過英雄式 redesign。',
+      '加分項二:我自己會把介面做出來。企劃不會停在簡報 — 原型、設計系統、跟工程對接,一路推到上線。',
     items: [
-      'Design critique 與 review ritual',
-      '工程交付的 spec 撰寫',
-      '與 PM 共同 roadmap 與 scope',
-      '與 QA 共同 acceptance criteria',
-      'Mentor 較資淺設計師',
+      'Figma UI 設計與互動原型',
+      'Design System(Token / 元件庫)',
+      '三端一致的介面規範',
+      '品牌視覺延伸與規範化',
+      '與 PM / 工程的交付協作',
     ],
     color: 'peach',
   },
 ]
 
 const tools = [
-  'Figma', 'FigJam', 'Sketch', 'Principle', 'ProtoPie',
-  'Maze', 'Dovetail', 'Notion', 'Linear', 'GitHub',
-  'Lottie', 'After Effects', 'Whimsical', 'Miro',
+  'GA4', 'Google Search Console', 'Google Ads', 'Meta 廣告管理員', 'SEO 工具',
+  'Figma', 'FigJam', 'Illustrator', 'Photoshop', 'Canva', 'Notion',
 ]
 
 export default function SkillsPage() {
@@ -112,11 +111,11 @@ export default function SkillsPage() {
       <header className="skills-hero">
         <p className="section-label">Skills · 技能</p>
         <h1 className="display-l skills-headline">
-          能 cover 的範圍,<br />從問題到上線。
+          行銷是我的主場,<br />設計是我的外掛。
         </h1>
         <p className="skills-intro">
-          八年產品設計經驗,涵蓋 mobile 與 web、公共服務與 B2B 平台。
-          從模糊的問題定義到 ship 出去、被埋點、被文件化的完整 feature loop,都做過、也想要繼續做。
+          從策略、活動、內容到成效複盤,行銷這條鏈我整段都跑過;再加上一手 UX/UI 的實作能力,
+          企劃到我手上不會停在簡報 — 會變成上線、能營運、有數字可以檢核的東西。
         </p>
       </header>
 

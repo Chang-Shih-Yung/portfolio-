@@ -14,10 +14,10 @@ export interface NavLink {
   label: string
 }
 
-/** Primary nav. `/#work` resolves to the homepage work section from any page. */
+/** Primary nav. `/work` is the flat all-projects index. */
 export const NAV_LINKS: NavLink[] = [
   { href: '/', label: '首頁' },
-  { href: '/#work', label: '作品' },
+  { href: '/work', label: '專案' },
   { href: '/about', label: '關於' },
   { href: '/skills', label: '技能' },
   { href: '/colophon', label: '設計系統' },

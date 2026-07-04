@@ -55,7 +55,7 @@ export function MoreCases({
   const startIndex = activeIdx >= 0 ? (activeIdx + 1) % cases.length : 0
 
   return (
-    <div className="more-cases">
+    <div className="more-cases proj-compact">
       <Carousel opts={{ loop: cases.length > 4, align: 'start', startIndex }} plugins={plugins}>
         <CarouselContent>
           {cases.map((c) => (
