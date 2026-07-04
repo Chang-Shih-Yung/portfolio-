@@ -1,5 +1,5 @@
 import { FanOut, StepFlow } from '@/components/case/Charts'
-import { ConvergenceMap, FlowCompare } from '@/components/case/CaseDiagrams'
+import { ConvergenceMap } from '@/components/case/CaseDiagrams'
 import { Badge } from '@/components/ui/badge'
 
 export const meta = {
@@ -236,12 +236,6 @@ export const meta = {
 ### User Flow Redesign
 
 重新設計四條核心使用旅程，原則一致：**減少步驟 ＋ 增加回饋**。
-
-<FlowCompare
-  beforeSteps={6}
-  afterSteps={3}
-  note="同一個任務的流程形狀對比 — 新流程更短，且每一步都回報狀態"
-/>
 
 <div className="pill-row">
   <Badge>Login Flow · 登入簡化</Badge>

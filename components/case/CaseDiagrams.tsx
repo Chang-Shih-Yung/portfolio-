@@ -139,6 +139,96 @@ export function ConvergenceMap() {
   )
 }
 
+/* ── CampaignLoop ────────────────────────────────────────────────────────
+   The hualien-sustainable signature: a 5-stage participation funnel
+   (Awareness → Engagement → Action → Reward → Retention) whose node heights
+   shrink like a funnel, closed by a dashed re-marketing arc from Retention
+   back to Awareness — the visual claim that campaigns are a LOOP, not a
+   broadcast. Fixed content on purpose (it matches the case narrative). */
+
+const STAGES: { en: string; zh: string; fill: string }[] = [
+  { en: 'AWARENESS', zh: '活動曝光', fill: 'var(--cv-shape-blue)' },
+  { en: 'ENGAGEMENT', zh: '理解與參與', fill: 'var(--card-butter)' },
+  { en: 'ACTION', zh: '任務完成', fill: 'var(--card-peach)' },
+  { en: 'REWARD', zh: '點數回饋', fill: 'var(--cv-shape-green)' },
+  { en: 'RETENTION', zh: '持續參與', fill: 'var(--card-lavender)' },
+]
+
+const ST_W = 196
+const ST_XS = [52, 272, 492, 712, 932]
+const ST_HS = [216, 188, 160, 132, 104] // funnel: each stage narrower
+const ST_CY = 200 // vertical center of every node
+
+export function CampaignLoop() {
+  return (
+    <figure className="cmploop">
+      <svg
+        viewBox="0 0 1180 340"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label={`參與轉換循環：${STAGES.map((s) => s.zh).join(' → ')}，再由通知再行銷回到下一個活動`}
+      >
+        <defs>
+          <marker
+            id="loop-arrow"
+            viewBox="0 0 10 10"
+            refX="8.5"
+            refY="5"
+            markerWidth="7"
+            markerHeight="7"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" className="cmploop-arrowhead" />
+          </marker>
+        </defs>
+
+        {/* forward arrows between stages */}
+        {ST_XS.slice(0, -1).map((x, i) => (
+          <path
+            key={`fwd-${i}`}
+            className="cmploop-edge"
+            d={`M ${x + ST_W + 2},${ST_CY} L ${ST_XS[i + 1] - 6},${ST_CY}`}
+            markerEnd="url(#loop-arrow)"
+          />
+        ))}
+
+        {/* re-marketing return arc: Retention → Awareness */}
+        <path
+          className="cmploop-edge is-return"
+          d={`M ${ST_XS[4] + ST_W / 2},${ST_CY - ST_HS[4] / 2 - 6} C ${ST_XS[4] + ST_W / 2},36 ${ST_XS[0] + ST_W / 2},36 ${ST_XS[0] + ST_W / 2},${ST_CY - ST_HS[0] / 2 - 8}`}
+          markerEnd="url(#loop-arrow)"
+        />
+        <g className="cmploop-return-label">
+          <rect x={492} y={18} width={196} height={30} rx={15} />
+          <text x={590} y={38} textAnchor="middle">
+            通知再行銷 · 下一個活動
+          </text>
+        </g>
+
+        {/* stage nodes — funnel heights, pastel fills */}
+        {STAGES.map((s, i) => {
+          const h = ST_HS[i]
+          const y = ST_CY - h / 2
+          return (
+            <g key={s.en} className="cmploop-stage">
+              <rect x={ST_XS[i]} y={y} width={ST_W} height={h} rx={16} style={{ fill: s.fill }} />
+              <text x={ST_XS[i] + ST_W / 2} y={ST_CY - 8} textAnchor="middle" className="cmploop-en">
+                {String(i + 1).padStart(2, '0')} · {s.en}
+              </text>
+              <text x={ST_XS[i] + ST_W / 2} y={ST_CY + 22} textAnchor="middle" className="cmploop-zh">
+                {s.zh}
+              </text>
+            </g>
+          )
+        })}
+      </svg>
+      <figcaption className="cmploop-caption">
+        Campaign Journey · 參與轉換循環 — 漏斗收窄，但回饋把人帶回來
+      </figcaption>
+    </figure>
+  )
+}
+
 /* ── FlowCompare ─────────────────────────────────────────────────────────
    Before/After flow-shape comparison: the old journey is a long chain of
    mute steps; the new one is shorter and every step answers back. Steps are

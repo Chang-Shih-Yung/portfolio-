@@ -1229,6 +1229,64 @@ main { min-height: 100vh; }
   .prose .convmap { padding: var(--space-sm); }
 }
 
+/* CampaignLoop — 5-stage funnel + re-marketing return arc (CaseDiagrams) */
+.prose .cmploop {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+}
+.prose .cmploop svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans), 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+.prose .cmploop-edge {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.prose .cmploop-edge.is-return {
+  stroke: var(--text-muted);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 5;
+}
+.prose .cmploop-arrowhead { fill: var(--text); }
+.prose .cmploop-stage rect { stroke: var(--text); stroke-width: 2; }
+.prose .cmploop-en {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  fill: var(--text);
+  opacity: 0.75;
+}
+.prose .cmploop-zh { font-size: 19px; font-weight: 900; fill: var(--text); }
+.prose .cmploop-return-label rect {
+  fill: var(--bg);
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+}
+.prose .cmploop-return-label text {
+  font-family: var(--font-mono-stack);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  fill: var(--text-muted);
+}
+.prose .cmploop-caption {
+  margin-top: var(--space-sm);
+  text-align: center;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .prose .cmploop { padding: var(--space-sm); }
+}
+
 /* FlowCompare — before/after flow-shape lanes (CaseDiagrams) */
 .prose .flowcompare {
   display: grid;
