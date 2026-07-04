@@ -1287,6 +1287,86 @@ main { min-height: 100vh; }
   .prose .cmploop { padding: var(--space-sm); }
 }
 
+/* PlatformHub — identity hub + four service domains (CaseDiagrams) */
+.prose .phub {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+}
+.prose .phub svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans), 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+.prose .phub-spoke {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.prose .phub-arrowhead { fill: var(--text); }
+.prose .phub-center-shadow { fill: var(--card-peach); }
+.prose .phub-center-card { fill: var(--card-butter); stroke: var(--text); stroke-width: 2.5; }
+.prose .phub-domain rect { stroke: var(--text); stroke-width: 2; }
+.prose .phub-en {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  fill: var(--text);
+  opacity: 0.75;
+}
+.prose .phub-zh { font-size: 20px; font-weight: 900; fill: var(--text); }
+.prose .phub-sub { font-size: 12.5px; fill: var(--text); opacity: 0.7; }
+.prose .phub-caption,
+.prose .sysstack-caption {
+  margin-top: var(--space-sm);
+  text-align: center;
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .prose .phub { padding: var(--space-sm); }
+}
+
+/* SystemStack — design-system layer cake (CaseDiagrams) */
+.prose .sysstack {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 2px solid var(--text);
+  border-radius: var(--r-md);
+}
+.prose .sysstack svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans), 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+.prose .sysstack-layer rect { stroke: var(--text); stroke-width: 2; }
+.prose .sysstack-en {
+  font-family: var(--font-mono-stack);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  fill: var(--text);
+  opacity: 0.75;
+}
+.prose .sysstack-zh { font-size: 20px; font-weight: 900; fill: var(--text); }
+.prose .sysstack-items {
+  font-family: var(--font-mono-stack);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  fill: var(--text);
+  opacity: 0.8;
+}
+@media (max-width: 640px) {
+  .prose .sysstack { padding: var(--space-sm); }
+}
+
 /* FlowCompare — before/after flow-shape lanes (CaseDiagrams) */
 .prose .flowcompare {
   display: grid;

@@ -229,6 +229,180 @@ export function CampaignLoop() {
   )
 }
 
+/* ── PlatformHub ─────────────────────────────────────────────────────────
+   The yunlin-platform signature: Digital Identity as the hub sticker in the
+   centre, four service domains at the corners, BIDIRECTIONAL spokes — the
+   visual claim that this is platform integration (one identity, every
+   service two-way connected), not a feature pile. Fixed content on purpose. */
+
+const HUB_DOMAINS: { en: string; zh: string; fill: string; x: number; y: number }[] = [
+  { en: 'PUBLIC SERVICES', zh: '公共服務', fill: 'var(--cv-shape-blue)', x: 80, y: 60 },
+  { en: 'YUNLIN COIN', zh: '點數服務', fill: 'var(--card-peach)', x: 840, y: 60 },
+  { en: 'LOCAL ECOSYSTEM', zh: '在地生活', fill: 'var(--cv-shape-green)', x: 80, y: 364 },
+  { en: 'CONTINUOUS EXP.', zh: '持續使用', fill: 'var(--card-lavender)', x: 840, y: 364 },
+]
+
+const HUB_W = 260
+const HUB_H = 96
+const HUB_CENTER = { x: 470, y: 205, w: 240, h: 110 }
+
+const HUB_SPOKES = [
+  'M 348,132 L 470,208', // top-left ↔ centre
+  'M 832,132 L 710,208', // top-right ↔ centre
+  'M 348,388 L 470,312', // bottom-left ↔ centre
+  'M 832,388 L 710,312', // bottom-right ↔ centre
+]
+
+export function PlatformHub() {
+  const c = HUB_CENTER
+  return (
+    <figure className="phub">
+      <svg
+        viewBox="0 0 1180 520"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label={`平台架構：數位身份為單一核心，雙向串聯${HUB_DOMAINS.map((d) => d.zh).join('、')}四大服務域`}
+      >
+        <defs>
+          <marker
+            id="hub-arrow"
+            viewBox="0 0 10 10"
+            refX="8.5"
+            refY="5"
+            markerWidth="6.5"
+            markerHeight="6.5"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" className="phub-arrowhead" />
+          </marker>
+        </defs>
+
+        {/* bidirectional spokes */}
+        {HUB_SPOKES.map((d, i) => (
+          <path
+            key={i}
+            className="phub-spoke"
+            d={d}
+            markerStart="url(#hub-arrow)"
+            markerEnd="url(#hub-arrow)"
+          />
+        ))}
+
+        {/* centre hub — koyama sticker */}
+        <g className="phub-center">
+          <rect x={c.x + 7} y={c.y + 7} width={c.w} height={c.h} rx={16} className="phub-center-shadow" />
+          <rect x={c.x} y={c.y} width={c.w} height={c.h} rx={16} className="phub-center-card" />
+          <text x={c.x + c.w / 2} y={c.y + 34} textAnchor="middle" className="phub-en">
+            DIGITAL IDENTITY
+          </text>
+          <text x={c.x + c.w / 2} y={c.y + 66} textAnchor="middle" className="phub-zh">
+            數位身份
+          </text>
+          <text x={c.x + c.w / 2} y={c.y + 92} textAnchor="middle" className="phub-sub">
+            單一身份 · 服務整合入口
+          </text>
+        </g>
+
+        {/* domain nodes */}
+        {HUB_DOMAINS.map((d, i) => (
+          <g key={d.zh} className="phub-domain">
+            <rect x={d.x} y={d.y} width={HUB_W} height={HUB_H} rx={16} style={{ fill: d.fill }} />
+            <text x={d.x + HUB_W / 2} y={d.y + 40} textAnchor="middle" className="phub-en">
+              {String(i + 1).padStart(2, '0')} · {d.en}
+            </text>
+            <text x={d.x + HUB_W / 2} y={d.y + 72} textAnchor="middle" className="phub-zh">
+              {d.zh}
+            </text>
+          </g>
+        ))}
+      </svg>
+      <figcaption className="phub-caption">
+        Platform Architecture · 單一身份，雙向串聯全服務
+      </figcaption>
+    </figure>
+  )
+}
+
+/* ── SystemStack ─────────────────────────────────────────────────────────
+   Design-system layer cake: Foundation is the widest base, Components sit
+   on it, Patterns on top — each narrower because each is built FROM the
+   layer below. Item lists ride along the right edge of each layer. */
+
+const STACK_LAYERS: {
+  en: string
+  zh: string
+  fill: string
+  x: number
+  w: number
+  items: [string, string]
+}[] = [
+  {
+    en: 'DESIGN PATTERNS',
+    zh: '設計模式',
+    fill: 'var(--card-peach)',
+    x: 260,
+    w: 660,
+    items: ['登入 · 點數 · 交易 · 任務 · 通知', 'Empty · Loading · Error State'],
+  },
+  {
+    en: 'COMPONENTS',
+    zh: '元件系統',
+    fill: 'var(--card-butter)',
+    x: 170,
+    w: 840,
+    items: ['Buttons · Cards · Input · Navigation', 'Bottom Sheet · Dialogs · Badges · Lists'],
+  },
+  {
+    en: 'FOUNDATION',
+    zh: '設計基礎',
+    fill: 'var(--cv-shape-blue)',
+    x: 80,
+    w: 1020,
+    items: ['Color · Typography · Spacing', 'Grid · Elevation · Radius'],
+  },
+]
+
+const LAYER_H = 100
+const LAYER_YS = [36, 152, 268]
+
+export function SystemStack() {
+  return (
+    <figure className="sysstack">
+      <svg
+        viewBox="0 0 1180 420"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label={`設計系統三層堆疊：設計基礎（${STACK_LAYERS[2].items.join('、')}）之上是元件系統，最上層是設計模式`}
+      >
+        {STACK_LAYERS.map((l, i) => {
+          const y = LAYER_YS[i]
+          const num = String(3 - i).padStart(2, '0')
+          return (
+            <g key={l.en} className="sysstack-layer">
+              <rect x={l.x} y={y} width={l.w} height={LAYER_H} rx={16} style={{ fill: l.fill }} />
+              <text x={l.x + 28} y={y + 42} className="sysstack-en">
+                {num} · {l.en}
+              </text>
+              <text x={l.x + 28} y={y + 74} className="sysstack-zh">
+                {l.zh}
+              </text>
+              <text x={l.x + l.w - 28} y={y + 42} textAnchor="end" className="sysstack-items">
+                {l.items[0]}
+              </text>
+              <text x={l.x + l.w - 28} y={y + 68} textAnchor="end" className="sysstack-items">
+                {l.items[1]}
+              </text>
+            </g>
+          )
+        })}
+      </svg>
+      <figcaption className="sysstack-caption">
+        Design System · 由基礎向上長出的三層
+      </figcaption>
+    </figure>
+  )
+}
+
 /* ── FlowCompare ─────────────────────────────────────────────────────────
    Before/After flow-shape comparison: the old journey is a long chain of
    mute steps; the new one is shorter and every step answers back. Steps are

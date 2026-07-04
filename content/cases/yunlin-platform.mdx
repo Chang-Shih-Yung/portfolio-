@@ -1,0 +1,321 @@
+import { BridgeFlow } from '@/components/case/Charts'
+import { PlatformHub, SystemStack } from '@/components/case/CaseDiagrams'
+import { Badge } from '@/components/ui/badge'
+
+export const meta = {
+  slug: 'yunlin-platform',
+  title: '雲林數位縣民平台（雲林幣 2.0）',
+  subtitle:
+    '雲林縣政府推動數位縣民平台，整合數位身份、雲林幣、健康活動、悠遊卡、圖書館與特約店家等多項公共服務。本專案以「平台整合」為核心，重新建立品牌視覺、設計系統與跨服務操作流程——讓不同政府服務能在一致的體驗架構下持續擴充與發展。',
+  featured: false,
+  order: 3,
+  role: 'UX & UI Designer',
+  team: '雲林縣政府 · 跨單位整合',
+  timeline: 'Government Platform Design',
+  stage: 'Brand × Design System × 跨平台',
+  domain: '公共服務 / Platform Design',
+  year: 2024,
+  cardColor: 'lavender',
+  cover: '/work/yunlin-platform/sitemap.png',
+  thumb: '/work/yunlin-platform/sitemap.png',
+  eyebrow: 'Case study · Government Platform Design',
+  metaItems: [
+    { label: '我的角色', value: 'UX & UI Designer' },
+    { label: '專案類型', value: 'Government Platform Design' },
+    { label: '設計範疇', value: 'Brand System × Design System × Cross-platform UX/UI' },
+    { label: '核心命題', value: '平台整合 Platform Integration' },
+  ],
+  sections: [
+    { id: 'overview', label: 'Overview', tag: '1' },
+    { id: 'platform', label: 'Platform', tag: '2' },
+    { id: 'challenge', label: 'Challenge', tag: '3' },
+    { id: 'ui', label: 'Brand & UI', tag: '4' },
+    { id: 'system', label: 'System', tag: '5' },
+    { id: 'outcome', label: 'Outcome', tag: '6' },
+  ],
+}
+
+## Overview
+
+<p className="sec-chip">專案概述</p>
+
+雲林縣政府推動「數位縣民平台（雲林幣 2.0）」，打造縣民日常生活的**一站式數位服務平台**，整合的公共服務橫跨：
+
+<div className="pill-row">
+  <Badge>數位身份</Badge>
+  <Badge variant="solid">雲林幣</Badge>
+  <Badge>健康活動</Badge>
+  <Badge>悠遊卡</Badge>
+  <Badge>圖書館</Badge>
+  <Badge>特約店家</Badge>
+</div>
+
+本專案以「**平台整合（Platform Integration）**」為核心——重新建立品牌視覺、設計系統與跨服務操作流程，讓不同政府服務能在一致的體驗架構下持續擴充與發展。
+
+## Platform
+
+<p className="sec-chip">平台體驗</p>
+
+**從單一功能，建立完整的數位服務生態。** 本專案的核心不是新增功能，而是重新規劃平台架構：讓不同公共服務之間自然串接，降低使用者在功能之間切換的成本。
+
+<PlatformHub />
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>Digital Identity · 數位身份</h4>
+      <div className="pill-row">
+        <Badge>會員登入</Badge>
+        <Badge>會員管理</Badge>
+        <Badge>個人資料</Badge>
+        <Badge>服務整合入口</Badge>
+      </div>
+      <p>建立單一身份，串聯所有公共服務——整個平台的樞紐。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>Public Services · 公共服務</h4>
+      <div className="pill-row">
+        <Badge>健康活動</Badge>
+        <Badge>圖書館服務</Badge>
+        <Badge>政府公告</Badge>
+        <Badge>環保服務</Badge>
+      </div>
+      <p>提供一致的公共服務入口，跨局處服務長在同一套體驗上。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>Yunlin Coin · 點數服務</h4>
+      <div className="pill-row">
+        <Badge>點數查詢</Badge>
+        <Badge>點數累積</Badge>
+        <Badge>點數交易</Badge>
+        <Badge>消費回饋</Badge>
+      </div>
+      <p>建立完整的雲林幣使用流程——從取得到使用，路徑清楚可循。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>Local Ecosystem · 在地生活</h4>
+      <div className="pill-row">
+        <Badge>特約店家</Badge>
+        <Badge>QR Code 掃碼</Badge>
+        <Badge>點數折抵</Badge>
+        <Badge>交易紀錄</Badge>
+      </div>
+      <p>串聯數位點數與地方商家生態，點數在真實生活裡有去處。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">05</span>
+    <div className="insight-body">
+      <h4>Continuous Experience · 持續使用</h4>
+      <div className="pill-row">
+        <Badge>通知中心</Badge>
+        <Badge>活動提醒</Badge>
+        <Badge>交易紀錄</Badge>
+        <Badge>服務推薦</Badge>
+      </div>
+      <p>用即時的資訊流把使用者留在平台上，提升持續使用率。</p>
+    </div>
+  </div>
+</div>
+
+## Challenge
+
+<p className="sec-chip">設計挑戰</p>
+
+**如何讓多元公共服務擁有一致的使用體驗？** 最大的挑戰不是新增更多功能，而是在平台持續擴充的同時，維持一致且容易理解的體驗：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>服務分散於不同功能模組</h4>
+      <p>多項公共服務各自成局，使用者需要在模組之間來回摸索。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>流程缺乏一致的操作模式</h4>
+      <p>相似的任務在不同服務裡長得不一樣，每換一個功能就要重新學一次。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>資訊架構逐漸複雜</h4>
+      <p>服務越加越多、層級越疊越深，學習成本隨平台成長持續上升。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>持續新增功能與跨單位整合</h4>
+      <p>平台不會停止長大——體驗架構必須先為「下一個服務」留好位置。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">05</span>
+    <div className="insight-body">
+      <h4>缺乏可重複使用的設計規範</h4>
+      <p>沒有共同的設計語言，每個新功能都從零開始，品質與一致性難以守住。</p>
+    </div>
+  </div>
+</div>
+
+<p className="strategy-ref">→ 核心問題：不是功能太少，而是如何讓平台在持續成長下，仍保有一致且易於使用的體驗</p>
+
+## UI
+
+<p className="sec-chip">品牌與介面</p>
+
+**建立一致的品牌語言與平台介面。** 重新梳理平台的品牌視覺與 UI Pattern，讓不同功能之間的操作落差降到最低：
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>Brand Language · 品牌語言</h4>
+      <div className="pill-row">
+        <Badge>平台品牌色彩</Badge>
+        <Badge>統一 Icon Style</Badge>
+        <Badge>Illustration 規範</Badge>
+        <Badge>一致視覺元素</Badge>
+      </div>
+      <p>→ 提升整體品牌辨識度：不管走到哪個服務，都認得出是同一個平台。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>Navigation System · 導覽系統</h4>
+      <div className="pill-row">
+        <Badge>重整資訊架構</Badge>
+        <Badge>一致導覽模式</Badge>
+        <Badge>統一頁面層級</Badge>
+      </div>
+      <p>→ 降低跨服務切換成本：學會一個服務的走法，就學會了全部。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>Component Library · 元件系統</h4>
+      <div className="pill-row">
+        <Badge>Button</Badge>
+        <Badge>Card</Badge>
+        <Badge>Dialog</Badge>
+        <Badge>Bottom Sheet</Badge>
+        <Badge>Form</Badge>
+        <Badge>Badge</Badge>
+        <Badge>Navigation</Badge>
+      </div>
+      <p>→ 建立一致的 UI 元件：同一個元件，在每個服務裡的行為都一樣。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>Cross-platform Experience · 跨平台體驗</h4>
+      <div className="pill-row">
+        <Badge>一致操作流程</Badge>
+        <Badge>統一互動回饋</Badge>
+        <Badge>相同狀態設計</Badge>
+        <Badge>模組化版面配置</Badge>
+      </div>
+      <p>→ 建立跨服務一致體驗：流程、回饋、狀態，三者說同一種語言。</p>
+    </div>
+  </div>
+</div>
+
+## System
+
+<p className="sec-chip">設計系統</p>
+
+**建立可持續擴充的平台設計系統。** 除了介面設計，本專案更建立完整的 Design System，作為平台持續發展的設計基礎——由下而上三層堆疊，每一層都長在前一層之上：
+
+<SystemStack />
+
+四條設計原則貫穿所有層級：
+
+<div className="pill-row">
+  <Badge variant="solid">一致性 Consistency</Badge>
+  <Badge variant="solid">模組化 Modularity</Badge>
+  <Badge variant="solid">可擴充性 Scalability</Badge>
+  <Badge variant="solid">易維護性 Maintainability</Badge>
+</div>
+
+讓不同功能皆能遵循相同設計規範——設計與開發效率一起提升，品質不再依賴個案把關。
+
+## Outcome
+
+<p className="sec-chip">成果與反思</p>
+
+**建立可持續演進的政府數位平台** ——本專案最核心的價值轉變：
+
+<BridgeFlow
+  from={{ title: '功能集合的政府 App', sub: '各自為政的服務模組' }}
+  to={{ title: '可持續擴充的數位服務平台', sub: '一致體驗架構上的服務生態' }}
+  via="平台化"
+  note="同樣的服務內容，長在一套能一起成長的架構上"
+/>
+
+<div className="insights">
+  <div className="insight">
+    <span className="insight-num">01</span>
+    <div className="insight-body">
+      <h4>建立一致的品牌視覺系統</h4>
+      <p>色彩、Icon、插畫規範統一，平台有了可辨識的臉。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">02</span>
+    <div className="insight-body">
+      <h4>完成平台 UI Design System</h4>
+      <p>Foundation、Components、Patterns 三層到位，成為所有服務的共同地基。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">03</span>
+    <div className="insight-body">
+      <h4>整合多項公共服務體驗</h4>
+      <p>數位身份、點數、健康、圖書館——跨局處服務在同一套體驗下運作。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">04</span>
+    <div className="insight-body">
+      <h4>建立跨服務操作模式</h4>
+      <p>一致的流程、回饋與狀態設計，學習成本不再隨服務數量成長。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">05</span>
+    <div className="insight-body">
+      <h4>提升平台一致性與可維護性</h4>
+      <p>共同規範讓設計與工程的溝通成本大幅下降，品質可以被系統守住。</p>
+    </div>
+  </div>
+  <div className="insight">
+    <span className="insight-num">06</span>
+    <div className="insight-body">
+      <h4>支援後續功能持續擴充</h4>
+      <p>新服務直接長在既有架構上——平台的下一步，已經有了位置。</p>
+    </div>
+  </div>
+</div>
+
+### Reflection
+
+**設計的不只是介面，而是平台成長的基礎。**
+
+這次專案讓我更深入理解：大型政府數位平台的設計，不是完成單一功能，而是建立一套能支援不同服務共同成長的設計框架。透過 Brand System、Design System 與 Cross-platform UX/UI 的整合，平台在持續新增功能、跨單位協作與服務整合時，仍能維持一致的品牌體驗與操作邏輯——使用體驗更好，後續設計與維護的成本也更低。
