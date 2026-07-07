@@ -1626,6 +1626,32 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 120px 0 144px;
+  position: relative;
+  isolation: isolate;
+}
+/* white clouds flanking the WORKSTYLE block — cropped clusters from the same
+   cloud sheet tm6 used, kept to the sides so the paper-white copy in the
+   middle stays readable on the teal ground */
+.tm11_pt11 .footer-inner::before,
+.tm11_pt11 .footer-inner::after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  height: 420px;
+  width: 24%;
+  background-image: url(/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png);
+  background-repeat: no-repeat;
+  background-size: 340% auto;
+  z-index: -1;
+  pointer-events: none;
+}
+.tm11_pt11 .footer-inner::before {
+  left: -60px;
+  background-position: 2% 42%;
+}
+.tm11_pt11 .footer-inner::after {
+  right: -60px;
+  background-position: 98% 60%;
 }
 /* WORKSTYLE intro — moved from its own sky section onto the teal footer */
 .tm11_pt11 .footer-workstyle {
@@ -1739,6 +1765,10 @@
 .tm11_pt11   .footer {
     padding: 68px 0 170px;
   }
+.tm11_pt11   .footer-inner::before,
+.tm11_pt11   .footer-inner::after {
+    display: none;
+  }
 .tm11_pt11   .footer-workstyle {
     margin-bottom: 64px;
   }
@@ -1788,6 +1818,9 @@
     bottom: 70px;
     height: 100px;
     background-size: auto 100px;
+    /* frame from the scene's left edge (statue first) instead of an arbitrary
+       centre crop — matches the reference's mobile composition */
+    background-position: left bottom;
   }
 }body.top .footer::before {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMiIgdmlld0JveD0iMCAwIDE2MDAgMTIyIj4NCiAgPGcgaWQ9ImZvb3Rlci1iZyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNDAzMSkiPg0KICAgIDxwYXRoIGlkPSJiZyIgZD0iTTE2MDAsNDBjLTU3LjYsMC0xMjUuNzg2LTQwLTI4OC00MEM5MjguMDc2LDAsODEyLjUxLDgwLDU3Niw4MFMwLDQwLDAsNDBWLTQwSDE2MDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzEpIiBmaWxsPSIjZGRlNmVhIi8+DQogICAgPHBhdGggaWQ9ImJnLTIiIGRhdGEtbmFtZT0iYmciIGQ9Ik0wLDBDNTcuNiwwLDEyNS43ODYsNDAsMjg4LDQwYzM4My45MjQsMCw0OTkuNDktODAsNzM2LTgwUzE2MDAsMCwxNjAwLDBWODBIMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNDA3MikiIGZpbGw9IiMxYjFjMWYiLz4NCiAgICA8cGF0aCBpZD0iYmctMyIgZGF0YS1uYW1lPSJiZyIgZD0iTTAsMEM1Ny42LDAsMTI1Ljc4Niw0MCwyODgsNDBjMzgzLjkyNCwwLDQ5OS40OS04MCw3MzYtODBTMTYwMCwwLDE2MDAsMFY4MEgwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0MDczKSIgZmlsbD0iIzZmYTNhOCIvPg0KICAgIDxwYXRoIGlkPSJiZy00IiBkYXRhLW5hbWU9ImJnIiBkPSJNMTYwMCwwYy01Ny42LDAtMTI1Ljc4Niw0MC0yODgsNDBDOTI4LjA3Niw0MCw1MzUuMzY1LTI5LDQwMS0yOVMwLDAsMCwwVjgwSDE2MDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzMpIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjE1NCIvPg0KICA8L2c+DQo8L3N2Zz4NCg==);

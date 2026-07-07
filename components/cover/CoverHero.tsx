@@ -249,6 +249,9 @@ export default function CoverHero() {
             height: 82px;
             background-size: auto 82px;
             margin-top: -20px;
+            /* same as the footer band: frame from the scene's left edge on
+               mobile instead of an arbitrary centre crop */
+            background-position: left bottom;
           }
         }
       `}</style>
