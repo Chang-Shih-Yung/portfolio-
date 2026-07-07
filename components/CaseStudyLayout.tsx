@@ -18,16 +18,26 @@ export default function CaseStudyLayout({
       </div>
 
       <header className="case-hero container">
-        <p className="section-label">{meta.eyebrow ?? (meta.featured ? 'Case study · 旗艦案' : 'Case study')}</p>
-        <h1 className="display-l case-title">{meta.title}</h1>
-        {meta.related && (
-          <Link href={`/work/${meta.related.slug}`} className="case-related">
-            <span className="case-related-chip">關聯專案</span>
-            <span className="case-related-label">{meta.related.label}</span>
-            <span aria-hidden="true">→</span>
-          </Link>
-        )}
-        <p className="case-subtitle">{meta.subtitle}</p>
+        <div className={`case-hero-top${meta.heroBanner ? ' has-banner' : ''}`}>
+          <div className="case-hero-text">
+            <p className="section-label">{meta.eyebrow ?? (meta.featured ? 'Case study · 旗艦案' : 'Case study')}</p>
+            <h1 className="display-l case-title">{meta.title}</h1>
+            {meta.related && (
+              <Link href={`/work/${meta.related.slug}`} className="case-related">
+                <span className="case-related-chip">關聯專案</span>
+                <span className="case-related-label">{meta.related.label}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            )}
+            <p className="case-subtitle">{meta.subtitle}</p>
+          </div>
+          {meta.heroBanner && (
+            <div className="case-hero-media">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="case-hero-banner" src={meta.heroBanner} alt={`${meta.title} — 主視覺`} />
+            </div>
+          )}
+        </div>
 
         <dl className="case-meta">
           {(meta.metaItems ?? [
@@ -92,6 +102,31 @@ export default function CaseStudyLayout({
 
         .case-hero { padding-top: 32px; padding-bottom: 40px; }
         .case-title { margin: 16px 0 24px; font-weight: 900; }
+
+        /* hero banner beside the title → two-column top row (banner cases only) */
+        .case-hero-top.has-banner {
+          display: grid;
+          grid-template-columns: 1fr minmax(300px, 40%);
+          gap: 48px;
+          align-items: center;
+          margin-bottom: 48px;
+        }
+        .case-hero-top.has-banner .case-subtitle { margin-bottom: 0; }
+        .case-hero-banner {
+          display: block;
+          width: 100%;
+          height: auto;
+          border: 2px solid var(--text);
+          border-radius: var(--r-lg);
+          box-shadow: 8px 8px 0 var(--cv-sky);
+        }
+        @media (max-width: 860px) {
+          .case-hero-top.has-banner {
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin-bottom: 32px;
+          }
+        }
 
         /* related-case jump pill — sibling 平台 ↔ 記者會 quick switch */
         .case-related {

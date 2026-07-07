@@ -30,6 +30,8 @@ export interface CaseMeta {
   cardColor: 'mint' | 'peach' | 'butter' | 'lavender' | 'dark'
   /** Hero cover image (public path), shown between hero meta and case body */
   cover?: string
+  /** hero banner (public path) — sits beside the title, turns the hero 2-column */
+  heroBanner?: string
   /** square thumbnail (public path) for project-card grids/carousels */
   thumb?: string
   /** Hero eyebrow label; defaults from `featured` when omitted */
