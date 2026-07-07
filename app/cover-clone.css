@@ -8,9 +8,7 @@
 
 /* ---- shared base (from page-common.css / layout.css, namespaced safe) ---- */
 .kyc { font-family: 'Noto Sans TC', sans-serif; color: var(--cv-ink); font-size: 14px; font-weight: 500; line-height: 1.8; background: var(--cv-bg); padding-top: 120px; }
-.kyc .footer-banner-item,
 .kyc .footer-bottom-nav-item { font-weight: 400; }
-.kyc .footer-banner-txt { font-weight: 500; }
 .kyc h1,.kyc h2,.kyc h3,.kyc h4 { margin: 0; line-height: 1.5; }
 .kyc p { margin: 0; }
 .kyc ul,.kyc li { list-style: none; margin: 0; padding: 0; }
@@ -668,185 +666,10 @@
 }
 
 /* ---- parts 3289 ---- */
-.tm6_pt6 .workstyle {
-  position: relative;
-  background: var(--cv-sky);
-  padding: 240px 16px 120px;
-}
 /* desktop: keep the section tall enough that the cloud decoration (::after,
    top:220 + 600px) fits and the sky breathes above FACILITIES — matches the
    reference workstyle height (~843px) instead of collapsing to short copy. */
-@media (min-width: 768px) {
-  .tm6_pt6 .workstyle {
-    min-height: 843px;
-  }
-}
-.tm6_pt6 .workstyle::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 120px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMSIgdmlld0JveD0iMCAwIDE2MDAgMTIxIj4NCiAgPGcgaWQ9IndvcmtzdHlsZS1iZyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIgLTEyMzEpIj4NCiAgICA8cGF0aCBpZD0iYmciIGQ9Ik0wLDBDMTI1LjA0OCwwLDEyOS4wNzYsNDAsMjg4LDQwYzM4My45MjQsMCw0OTkuNDktODAsNzM2LTgwUzE2MDAsMCwxNjAwLDBWODBIMFMwLDU2LjI2NywwLDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjIgMTI3MSkiIGZpbGw9IiMxYjFjMWYiLz4NCiAgICA8cGF0aCBpZD0iYmctMiIgZGF0YS1uYW1lPSJiZyIgZD0iTTAsMEMxMjUuMDQ4LDAsMTI5LjA3Niw0MCwyODgsNDBjMzgzLjkyNCwwLDQ5OS40OS04MCw3MzYtODBTMTYwMCwwLDE2MDAsMFY4MEgwUzAsNTYuMjY3LDAsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMiAxMjcyKSIgZmlsbD0iI2RkZTZlYSIvPg0KICA8L2c+DQo8L3N2Zz4NCg==);
-  background-size: auto 120px;
-  background-repeat: repeat-x;
-  background-position: 50%;
-  background-color: var(--cv-bg);
-}
-.tm6_pt6 .workstyle::after {
-  content: "";
-  position: absolute;
-  top: 200px;
-  right: 0;
-  left: 0;
-  max-width: 1500px;
-  margin: 0 auto;
-  height: 700px;
-  /* clean cartoon-cloud layer (all white). NOTE: do NOT use 813a385b here —
-     that asset has real people composited into some of the clouds. */
-  background-image: url(/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png);
-  background-size: contain; /* whole clouds, symmetric — never clipped at the edges */
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
-.tm6_pt6 .workstyle-box {
-  position: relative;
-  max-width: 530px;
-  margin: 0 auto;
-  z-index: 10;
-}
-.tm6_pt6 .ttl-box {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  text-align: center;
-  margin: 0 0 80px;
-}
-.tm6_pt6 .ttl-ja {
-  text-align: center;
-}
-.tm6_pt6 .ttl-ja span {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 500;
-  border: 2px solid var(--cv-ink);
-  border-radius: 0 9999px 9999px 9999px;
-  background: var(--cv-paper);
-  padding: 0 16px;
-}
-.tm6_pt6 .ttl-en {
-  font-family: var(--font-ultra), 'Ultra', serif;
-  font-size: 56px;
-  line-height: 1.2;
-  margin: 0 0 16px;
-}
-.tm6_pt6 .ttl-en span {
-  display: block;
-  font-size: 40px;
-  color: var(--cv-sky);
-  -webkit-text-stroke: 1px var(--cv-ink);
-  text-stroke: 1px var(--cv-ink);
-}
-.tm6_pt6 .txt {
-  font-size: 16px;
-  line-height: 2;
-  margin: 0 0 80px;
-}
-.tm6_pt6 .btn {
-  text-align: center;
-}
-.tm6_pt6 .btn a {
-  display: inline-flex;
-  align-items: center;
-  font-size: 16px;
-}
-.tm6_pt6 .btn-txt {
-  background: linear-gradient(var(--cv-ink-2), var(--cv-ink-2)) 0 100%/0 1px no-repeat;
-  transition: background .3s;
-}
-.tm6_pt6 .btn-icon {
-  position: relative;
-  flex-shrink: 0;
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-  border: 1px solid var(--cv-ink);
-  border-radius: 100%;
-  background: var(--cv-ink);
-  margin: 0 0 0 24px;
-}
-.tm6_pt6 .btn-icon::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  width: 0;
-  height: 0;
-  border-radius: 100%;
-  background: var(--cv-paper);
-  transform: translate(-50%, -50%);
-  transition: .3s;
-}
-.tm6_pt6 .btn-icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: inline-block;
-  width: 16px;
-  height: 12px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDE2IDEyIj4NCiAgPHBhdGggaWQ9ImFycm93X3JpZ2h0X2FsdF9GSUxMMF93Z2h0NDAwX0dSQUQwX29wc3o0OCIgZD0iTTE3MC4wMDksMzQ1bC0xLjA3My0xLjA0OCw0LjE5My00LjE5MUgxNjB2LTEuNWgxMy4xM2wtNC4yMTgtNC4yMTZMMTY5Ljk4NCwzMzMsMTc2LDMzOS4wMTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTYwIC0zMzMpIiBmaWxsPSIjMWIxYzFmIi8+DQo8L3N2Zz4NCg==);
-  background-size: contain;
-  background-repeat: no-repeat;
-  filter: brightness(0) invert(1);
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  transition: .3s;
-}
 
-@media screen and (min-width: 768px) {
-.tm6_pt6   .btn a:hover .btn-txt {
-    background-size: 100% 1px;
-  }
-.tm6_pt6   .btn a:hover .btn-icon::before {
-    width: 100%;
-    height: 100%;
-  }
-.tm6_pt6   .btn a:hover .btn-icon::after {
-    filter: none;
-  }
-}
-
-@media screen and (max-width: 767px) {
-.tm6_pt6   .workstyle {
-    padding: 72px 16px 40px;
-  }
-.tm6_pt6   .workstyle::before {
-    height: 7.47vw;
-    background-size: auto 7.47vw;
-  }
-.tm6_pt6   .workstyle::after {
-    content: none;
-  }
-.tm6_pt6   .workstyle-box {
-    max-width: inherit;
-  }
-.tm6_pt6   .ttl-box {
-    margin: 0 0 24px;
-  }
-.tm6_pt6   .ttl-en {
-    font-size: 40px;
-    margin: 0 0 8px;
-  }
-.tm6_pt6   .ttl-en span {
-    display: none;
-  }
-.tm6_pt6   .txt {
-    margin: 0 0 24px;
-  }
-}
 
 /* ---- parts 3293 ---- */
 .tm7_pt7 .facility {
@@ -1804,21 +1627,50 @@
   margin: 0 auto;
   padding: 120px 0 144px;
 }
-.tm11_pt11 .footer-banner {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin: 0 0 80px;
-}
-.tm11_pt11 .footer-banner-item a {
-  display: block;
-}
-.tm11_pt11 .footer-banner-img {
-  overflow: hidden;
-  margin: 0 0 16px;
-}
-.tm11_pt11 .footer-banner-txt {
+/* WORKSTYLE intro — moved from its own sky section onto the teal footer */
+.tm11_pt11 .footer-workstyle {
+  max-width: 640px;
+  margin: 0 auto 96px;
+  text-align: center;
   color: var(--cv-paper);
+}
+.tm11_pt11 .fw-chip span {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  border: 2px solid var(--cv-paper);
+  border-radius: 0 9999px 9999px 9999px;
+  padding: 4px 16px;
+  margin: 0 0 20px;
+}
+.tm11_pt11 .fw-title {
+  font-family: var(--font-ultra), 'Ultra', serif;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1.2;
+  margin: 0 0 24px;
+}
+.tm11_pt11 .fw-txt {
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px;
+  opacity: 0.92;
+}
+.tm11_pt11 .fw-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--cv-paper);
+  border-radius: 9999px;
+  padding: 12px 32px;
+  font-weight: 700;
+  color: var(--cv-paper);
+  transition: background 0.3s, color 0.3s;
+}
+.tm11_pt11 .fw-btn:hover {
+  background: var(--cv-paper);
+  color: var(--cv-accent);
 }
 .tm11_pt11 .footer-middle {
   display: flex;
@@ -1875,9 +1727,6 @@
 
 
 @media screen and (min-width: 768px) {
-.tm11_pt11   .footer-banner-item a:hover {
-    opacity: .7;
-  }
 .tm11_pt11   .footer-sns-item a:hover {
     opacity: .7;
   }
@@ -1890,6 +1739,15 @@
 .tm11_pt11   .footer {
     padding: 68px 0 170px;
   }
+.tm11_pt11   .footer-workstyle {
+    margin-bottom: 64px;
+  }
+.tm11_pt11   .fw-title {
+    font-size: 40px;
+  }
+.tm11_pt11   .fw-txt {
+    font-size: 15px;
+  }
 .tm11_pt11   .footer::before {
     height: 7.47vw;
     background-size: auto 7.47vw;
@@ -1899,14 +1757,6 @@
   }
 .tm11_pt11   .footer-inner {
     padding: 40px 0;
-  }
-.tm11_pt11   .footer-banner {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 0 0 40px;
-  }
-.tm11_pt11   .footer-banner-img img {
-    width: 100%;
   }
 .tm11_pt11   .footer-middle {
     display: block;

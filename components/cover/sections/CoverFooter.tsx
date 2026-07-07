@@ -1,19 +1,9 @@
 /**
  * CoverFooter — clone of koyama-sendai.org footer (tm11_pt11).
  * Structure/classes ported 1:1 (styled by app/cover-clone.css; the bottom
- * `.illust` band is a CSS background). Body is Traditional-Chinese placeholder;
- * banner logos are reference placeholders under /cover/ref.
+ * `.illust` band is a CSS background). The old partner-banner placeholders
+ * are replaced by the WORKSTYLE intro, restyled for the teal footer ground.
  */
-import RefImg from '@/components/cover/sections/ui/RefImg'
-
-const ref = (h: string) => `/cover/ref/${h}`
-const banners = [
-  { img: ref('4d383a409bee31551999db47e0e86add.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
-  { img: ref('cdf22f24b0717ac803b17d92533db48f.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
-  { img: ref('a16dd17761ca032af5eae762a754e596.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
-  { img: ref('c90b8d74019b22ef48c190d4aac24f93.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
-  { img: ref('3850638259baa13d1a3753d64ae06d24.png'), txt: '這裡放合作夥伴或外部連結的說明文字' },
-]
 const bottomNav = [
   { label: '聯絡我', href: '#' },
   { label: '專案地圖', href: '/work' },
@@ -25,18 +15,18 @@ export default function CoverFooter() {
       <footer className="footer">
         <div className="footer-wrap">
           <div className="footer-inner">
-            <ul className="footer-banner">
-              {banners.map((b, i) => (
-                <li className="footer-banner-item" key={i}>
-                  <a href="#" target="_blank" rel="noreferrer">
-                    <div className="footer-banner-img">
-                      <RefImg src={b.img} width={245} height={90} alt="" />
-                    </div>
-                    <p className="footer-banner-txt">{b.txt}</p>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* WORKSTYLE — moved from its own sky-band section into the footer */}
+            <div className="footer-workstyle">
+              <p className="fw-chip"><span>關於工作</span></p>
+              <h2 className="fw-title">WORKSTYLE</h2>
+              <p className="fw-txt">
+                行銷把人帶進來，體驗把人留下來——4 場政府大型活動、5 座城市數位平台，
+                從聲量、轉換到留存都是我的工作範圍。點進來看九個專案的完整過程。
+              </p>
+              <a className="fw-btn" href="/work">
+                了解更多 <span aria-hidden="true">→</span>
+              </a>
+            </div>
             <div className="footer-middle">
               <div className="footer-logo" />
               <ul className="footer-sns">
