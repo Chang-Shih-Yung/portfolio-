@@ -912,7 +912,8 @@
   }
 .tm7_pt7   .facility::after {
     height: 7.47vw;
-    background-size: auto 7.47vw;
+    background-size: auto 7.55vw;
+    background-position: 50% 0;
   }
 .tm7_pt7   .facility-head {
     margin: 0 0 24px;
@@ -1431,7 +1432,8 @@
   }
 .tm9_pt9   .about::before {
     height: 7.47vw;
-    background-size: auto 7.47vw;
+    background-size: auto 7.55vw;
+    background-position: 50% 0;
   }
 .tm9_pt9   .ttl-box {
     align-items: center;
@@ -1614,9 +1616,12 @@
   left: 0;
   height: 122px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMSIgdmlld0JveD0iMCAwIDE2MDAgMTIxIj4NCiAgPGcgaWQ9ImZvb3Rlci1iZy11bmRlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNDAzMikiPg0KICAgIDxwYXRoIGlkPSJiZyIgZD0iTTAsMEM1Ny42LDAsMTI1Ljc4Niw0MCwyODgsNDBjMzgzLjkyNCwwLDQ5OS40OS04MCw3MzYtODBTMTYwMCwwLDE2MDAsMFY4MEgwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0MDcyKSIgZmlsbD0iIzFiMWMxZiIvPg0KICAgIDxwYXRoIGlkPSJiZy0yIiBkYXRhLW5hbWU9ImJnIiBkPSJNMCwwQzU3LjYsMCwxMjUuNzg2LDQwLDI4OCw0MGMzODMuOTI0LDAsNDk5LjQ5LTgwLDczNi04MFMxNjAwLDAsMTYwMCwwVjgwSDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzMpIiBmaWxsPSIjNmZhM2E4Ii8+DQogICAgPHBhdGggaWQ9ImJnLTMiIGRhdGEtbmFtZT0iYmciIGQ9Ik0xNjAwLDBjLTU3LjYsMC0xMjUuNzg2LDQwLTI4OCw0MEM5MjguMDc2LDQwLDUzNS4zNjUtMjksNDAxLTI5UzAsMCwwLDBWODBIMTYwMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNDA3MykiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMTU0Ii8+DQogIDwvZz4NCjwvc3ZnPg0K);
-  background-size: auto 122px;
+  /* tile viewBox is 121px tall but its paint stops at 120 — scale it 1px past
+     the element and pin to the top so the transparent bottom row (which let a
+     white hairline peek through at the teal junction) is cropped away */
+  background-size: auto 123px;
   background-repeat: repeat-x;
-  background-position: 50%;
+  background-position: 50% 0;
   background-color: var(--cv-bg);
 }
 .tm11_pt11 .footer-wrap {
@@ -1629,29 +1634,34 @@
   position: relative;
   isolation: isolate;
 }
-/* white clouds flanking the WORKSTYLE block — cropped clusters from the same
-   cloud sheet tm6 used, kept to the sides so the paper-white copy in the
-   middle stays readable on the teal ground */
+/* white clouds flanking the WORKSTYLE block — self-drawn SVG puffs layered at
+   different sizes (complete clouds, never cropped — slicing the old cloud
+   sheet cut shapes at the window edges); sides only, so the paper-white copy
+   in the middle stays readable */
 .tm11_pt11 .footer-inner::before,
 .tm11_pt11 .footer-inner::after {
   content: "";
   position: absolute;
-  top: 80px;
-  height: 420px;
-  width: 24%;
-  background-image: url(/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png);
-  background-repeat: no-repeat;
-  background-size: 340% auto;
+  top: 70px;
+  height: 400px;
+  width: 230px;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 62'%3E%3Cpath d='M20 60A18 18 0 0 1 20 24A24 24 0 0 1 66 12A20 20 0 0 1 100 26A17 17 0 0 1 100 60Z' fill='%23fff'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 62'%3E%3Cpath d='M20 60A18 18 0 0 1 20 24A24 24 0 0 1 66 12A20 20 0 0 1 100 26A17 17 0 0 1 100 60Z' fill='%23fff'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 62'%3E%3Cpath d='M20 60A18 18 0 0 1 20 24A24 24 0 0 1 66 12A20 20 0 0 1 100 26A17 17 0 0 1 100 60Z' fill='%23fff'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat, no-repeat;
   z-index: -1;
   pointer-events: none;
 }
 .tm11_pt11 .footer-inner::before {
-  left: -60px;
-  background-position: 2% 42%;
+  left: 0;
+  background-size: 128px auto, 78px auto, 100px auto;
+  background-position: 15% 6%, 85% 44%, 8% 82%;
 }
 .tm11_pt11 .footer-inner::after {
-  right: -60px;
-  background-position: 98% 60%;
+  right: 0;
+  background-size: 86px auto, 118px auto, 70px auto;
+  background-position: 85% 4%, 92% 58%, 6% 34%;
 }
 /* WORKSTYLE intro — moved from its own sky section onto the teal footer */
 .tm11_pt11 .footer-workstyle {
@@ -1780,7 +1790,8 @@
   }
 .tm11_pt11   .footer::before {
     height: 7.47vw;
-    background-size: auto 7.47vw;
+    background-size: auto 7.55vw;
+    background-position: 50% 0;
   }
 .tm11_pt11   .footer-wrap {
     padding: 0 16px;
