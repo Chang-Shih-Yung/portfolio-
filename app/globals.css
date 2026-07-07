@@ -1503,6 +1503,35 @@ main { min-height: 100vh; }
   .prose .ccycle { padding: var(--space-sm); }
 }
 
+/* Diagram RWD — viewBox scaling makes SVG text unreadable under ~700px, so
+   narrow screens keep the diagram at a readable width and scroll it
+   horizontally inside its own frame (captions stick to the visible area) */
+@media (max-width: 700px) {
+  .prose .convmap,
+  .prose .cmploop,
+  .prose .phub,
+  .prose .sysstack,
+  .prose .bplanes {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .prose .convmap svg,
+  .prose .cmploop svg,
+  .prose .phub svg,
+  .prose .sysstack svg,
+  .prose .bplanes svg {
+    min-width: 760px;
+  }
+  .prose .convmap-caption,
+  .prose .cmploop-caption,
+  .prose .phub-caption,
+  .prose .sysstack-caption,
+  .prose .bplanes-caption {
+    position: sticky;
+    left: 0;
+  }
+}
+
 /* FlowCompare — before/after flow-shape lanes (CaseDiagrams) */
 .prose .flowcompare {
   display: grid;
