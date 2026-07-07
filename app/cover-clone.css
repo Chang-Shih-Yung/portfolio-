@@ -8,7 +8,6 @@
 
 /* ---- shared base (from page-common.css / layout.css, namespaced safe) ---- */
 .kyc { font-family: 'Noto Sans TC', sans-serif; color: var(--cv-ink); font-size: 14px; font-weight: 500; line-height: 1.8; background: var(--cv-bg); padding-top: 120px; }
-.kyc .footer-bottom-nav-item { font-weight: 400; }
 .kyc h1,.kyc h2,.kyc h3,.kyc h4 { margin: 0; line-height: 1.5; }
 .kyc p { margin: 0; }
 .kyc ul,.kyc li { list-style: none; margin: 0; padding: 0; }
@@ -1615,7 +1614,7 @@
   right: 0;
   left: 0;
   height: 122px;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMSIgdmlld0JveD0iMCAwIDE2MDAgMTIxIj4NCiAgPGcgaWQ9ImZvb3Rlci1iZy11bmRlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNDAzMikiPg0KICAgIDxwYXRoIGlkPSJiZyIgZD0iTTAsMEM1Ny42LDAsMTI1Ljc4Niw0MCwyODgsNDBjMzgzLjkyNCwwLDQ5OS40OS04MCw3MzYtODBTMTYwMCwwLDE2MDAsMFY4MEgwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0MDcyKSIgZmlsbD0iIzFiMWMxZiIvPg0KICAgIDxwYXRoIGlkPSJiZy0yIiBkYXRhLW5hbWU9ImJnIiBkPSJNMCwwQzU3LjYsMCwxMjUuNzg2LDQwLDI4OCw0MGMzODMuOTI0LDAsNDk5LjQ5LTgwLDczNi04MFMxNjAwLDAsMTYwMCwwVjgwSDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzMpIiBmaWxsPSIjNmZhM2E4Ii8+DQogICAgPHBhdGggaWQ9ImJnLTMiIGRhdGEtbmFtZT0iYmciIGQ9Ik0xNjAwLDBjLTU3LjYsMC0xMjUuNzg2LDQwLTI4OCw0MEM5MjguMDc2LDQwLDUzNS4zNjUtMjksNDAxLTI5UzAsMCwwLDBWODBIMTYwMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNDA3MykiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMTU0Ii8+DQogIDwvZz4NCjwvc3ZnPg0K);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMSIgdmlld0JveD0iMCAwIDE2MDAgMTIxIj4NCiAgPGcgaWQ9ImZvb3Rlci1iZy11bmRlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNDAzMikiPg0KICAgIDxwYXRoIGlkPSJiZyIgZD0iTTAsMEM1Ny42LDAsMTI1Ljc4Niw0MCwyODgsNDBjMzgzLjkyNCwwLDQ5OS40OS04MCw3MzYtODBTMTYwMCwwLDE2MDAsMFY4MEgwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0MDcyKSIgZmlsbD0iIzFiMWMxZiIvPg0KICAgIDxwYXRoIGlkPSJiZy0yIiBkYXRhLW5hbWU9ImJnIiBkPSJNMCwwQzU3LjYsMCwxMjUuNzg2LDQwLDI4OCw0MGMzODMuOTI0LDAsNDk5LjQ5LTgwLDczNi04MFMxNjAwLDAsMTYwMCwwVjgwSDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzMpIiBmaWxsPSIjNmZhM2E4Ii8+DQogIDwvZz4NCjwvc3ZnPg0K);
   /* tile viewBox is 121px tall but its paint stops at 120 — scale it 1px past
      the element and pin to the top so the transparent bottom row (which let a
      white hairline peek through at the teal junction) is cropped away */
@@ -1781,30 +1780,6 @@
 .tm11_pt11 .footer-sns-item a {
   display: block;
 }
-.tm11_pt11 .footer-bottom {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-}
-.tm11_pt11 .footer-bottom-nav {
-  display: flex;
-}
-.tm11_pt11 .footer-bottom-nav-item + .footer-bottom-nav-item {
-  margin: 0 0 0 32px;
-}
-.tm11_pt11 .footer-bottom-nav-item a {
-  color: var(--cv-paper);
-}
-.tm11_pt11 .footer-bottom-nav-item a span {
-  background: linear-gradient(var(--cv-paper), var(--cv-paper)) 0 100%/0 1px no-repeat;
-  transition: background .3s;
-}
-.tm11_pt11 .copyright small {
-  font-family: var(--font-ultra), 'Ultra', serif;
-  font-size: 14px;
-  color: var(--cv-paper);
-}
 .tm11_pt11 .illust {
   position: absolute;
   right: 0;
@@ -1821,9 +1796,6 @@
 @media screen and (min-width: 768px) {
 .tm11_pt11   .footer-sns-item a:hover {
     opacity: .7;
-  }
-.tm11_pt11   .footer-bottom-nav-item a:hover span {
-    background-size: 100% 1px;
   }
 }
 
@@ -1873,20 +1845,6 @@
 .tm11_pt11   .footer-sns {
     justify-content: center;
   }
-.tm11_pt11   .footer-bottom {
-    display: block;
-  }
-.tm11_pt11   .footer-bottom-nav {
-    display: block;
-    text-align: center;
-    margin: 0 0 24px;
-  }
-.tm11_pt11   .footer-bottom-nav-item + .footer-bottom-nav-item {
-    margin: 8px 0 0;
-  }
-.tm11_pt11   .copyright {
-    text-align: center;
-  }
 .tm11_pt11   .illust {
     bottom: 70px;
     height: 100px;
@@ -1895,9 +1853,6 @@
        centre crop — matches the reference's mobile composition */
     background-position: left bottom;
   }
-}body.top .footer::before {
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEyMiIgdmlld0JveD0iMCAwIDE2MDAgMTIyIj4NCiAgPGcgaWQ9ImZvb3Rlci1iZyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNDAzMSkiPg0KICAgIDxwYXRoIGlkPSJiZyIgZD0iTTE2MDAsNDBjLTU3LjYsMC0xMjUuNzg2LTQwLTI4OC00MEM5MjguMDc2LDAsODEyLjUxLDgwLDU3Niw4MFMwLDQwLDAsNDBWLTQwSDE2MDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzEpIiBmaWxsPSIjZGRlNmVhIi8+DQogICAgPHBhdGggaWQ9ImJnLTIiIGRhdGEtbmFtZT0iYmciIGQ9Ik0wLDBDNTcuNiwwLDEyNS43ODYsNDAsMjg4LDQwYzM4My45MjQsMCw0OTkuNDktODAsNzM2LTgwUzE2MDAsMCwxNjAwLDBWODBIMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNDA3MikiIGZpbGw9IiMxYjFjMWYiLz4NCiAgICA8cGF0aCBpZD0iYmctMyIgZGF0YS1uYW1lPSJiZyIgZD0iTTAsMEM1Ny42LDAsMTI1Ljc4Niw0MCwyODgsNDBjMzgzLjkyNCwwLDQ5OS40OS04MCw3MzYtODBTMTYwMCwwLDE2MDAsMFY4MEgwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0MDczKSIgZmlsbD0iIzZmYTNhOCIvPg0KICAgIDxwYXRoIGlkPSJiZy00IiBkYXRhLW5hbWU9ImJnIiBkPSJNMTYwMCwwYy01Ny42LDAtMTI1Ljc4Niw0MC0yODgsNDBDOTI4LjA3Niw0MCw1MzUuMzY1LTI5LDQwMS0yOVMwLDAsMCwwVjgwSDE2MDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQwNzMpIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjE1NCIvPg0KICA8L2c+DQo8L3N2Zz4NCg==);
-  background-color: transparent;
 }
 
 /* ---- parts 3353 ---- */

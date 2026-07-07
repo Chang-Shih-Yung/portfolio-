@@ -7,10 +7,6 @@
  */
 import SectionTitle from '@/components/cover/sections/ui/SectionTitle'
 import Btn from '@/components/cover/sections/ui/Btn'
-const bottomNav = [
-  { label: '聯絡我', href: '#' },
-  { label: '專案地圖', href: '/work' },
-]
 
 export default function CoverFooter() {
   return (
@@ -38,18 +34,6 @@ export default function CoverFooter() {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="footer-bottom">
-              <ul className="footer-bottom-nav">
-                {bottomNav.map((n) => (
-                  <li className="footer-bottom-nav-item" key={n.label}>
-                    <a href={n.href}><span>{n.label}</span></a>
-                  </li>
-                ))}
-              </ul>
-              <p className="copyright">
-                <small>© 2026 Giselle Lai</small>
-              </p>
             </div>
           </div>
           <div className="illust" />
