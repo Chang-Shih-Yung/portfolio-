@@ -25,9 +25,9 @@ export default function HomePage() {
       <CoverHero />
       <div className="kyc">
         <LifestyleSection />
-        <WorkstyleSection />
-        <ConciergeSection />
         <AboutSection />
+        <ConciergeSection />
+        <WorkstyleSection />
         <CoverFooter />
       </div>
     </>
