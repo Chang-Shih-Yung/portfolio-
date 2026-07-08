@@ -1,4 +1,3 @@
-import { BridgeFlow, FanOut } from '@/components/case/Charts'
 import { CarbonCycle } from '@/components/case/CaseDiagrams'
 import { Badge } from '@/components/ui/badge'
 
@@ -29,9 +28,7 @@ export const meta = {
   sections: [
     { id: 'overview', label: 'Overview', tag: '1' },
     { id: 'strategy', label: 'Strategy', tag: '2' },
-    { id: 'ia', label: 'IA', tag: '3' },
-    { id: 'system', label: 'System', tag: '4' },
-    { id: 'outcome', label: 'Outcome', tag: '5' },
+    { id: 'outcome', label: 'Outcome', tag: '3' },
   ],
 }
 
@@ -59,48 +56,9 @@ export const meta = {
 
 <CarbonCycle />
 
-## IA
-
-<p className="sec-chip">平台資訊架構</p>
-
-**建立模組化的城市減碳服務架構。** 平台資訊架構整合為六大核心模組——各模組可獨立擴充，同時共享一致的資料架構與服務流程（完整結構見頁首 system map）：
-
-<FanOut
-  from={{ title: '一致資料架構', sub: 'Modular IA' }}
-  to={['Member 會員', 'Carbon 減碳紀錄', 'Point 點數', 'Transport 交通', 'Mall 商城', 'Admin 管理']}
-  via="模組化"
-  note="行為資料、點數與兌換共用同一套結構 — 新的減碳情境接上來就能用"
-/>
-
-## System
-
-<p className="sec-chip">設計系統</p>
-
-**建立一致性的城市數位服務設計系統**，以跨平台一致的 UI 規範支撐所有服務情境：
-
-<div className="pill-row">
-  <Badge>Color / Typography</Badge>
-  <Badge>Grid System</Badge>
-  <Badge>Component Library</Badge>
-  <Badge>Navigation Pattern</Badge>
-  <Badge>Status System</Badge>
-  <Badge variant="solid">Design Token</Badge>
-</div>
-
-<p className="strategy-ref">→ 提升設計一致性，降低開發與維運成本——服務會一直長，規範讓它長得整齊</p>
-
 ## Outcome
 
 <p className="sec-chip">成果與反思</p>
-
-**建立市民、政府與商家共創的減碳服務平台** ——本專案最核心的價值轉變：
-
-<BridgeFlow
-  from={{ title: '單一功能服務', sub: '個別的點數工具' }}
-  to={{ title: '城市永續治理的數位基礎', sub: '跨服務的減碳生態系' }}
-  via="永續平台化"
-  note="低碳行為 × 數位服務 × 城市治理，收在同一個循環裡"
-/>
 
 <div className="insights">
   <div className="insight">
