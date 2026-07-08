@@ -530,7 +530,7 @@ export function BlueprintLanes({ lanes = BP_LANES }: { lanes?: BlueprintLane[] }
    behavior. Fan-in + chain + loop: behavior becomes a renewable asset.
    Fixed content on purpose. */
 
-const CC_BEHAVIORS = ['搭乘大眾運輸', '健康步行計步', '電子書借閱', '廢電池回收', '參與政府活動']
+const CC_BEHAVIORS = ['搭乘大眾運輸', '健康步行計步', '電子書借閱', '廢電池回收', '線上申辦服務']
 
 const CC_PILL = { x: 30, w: 230, h: 56 }
 const CC_PILL_YS = [100, 200, 300, 400, 500]
@@ -648,9 +648,6 @@ export function CarbonCycle() {
           </g>
         ))}
       </svg>
-      <figcaption className="ccycle-caption">
-        Behavior loop · 低碳行為 → 數位資產 → 回饋，再回到行為
-      </figcaption>
     </figure>
   )
 }
