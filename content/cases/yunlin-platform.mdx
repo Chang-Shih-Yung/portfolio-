@@ -1,12 +1,12 @@
 import { BridgeFlow } from '@/components/case/Charts'
-import { PlatformHub, SystemStack } from '@/components/case/CaseDiagrams'
+import { SystemStack } from '@/components/case/CaseDiagrams'
 import { Badge } from '@/components/ui/badge'
 
 export const meta = {
   slug: 'yunlin-platform',
   title: '雲林數位縣民平台（雲林幣 2.0）',
   subtitle:
-    '雲林縣政府推動數位縣民平台，整合數位身份、雲林幣、健康活動、悠遊卡、圖書館與特約店家等多項公共服務。本專案以「平台整合」為核心，重新建立品牌視覺、設計系統與跨服務操作流程——讓不同政府服務能在一致的體驗架構下持續擴充與發展。',
+    '雲林縣政府推動「數位縣民平台（雲林幣 2.0）」，以整合縣民日常生活所需的公共服務為目標，打造一站式數位服務平台。平台串聯數位身份、雲林幣、健康活動、悠遊卡、圖書館及特約店家等服務，讓民眾能透過單一平台完成日常使用、點數累積與生活服務體驗。',
   featured: false,
   order: 3,
   role: 'UX & UI Designer',
@@ -29,11 +29,10 @@ export const meta = {
   ],
   sections: [
     { id: 'overview', label: 'Overview', tag: '1' },
-    { id: 'platform', label: 'Platform', tag: '2' },
-    { id: 'challenge', label: 'Challenge', tag: '3' },
-    { id: 'ui', label: 'Brand & UI', tag: '4' },
-    { id: 'system', label: 'System', tag: '5' },
-    { id: 'outcome', label: 'Outcome', tag: '6' },
+    { id: 'challenge', label: 'Challenge', tag: '2' },
+    { id: 'ui', label: 'Brand & UI', tag: '3' },
+    { id: 'system', label: 'System', tag: '4' },
+    { id: 'outcome', label: 'Outcome', tag: '5' },
   ],
 }
 
@@ -41,94 +40,9 @@ export const meta = {
 
 <p className="sec-chip">專案概述</p>
 
-雲林縣政府推動「數位縣民平台（雲林幣 2.0）」，打造縣民日常生活的**一站式數位服務平台**，整合的公共服務橫跨：
+隨著「數位縣民平台（雲林幣 2.0）」逐步整合數位身份、雲林幣、健康活動、悠遊卡、圖書館及特約店家等公共服務，平台也面臨跨服務體驗不一致與擴充維護成本增加等挑戰。
 
-<div className="pill-row">
-  <Badge>數位身份</Badge>
-  <Badge variant="solid">雲林幣</Badge>
-  <Badge>健康活動</Badge>
-  <Badge>悠遊卡</Badge>
-  <Badge>圖書館</Badge>
-  <Badge>特約店家</Badge>
-</div>
-
-本專案以「**平台整合（Platform Integration）**」為核心——重新建立品牌視覺、設計系統與跨服務操作流程，讓不同政府服務能在一致的體驗架構下持續擴充與發展。
-
-## Platform
-
-<p className="sec-chip">平台體驗</p>
-
-**從單一功能，建立完整的數位服務生態。** 本專案的核心不是新增功能，而是重新規劃平台架構：讓不同公共服務之間自然串接，降低使用者在功能之間切換的成本。
-
-<PlatformHub />
-
-<div className="insights">
-  <div className="insight">
-    <span className="insight-num">01</span>
-    <div className="insight-body">
-      <h4>Digital Identity · 數位身份</h4>
-      <div className="pill-row">
-        <Badge>會員登入</Badge>
-        <Badge>會員管理</Badge>
-        <Badge>個人資料</Badge>
-        <Badge>服務整合入口</Badge>
-      </div>
-      <p>建立單一身份，串聯所有公共服務——整個平台的樞紐。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">02</span>
-    <div className="insight-body">
-      <h4>Public Services · 公共服務</h4>
-      <div className="pill-row">
-        <Badge>健康活動</Badge>
-        <Badge>圖書館服務</Badge>
-        <Badge>政府公告</Badge>
-        <Badge>環保服務</Badge>
-      </div>
-      <p>提供一致的公共服務入口，跨局處服務長在同一套體驗上。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">03</span>
-    <div className="insight-body">
-      <h4>Yunlin Coin · 點數服務</h4>
-      <div className="pill-row">
-        <Badge>點數查詢</Badge>
-        <Badge>點數累積</Badge>
-        <Badge>點數交易</Badge>
-        <Badge>消費回饋</Badge>
-      </div>
-      <p>建立完整的雲林幣使用流程——從取得到使用，路徑清楚可循。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">04</span>
-    <div className="insight-body">
-      <h4>Local Ecosystem · 在地生活</h4>
-      <div className="pill-row">
-        <Badge>特約店家</Badge>
-        <Badge>QR Code 掃碼</Badge>
-        <Badge>點數折抵</Badge>
-        <Badge>交易紀錄</Badge>
-      </div>
-      <p>串聯數位點數與地方商家生態，點數在真實生活裡有去處。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">05</span>
-    <div className="insight-body">
-      <h4>Continuous Experience · 持續使用</h4>
-      <div className="pill-row">
-        <Badge>通知中心</Badge>
-        <Badge>活動提醒</Badge>
-        <Badge>交易紀錄</Badge>
-        <Badge>服務推薦</Badge>
-      </div>
-      <p>用即時的資訊流把使用者留在平台上，提升持續使用率。</p>
-    </div>
-  </div>
-</div>
+本專案以系統整合為核心，重新規劃品牌視覺、Design System 與跨服務流程，讓不同的政府服務都能在同一套設計規範下運作，提升使用體驗，也讓平台更容易持續擴充。
 
 ## Challenge
 
@@ -320,4 +234,4 @@ export const meta = {
 
 **設計的不只是介面，而是平台成長的基礎。**
 
-這次專案讓我更深入理解：大型政府數位平台的設計，不是完成單一功能，而是建立一套能支援不同服務共同成長的設計框架。透過 Brand System、Design System 與 Cross-platform UX/UI 的整合，平台在持續新增功能、跨單位協作與服務整合時，仍能維持一致的品牌體驗與操作邏輯——使用體驗更好，後續設計與維護的成本也更低。
+這次專案讓我理解，大型政府數位平台的價值，在於建立可持續擴充的設計框架，兼顧一致的使用體驗，同時降低後續設計與維護成本。
