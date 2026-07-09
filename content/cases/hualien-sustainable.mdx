@@ -1,12 +1,11 @@
 import { BridgeFlow, FanOut, StepFlow } from '@/components/case/Charts'
-import { CampaignLoop } from '@/components/case/CaseDiagrams'
 import { Badge } from '@/components/ui/badge'
 
 export const meta = {
   slug: 'hualien-sustainable',
   title: '花蓮永續生活數位服務平台',
   subtitle:
-    '花蓮縣政府以「永續生活」為核心推動數位參與平台，透過點數機制整合活動參與、在地商家與政府公告。本專案的核心不只是平台建置，而是設計一套完整的「參與轉換路徑」——把政策型活動，變成使用者願意完成的數位體驗。',
+    '花蓮縣政府以「永續生活」為核心推動數位參與平台，透過點數機制整合活動參與、在地商家與政府公告。',
   featured: false,
   order: 2,
   role: 'UX & UI Designer',
@@ -30,10 +29,9 @@ export const meta = {
   sections: [
     { id: 'overview', label: 'Overview', tag: '1' },
     { id: 'journey', label: 'Journey', tag: '2' },
-    { id: 'challenge', label: 'Challenge', tag: '3' },
-    { id: 'ui', label: 'UI Design', tag: '4' },
-    { id: 'system', label: 'System', tag: '5' },
-    { id: 'outcome', label: 'Outcome', tag: '6' },
+    { id: 'ui', label: 'UI Design', tag: '3' },
+    { id: 'system', label: 'System', tag: '4' },
+    { id: 'outcome', label: 'Outcome', tag: '5' },
   ],
 }
 
@@ -43,20 +41,15 @@ export const meta = {
 
 花蓮縣政府推動「永續生活數位服務平台」，透過數位點數機制整合**活動參與、在地商家與政府公告**——鼓勵民眾以日常行為累積點數，再轉化為實際消費與互動回饋。
 
-平台以一條核心循環建立可持續運作的地方數位參與機制：
+核心循環 — 商家消費產生的回饋，再把使用者帶回下一個活動
 
-<StepFlow
-  steps={['活動參與', '點數累積', '商家使用']}
-  note="核心循環 — 商家消費產生的回饋，再把使用者帶回下一個活動"
-/>
+<StepFlow steps={['活動參與', '點數累積', '商家使用']} />
 
 ## Journey
 
 <p className="sec-chip">活動參與旅程</p>
 
-**從「被動資訊」轉為「主動參與行為」。** 本專案的核心是設計一套完整的參與轉換路徑：讓使用者從看到活動、理解價值，到實際完成任務並取得點數——每一段都有明確的設計目標。
-
-<CampaignLoop />
+將被動接收資訊，轉化為主動參與活動，讓使用者看懂活動、完成任務、獲得點數。
 
 <div className="insights">
   <div className="insight">
@@ -120,45 +113,6 @@ export const meta = {
     </div>
   </div>
 </div>
-
-## Challenge
-
-<p className="sec-chip">設計挑戰</p>
-
-**如何提升「活動參與轉換率」？** 檢視既有活動的參與斷點，問題集中在四個面向：
-
-<div className="insights">
-  <div className="insight">
-    <span className="insight-num">01</span>
-    <div className="insight-body">
-      <h4>活動資訊分散</h4>
-      <p>使用者難以理解參與價值——資訊散落在公告與頁面之間，沒有一個完整的敘事。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">02</span>
-    <div className="insight-body">
-      <h4>點數規則不夠直覺</h4>
-      <p>「做什麼、得多少、怎麼用」不能一眼看懂，直接降低參與動機。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">03</span>
-    <div className="insight-body">
-      <h4>任務與商家場景缺乏連結</h4>
-      <p>活動歸活動、消費歸消費——點數拿到了卻不知道去哪用，循環在中途斷掉。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">04</span>
-    <div className="insight-body">
-      <h4>缺少持續回訪機制</h4>
-      <p>活動結束即結束，沒有把這一次的參與者帶往下一次活動的路徑。</p>
-    </div>
-  </div>
-</div>
-
-<p className="strategy-ref">→ 核心問題：不是沒有活動，而是「沒有被完成的活動旅程」</p>
 
 ## UI
 
@@ -255,14 +209,14 @@ export const meta = {
     <span className="insight-num">02</span>
     <div className="insight-body">
       <h4>增強點數使用意願</h4>
-      <p>可視化的回饋與明確的使用場景，讓點數從「數字」變成「動機」。</p>
+      <p>讓使用者清楚知道點數能去特店消費折抵，更願意使用。</p>
     </div>
   </div>
   <div className="insight">
     <span className="insight-num">03</span>
     <div className="insight-body">
       <h4>建立活動 → 商家 → 消費的轉換路徑</h4>
-      <p>場景串聯補上了原本斷開的最後一哩，循環得以成立。</p>
+      <p>串起完整的使用體驗。</p>
     </div>
   </div>
   <div className="insight">
@@ -276,6 +230,6 @@ export const meta = {
 
 ### Reflection
 
-**設計的不只是活動，而是行為路徑。**
+**設計的不只是活動，而是使用者的參與流程。**
 
-這次專案讓我更清楚：活動設計的本質不是資訊曝光，而是「行為設計」。透過 Campaign Journey 與 UI 設計的配合，把政策型活動轉換為使用者願意完成的數位體驗——漏斗每一段都有設計，回饋把人帶回起點，循環才會自己轉下去。
+透過活動規劃與 UI 設計，我將政策活動轉化為容易理解、願意參與的數位體驗，讓使用者從參與、獲得點數到再次消費，形成完整的點數循環。
