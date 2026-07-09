@@ -1653,9 +1653,18 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
+/* round portrait above WORKSTYLE, sitting on the teal footer ground */
+.tm11_pt11 .footer-workstyle .fw-portrait {
+  position: relative;
+  z-index: 10;
+  display: block;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 44px;
+}
 .tm11_pt11 .footer-workstyle .workstyle-box {
   position: relative;
-  max-width: 530px;
+  max-width: 560px;
   margin: 0 auto;
   z-index: 10;
 }
@@ -1664,7 +1673,7 @@
   flex-direction: column-reverse;
   align-items: center;
   text-align: center;
-  margin: 0 0 80px;
+  margin: 0 0 28px;             /* badge closer to the paragraph below */
 }
 .tm11_pt11 .footer-workstyle .ttl-ja {
   text-align: center;
@@ -1695,8 +1704,10 @@
 .tm11_pt11 .footer-workstyle .txt {
   font-size: 16px;
   line-height: 2;
-  margin: 0 0 80px;
+  margin: 0 0 56px;
   color: var(--cv-ink);
+  text-align: center;          /* centre the paragraph (was ragged-left) */
+  text-wrap: balance;          /* even line lengths → no single-char orphan */
 }
 .tm11_pt11 .footer-workstyle .btn {
   text-align: center;
@@ -1805,6 +1816,11 @@
   }
 .tm11_pt11   .footer-workstyle {
     padding: 0 16px 56px;
+  }
+.tm11_pt11   .footer-workstyle .fw-portrait {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto 28px;
   }
 .tm11_pt11   .footer-workstyle::after {
     content: none;

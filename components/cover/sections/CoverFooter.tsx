@@ -16,6 +16,8 @@ export default function CoverFooter() {
           <div className="footer-inner">
             {/* WORKSTYLE — moved from its own section, original tm6 styling */}
             <div className="footer-workstyle">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="fw-portrait" src="/cover/workstyle-ellipse.png" alt="Giselle Lai" />
               <div className="workstyle-box">
                 <SectionTitle ja="關於工作" en="WORKSTYLE" enSub="IN SENDAI" />
                 <p className="txt">
