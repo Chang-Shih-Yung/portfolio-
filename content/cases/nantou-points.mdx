@@ -1,4 +1,4 @@
-import { FanOut, StepFlow } from '@/components/case/Charts'
+import { StepFlow } from '@/components/case/Charts'
 import { ConvergenceMap } from '@/components/case/CaseDiagrams'
 import { Badge } from '@/components/ui/badge'
 
@@ -33,9 +33,8 @@ export const meta = {
     { id: 'research', label: 'Research', tag: '4' },
     { id: 'insights', label: 'Insights', tag: '5' },
     { id: 'strategy', label: 'Strategy', tag: '6' },
-    { id: 'redesign', label: 'Flow & IA', tag: '7' },
-    { id: 'design', label: 'UI System', tag: '8' },
-    { id: 'outcome', label: 'Outcome', tag: '9' },
+    { id: 'redesign', label: 'Flow', tag: '7' },
+    { id: 'outcome', label: 'Outcome', tag: '8' },
   ],
 }
 
@@ -125,47 +124,9 @@ export const meta = {
 
 <p className="sec-chip">設計策略</p>
 
-以「**降低操作成本**」為核心，把散落的問題收斂為三條可執行的設計方向。五個症狀、一個診斷、三步棋：
+以「**降低操作成本**」為核心，把散落的問題收斂為三條可執行的設計方向。
 
 <ConvergenceMap />
-
-三條策略各自的具體動作：
-
-<div className="insights">
-  <div className="insight">
-    <span className="insight-num">01</span>
-    <div className="insight-body">
-      <h4>Flow Simplification · 流程簡化</h4>
-      <div className="pill-row">
-        <Badge>簡化登入與驗證</Badge>
-        <Badge>減少不必要步驟</Badge>
-        <Badge>強化新手引導</Badge>
-      </div>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">02</span>
-    <div className="insight-body">
-      <h4>Information Clarity · 資訊透明</h4>
-      <div className="pill-row">
-        <Badge>任務卡片補強關鍵資訊</Badge>
-        <Badge>商家流程加入狀態追蹤</Badge>
-        <Badge>即時點數與通知回饋</Badge>
-      </div>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">03</span>
-    <div className="insight-body">
-      <h4>System Consistency · 系統一致性</h4>
-      <div className="pill-row">
-        <Badge>建立 Design System</Badge>
-        <Badge>統一三端操作邏輯</Badge>
-        <Badge>降低學習成本</Badge>
-      </div>
-    </div>
-  </div>
-</div>
 
 ## Redesign
 
@@ -181,62 +142,6 @@ export const meta = {
   <Badge>Redemption Flow · 使用清楚化</Badge>
   <Badge>Merchant Flow · 核銷可視化</Badge>
 </div>
-
-### Information Architecture
-
-重新整理平台結構，降低資訊尋找成本，並讓**民眾 / 商家 / 後台三端的操作邏輯一致**（完整結構見頁首 sitemap）：
-
-<FanOut
-  from={{ title: '平台架構', sub: '一致的資訊邏輯' }}
-  to={['民眾端', '商家端', '管理後台']}
-  via="三端一致"
-  note="同一套 IA 原則貫穿三種角色，降低跨端的學習與溝通成本"
-/>
-
-各區塊的重整方向：
-
-- **首頁** — 高頻功能集中，讓使用者一進站就能直達核心任務
-- **任務** — 分類 ＋ 資訊強化，降低判斷成本
-- **店家** — 狀態導向流程，每一步都有明確進度
-- **會員中心** — 點數整合，統一查詢與使用入口
-- **通知** — 即時化資訊流，在對的時機把人拉回平台
-
-## Design
-
-<p className="sec-chip">UI 與設計系統</p>
-
-### UI Design
-
-**讓複雜流程變得直覺可理解。** 介面設計聚焦四個重點，並完整涵蓋民眾端、商家端與管理後台三端：
-
-<div className="pill-row">
-  <Badge>資訊層級清晰</Badge>
-  <Badge>任務卡片化</Badge>
-  <Badge>操作回饋狀態</Badge>
-  <Badge>統一互動語言</Badge>
-</div>
-
-### Design System
-
-建立可延展的政府級設計系統，作為工程交付與長期維運的 single source of truth：
-
-<div className="pill-row">
-  <Badge>Color / Typography / Grid</Badge>
-  <Badge>Component Library</Badge>
-  <Badge>三端一致設計規範</Badge>
-</div>
-
-並定義完整的互動狀態，讓每個元件在各種情境下的行為都一致、可預期：
-
-<div className="pill-row">
-  <Badge>Loading</Badge>
-  <Badge variant="solid">Success</Badge>
-  <Badge>Error</Badge>
-</div>
-
-### Prototype & Testing
-
-以 Figma 高保真互動原型模擬完整使用流程，並作為與政府端進行流程驗證的工具——**用 Prototype 驗證，而不是假設設計。**
 
 ## Outcome
 
@@ -284,6 +189,6 @@ export const meta = {
 
 ### Reflection
 
-**UX 的價值，是讓系統變得可理解。**
+**UX 的價值，在於讓服務更容易理解、更容易使用。**
 
-這次專案讓我更清楚：UX 的核心不是重新設計介面，而是讓既有流程變得合理、且可被理解。透過 Research → Insights → Strategy 的轉換，把使用者問題轉譯為可執行的設計決策——這，才是體驗優化真正的槓桿。
+這次專案讓我學會，不是急著重新設計介面，而是先透過研究了解使用者真正遇到的問題，再把這些發現轉化為設計決策，讓既有流程變得更順暢、更符合使用者需求。

@@ -134,7 +134,6 @@ export function ConvergenceMap() {
           </g>
         ))}
       </svg>
-      <figcaption className="convmap-caption">Insights → Root cause → Strategy</figcaption>
     </figure>
   )
 }
