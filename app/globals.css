@@ -148,7 +148,7 @@
   /* CAPSULE phone — mirrors the reference: a tall stadium (border-radius:9999px)
      with a 2px near-black outline, holding a vertical app screenshot clipped to
      the capsule. NOT a photoreal device (no notch / home indicator). */
-  --cv-phone-w: 312px;
+  --cv-phone-w: 323px;              /* = h × 1000/1796, matches the capsule photos' ratio */
   --cv-phone-h: 580px;
   --cv-phone-gap: 56px;             /* space between adjacent capsules */
   --cv-phone-edge: #171717;         /* the 2px black device outline */

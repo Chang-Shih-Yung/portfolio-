@@ -204,7 +204,7 @@ export default function CoverHero() {
             /* reserve space for the fixed 72px mobile header */
             padding-top: 72px;
             padding-bottom: var(--cv-tabbar-h);
-            --cv-phone-w: 156px;
+            --cv-phone-w: 161px;
             --cv-phone-h: 290px;
             --cv-phone-gap: 6px;
             --cv-display-1: clamp(28px, 8vw, 34px);

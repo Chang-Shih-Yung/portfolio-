@@ -16,16 +16,15 @@ import IPhoneFrame from "@/components/cover/IPhoneFrame";
 type Project = {
   id: string;
   label: string;
+  /** vertical app screenshot filling the capsule (under /public/cover/hero) */
+  img: string;
 };
 
-const PROJECTS: Project[] = [
-  { id: "p1", label: "PROJECT 01" },
-  { id: "p2", label: "PROJECT 02" },
-  { id: "p3", label: "PROJECT 03" },
-  { id: "p4", label: "PROJECT 04" },
-  { id: "p5", label: "PROJECT 05" },
-  { id: "p6", label: "PROJECT 06" },
-];
+// nine own app-design screenshots that fill the hero capsules
+const PROJECTS: Project[] = Array.from({ length: 9 }, (_, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  return { id: `p${n}`, label: `PROJECT ${n}`, img: `/cover/hero/slide-${n}.png` };
+});
 
 export type ProjectCarouselProps = {
   className?: string;
@@ -40,7 +39,10 @@ export default function ProjectCarousel({ className }: ProjectCarouselProps) {
       <div className="pc-track" aria-hidden="true">
         {loop.map((project, i) => (
           <div className="pc-item" key={`${project.id}-${i}`}>
-            <IPhoneFrame label={project.label} />
+            <IPhoneFrame label={project.label}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={project.img} alt="" loading="lazy" draggable={false} />
+            </IPhoneFrame>
           </div>
         ))}
       </div>

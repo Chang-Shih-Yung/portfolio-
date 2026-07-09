@@ -60,6 +60,8 @@ next-env.d.ts
 # Marketing Project case visuals — the portfolio owner's own design work,
 # cleared to publish (client logos are incidental to the shown deliverable).
 !/public/cover/marketing/
+# Hero capsule screenshots (own app-design work)
+!/public/cover/hero/
 !/public/cover/ref/
 /public/cover/ref/*
 !/public/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png
