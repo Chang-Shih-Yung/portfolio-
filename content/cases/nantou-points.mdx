@@ -6,7 +6,7 @@ export const meta = {
   slug: 'nantou-points',
   title: '南投縣數位生活點數平台 2.0',
   subtitle:
-    '平台上線一年後，累積了大量真實使用者回饋。本專案透過 UX Research 與易用性測試，重新檢視民眾端、商家端與後台三端流程，針對五大核心任務進行體驗優化——讓既有平台「變得更好用」。',
+    '南投縣政府為推動數位生活點數平台，以點數機制串聯縣政活動、在地商家與民眾消費體驗——用數位點數取代傳統紙本宣導與一次性活動系統，提升行政效率，同時促進在地商圈發展。',
   featured: true,
   order: 1,
   role: 'UI/UX Designer',
@@ -43,26 +43,7 @@ export const meta = {
 
 <p className="sec-chip">專案概述</p>
 
-南投縣政府為推動數位生活點數平台，以點數機制串聯縣政活動、在地商家與民眾消費體驗——用數位點數取代傳統紙本宣導與一次性活動系統，提升行政效率，同時促進在地商圈發展。
-
-平台上線一年後開始累積大量真實回饋。本專案不是從零開始，而是**從既有平台的實際使用行為出發**，透過 UX Research 與易用性測試重新檢視三端流程，針對核心任務進行體驗優化。
-
-本次優化聚焦五大核心任務：
-
-<div className="pill-row">
-  <Badge>登入流程</Badge>
-  <Badge>任務參與</Badge>
-  <Badge>點數使用</Badge>
-  <Badge>商家核銷</Badge>
-  <Badge>後台管理</Badge>
-</div>
-
-整個專案沿一條清楚的方法鏈推進——每一步的產出都是下一步的輸入：
-
-<StepFlow
-  steps={['Research', 'Insights', 'UX Strategy', 'Flow & IA', 'UI / System', 'Prototype 驗證']}
-  note="本案方法論 — 從研究到驗證的完整轉換鏈"
-/>
+南投數位生活點數平台上線一年後，累積了許多真實使用者的操作行為與回饋。本專案不是重新打造平台，而是透過 UX Research、易用性測試與流程分析，重新檢視民眾、店家與管理者的使用流程，找出操作上的問題，並優化重要功能，讓平台更容易使用，也更符合營運需求。
 
 ## Context
 
@@ -89,14 +70,7 @@ export const meta = {
     <span className="insight-num">03</span>
     <div className="insight-body">
       <h4>商家端流程不透明</h4>
-      <p>缺乏請款與核銷的進度回饋，商家不確定自己的操作是否成功、款項何時到位。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">04</span>
-    <div className="insight-body">
-      <h4>後台操作成本高</h4>
-      <p>重複設定與低效率的維護流程，讓承辦端花費大量時間在例行操作上。</p>
+      <p>未提供請款與核銷進度查詢，店家無法掌握操作狀態與撥款進度。</p>
     </div>
   </div>
 </div>
@@ -122,16 +96,17 @@ export const meta = {
 
 <p className="sec-chip">使用者研究</p>
 
-**從真實使用行為中找問題，而不是假設問題。** 透過跨角色研究建立完整的使用情境：
+透過跨角色訪談與五大核心流程易用性測試，完整檢視平台端到端使用體驗。
+
+**跨角色研究**
 
 <div className="pill-row">
-  <Badge>政府端跨局處訪談</Badge>
-  <Badge>商家與商圈訪談</Badge>
-  <Badge>民眾使用情境訪談</Badge>
-  <Badge>五大流程易用性測試</Badge>
+  <Badge>政府端</Badge>
+  <Badge>商家端</Badge>
+  <Badge>民眾端</Badge>
 </div>
 
-易用性測試鎖定平台最關鍵的一條端到端旅程，逐段檢視每一步的認知與操作成本：
+**核心流程**
 
 <StepFlow
   steps={['登入', '任務參與', '點數折抵', '查詢', '店家核銷']}
@@ -142,45 +117,7 @@ export const meta = {
 
 <p className="sec-chip">核心洞察</p>
 
-**問題不在功能，而在「流程與資訊不夠清楚」。** 研究整理出五大關鍵問題：
-
-<div className="insights">
-  <div className="insight">
-    <span className="insight-num">01</span>
-    <div className="insight-body">
-      <h4>登入流程過於複雜</h4>
-      <p>新用戶往往在驗證階段就流失——這是整條旅程最前段、也最致命的斷點。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">02</span>
-    <div className="insight-body">
-      <h4>任務資訊不足</h4>
-      <p>資訊呈現無法讓人一眼判斷任務價值，決策成本過高，參與率因此受限。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">03</span>
-    <div className="insight-body">
-      <h4>商家流程不透明</h4>
-      <p>缺乏請款與核銷進度回饋，商家對自己的操作結果沒有把握。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">04</span>
-    <div className="insight-body">
-      <h4>通知機制薄弱</h4>
-      <p>點數與任務提醒不夠即時，錯過了把使用者拉回平台的關鍵時機。</p>
-    </div>
-  </div>
-  <div className="insight">
-    <span className="insight-num">05</span>
-    <div className="insight-body">
-      <h4>後台操作成本高</h4>
-      <p>重複設定與低效率維護，讓承辦端難以規模化營運。</p>
-    </div>
-  </div>
-</div>
+**問題不在功能，而在「流程與資訊不夠清楚」。**
 
 <p className="strategy-ref">→ Insight 結論：整體問題來自「資訊透明度不足 ＋ 流程缺乏回饋」</p>
 
