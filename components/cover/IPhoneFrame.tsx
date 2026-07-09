@@ -3,14 +3,12 @@
 import type { ReactNode, JSX } from 'react'
 
 /**
- * IPhoneFrame — a CAPSULE phone mockup, a faithful clone of the reference site
- * (koyama-sendai.org) "kv-img": a tall STADIUM shape (border-radius:9999px) with
- * a 2px near-black outline, holding a vertical app screenshot clipped to the
- * capsule. Deliberately NOT a photoreal device — no notch / home indicator.
- *
- * Every value (size / border / radius / screen tint) references a --cv-* token
- * in app/globals.css. Drop an <img> as `children` to fill the screen exactly
- * (object-fit:cover); otherwise a labelled placeholder screen is shown.
+ * IPhoneFrame — hero capsule slot. The screenshots now ship as SELF-CONTAINED
+ * capsule PNGs (the stadium outline + rounded shape + transparent corners are
+ * baked into the artwork), so this frame carries NO chrome of its own — no
+ * border, no background, no radius. It just sizes the slot (via --cv-phone-w/h)
+ * and shows the image whole (object-fit:contain, ratio matches so it fills).
+ * A labelled placeholder is kept only as a no-image fallback.
  */
 export interface IPhoneFrameProps {
   /** Project label shown in the placeholder screen (default "PROJECT"). */
@@ -37,45 +35,45 @@ export default function IPhoneFrame({
       </div>
 
       <style jsx>{`
+        /* chrome-free: the PNG is the whole capsule (outline + shape baked in) */
         .capsule {
           flex: 0 0 auto;
           width: var(--cv-phone-w);
           height: var(--cv-phone-h);
-          border: 2px solid var(--cv-phone-edge);
-          border-radius: var(--cv-r-pill);
-          overflow: hidden;
-          background: var(--cv-phone-screen);
         }
         .screen {
           position: relative;
           width: 100%;
           height: 100%;
-          border-radius: inherit;
-          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(
-            180deg,
-            var(--cv-phone-screen) 0%,
-            var(--cv-phone-screen-2) 100%
-          );
         }
-        /* an image/video dropped as children fills the capsule exactly */
+        /* the self-contained capsule image shows whole; ratio matches the slot */
         .screen :global(img),
         .screen :global(video) {
           display: block;
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
 
+        /* fallback only (no image supplied) — a light stadium placeholder */
         .placeholder {
+          width: 100%;
+          height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 0 var(--space-md, 24px);
           text-align: center;
+          border: 2px solid var(--cv-phone-edge);
+          border-radius: var(--cv-r-pill);
+          background: linear-gradient(
+            180deg,
+            var(--cv-phone-screen) 0%,
+            var(--cv-phone-screen-2) 100%
+          );
         }
         .placeholder-label {
           font-family: var(--cv-font-mono);
