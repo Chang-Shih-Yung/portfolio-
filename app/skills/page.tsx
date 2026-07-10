@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 type SkillGroup = {
   label: string
   title: string
-  blurb: string
   items: string[]
   color: 'mint' | 'peach' | 'butter' | 'lavender'
 }
@@ -17,64 +16,28 @@ const groups: SkillGroup[] = [
   {
     label: 'Strategy',
     title: '數位行銷策略',
-    blurb:
-      '先想清楚人從哪裡來、為什麼留下,再決定預算和渠道怎麼擺 — 付費流量和自有陣地要互相接力,不是各打各的。',
     items: [
       '全漏斗行銷規劃(曝光 → 名單 → 轉換 → 回訪)',
-      '付費與自有媒體的整合佈局',
       '活動檔期、預算與資源配置',
       '市場與受眾洞察、競品盤點',
-      'B2B 商機開發的節奏設計',
+      '店家合作流程設計',
     ],
     color: 'mint',
   },
   {
     label: 'Campaign',
     title: '活動企劃與執行',
-    blurb:
-      '從一頁企劃書到活動當天的現場,中間每個環節我都顧過 — 記者會、城市嘉年華、跨縣市合作案,都辦得起來。',
     items: [
-      '大型活動統籌(企劃 / 時程 / 預算 / 現場)',
-      '記者會與媒體溝通操作',
-      '主視覺方向與輸出物審核',
-      '政府跨局處與多方窗口協調',
-      '外包與供應商管理',
+      '大型活動企劃與執行管理',
+      '活動視覺策略與製作物整合',
+      '跨單位溝通與專案協調',
+      '設計資源整合與製作流程管理',
     ],
     color: 'peach',
   },
   {
-    label: 'Content',
-    title: '內容與品牌經營',
-    blurb:
-      '把產品價值講成一般人聽得懂、搜尋得到的話 — 官網、活動頁、社群到部落格,內容是會自己長大的資產。',
-    items: [
-      '品牌敘事與文案方向',
-      '官網與 Landing Page 內容規劃',
-      '社群素材企劃與調性管理',
-      '搜尋能見度與內容佈局(SEO)',
-      '把政策、產品「翻譯成人話」的能力',
-    ],
-    color: 'butter',
-  },
-  {
-    label: 'Analytics',
-    title: '數據與成效優化',
-    blurb:
-      '每檔活動結束都要能回答:錢花去哪、帶回了什麼。用數據複盤,下一次的策略和資源才有依據。',
-    items: [
-      '成效指標設計(名單品質 / 轉換成本 / 留存)',
-      '網站流量與廣告數據判讀',
-      '活動成效複盤與報告',
-      '依成效調整策略與預算配置',
-      '漏斗診斷與轉換率優化',
-    ],
-    color: 'lavender',
-  },
-  {
     label: 'Bonus · Research',
     title: 'UX 研究與服務設計',
-    blurb:
-      '加分項一:我自己會做研究。訪談、易用性測試、服務藍圖 — 行銷洞察不用等外包,直接從使用者身上長出來。',
     items: [
       '使用者訪談與易用性測試',
       'Persona 與旅程地圖',
@@ -87,8 +50,6 @@ const groups: SkillGroup[] = [
   {
     label: 'Bonus · Design',
     title: 'UI 設計與設計系統',
-    blurb:
-      '加分項二:我自己會把介面做出來。企劃不會停在簡報 — 原型、設計系統、跟工程對接,一路推到上線。',
     items: [
       'Figma UI 設計與互動原型',
       'Design System(Token / 元件庫)',
@@ -114,8 +75,8 @@ export default function SkillsPage() {
           行銷是我的主場,<br />設計是我的外掛。
         </h1>
         <p className="skills-intro">
-          從策略、活動、內容到成效複盤,行銷這條鏈我整段都跑過;再加上一手 UX/UI 的實作能力,
-          企劃到我手上不會停在簡報 — 會變成上線、能營運、有數字可以檢核的東西。
+          從行銷策略、活動規劃、內容執行,到最後成效檢視,我都有實際參與。再加上 UX/UI 的實作經驗,
+          我不只是提出企劃,而是能一路把想法落實成真正上線、可以營運,也能持續追蹤成效的數位服務。
         </p>
       </header>
 
@@ -124,7 +85,6 @@ export default function SkillsPage() {
           <article key={g.title} className={`skill-card skill-card--${g.color}`}>
             <p className="skill-card-label">{g.label}</p>
             <h2 className="h2 skill-card-title">{g.title}</h2>
-            <p className="skill-card-blurb">{g.blurb}</p>
             <ul className="skill-card-list">
               {g.items.map((item) => (
                 <li key={item}>{item}</li>

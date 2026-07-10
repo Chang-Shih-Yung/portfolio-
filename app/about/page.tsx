@@ -53,7 +53,7 @@ const timeline: TimelineItem[] = [
   {
     year: '01',
     kind: 'role',
-    title: '2024 桃園火鍋嘉年華',
+    title: '2023 桃園火鍋嘉年華',
     body: '衛生局的年度指標活動:470 家美食券店家把單日人潮拉成一整個月的消費,「桃食安心資訊平台」衝破 100 萬瀏覽 — 活動效益不是辦完就歸零。',
     href: '/work/taoyuan-hotpot',
   },
