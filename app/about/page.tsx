@@ -33,10 +33,6 @@ const skills = [
     body: '政府跨局處、三方單位、PM 跟工程 — 多方窗口的節奏我拿得住，事情能往前推才算溝通。',
   },
   {
-    title: '中小企業場景理解',
-    body: '1,200+ 家街邊店家的串聯經驗 — 老闆在想什麼、卡在哪裡，我是實際設計過流程，不是用猜的。',
-  },
-  {
     title: 'UX × 產品落地',
     body: '研究、資訊架構、服務藍圖到設計系統 — 行銷企劃到我手上，可以一路推進成上線且能營運的產品。',
   },
@@ -52,70 +48,70 @@ type TimelineItem = {
   href?: string
 }
 
-// 陣列順序 = 編號 01–09;頁面倒序渲染,行銷專案(06–09)排最前
+// 陣列順序 = 顯示順序（1→9，由上而下）：行銷專案在前、數位平台在後
 const timeline: TimelineItem[] = [
   {
     year: '01',
-    kind: 'project',
-    title: '南投縣數位生活點數平台 2.0',
-    body: '平台上線一年後,回頭聽使用者真實的聲音,把民眾、商家、後台三端的流失點一個一個補掉 — 行銷把人帶進來,體驗負責讓人留下來。',
-    href: '/work/nantou-points',
+    kind: 'role',
+    title: '2024 桃園火鍋嘉年華',
+    body: '衛生局的年度指標活動:470 家美食券店家把單日人潮拉成一整個月的消費,「桃食安心資訊平台」衝破 100 萬瀏覽 — 活動效益不是辦完就歸零。',
+    href: '/work/taoyuan-hotpot',
   },
   {
     year: '02',
-    kind: 'project',
-    title: '花蓮永續生活數位服務平台',
-    body: '用行銷人的漏斗腦做產品:活動參與 → 點數累積 → 商家使用,接成一個會自己轉的循環 — 政策活動不再辦一次算一次。',
-    href: '/work/hualien-sustainable',
-  },
-  {
-    year: '03',
-    kind: 'project',
-    title: '雲林數位縣民平台(雲林幣 2.0)',
-    body: '幫縣政服務建立一套品牌語言和設計系統,之後不管加什麼新服務,長出來都是同一個樣子 — 品牌一致性,就是最耐用的行銷資產。',
-    href: '/work/yunlin-platform',
-  },
-  {
-    year: '04',
-    kind: 'project',
-    title: '苗栗縣數位點數平台',
-    body: '用 Service Blueprint 把民眾、店家、政府三端串在一起 — 行銷不能只做前台的熱鬧,核銷、請款、營運流程一起設計好,店家才會留下來。',
-    href: '/work/miaoli-points',
-  },
-  {
-    year: '05',
-    kind: 'project',
-    title: '台中減碳存摺平台',
-    body: '把減碳政策翻譯成日常的行為循環:搭車、走路、回收都能存進「減碳存摺」換回饋 — 政策推廣從一次性宣導,變成每天都在發生的習慣。',
-    href: '/work/taichung-carbon',
-  },
-  {
-    year: '06',
-    kind: 'role',
-    title: '2024 第四屆東岸舖食節',
-    body: '主視覺、場地動線、輔銷物一手統籌 — 14,148 人次進場、比上一屆多 3.5 倍,將近 580 萬枚金幣在場內流動,連沉睡的點數都被活動叫醒。',
-    href: '/work/dongan-food-festival',
-  },
-  {
-    year: '07',
     kind: 'role',
     title: '2024 花蓮「數位有購力・振興拚經濟」記者會',
     body: '花蓮縣府、臺東縣府、TTPush 三邊的溝通窗口都是我 — 700+ 特約店家、首波 2,000 萬枚城市幣,還拉到民間加碼 200 萬,把震後振興的故事說出去。',
     href: '/work/hualien-digital',
   },
   {
-    year: '08',
+    year: '03',
+    kind: 'role',
+    title: '2024 第四屆東岸舖食節',
+    body: '主視覺、場地動線、輔銷物一手統籌 — 14,148 人次進場、比上一屆多 3.5 倍,將近 580 萬枚金幣在場內流動,連沉睡的點數都被活動叫醒。',
+    href: '/work/dongan-food-festival',
+  },
+  {
+    year: '04',
     kind: 'role',
     title: '2024 雲林「智慧雲林幣 2.0」記者會',
     body: '平台升級的發表行銷:視覺統籌加媒體溝通,近 9 萬會員的平台 2.0 上線,台東、南投、彰化、台中、嘉義五個縣市都派人來觀摩。',
     href: '/work/yunlin-coin',
   },
   {
+    year: '05',
+    kind: 'project',
+    title: '雲林數位縣民平台(雲林幣 2.0)',
+    body: '幫縣政服務建立一套品牌語言和設計系統,之後不管加什麼新服務,長出來都是同一個樣子 — 品牌一致性,就是最耐用的行銷資產。',
+    href: '/work/yunlin-platform',
+  },
+  {
+    year: '06',
+    kind: 'project',
+    title: '台中減碳存摺平台',
+    body: '把減碳政策翻譯成日常的行為循環:搭車、走路、回收都能存進「減碳存摺」換回饋 — 政策推廣從一次性宣導,變成每天都在發生的習慣。',
+    href: '/work/taichung-carbon',
+  },
+  {
+    year: '07',
+    kind: 'project',
+    title: '花蓮永續生活數位服務平台',
+    body: '用行銷人的漏斗腦做產品:活動參與 → 點數累積 → 商家使用,接成一個會自己轉的循環 — 政策活動不再辦一次算一次。',
+    href: '/work/hualien-sustainable',
+  },
+  {
+    year: '08',
+    kind: 'project',
+    title: '苗栗縣數位點數平台',
+    body: '用 Service Blueprint 把民眾、店家、政府三端串在一起 — 行銷不能只做前台的熱鬧,核銷、請款、營運流程一起設計好,店家才會留下來。',
+    href: '/work/miaoli-points',
+  },
+  {
     year: '09',
-    kind: 'role',
-    title: '2024 桃園火鍋嘉年華',
-    body: '衛生局的年度指標活動:470 家美食券店家把單日人潮拉成一整個月的消費,「桃食安心資訊平台」衝破 100 萬瀏覽 — 活動效益不是辦完就歸零。',
-    href: '/work/taoyuan-hotpot',
+    kind: 'project',
+    title: '南投縣數位生活點數平台 2.0',
+    body: '平台上線一年後,回頭聽使用者真實的聲音,把民眾、商家、後台三端的流失點一個一個補掉 — 行銷把人帶進來,體驗負責讓人留下來。',
+    href: '/work/nantou-points',
   },
 ]
 
@@ -136,19 +132,16 @@ export default function AboutPage() {
 
       <div className="about-body">
         <p>
-          嗨,我是 Giselle。這幾年我跑了 7 個縣市、做完 9 個專案:政府的大型活動我從頭包到尾 —
-          行銷策略、主視覺統籌、跨部門協調,到活動當天站在現場盯流程;活動結束後,人流交給我做的城市點數平台接住,
-          讓每一波聲量都有地方沉澱,變成回得來的客人。
+          嗨,我是 Giselle。這幾年我參與了 7 個縣市、9 個政府專案,從大型活動的行銷策略、主視覺規劃、跨部門協作,
+          到活動執行都實際參與。活動結束後,再透過城市點數平台承接流量,讓每一次曝光都能轉化為持續的使用與回訪。
         </p>
         <p>
-          我看行銷比較像在顧一條漏斗:曝光、參與、轉換、回訪,每一段都要有數字可以檢核。
-          像桃園的美食券,讓 470 家店把單日人潮拉成整整一個月的來客;花蓮的平台,更是直接把 Awareness 到 Retention
-          的參與旅程做成產品。對我來說,曝光只是漏斗的第一格 — 名單的品質、轉換的成本、留存的長度,才是我真正在盯的指標。
+          我習慣用行銷漏斗的角度思考,每一個階段都希望有數據可以驗證成果。像桃園美食券專案,成功將 470 家店家的活動人潮延續成長期客;
+          花蓮平台則把使用者從認識、參與到回訪的歷程,整合成一套完整的數位服務。
         </p>
         <p>
-          另一個武器,是 App UI/UX 的實作能力。五座城市平台,我從 0 到 1 參與打造,也做過 2.0 的規模化優化,
-          前後串聯超過 1,200 家街邊店家 — 店家怎麼核銷、怎麼請款、怎麼看成效,都是我實際設計過的流程。
-          所以中小企業的老闆在想什麼、卡在哪裡,我不是用猜的。行銷企劃到我手上,可以一路推到上線、能營運、能長大。
+          另外,我也具備 App UI/UX 的實作經驗,參與過 5 座城市平台從 0 到 1 建置,以及後續 2.0 的優化迭代。
+          因此,我不只是規劃行銷,更能把策略一路落地成真正可上線、可營運、持續成長的數位服務。
         </p>
       </div>
 
@@ -174,7 +167,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── Skills — 對照數位行銷職務的六個核心能力 ─── */}
+      {/* ─── Skills — 對照數位行銷職務的核心能力 ─── */}
       <section className="about-skills">
         <p className="section-label">Skills · 我拿手的事</p>
         <div className="skills-grid">
@@ -199,9 +192,9 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* 倒序顯示 — 行銷專案(06–09)在最上,對應應徵職位的主軸 */}
+        {/* array order == display order (1→9, marketing first) */}
         <ol className="timeline">
-          {[...timeline].reverse().map((item) => (
+          {timeline.map((item) => (
             <li key={item.year} className={`timeline-item timeline-item--${item.kind}`}>
               <div className="timeline-marker">
                 <span className="timeline-dot" aria-hidden />
