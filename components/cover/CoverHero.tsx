@@ -39,10 +39,9 @@ export default function CoverHero() {
         <div className="cv-hero__data">
           <div className="cv-hero__detail">
             <h1 className="cv-hero__heading">
-              <span className="cv-hero__line cv-hero__line--1">在這裡，遇見</span>
-              <span className="cv-hero__line cv-hero__line--2">好設計</span>
+              <span className="cv-hero__line cv-hero__line--1">用設計，</span>
+              <span className="cv-hero__line cv-hero__line--2">放大行銷價值</span>
             </h1>
-            <p className="cv-hero__tagline">用設計，放大行銷價值</p>
             <span className="cv-hero__badge">把策略變成體驗</span>
             <p className="cv-hero__lead">
               從政府數位服務到品牌活動，我專注於串聯行銷策略、使用者體驗與視覺設計，打造更容易被理解、被使用，也更能帶動參與的數位體驗。
@@ -141,18 +140,11 @@ export default function CoverHero() {
           font-size: var(--cv-display-1);
         }
         .cv-hero__line--2 {
-          font-size: var(--cv-display-2);
-          line-height: 0.96;
-        }
-        /* marketing value-prop line between the headline and the chip */
-        .cv-hero__tagline {
-          font-family: var(--cv-font-body);
-          font-size: 18px;
-          font-weight: 700;
-          line-height: 1.4;
-          letter-spacing: -0.01em;
-          color: var(--cv-ink);
-          margin: 0 0 var(--space-md);
+          /* 6-char value line on ONE line — the card's content area is ~324px
+             (420 − 2×48 pad), so 6 CJK glyphs must stay ≤ ~52px */
+          font-size: clamp(34px, 4vw, 50px);
+          line-height: 1.05;
+          white-space: nowrap;
         }
         /* black chip — sharp top-left corner like the reference ttl chip */
         .cv-hero__badge {
