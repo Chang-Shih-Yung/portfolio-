@@ -36,7 +36,7 @@ export default function IndexInfoCard({
         <div className="company">{company}</div>
       </div>
       <div className="facility-img">
-        <RefImg src={img} width={510} height={315} alt="" />
+        <RefImg src={img} width={510} height={510} alt="" />
       </div>
     </a>
   )

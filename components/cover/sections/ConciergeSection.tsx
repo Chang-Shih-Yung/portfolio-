@@ -19,14 +19,14 @@ const items: ConciergeItem[] = [
     title: '想了解我的設計流程',
     rows: ['使用者研究 / 訪談', '資訊架構 / 流程', '互動 / 原型', '設計系統 / 交付'],
     company: '看我怎麼從問題走到系統',
-    img: '/cover/ref/c9065128c2364b014295531b2cd3b91d.jpg',
+    img: '/cover/concierge/left.png',
     href: '/skills',
   },
   {
     title: '想直接看成果與案例',
     rows: ['4 場政府大型行銷活動', '5 座城市數位平台', '7 個縣市落地', '9 個完整案例'],
     company: '挑一個你有興趣的案例切入',
-    img: '/cover/ref/ba9eebe462304304fb1932f5055b1066.jpg',
+    img: '/cover/concierge/right.png',
     href: '/work',
   },
 ]

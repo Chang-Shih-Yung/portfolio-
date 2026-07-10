@@ -63,6 +63,8 @@ next-env.d.ts
 !/public/cover/marketing/
 # Hero capsule screenshots (own app-design work)
 !/public/cover/hero/
+# CONCIERGE card images (own design work)
+!/public/cover/concierge/
 !/public/cover/ref/
 /public/cover/ref/*
 !/public/cover/ref/c6f6a7efce7557f19bf6e066549b8df3.png
