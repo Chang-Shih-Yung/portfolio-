@@ -42,9 +42,10 @@ export default function CoverHero() {
               <span className="cv-hero__line cv-hero__line--1">在這裡，遇見</span>
               <span className="cv-hero__line cv-hero__line--2">好設計</span>
             </h1>
-            <span className="cv-hero__badge">把複雜，設計得簡單</span>
+            <p className="cv-hero__tagline">用設計，放大行銷價值</p>
+            <span className="cv-hero__badge">把策略變成體驗</span>
             <p className="cv-hero__lead">
-              這裡是首頁主視覺的開場白，用兩三句話介紹這個網站或這個人是做什麼的，以及為什麼值得繼續往下看。目前為示意文字，之後可隨時換成你自己的內容。
+              從政府數位服務到品牌活動，我專注於串聯行銷策略、使用者體驗與視覺設計，打造更容易被理解、被使用，也更能帶動參與的數位體驗。
             </p>
           </div>
         </div>
@@ -143,6 +144,16 @@ export default function CoverHero() {
           font-size: var(--cv-display-2);
           line-height: 0.96;
         }
+        /* marketing value-prop line between the headline and the chip */
+        .cv-hero__tagline {
+          font-family: var(--cv-font-body);
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: -0.01em;
+          color: var(--cv-ink);
+          margin: 0 0 var(--space-md);
+        }
         /* black chip — sharp top-left corner like the reference ttl chip */
         .cv-hero__badge {
           align-self: flex-start;
@@ -204,7 +215,7 @@ export default function CoverHero() {
             /* reserve space for the fixed 72px mobile header */
             padding-top: 72px;
             padding-bottom: var(--cv-tabbar-h);
-            --cv-phone-w: 155px;
+            --cv-phone-w: 156px;
             --cv-phone-h: 290px;
             --cv-phone-gap: 6px;
             --cv-display-1: clamp(28px, 8vw, 34px);
