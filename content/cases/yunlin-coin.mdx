@@ -28,11 +28,11 @@ export const meta = {
   ],
   sections: [
     { id: 'overview', label: 'Overview', tag: '1' },
-    { id: 'highlights', label: 'Highlights', tag: '2' },
-    { id: 'strategy', label: 'Strategy', tag: '3' },
-    { id: 'showcase', label: 'Showcase', tag: '4' },
-    { id: 'execution', label: 'Execution', tag: '5' },
-    { id: 'results', label: 'Results', tag: '6' },
+    { id: 'results', label: 'Results', tag: '2' },
+    { id: 'highlights', label: 'Highlights', tag: '3' },
+    { id: 'strategy', label: 'Strategy', tag: '4' },
+    { id: 'showcase', label: 'Showcase', tag: '5' },
+    { id: 'execution', label: 'Execution', tag: '6' },
   ],
 }
 
@@ -47,6 +47,48 @@ export const meta = {
 - **記者會視覺與行銷素材整合**
 - **跨部門協作與專案執行**
 - **數位城市幣平台升級推廣**
+
+## Results
+
+<p className="sec-chip">完整成果</p>
+
+從平台升級到跨縣市擴散契機，四個面向的完整成果：
+
+<KpiGrid>
+  <KpiCard figure="2.0 上線" title="推動雲林幣數位升級發表">
+    <p>完成「介面」「功能」「支付」三大面向全面優化，新增功能擴大平台使用範圍與豐富性：</p>
+    <div className="pill-row">
+      <Badge>健康計步</Badge>
+      <Badge>停車繳費</Badge>
+      <Badge>看影片</Badge>
+      <Badge>小遊戲</Badge>
+      <Badge variant="solid">支付整合</Badge>
+    </div>
+  </KpiCard>
+  <KpiCard figure="近 9 萬人" title="穩固既有會員基礎">
+    <p>上線初期已有近 1 萬人完成會員移轉，近 80 間店家選擇繼續合作成為特約店家。</p>
+    <CompareBar
+      rows={[
+        { label: '累積會員', value: '近 9 萬', pct: 100, now: true },
+        { label: '初期移轉', value: '近 1 萬', pct: 11 },
+      ]}
+      note="改版初期即啟動移轉，黏著度未因升級流失"
+    />
+  </KpiCard>
+  <KpiCard figure="20 鄉鎮市" title="串聯全縣合作店家網絡">
+    <p>支付整合開通後，民眾可使用信用卡、行動支付消費，降低現金補差額的使用門檻。</p>
+    <DotMatrix count={20} perRow={10} note="每一點 = 1 個鄉鎮市，20/20 全縣覆蓋" />
+  </KpiCard>
+  <KpiCard figure="5 縣市" title="促成跨機關與跨縣市合作契機">
+    <p>與悠遊卡公司規劃**先消費後回饋**機制，延伸至社會福利、公共自行車回饋等應用場域。</p>
+    <FanOut
+      from={{ title: '雲林幣 2.0', sub: '數位縣民平台' }}
+      to={['台東', '南投', '彰化', '台中', '嘉義']}
+      via="跨縣市觀摩"
+      note="外縣市代表出席，為平台擴散奠定基礎"
+    />
+  </KpiCard>
+</KpiGrid>
 
 ## Highlights
 
@@ -132,45 +174,3 @@ export const meta = {
 協助規劃記者會後續的社群與媒體露出，將 2.0 版本新增功能（健康計步、停車繳費、小遊戲等）轉化為**易於傳播的推廣素材**。
 
 <p className="strategy-ref">→ 呼應策略 03 · 延續記者會聲量、擴大平台跨縣市能見度</p>
-
-## Results
-
-<p className="sec-chip">完整成果</p>
-
-從平台升級到跨縣市擴散契機，四個面向的完整成果：
-
-<KpiGrid>
-  <KpiCard figure="2.0 上線" title="推動雲林幣數位升級發表">
-    <p>完成「介面」「功能」「支付」三大面向全面優化，新增功能擴大平台使用範圍與豐富性：</p>
-    <div className="pill-row">
-      <Badge>健康計步</Badge>
-      <Badge>停車繳費</Badge>
-      <Badge>看影片</Badge>
-      <Badge>小遊戲</Badge>
-      <Badge variant="solid">支付整合</Badge>
-    </div>
-  </KpiCard>
-  <KpiCard figure="近 9 萬人" title="穩固既有會員基礎">
-    <p>上線初期已有近 1 萬人完成會員移轉，近 80 間店家選擇繼續合作成為特約店家。</p>
-    <CompareBar
-      rows={[
-        { label: '累積會員', value: '近 9 萬', pct: 100, now: true },
-        { label: '初期移轉', value: '近 1 萬', pct: 11 },
-      ]}
-      note="改版初期即啟動移轉，黏著度未因升級流失"
-    />
-  </KpiCard>
-  <KpiCard figure="20 鄉鎮市" title="串聯全縣合作店家網絡">
-    <p>支付整合開通後，民眾可使用信用卡、行動支付消費，降低現金補差額的使用門檻。</p>
-    <DotMatrix count={20} perRow={10} note="每一點 = 1 個鄉鎮市，20/20 全縣覆蓋" />
-  </KpiCard>
-  <KpiCard figure="5 縣市" title="促成跨機關與跨縣市合作契機">
-    <p>與悠遊卡公司規劃**先消費後回饋**機制，延伸至社會福利、公共自行車回饋等應用場域。</p>
-    <FanOut
-      from={{ title: '雲林幣 2.0', sub: '數位縣民平台' }}
-      to={['台東', '南投', '彰化', '台中', '嘉義']}
-      via="跨縣市觀摩"
-      note="外縣市代表出席，為平台擴散奠定基礎"
-    />
-  </KpiCard>
-</KpiGrid>

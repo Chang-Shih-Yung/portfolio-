@@ -27,11 +27,11 @@ export const meta = {
   ],
   sections: [
     { id: 'overview', label: 'Overview', tag: '1' },
-    { id: 'highlights', label: 'Highlights', tag: '2' },
-    { id: 'strategy', label: 'Strategy', tag: '3' },
-    { id: 'showcase', label: 'Showcase', tag: '4' },
-    { id: 'execution', label: 'Execution', tag: '5' },
-    { id: 'results', label: 'Results', tag: '6' },
+    { id: 'results', label: 'Results', tag: '2' },
+    { id: 'highlights', label: 'Highlights', tag: '3' },
+    { id: 'strategy', label: 'Strategy', tag: '4' },
+    { id: 'showcase', label: 'Showcase', tag: '5' },
+    { id: 'execution', label: 'Execution', tag: '6' },
   ],
 }
 
@@ -47,6 +47,41 @@ export const meta = {
 - **廠商與企劃溝通窗口**，控管時程與交付品質
 - **記者會流程與跨單位協調**
 - **花東數位振興政策行銷推動支援**
+
+## Results
+
+<p className="sec-chip">完整成果</p>
+
+從單場記者會到持續性的跨域消費，四個面向的完整成果：
+
+<KpiGrid>
+  <KpiCard figure="700+ 間" title="擴大跨域消費據點">
+    <p>涵蓋在地觀光旅宿、特色伴手禮、商圈夜市等多元業態。</p>
+    <DonutSplit
+      center="700+"
+      centerLabel="特約店家"
+      segments={[
+        { label: '臺東', value: '630+', pct: 86, color: 'var(--cv-shape-green)' },
+        { label: '花蓮', value: '100+', pct: 14, color: 'var(--cv-shape-coral)' },
+      ]}
+    />
+  </KpiCard>
+  <KpiCard figure="16 萬用戶" title="推動城市幣跨域合作與消費應用">
+    <p>花蓮好Q 與臺東金幣首度互通；首波 2,000 萬枚城市幣於花蓮火車站發放，消費滿 5,000 枚加碼贈 5,000 枚。</p>
+    <BridgeFlow
+      from={{ title: '臺東金幣', sub: '既有約 16 萬用戶' }}
+      to={{ title: '花蓮好Q', sub: '花蓮特約店家' }}
+      via="城市幣互通"
+      note="臺東用戶直接成為花蓮消費者"
+    />
+  </KpiCard>
+  <KpiCard figure="200 萬元" title="完成大型政策記者會曝光與推廣">
+    <p>邀集臺東縣長饒慶鈴、TTPush 執行長謝瑞庭、花蓮縣議會副議長徐雪玉、數位發展部數位產業署代表及多位議員、觀光產業協會共同出席；民間企業響應**加碼贊助 200 萬元**點數預算，強化政府與民間串聯效益。</p>
+  </KpiCard>
+  <KpiCard figure="0403 之後" title="支援震後觀光復甦與政策行銷">
+    <p>記者會訊息聚焦 0403 強震後的花東觀光重建，帶動媒體與社群對振興議題的關注；透過跨域合作敘事，強化「**花蓮好，臺東也會更好**」的政策傳播效果。</p>
+  </KpiCard>
+</KpiGrid>
 
 ## Highlights
 
@@ -131,38 +166,3 @@ export const meta = {
 協助記者會當天流程排程、貴賓動線與跨單位聯繫，確保**啟動儀式、媒體聯訪**等環節順暢銜接。
 
 <p className="strategy-ref">→ 呼應策略 03 · 讓記者會聲量延續至後續發放與消費活動</p>
-
-## Results
-
-<p className="sec-chip">完整成果</p>
-
-從單場記者會到持續性的跨域消費，四個面向的完整成果：
-
-<KpiGrid>
-  <KpiCard figure="700+ 間" title="擴大跨域消費據點">
-    <p>涵蓋在地觀光旅宿、特色伴手禮、商圈夜市等多元業態。</p>
-    <DonutSplit
-      center="700+"
-      centerLabel="特約店家"
-      segments={[
-        { label: '臺東', value: '630+', pct: 86, color: 'var(--cv-shape-green)' },
-        { label: '花蓮', value: '100+', pct: 14, color: 'var(--cv-shape-coral)' },
-      ]}
-    />
-  </KpiCard>
-  <KpiCard figure="16 萬用戶" title="推動城市幣跨域合作與消費應用">
-    <p>花蓮好Q 與臺東金幣首度互通；首波 2,000 萬枚城市幣於花蓮火車站發放，消費滿 5,000 枚加碼贈 5,000 枚。</p>
-    <BridgeFlow
-      from={{ title: '臺東金幣', sub: '既有約 16 萬用戶' }}
-      to={{ title: '花蓮好Q', sub: '花蓮特約店家' }}
-      via="城市幣互通"
-      note="臺東用戶直接成為花蓮消費者"
-    />
-  </KpiCard>
-  <KpiCard figure="200 萬元" title="完成大型政策記者會曝光與推廣">
-    <p>邀集臺東縣長饒慶鈴、TTPush 執行長謝瑞庭、花蓮縣議會副議長徐雪玉、數位發展部數位產業署代表及多位議員、觀光產業協會共同出席；民間企業響應**加碼贊助 200 萬元**點數預算，強化政府與民間串聯效益。</p>
-  </KpiCard>
-  <KpiCard figure="0403 之後" title="支援震後觀光復甦與政策行銷">
-    <p>記者會訊息聚焦 0403 強震後的花東觀光重建，帶動媒體與社群對振興議題的關注；透過跨域合作敘事，強化「**花蓮好，臺東也會更好**」的政策傳播效果。</p>
-  </KpiCard>
-</KpiGrid>

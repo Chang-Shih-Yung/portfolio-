@@ -27,11 +27,11 @@ export const meta = {
   ],
   sections: [
     { id: 'overview', label: 'Overview', tag: '1' },
-    { id: 'highlights', label: 'Highlights', tag: '2' },
-    { id: 'strategy', label: 'Strategy', tag: '3' },
-    { id: 'showcase', label: 'Showcase', tag: '4' },
-    { id: 'execution', label: 'Execution', tag: '5' },
-    { id: 'results', label: 'Results', tag: '6' },
+    { id: 'results', label: 'Results', tag: '2' },
+    { id: 'highlights', label: 'Highlights', tag: '3' },
+    { id: 'strategy', label: 'Strategy', tag: '4' },
+    { id: 'showcase', label: 'Showcase', tag: '5' },
+    { id: 'execution', label: 'Execution', tag: '6' },
   ],
 }
 
@@ -46,6 +46,39 @@ export const meta = {
 - **活動主視覺與延伸應用設計**
 - **市集場地與動線規劃**
 - **現場輔銷物的整體策劃**
+
+## Results
+
+<p className="sec-chip">完整成果</p>
+
+點數機制與現場設計互相加乘，四個面向的完整成果：
+
+<KpiGrid>
+  <KpiCard figure="近 12 萬人" title="擴大會員基礎、深化數位生活">
+    <p>TTPush 累計會員數近 12 萬人——以台東縣約 21 萬人口計，每兩位縣民就有一位在數位生活圈裡。</p>
+  </KpiCard>
+  <KpiCard figure="70+ 間" title="擴大集點誘因、刺激實體消費">
+    <p>特約商店響應活動優惠，業者反映熱烈：「半小時就賣出一半」。</p>
+  </KpiCard>
+  <KpiCard figure="500 送 500" title="提升點數使用便利性">
+    <p>「消費滿 500 金幣，送 500 金幣」——100% 回饋率；平時累積的點數可於市集一站兌換，民眾反饋：「方便也很新奇」。</p>
+    <RatioSplit
+      left={{ label: '消費 500' }}
+      right={{ label: '回饋 500' }}
+      note="回饋率 100%，一站兌換"
+    />
+  </KpiCard>
+  <KpiCard figure="1,300 萬+" title="活化沉睡點數、避免資源浪費">
+    <p>藉活動提醒 1,300 多萬枚金幣將於 <strong>9 月 30 日</strong>到期，呼籲縣民盡快至特約商店使用。</p>
+    <CompareBar
+      rows={[
+        { label: '本屆消費', value: '約 580 萬枚', pct: 45, now: true },
+        { label: '待喚醒', value: '1,300 萬+ 枚', pct: 100 },
+      ]}
+      note="沉睡金幣 9/30 到期——活動就是喚醒機制"
+    />
+  </KpiCard>
+</KpiGrid>
 
 ## Highlights
 
@@ -167,36 +200,3 @@ export const meta = {
     { src: '/work/dongan-food-festival/execution/ex-02.png', alt: '東岸舖食節主視覺 mockup' },
   ]}
 />
-
-## Results
-
-<p className="sec-chip">完整成果</p>
-
-點數機制與現場設計互相加乘，四個面向的完整成果：
-
-<KpiGrid>
-  <KpiCard figure="近 12 萬人" title="擴大會員基礎、深化數位生活">
-    <p>TTPush 累計會員數近 12 萬人——以台東縣約 21 萬人口計，每兩位縣民就有一位在數位生活圈裡。</p>
-  </KpiCard>
-  <KpiCard figure="70+ 間" title="擴大集點誘因、刺激實體消費">
-    <p>特約商店響應活動優惠，業者反映熱烈：「半小時就賣出一半」。</p>
-  </KpiCard>
-  <KpiCard figure="500 送 500" title="提升點數使用便利性">
-    <p>「消費滿 500 金幣，送 500 金幣」——100% 回饋率；平時累積的點數可於市集一站兌換，民眾反饋：「方便也很新奇」。</p>
-    <RatioSplit
-      left={{ label: '消費 500' }}
-      right={{ label: '回饋 500' }}
-      note="回饋率 100%，一站兌換"
-    />
-  </KpiCard>
-  <KpiCard figure="1,300 萬+" title="活化沉睡點數、避免資源浪費">
-    <p>藉活動提醒 1,300 多萬枚金幣將於 <strong>9 月 30 日</strong>到期，呼籲縣民盡快至特約商店使用。</p>
-    <CompareBar
-      rows={[
-        { label: '本屆消費', value: '約 580 萬枚', pct: 45, now: true },
-        { label: '待喚醒', value: '1,300 萬+ 枚', pct: 100 },
-      ]}
-      note="沉睡金幣 9/30 到期——活動就是喚醒機制"
-    />
-  </KpiCard>
-</KpiGrid>
