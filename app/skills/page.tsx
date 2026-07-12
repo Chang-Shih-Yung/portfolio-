@@ -62,8 +62,8 @@ const groups: SkillGroup[] = [
 ]
 
 const tools = [
-  'GA4', 'Google Search Console', 'Google Ads', 'Meta 廣告管理員', 'SEO 工具',
-  'Figma', 'FigJam', 'Illustrator', 'Photoshop', 'Canva', 'Notion',
+  'Claude', 'ChatGPT', 'Google NotebookLM',
+  'Figma', 'FigJam', 'Illustrator', 'Photoshop', 'Canva',
 ]
 
 export default function SkillsPage() {
